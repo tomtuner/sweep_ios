@@ -135,7 +135,7 @@
         AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
         #endif
         
-        BarcodeResult *br = [[BarcodeResult alloc] init];
+        SBarcodeResult *br = [[SBarcodeResult alloc] init];
         br.text = result.text;
         br.timestamp = result.timestamp;
 //        br.timestamp = [NSDate dateF]

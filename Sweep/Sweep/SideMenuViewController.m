@@ -21,7 +21,23 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+        
+        @try {
+    		NSString *documentsDir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
+                                                                          NSUserDomainMask, YES) objectAtIndex:0];
+			NSString *archivePath = [documentsDir stringByAppendingPathComponent:kScanListArchiveName];
+			self.scanLists = [NSKeyedUnarchiver unarchiveObjectWithFile:archivePath];
+		}
+		@catch (...)
+		{
+            NSLog(@"Exception unarchiving file.");
+    	}
+        
+		if (!self.scanLists) {
+			self.scanLists = [[NSMutableArray alloc] init];
+        }
+        
+        
     }
     return self;
 }
@@ -30,9 +46,17 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+
+    [self.navBar setTintColor:[UIColor lightGrayColor]];
 }
 
 #pragma mark - UITableViewDataSource
+
+-(UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.row == self.scanLists.count)
+        return UITableViewCellEditingStyleInsert;
+    
+}
 
 - (NSInteger) numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -42,26 +66,63 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     NSLog(@"Scan Count: %i", [self.scanLists count]);
-	return [self.scanLists count];
+    return self.scanEventListTable.editing ? self.scanLists.count : self.scanLists.count + 1;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if (indexPath.row == self.scanLists.count) {
+        SScanEvent *newEvent = [[SScanEvent alloc] init];
+        NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+        [dateFormat setDateFormat:@"MMMM d"];
+        NSString *dateString = [dateFormat stringFromDate:newEvent.date];
+        newEvent.name = dateString;
+        [self.scanLists addObject:newEvent];
+        // Save our new scans out to the archive file
+        NSString *documentsDir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
+                                                                      NSUserDomainMask, YES) objectAtIndex:0];
+        NSString *archivePath = [documentsDir stringByAppendingPathComponent:kScanListArchiveName];
+        [NSKeyedArchiver archiveRootObject:self.scanLists toFile:archivePath];
+        [self.scanEventListTable reloadData];
+    }else {
+        ViewController *viewController = [[ViewController alloc] initWithNibName:@"ViewController" bundle:nil];
+        viewController.scanDataArchiveString = [(SScanEvent*)[self.scanLists objectAtIndex:indexPath.row] uuid];
+        viewController.title = [(SScanEvent*)[self.scanLists objectAtIndex:indexPath.row] name];
+        
+        NSArray *controllers = [NSArray arrayWithObject:viewController];
+        self.sideMenu.navigationController.viewControllers = controllers;
+        [self.sideMenu setMenuState:MFSideMenuStateClosed];
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"BarcodeResult"];
+    NSString *CellIdentifier = @"SSideMenuCell";
+    BOOL addCell = (indexPath.row == self.scanLists.count);
+    if (addCell) {
+//        CellIdentifier = @"AddCell";
+    }
+    
+	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil)
 	{
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle
-                                      reuseIdentifier:@"BarcodeResult"];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+                                      reuseIdentifier:CellIdentifier];
     }
 	
 	// Get the barcodeResult that has the data backing this cell
-	NSMutableDictionary *scanSession = [self.scanLists objectAtIndex:indexPath.section];
-	ZXResult *barcode = [self.scanLists objectAtIndex:indexPath.row];
+//	NSMutableDictionary *scanSession = [self.scanLists objectAtIndex:indexPath.section];
     
-    cell.textLabel.text = barcode.text;
+    if (addCell) {
+        cell.textLabel.text = @"Add an event";
+    }else {
+        SScanEvent *scanEvent = [self.scanLists objectAtIndex:indexPath.row];
+        cell.textLabel.text = scanEvent.name;
+    }
 	
     return cell;
 }
+
+
 
 @end

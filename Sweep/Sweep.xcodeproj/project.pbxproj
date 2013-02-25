@@ -22,20 +22,35 @@
 		E91D7E3B16B8E44D00F66CD5 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E91D7E3A16B8E44D00F66CD5 /* AVFoundation.framework */; };
 		E91D7E3D16B8E45700F66CD5 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E91D7E3C16B8E45700F66CD5 /* CoreVideo.framework */; };
 		E91D7E3F16B8E45C00F66CD5 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E91D7E3E16B8E45C00F66CD5 /* CoreMedia.framework */; };
+		E93D98E516D9CBE400F24220 /* MFSideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = E93D98E416D9CBE400F24220 /* MFSideMenu.m */; };
+		E93D98E916D9D07900F24220 /* UINavigationController+MFSideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = E93D98E816D9CDFC00F24220 /* UINavigationController+MFSideMenu.m */; };
+		E93D98F516DACBEF00F24220 /* Theme.m in Sources */ = {isa = PBXBuildFile; fileRef = E93D98F216DACBEE00F24220 /* Theme.m */; };
+		E93D98F616DACBEF00F24220 /* RITTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = E93D98F416DACBEF00F24220 /* RITTheme.m */; };
+		E93D992B16DC0E2600F24220 /* SideMenuViewController~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = E93D992716DC0AE200F24220 /* SideMenuViewController~ipad.xib */; };
 		E95E759616C071F100E01F58 /* libZXingObjC-iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E95E758416C071BA00E01F58 /* libZXingObjC-iOS.a */; };
 		E95E759816C0720A00E01F58 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E95E759716C0720900E01F58 /* ImageIO.framework */; };
 		E95E759A16C0720E00E01F58 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E95E759916C0720E00E01F58 /* QuartzCore.framework */; };
 		E95E759F16C072F600E01F58 /* BarcodeCaptureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E95E759D16C072F600E01F58 /* BarcodeCaptureViewController.m */; };
 		E95E75A016C072F600E01F58 /* BarcodeCaptureViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E95E759E16C072F600E01F58 /* BarcodeCaptureViewController.xib */; };
 		E95E75A216C08B2E00E01F58 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E95E75A116C08B2E00E01F58 /* MessageUI.framework */; };
-		E95E75A516C08E3400E01F58 /* BarcodeResult.m in Sources */ = {isa = PBXBuildFile; fileRef = E95E75A416C08E3400E01F58 /* BarcodeResult.m */; };
+		E95E75A516C08E3400E01F58 /* SBarcodeResult.m in Sources */ = {isa = PBXBuildFile; fileRef = E95E75A416C08E3400E01F58 /* SBarcodeResult.m */; };
 		E9AA78AE16C564A4002C4723 /* SideMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9AA78AC16C564A4002C4723 /* SideMenuViewController.m */; };
-		E9AA78AF16C564A4002C4723 /* SideMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9AA78AD16C564A4002C4723 /* SideMenuViewController.xib */; };
-		E9AA78B416C58893002C4723 /* MFSideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = E9AA78B216C58892002C4723 /* MFSideMenu.m */; };
-		E9AA78B516C58893002C4723 /* UINavigationController+MFSideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = E9AA78B316C58892002C4723 /* UINavigationController+MFSideMenu.m */; };
+		E9AA78AF16C564A4002C4723 /* SideMenuViewController~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9AA78AD16C564A4002C4723 /* SideMenuViewController~iphone.xib */; };
+		E9AA78C216C72812002C4723 /* SScanEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = E9AA78C116C72812002C4723 /* SScanEvent.m */; };
+		E9AA78C716C73AC7002C4723 /* back-arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = E9AA78C316C73AC7002C4723 /* back-arrow.png */; };
+		E9AA78C816C73AC7002C4723 /* back-arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9AA78C416C73AC7002C4723 /* back-arrow@2x.png */; };
+		E9AA78C916C73AC7002C4723 /* menu-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = E9AA78C516C73AC7002C4723 /* menu-icon.png */; };
+		E9AA78CA16C73AC7002C4723 /* menu-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9AA78C616C73AC7002C4723 /* menu-icon@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		E93D98E216D9CBCE00F24220 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E93D98DE16D9CBCE00F24220 /* MFSideMenuDemo.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 275F15831517E9B80052A240;
+			remoteInfo = MFSideMenuDemo;
+		};
 		E95E758316C071BA00E01F58 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = E95E757A16C071BA00E01F58 /* ZXingObjC.xcodeproj */;
@@ -78,13 +93,6 @@
 			remoteGlobalIDString = 25403CB2166A96FA00E13304;
 			remoteInfo = "ZXingObjC-iOS";
 		};
-		E9AA78A416C562A8002C4723 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E9AA78A016C562A8002C4723 /* MFSideMenuDemo.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 275F15831517E9B80052A240;
-			remoteInfo = MFSideMenuDemo;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -108,6 +116,19 @@
 		E91D7E3A16B8E44D00F66CD5 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		E91D7E3C16B8E45700F66CD5 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		E91D7E3E16B8E45C00F66CD5 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		E93D98DE16D9CBCE00F24220 /* MFSideMenuDemo.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MFSideMenuDemo.xcodeproj; path = ../../MFSideMenu/MFSideMenuDemo.xcodeproj; sourceTree = "<group>"; };
+		E93D98E416D9CBE400F24220 /* MFSideMenu.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MFSideMenu.m; sourceTree = "<group>"; };
+		E93D98E616D9CCA500F24220 /* MFSideMenu.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MFSideMenu.h; sourceTree = "<group>"; };
+		E93D98E716D9CDFC00F24220 /* UINavigationController+MFSideMenu.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+MFSideMenu.h"; sourceTree = "<group>"; };
+		E93D98E816D9CDFC00F24220 /* UINavigationController+MFSideMenu.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+MFSideMenu.m"; sourceTree = "<group>"; };
+		E93D98F116DACBEE00F24220 /* Theme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Theme.h; sourceTree = "<group>"; };
+		E93D98F216DACBEE00F24220 /* Theme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Theme.m; sourceTree = "<group>"; };
+		E93D98F316DACBEE00F24220 /* RITTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RITTheme.h; sourceTree = "<group>"; };
+		E93D98F416DACBEF00F24220 /* RITTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RITTheme.m; sourceTree = "<group>"; };
+		E93D992316DC0ADD00F24220 /* Sweep copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Sweep copy-Info.plist"; path = "/Users/Thomas/Development/Personal/scanner/Sweep/Sweep copy-Info.plist"; sourceTree = "<absolute>"; };
+		E93D992516DC0AE200F24220 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = "Resources-iPad/Sweep/en.lproj/ViewController.xib"; sourceTree = "<group>"; };
+		E93D992616DC0AE200F24220 /* BarcodeCaptureViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = BarcodeCaptureViewController.xib; path = "Resources-iPad/Sweep/BarcodeCaptureViewController.xib"; sourceTree = "<group>"; };
+		E93D992716DC0AE200F24220 /* SideMenuViewController~ipad.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "SideMenuViewController~ipad.xib"; path = "Resources-iPad/Sweep/SideMenuViewController~ipad.xib"; sourceTree = "<group>"; };
 		E95E757A16C071BA00E01F58 /* ZXingObjC.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ZXingObjC.xcodeproj; path = ../../ZXingObjC/ZXingObjC.xcodeproj; sourceTree = "<group>"; };
 		E95E759716C0720900E01F58 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		E95E759916C0720E00E01F58 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -115,14 +136,17 @@
 		E95E759D16C072F600E01F58 /* BarcodeCaptureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BarcodeCaptureViewController.m; sourceTree = "<group>"; };
 		E95E759E16C072F600E01F58 /* BarcodeCaptureViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BarcodeCaptureViewController.xib; sourceTree = "<group>"; };
 		E95E75A116C08B2E00E01F58 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
-		E95E75A316C08E3400E01F58 /* BarcodeResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarcodeResult.h; sourceTree = "<group>"; };
-		E95E75A416C08E3400E01F58 /* BarcodeResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BarcodeResult.m; sourceTree = "<group>"; };
-		E9AA78A016C562A8002C4723 /* MFSideMenuDemo.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MFSideMenuDemo.xcodeproj; path = ../../MFSideMenu/MFSideMenuDemo.xcodeproj; sourceTree = "<group>"; };
+		E95E75A316C08E3400E01F58 /* SBarcodeResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBarcodeResult.h; sourceTree = "<group>"; };
+		E95E75A416C08E3400E01F58 /* SBarcodeResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBarcodeResult.m; sourceTree = "<group>"; };
 		E9AA78AB16C564A4002C4723 /* SideMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SideMenuViewController.h; sourceTree = "<group>"; };
 		E9AA78AC16C564A4002C4723 /* SideMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SideMenuViewController.m; sourceTree = "<group>"; };
-		E9AA78AD16C564A4002C4723 /* SideMenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SideMenuViewController.xib; sourceTree = "<group>"; };
-		E9AA78B216C58892002C4723 /* MFSideMenu.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = MFSideMenu.m; path = ../../../MFSideMenu/MFSideMenuDemo/MFSideMenu/MFSideMenu.m; sourceTree = "<group>"; };
-		E9AA78B316C58892002C4723 /* UINavigationController+MFSideMenu.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "UINavigationController+MFSideMenu.m"; path = "../../../MFSideMenu/MFSideMenuDemo/MFSideMenu/UINavigationController+MFSideMenu.m"; sourceTree = "<group>"; };
+		E9AA78AD16C564A4002C4723 /* SideMenuViewController~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "SideMenuViewController~iphone.xib"; sourceTree = "<group>"; };
+		E9AA78C016C72812002C4723 /* SScanEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SScanEvent.h; sourceTree = "<group>"; };
+		E9AA78C116C72812002C4723 /* SScanEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SScanEvent.m; sourceTree = "<group>"; };
+		E9AA78C316C73AC7002C4723 /* back-arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back-arrow.png"; sourceTree = "<group>"; };
+		E9AA78C416C73AC7002C4723 /* back-arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back-arrow@2x.png"; sourceTree = "<group>"; };
+		E9AA78C516C73AC7002C4723 /* menu-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-icon.png"; sourceTree = "<group>"; };
+		E9AA78C616C73AC7002C4723 /* menu-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-icon@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,12 +174,14 @@
 		E91D7DFA16B8E36300F66CD5 = {
 			isa = PBXGroup;
 			children = (
-				E9AA78A016C562A8002C4723 /* MFSideMenuDemo.xcodeproj */,
+				E93D98DE16D9CBCE00F24220 /* MFSideMenuDemo.xcodeproj */,
 				E95E757A16C071BA00E01F58 /* ZXingObjC.xcodeproj */,
-				E91D7E0F16B8E36400F66CD5 /* Sweep */,
+				E93D98EB16DACB3B00F24220 /* sweep_resources */,
+				E91D7E0F16B8E36400F66CD5 /* sweep_source */,
 				E91D7E1016B8E36400F66CD5 /* Supporting Files */,
 				E91D7E0816B8E36400F66CD5 /* Frameworks */,
 				E91D7E0616B8E36400F66CD5 /* Products */,
+				E93D992316DC0ADD00F24220 /* Sweep copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -184,9 +210,10 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		E91D7E0F16B8E36400F66CD5 /* Sweep */ = {
+		E91D7E0F16B8E36400F66CD5 /* sweep_source */ = {
 			isa = PBXGroup;
 			children = (
+				E93D98EC16DACB6F00F24220 /* Visual */,
 				E91D7E1816B8E36400F66CD5 /* AppDelegate.h */,
 				E91D7E1916B8E36400F66CD5 /* AppDelegate.m */,
 				E91D7E2116B8E36400F66CD5 /* ViewController.h */,
@@ -195,20 +222,22 @@
 				E95E759C16C072F500E01F58 /* BarcodeCaptureViewController.h */,
 				E95E759D16C072F600E01F58 /* BarcodeCaptureViewController.m */,
 				E95E759E16C072F600E01F58 /* BarcodeCaptureViewController.xib */,
-				E95E75A316C08E3400E01F58 /* BarcodeResult.h */,
-				E95E75A416C08E3400E01F58 /* BarcodeResult.m */,
+				E95E75A316C08E3400E01F58 /* SBarcodeResult.h */,
+				E95E75A416C08E3400E01F58 /* SBarcodeResult.m */,
 				E9AA78AB16C564A4002C4723 /* SideMenuViewController.h */,
 				E9AA78AC16C564A4002C4723 /* SideMenuViewController.m */,
-				E9AA78AD16C564A4002C4723 /* SideMenuViewController.xib */,
+				E9AA78AD16C564A4002C4723 /* SideMenuViewController~iphone.xib */,
+				E9AA78C016C72812002C4723 /* SScanEvent.h */,
+				E9AA78C116C72812002C4723 /* SScanEvent.m */,
 			);
+			name = sweep_source;
 			path = Sweep;
 			sourceTree = "<group>";
 		};
 		E91D7E1016B8E36400F66CD5 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				E9AA78B216C58892002C4723 /* MFSideMenu.m */,
-				E9AA78B316C58892002C4723 /* UINavigationController+MFSideMenu.m */,
+				E93D98EA16DACB2600F24220 /* MFSideMenu */,
 				E91D7E1116B8E36400F66CD5 /* Sweep-Info.plist */,
 				E91D7E1216B8E36400F66CD5 /* InfoPlist.strings */,
 				E91D7E1516B8E36400F66CD5 /* main.m */,
@@ -221,6 +250,58 @@
 			path = Sweep;
 			sourceTree = "<group>";
 		};
+		E93D98DF16D9CBCE00F24220 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E93D98E316D9CBCE00F24220 /* MFSideMenuDemo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E93D98EA16DACB2600F24220 /* MFSideMenu */ = {
+			isa = PBXGroup;
+			children = (
+				E9AA78C316C73AC7002C4723 /* back-arrow.png */,
+				E9AA78C416C73AC7002C4723 /* back-arrow@2x.png */,
+				E9AA78C516C73AC7002C4723 /* menu-icon.png */,
+				E9AA78C616C73AC7002C4723 /* menu-icon@2x.png */,
+				E93D98E716D9CDFC00F24220 /* UINavigationController+MFSideMenu.h */,
+				E93D98E816D9CDFC00F24220 /* UINavigationController+MFSideMenu.m */,
+				E93D98E616D9CCA500F24220 /* MFSideMenu.h */,
+				E93D98E416D9CBE400F24220 /* MFSideMenu.m */,
+			);
+			name = MFSideMenu;
+			sourceTree = "<group>";
+		};
+		E93D98EB16DACB3B00F24220 /* sweep_resources */ = {
+			isa = PBXGroup;
+			children = (
+				E93D992216DC0ADD00F24220 /* iPad */,
+			);
+			name = sweep_resources;
+			sourceTree = "<group>";
+		};
+		E93D98EC16DACB6F00F24220 /* Visual */ = {
+			isa = PBXGroup;
+			children = (
+				E93D98F116DACBEE00F24220 /* Theme.h */,
+				E93D98F216DACBEE00F24220 /* Theme.m */,
+				E93D98F316DACBEE00F24220 /* RITTheme.h */,
+				E93D98F416DACBEF00F24220 /* RITTheme.m */,
+			);
+			name = Visual;
+			sourceTree = "<group>";
+		};
+		E93D992216DC0ADD00F24220 /* iPad */ = {
+			isa = PBXGroup;
+			children = (
+				E93D992416DC0AE200F24220 /* ViewController.xib */,
+				E93D992616DC0AE200F24220 /* BarcodeCaptureViewController.xib */,
+				E93D992716DC0AE200F24220 /* SideMenuViewController~ipad.xib */,
+			);
+			name = iPad;
+			sourceTree = "<group>";
+		};
 		E95E757B16C071BA00E01F58 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -229,14 +310,6 @@
 				E95E758816C071BA00E01F58 /* libZXingObjC-osx.a */,
 				E95E758A16C071BA00E01F58 /* ZXingObjCTests-osx.octest */,
 				E95E758C16C071BA00E01F58 /* ZXingObjC.framework */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		E9AA78A116C562A8002C4723 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				E9AA78A516C562A8002C4723 /* MFSideMenuDemo.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -283,8 +356,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = E9AA78A116C562A8002C4723 /* Products */;
-					ProjectRef = E9AA78A016C562A8002C4723 /* MFSideMenuDemo.xcodeproj */;
+					ProductGroup = E93D98DF16D9CBCE00F24220 /* Products */;
+					ProjectRef = E93D98DE16D9CBCE00F24220 /* MFSideMenuDemo.xcodeproj */;
 				},
 				{
 					ProductGroup = E95E757B16C071BA00E01F58 /* Products */;
@@ -299,6 +372,13 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		E93D98E316D9CBCE00F24220 /* MFSideMenuDemo.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = MFSideMenuDemo.app;
+			remoteRef = E93D98E216D9CBCE00F24220 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		E95E758416C071BA00E01F58 /* libZXingObjC-iOS.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -334,13 +414,6 @@
 			remoteRef = E95E758B16C071BA00E01F58 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		E9AA78A516C562A8002C4723 /* MFSideMenuDemo.app */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.application;
-			path = MFSideMenuDemo.app;
-			remoteRef = E9AA78A416C562A8002C4723 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
@@ -354,7 +427,12 @@
 				E91D7E2016B8E36400F66CD5 /* Default-568h@2x.png in Resources */,
 				E91D7E2616B8E36400F66CD5 /* ViewController.xib in Resources */,
 				E95E75A016C072F600E01F58 /* BarcodeCaptureViewController.xib in Resources */,
-				E9AA78AF16C564A4002C4723 /* SideMenuViewController.xib in Resources */,
+				E9AA78AF16C564A4002C4723 /* SideMenuViewController~iphone.xib in Resources */,
+				E9AA78C716C73AC7002C4723 /* back-arrow.png in Resources */,
+				E9AA78C816C73AC7002C4723 /* back-arrow@2x.png in Resources */,
+				E9AA78C916C73AC7002C4723 /* menu-icon.png in Resources */,
+				E9AA78CA16C73AC7002C4723 /* menu-icon@2x.png in Resources */,
+				E93D992B16DC0E2600F24220 /* SideMenuViewController~ipad.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -365,14 +443,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E9AA78B416C58893002C4723 /* MFSideMenu.m in Sources */,
-				E9AA78B516C58893002C4723 /* UINavigationController+MFSideMenu.m in Sources */,
+				E93D98E916D9D07900F24220 /* UINavigationController+MFSideMenu.m in Sources */,
 				E91D7E1616B8E36400F66CD5 /* main.m in Sources */,
 				E91D7E1A16B8E36400F66CD5 /* AppDelegate.m in Sources */,
 				E91D7E2316B8E36400F66CD5 /* ViewController.m in Sources */,
 				E95E759F16C072F600E01F58 /* BarcodeCaptureViewController.m in Sources */,
-				E95E75A516C08E3400E01F58 /* BarcodeResult.m in Sources */,
+				E95E75A516C08E3400E01F58 /* SBarcodeResult.m in Sources */,
 				E9AA78AE16C564A4002C4723 /* SideMenuViewController.m in Sources */,
+				E9AA78C216C72812002C4723 /* SScanEvent.m in Sources */,
+				E93D98E516D9CBE400F24220 /* MFSideMenu.m in Sources */,
+				E93D98F516DACBEF00F24220 /* Theme.m in Sources */,
+				E93D98F616DACBEF00F24220 /* RITTheme.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -399,6 +480,14 @@
 			isa = PBXVariantGroup;
 			children = (
 				E91D7E2516B8E36400F66CD5 /* en */,
+			);
+			name = ViewController.xib;
+			sourceTree = "<group>";
+		};
+		E93D992416DC0AE200F24220 /* ViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E93D992516DC0AE200F24220 /* en */,
 			);
 			name = ViewController.xib;
 			sourceTree = "<group>";
@@ -432,6 +521,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -454,6 +544,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -465,7 +556,9 @@
 				GCC_PREFIX_HEADER = "Sweep/Sweep-Prefix.pch";
 				HEADER_SEARCH_PATHS = "/Users/Thomas/Development/Personal/MFSideMenu/**";
 				INFOPLIST_FILE = "Sweep/Sweep-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WARNING_CFLAGS = "-Wno-unused-parameter";
 				WRAPPER_EXTENSION = app;
 			};
@@ -478,7 +571,9 @@
 				GCC_PREFIX_HEADER = "Sweep/Sweep-Prefix.pch";
 				HEADER_SEARCH_PATHS = "/Users/Thomas/Development/Personal/MFSideMenu/**";
 				INFOPLIST_FILE = "Sweep/Sweep-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WARNING_CFLAGS = "-Wno-unused-parameter";
 				WRAPPER_EXTENSION = app;
 			};

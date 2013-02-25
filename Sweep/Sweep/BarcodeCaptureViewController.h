@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <ZXingObjC/ZXingObjC.h>
-#import "BarcodeResult.h"
+#import "SBarcodeResult.h"
 
 @class BarcodeCaptureViewController;
 

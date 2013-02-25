@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:../card_reader/Sweep/Sweep.xcodeproj">
+      location = "group:Sweep/Sweep.xcodeproj">
    </FileRef>
 </Workspace>

@@ -1,5 +1,5 @@
 //
-//  BarcodeResult.h
+//  SBarcodeResult.h
 //  Sweep
 //
 //  Created by Thomas DeMeo on 2/4/13.
@@ -17,7 +17,7 @@
 #define kBarcodeMetaData @"BarcodeMetaData"
 #define kBarcodeTimestamp @"BarcodeTimestamp"
 
-@interface BarcodeResult : NSObject <NSCoding>
+@interface SBarcodeResult : NSObject <NSCoding>
 
 @property (nonatomic, copy)   NSString * text;
 //@property (nonatomic, assign) NSString * rawBytes;

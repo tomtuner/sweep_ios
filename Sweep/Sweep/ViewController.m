@@ -54,12 +54,38 @@
 	return self;
 }
 
+- (void)setupMenuBarButtonItems {
+    switch (self.navigationController.sideMenu.menuState) {
+        case MFSideMenuStateClosed:
+            self.navigationItem.leftBarButtonItem = [self leftMenuBarButtonItem];
+            break;
+        case MFSideMenuStateLeftMenuOpen:
+            self.navigationItem.leftBarButtonItem = [self leftMenuBarButtonItem];
+            break;
+    }
+    
+    self.navigationItem.rightBarButtonItem = [self rightMenuBarButtonItem];
+}
+
+- (UIBarButtonItem *)leftMenuBarButtonItem {
+    return [[UIBarButtonItem alloc]
+            initWithImage:[UIImage imageNamed:@"menu-icon.png"] style:UIBarButtonItemStyleBordered
+            target:self.navigationController.sideMenu
+            action:@selector(toggleLeftSideMenu)];
+}
+
+- (UIBarButtonItem *)rightMenuBarButtonItem {
+    return [[UIBarButtonItem alloc]
+            initWithTitle:@"Scan" style:UIBarButtonItemStyleBordered
+            target:self
+            action:@selector(scanPressed:)];
+}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-	// Do any additional setup after loading the view, typically from a nib.
+    [self setupMenuBarButtonItems];
 }
 
 - (IBAction)scanPressed:(id)sender {
@@ -98,6 +124,8 @@
 
 - (void)handleDoubleLeftSwipe:(UISwipeGestureRecognizer *)recognizer {
     NSLog(@"Double left Swipe!");
+    
+// TODO: AlertView Should go here
     [self clearScannedCodes];
     
     // Save our new scans out to the archive file
@@ -165,11 +193,11 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"BarcodeResult"];
+	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SBarcodeResult"];
     if (cell == nil)
 	{
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle
-                                      reuseIdentifier:@"BarcodeResult"];
+                                      reuseIdentifier:@"SBarcodeResult"];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
 	
