@@ -19,7 +19,7 @@
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil scanDataArchiveString:(NSString *) scanDataArchiveString {
     
-    if (self = [super initWithNibName:nibBundleOrNil bundle:nibBundleOrNil])
+    if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil])
 	{
         self.scanDataArchiveString = scanDataArchiveString;
 		// Load in any saved scan history we may have
@@ -204,7 +204,7 @@
     }
 	
 	// Get the barcodeResult that has the data backing this cell
-	NSMutableDictionary *scanSession = [scanHistory objectAtIndex:indexPath.section];
+//	NSMutableDictionary *scanSession = [scanHistory objectAtIndex:indexPath.section];
 	ZXResult *barcode = [scanHistory objectAtIndex:indexPath.row];
     
     cell.textLabel.text = barcode.text;

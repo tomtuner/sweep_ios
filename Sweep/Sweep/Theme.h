@@ -81,6 +81,5 @@
 + (void)customizeView:(UIView *)view;
 + (void)customizeTableView:(UITableView *)tableView;
 //+ (void)customizeTabBarItem:(UITabBarItem *)item forTab:(SSThemeTab)tab;
-+ (void)customizeDoorButton:(UIButton *)button;
 
 @end

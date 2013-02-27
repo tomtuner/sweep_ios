@@ -56,7 +56,7 @@
 -(UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row == self.scanLists.count)
         return UITableViewCellEditingStyleInsert;
-    
+    return nil;
 }
 
 - (NSInteger) numberOfSectionsInTableView:(UITableView *)tableView

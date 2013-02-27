@@ -134,7 +134,7 @@
         [sliderAppearance setMaximumTrackTintColor:accentTintColor];
         [progressAppearance setTrackTintColor:accentTintColor];
         UIBarButtonItem *toolbarBarButtonItemAppearance = [UIBarButtonItem appearanceWhenContainedIn:[UIToolbar class], nil];
-//        [toolbarBarButtonItemAppearance setTintColor:accentTintColor];
+        [toolbarBarButtonItemAppearance setTintColor:accentTintColor];
 //        [tabBarAppearance setSelectedImageTintColor:accentTintColor];
     }
     UIColor *baseTintColor = [theme baseTintColor];
