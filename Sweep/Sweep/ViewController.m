@@ -17,14 +17,16 @@
 
 @implementation ViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil scanDataArchiveString:(NSString *) scanDataArchiveString {
     
     if (self = [super initWithNibName:nibBundleOrNil bundle:nibBundleOrNil])
 	{
+        self.scanDataArchiveString = scanDataArchiveString;
 		// Load in any saved scan history we may have
 		@try {
     		NSString *documentsDir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
                                                                           NSUserDomainMask, YES) objectAtIndex:0];
+            NSLog(@"Scan Data Archive String: %@", self.scanDataArchiveString);
 			NSString *archivePath = [documentsDir stringByAppendingPathComponent:self.scanDataArchiveString];
 			scanHistory = [NSKeyedUnarchiver unarchiveObjectWithFile:archivePath];
 		}
@@ -97,7 +99,7 @@
 //            [vc.capture start];
 //        
 //    });
-    [self presentViewController:vc animated:YES completion:nil];
+    [self presentViewController:vc animated:NO completion:nil];
 }
 
 -(IBAction)emailButtonPressed {

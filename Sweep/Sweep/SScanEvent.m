@@ -13,7 +13,6 @@
 - (id)init {
     self = [super init];
     if (self) {
-        NSLog(@"Creating new UUID");
         CFUUIDRef uuidObject = CFUUIDCreate(kCFAllocatorDefault);
         self.uuid = (__bridge_transfer NSString *)CFUUIDCreateString(kCFAllocatorDefault, uuidObject);
         CFRelease(uuidObject);

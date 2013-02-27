@@ -31,16 +31,24 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.capture = [[ZXCapture alloc] init];
-    self.capture.delegate = self;
-    self.capture.camera = self.capture.back;
-    self.capture.rotation = 90.0f;
+    dispatch_async(dispatch_get_main_queue(), ^{
 
-    self.capture.layer.frame = self.view.bounds;
-    [self.view.layer addSublayer:self.capture.layer];
-    [self.view.layer addSublayer:self.cancel.layer];
+        self.capture = [[ZXCapture alloc] init];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+
+//    });
+        self.capture.delegate = self;
+        self.capture.camera = self.capture.back;
+        self.capture.rotation = 90.0f;
+
+        self.capture.layer.frame = self.scannerView.bounds;
+        [self.scannerView.layer addSublayer:self.capture.layer];
+//    [self.scannerView.layer addSublayer:self.cancel.layer];
     
-    [self.capture start];
+        [self.capture start];
+        });
+    });
     // Do any additional setup after loading the view from its nib.
 }
 

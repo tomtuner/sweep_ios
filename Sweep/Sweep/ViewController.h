@@ -23,7 +23,7 @@
 @property (nonatomic, retain) IBOutlet UITextView *resultsView;
 @property (nonatomic, strong) NSString *scanDataArchiveString;
 
-
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil scanDataArchiveString:(NSString *) scanDataArchiveString;
 - (IBAction)scanPressed:(id)sender;
 
 

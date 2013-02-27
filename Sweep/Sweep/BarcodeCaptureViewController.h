@@ -23,5 +23,6 @@
 @property(nonatomic,assign)id delegate;
 @property (nonatomic, retain) ZXCapture *capture;
 @property(nonatomic, strong) NSMutableArray *barcodeResultArray;
+@property (nonatomic, strong) IBOutlet UIView *scannerView;
 
 @end

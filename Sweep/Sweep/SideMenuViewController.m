@@ -48,6 +48,7 @@
     // Do any additional setup after loading the view from its nib.
 
     [self.navBar setTintColor:[UIColor lightGrayColor]];
+    [self tableView:self.view didSelectRowAtIndexPath:0];
 }
 
 #pragma mark - UITableViewDataSource
@@ -74,7 +75,7 @@
     if (indexPath.row == self.scanLists.count) {
         SScanEvent *newEvent = [[SScanEvent alloc] init];
         NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-        [dateFormat setDateFormat:@"MMMM d"];
+        [dateFormat setDateFormat:@"MMMM d ss"];
         NSString *dateString = [dateFormat stringFromDate:newEvent.date];
         newEvent.name = dateString;
         [self.scanLists addObject:newEvent];
@@ -85,9 +86,11 @@
         [NSKeyedArchiver archiveRootObject:self.scanLists toFile:archivePath];
         [self.scanEventListTable reloadData];
     }else {
-        ViewController *viewController = [[ViewController alloc] initWithNibName:@"ViewController" bundle:nil];
-        viewController.scanDataArchiveString = [(SScanEvent*)[self.scanLists objectAtIndex:indexPath.row] uuid];
-        viewController.title = [(SScanEvent*)[self.scanLists objectAtIndex:indexPath.row] name];
+        SScanEvent *eve = (SScanEvent *)[self.scanLists objectAtIndex:indexPath.row];
+        NSLog(@"Event Name: %@", eve.name);
+        NSLog(@"Event UUID: %@", eve.uuid);
+        ViewController *viewController = [[ViewController alloc] initWithNibName:@"ViewController" bundle:nil scanDataArchiveString:eve.uuid];
+        viewController.title = eve.name;
         
         NSArray *controllers = [NSArray arrayWithObject:viewController];
         self.sideMenu.navigationController.viewControllers = controllers;
