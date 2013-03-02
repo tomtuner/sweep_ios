@@ -10,8 +10,9 @@
 
 @interface BarcodeCaptureViewController ()
 
-@property (nonatomic, strong) IBOutlet UIButton* cancel;
-
+@property (nonatomic, assign) BOOL multiScan;
+@property (nonatomic, strong) IBOutlet UIButton *cancelButton;
+@property (nonatomic, strong) IBOutlet UIButton *flashButton;
 
 @end
 
@@ -38,15 +39,15 @@
         dispatch_async(dispatch_get_main_queue(), ^{
 
 //    });
-        self.capture.delegate = self;
-        self.capture.camera = self.capture.back;
-        self.capture.rotation = 90.0f;
+            self.capture.delegate = self;
+            self.capture.camera = self.capture.back;
+            self.capture.rotation = 90.0f;
 
-        self.capture.layer.frame = self.scannerView.bounds;
-        [self.scannerView.layer addSublayer:self.capture.layer];
-//    [self.scannerView.layer addSublayer:self.cancel.layer];
-    
-        [self.capture start];
+            self.capture.layer.frame = self.scannerView.bounds;
+            [self.scannerView.layer addSublayer:self.capture.layer];
+    //    [self.scannerView.layer addSublayer:self.cancel.layer];
+        
+            [self.capture start];
         });
     });
     // Do any additional setup after loading the view from its nib.
@@ -156,32 +157,59 @@
 //        [self dismissViewControllerAnimated:YES completion:nil];
         [self.barcodeResultArray addObject:br];
         
-        // Call the delegates method to return set of barcodes scanned
-        if([self.delegate respondsToSelector:@selector(barcodeCaptureController:scanResults:)])
-        {
-            NSLog(@"Delegate method here");
-            //send the delegate function with the amount entered by the user
-            [self.capture.layer removeFromSuperlayer];
-            [self.capture stop];
-
-            [self.delegate barcodeCaptureController:self scanResults:self.barcodeResultArray];
+        if (!self.multiScan) {
+            // Call the delegates method to return set of barcodes scanned
+            [self returnBarcodeResults];
+        }else {
+            [NSThread sleepForTimeInterval:5];
         }
+    }
+}
+
+- (void) waitMethod {
+    NSLog(@"In Wait Method");
+}
+
+- (void) returnBarcodeResults {
+    if([self.delegate respondsToSelector:@selector(barcodeCaptureController:scanResults:)])
+    {
+        //send the delegate function with the amount entered by the user
+        [self cleanUpCamera];
+        
+        [self.delegate barcodeCaptureController:self scanResults:self.barcodeResultArray];
     }
 }
 
 - (void)captureSize:(ZXCapture*)capture width:(NSNumber*)width height:(NSNumber*)height {
 }
 
+-(void) cleanUpCamera {
+    [self.capture.layer removeFromSuperlayer];
+    [self.capture stop];
+}
+
+-(IBAction)done:(id)sender
+{
+    [self returnBarcodeResults];
+}
+
 
 -(IBAction)cancel:(id)sender
 {
-    [self.capture.layer removeFromSuperlayer];
-    [self.capture stop];
     if([self.delegate respondsToSelector:@selector(barcodeCaptureController:scanResults:)])
     {
+        [self cleanUpCamera];
         //send the delegate function with the amount entered by the user
         [self.delegate barcodeCaptureController:self scanResults:nil];
     }
+}
+
+-(IBAction)flash:(id)sender {
+    self.capture.torch = !self.capture.torch;
+}
+
+-(IBAction)multiScan:(id)sender {
+    self.multiScan = !self.multiScan;
 }
 
 
