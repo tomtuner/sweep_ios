@@ -323,6 +323,10 @@
     return [UIImage imageNamed:@"tabBarSelectionIndicator"];
 }
 
+- (UIFont *) customFontWithSize:(CGFloat)fontSize
+{
+    return [UIFont fontWithName:@"Linear" size:fontSize];
+}
 /*- (UIImage *)imageForTab:(SSThemeTab)tab
 {
     return nil;

@@ -122,6 +122,10 @@
         CGSize shadowOffset = [theme shadowOffset];
         [titleTextAttributes setObject:[NSValue valueWithCGSize:shadowOffset] forKey:UITextAttributeTextShadowOffset];
     }
+    UIFont *font = [theme customFontWithSize:28.0f];
+    if (font) {
+        [titleTextAttributes setObject:font forKey:UITextAttributeFont];
+    }
     [navigationBarAppearance setTitleTextAttributes:titleTextAttributes];
 //    [barButtonItemAppearance setTitleTextAttributes:titleTextAttributes forState:UIControlStateNormal];
 //    [barButtonItemAppearance setTitleTextAttributes:titleTextAttributes forState:UIControlStateHighlighted];
@@ -163,6 +167,20 @@
     if (backgroundColor) {
         [view setBackgroundColor:backgroundColor];
     }
+}
+
++ (void) customizeLabelWithCustomFont:(UILabel *)label
+{
+    id <Theme> theme = [self sharedTheme];
+    UIFont *font = [theme customFontWithSize:18.0f];
+    label.font = font;
+}
+
++ (void) customizeButtonWithCustomFont:(UIButton *)button
+{
+    id <Theme> theme = [self sharedTheme];
+    UIFont *font = [theme customFontWithSize:18.0f];
+    button.titleLabel.font = font;
 }
 
 + (void)customizeTableView:(UITableView *)tableView

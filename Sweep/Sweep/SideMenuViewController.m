@@ -115,7 +115,7 @@
 	
 	// Get the barcodeResult that has the data backing this cell
 //	NSMutableDictionary *scanSession = [self.scanLists objectAtIndex:indexPath.section];
-    
+    [ThemeManager customizeLabelWithCustomFont:cell.textLabel];
     if (addCell) {
         cell.textLabel.text = @"Add an event";
     }else {

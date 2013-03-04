@@ -65,6 +65,8 @@
 
 - (UIImage *)tabBarBackground;
 - (UIImage *)tabBarSelectionIndicator;
+- (UIFont *)customFontWithSize:(CGFloat)fontSize;
+
 // One of these must return a non-nil image for each tab:
 //- (UIImage *)imageForTab:(SSThemeTab)tab;
 //- (UIImage *)finishedImageForTab:(SSThemeTab)tab selected:(BOOL)selected;
@@ -80,6 +82,9 @@
 + (void)customizeAppAppearance;
 + (void)customizeView:(UIView *)view;
 + (void)customizeTableView:(UITableView *)tableView;
++ (void) customizeLabelWithCustomFont:(UILabel *)label;
++ (void) customizeButtonWithCustomFont:(UIButton *)button;
+
 //+ (void)customizeTabBarItem:(UITabBarItem *)item forTab:(SSThemeTab)tab;
 
 @end

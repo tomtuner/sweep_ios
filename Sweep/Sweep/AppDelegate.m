@@ -46,8 +46,9 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     
-//    [ThemeManager customizeAppAppearance];
-    
+    [ThemeManager customizeAppAppearance];
+    [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
+
     [self setupNavigationControllerApp];
     
     return YES;

@@ -10,6 +10,7 @@
 #import "ViewController.h"
 #import "MFSideMenu.h"
 #import "SScanEvent.h"
+#import "Theme.h"
 
 #define kScanListArchiveName @"SScanListArchiveName"
 

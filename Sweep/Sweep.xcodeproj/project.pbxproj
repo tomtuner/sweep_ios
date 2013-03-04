@@ -28,6 +28,8 @@
 		E93D98F616DACBEF00F24220 /* RITTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = E93D98F416DACBEF00F24220 /* RITTheme.m */; };
 		E93D992B16DC0E2600F24220 /* SideMenuViewController~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = E93D992716DC0AE200F24220 /* SideMenuViewController~ipad.xib */; };
 		E93D994116DDE9B200F24220 /* libZXingObjC-iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E93D993616DDE99A00F24220 /* libZXingObjC-iOS.a */; };
+		E93D994516E5091F00F24220 /* linear_by_braydon_fuller.otf in Resources */ = {isa = PBXBuildFile; fileRef = E93D994416E5091F00F24220 /* linear_by_braydon_fuller.otf */; };
+		E93D994716E5381D00F24220 /* BarcodeCaptureViewController~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = E93D992616DC0AE200F24220 /* BarcodeCaptureViewController~ipad.xib */; };
 		E95E759816C0720A00E01F58 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E95E759716C0720900E01F58 /* ImageIO.framework */; };
 		E95E759A16C0720E00E01F58 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E95E759916C0720E00E01F58 /* QuartzCore.framework */; };
 		E95E759F16C072F600E01F58 /* BarcodeCaptureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E95E759D16C072F600E01F58 /* BarcodeCaptureViewController.m */; };
@@ -127,9 +129,10 @@
 		E93D98F416DACBEF00F24220 /* RITTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RITTheme.m; sourceTree = "<group>"; };
 		E93D992316DC0ADD00F24220 /* Sweep copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Sweep copy-Info.plist"; path = "/Users/Thomas/Development/Personal/scanner/Sweep/Sweep copy-Info.plist"; sourceTree = "<absolute>"; };
 		E93D992516DC0AE200F24220 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = "Resources-iPad/Sweep/en.lproj/ViewController.xib"; sourceTree = "<group>"; };
-		E93D992616DC0AE200F24220 /* BarcodeCaptureViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = BarcodeCaptureViewController.xib; path = "Resources-iPad/Sweep/BarcodeCaptureViewController.xib"; sourceTree = "<group>"; };
+		E93D992616DC0AE200F24220 /* BarcodeCaptureViewController~ipad.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "BarcodeCaptureViewController~ipad.xib"; path = "Resources-iPad/Sweep/BarcodeCaptureViewController~ipad.xib"; sourceTree = "<group>"; };
 		E93D992716DC0AE200F24220 /* SideMenuViewController~ipad.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "SideMenuViewController~ipad.xib"; path = "Resources-iPad/Sweep/SideMenuViewController~ipad.xib"; sourceTree = "<group>"; };
 		E93D992C16DDE99900F24220 /* ZXingObjC.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ZXingObjC.xcodeproj; path = ../../ZXingObjC/ZXingObjC.xcodeproj; sourceTree = "<group>"; };
+		E93D994416E5091F00F24220 /* linear_by_braydon_fuller.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = linear_by_braydon_fuller.otf; sourceTree = "<group>"; };
 		E95E759716C0720900E01F58 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		E95E759916C0720E00E01F58 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		E95E759C16C072F500E01F58 /* BarcodeCaptureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarcodeCaptureViewController.h; sourceTree = "<group>"; };
@@ -276,6 +279,8 @@
 		E93D98EB16DACB3B00F24220 /* sweep_resources */ = {
 			isa = PBXGroup;
 			children = (
+				E93D994316E5090300F24220 /* fonts */,
+				E93D994216E508FE00F24220 /* images */,
 				E93D992216DC0ADD00F24220 /* iPad */,
 			);
 			name = sweep_resources;
@@ -296,7 +301,7 @@
 			isa = PBXGroup;
 			children = (
 				E93D992416DC0AE200F24220 /* ViewController.xib */,
-				E93D992616DC0AE200F24220 /* BarcodeCaptureViewController.xib */,
+				E93D992616DC0AE200F24220 /* BarcodeCaptureViewController~ipad.xib */,
 				E93D992716DC0AE200F24220 /* SideMenuViewController~ipad.xib */,
 			);
 			name = iPad;
@@ -312,6 +317,21 @@
 				E93D993E16DDE99A00F24220 /* ZXingObjC.framework */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		E93D994216E508FE00F24220 /* images */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = images;
+			sourceTree = "<group>";
+		};
+		E93D994316E5090300F24220 /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				E93D994416E5091F00F24220 /* linear_by_braydon_fuller.otf */,
+			);
+			name = fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -433,6 +453,8 @@
 				E9AA78C916C73AC7002C4723 /* menu-icon.png in Resources */,
 				E9AA78CA16C73AC7002C4723 /* menu-icon@2x.png in Resources */,
 				E93D992B16DC0E2600F24220 /* SideMenuViewController~ipad.xib in Resources */,
+				E93D994516E5091F00F24220 /* linear_by_braydon_fuller.otf in Resources */,
+				E93D994716E5381D00F24220 /* BarcodeCaptureViewController~ipad.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

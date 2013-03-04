@@ -92,7 +92,7 @@
 
 - (IBAction)scanPressed:(id)sender {
 	
-    BarcodeCaptureViewController *vc = [[BarcodeCaptureViewController alloc] initWithNibName:nil bundle:nil];
+    BarcodeCaptureViewController *vc = [[BarcodeCaptureViewController alloc] initWithNibName:@"BarcodeCaptureViewController" bundle:nil];
     vc.delegate = self;
 //    dispatch_async(dispatch_get_main_queue(), ^{
 //        
