@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A0596AF355CD489D9E88F444 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 334D8E4AC2CF472B90A4C638 /* libPods.a */; };
 		E91D7E0A16B8E36400F66CD5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E91D7E0916B8E36400F66CD5 /* UIKit.framework */; };
 		E91D7E0C16B8E36400F66CD5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E91D7E0B16B8E36400F66CD5 /* Foundation.framework */; };
 		E91D7E0E16B8E36400F66CD5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E91D7E0D16B8E36400F66CD5 /* CoreGraphics.framework */; };
@@ -27,7 +28,6 @@
 		E93D98F516DACBEF00F24220 /* Theme.m in Sources */ = {isa = PBXBuildFile; fileRef = E93D98F216DACBEE00F24220 /* Theme.m */; };
 		E93D98F616DACBEF00F24220 /* RITTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = E93D98F416DACBEF00F24220 /* RITTheme.m */; };
 		E93D992B16DC0E2600F24220 /* SideMenuViewController~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = E93D992716DC0AE200F24220 /* SideMenuViewController~ipad.xib */; };
-		E93D994116DDE9B200F24220 /* libZXingObjC-iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E93D993616DDE99A00F24220 /* libZXingObjC-iOS.a */; };
 		E93D994516E5091F00F24220 /* linear_by_braydon_fuller.otf in Resources */ = {isa = PBXBuildFile; fileRef = E93D994416E5091F00F24220 /* linear_by_braydon_fuller.otf */; };
 		E93D994716E5381D00F24220 /* BarcodeCaptureViewController~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = E93D992616DC0AE200F24220 /* BarcodeCaptureViewController~ipad.xib */; };
 		E95E759816C0720A00E01F58 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E95E759716C0720900E01F58 /* ImageIO.framework */; };
@@ -53,51 +53,11 @@
 			remoteGlobalIDString = 275F15831517E9B80052A240;
 			remoteInfo = MFSideMenuDemo;
 		};
-		E93D993516DDE99A00F24220 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E93D992C16DDE99900F24220 /* ZXingObjC.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 25403CB3166A96FA00E13304;
-			remoteInfo = "ZXingObjC-iOS";
-		};
-		E93D993716DDE99A00F24220 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E93D992C16DDE99900F24220 /* ZXingObjC.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 25403CC4166A96FA00E13304;
-			remoteInfo = "ZXingObjCTests-iOS";
-		};
-		E93D993916DDE99A00F24220 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E93D992C16DDE99900F24220 /* ZXingObjC.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 25404166166AADAC00E13304;
-			remoteInfo = "ZXingObjC-osx";
-		};
-		E93D993B16DDE99A00F24220 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E93D992C16DDE99900F24220 /* ZXingObjC.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 25404178166AADAC00E13304;
-			remoteInfo = "ZXingObjCTests-osx";
-		};
-		E93D993D16DDE99A00F24220 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E93D992C16DDE99900F24220 /* ZXingObjC.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 2540439E166ABA0A00E13304;
-			remoteInfo = "OS X Framework";
-		};
-		E93D993F16DDE9AB00F24220 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E93D992C16DDE99900F24220 /* ZXingObjC.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 25403CB2166A96FA00E13304;
-			remoteInfo = "ZXingObjC-iOS";
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		334D8E4AC2CF472B90A4C638 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		95D00E2EDB7A4F6B81B3B3E9 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 		E91D7E0516B8E36400F66CD5 /* Sweep.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sweep.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E91D7E0916B8E36400F66CD5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		E91D7E0B16B8E36400F66CD5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -131,7 +91,6 @@
 		E93D992516DC0AE200F24220 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = "Resources-iPad/Sweep/en.lproj/ViewController.xib"; sourceTree = "<group>"; };
 		E93D992616DC0AE200F24220 /* BarcodeCaptureViewController~ipad.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "BarcodeCaptureViewController~ipad.xib"; path = "Resources-iPad/Sweep/BarcodeCaptureViewController~ipad.xib"; sourceTree = "<group>"; };
 		E93D992716DC0AE200F24220 /* SideMenuViewController~ipad.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "SideMenuViewController~ipad.xib"; path = "Resources-iPad/Sweep/SideMenuViewController~ipad.xib"; sourceTree = "<group>"; };
-		E93D992C16DDE99900F24220 /* ZXingObjC.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ZXingObjC.xcodeproj; path = ../../ZXingObjC/ZXingObjC.xcodeproj; sourceTree = "<group>"; };
 		E93D994416E5091F00F24220 /* linear_by_braydon_fuller.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = linear_by_braydon_fuller.otf; sourceTree = "<group>"; };
 		E95E759716C0720900E01F58 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		E95E759916C0720E00E01F58 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -157,7 +116,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E93D994116DDE9B200F24220 /* libZXingObjC-iOS.a in Frameworks */,
 				E95E75A216C08B2E00E01F58 /* MessageUI.framework in Frameworks */,
 				E95E759A16C0720E00E01F58 /* QuartzCore.framework in Frameworks */,
 				E95E759816C0720A00E01F58 /* ImageIO.framework in Frameworks */,
@@ -168,6 +126,7 @@
 				E91D7E0A16B8E36400F66CD5 /* UIKit.framework in Frameworks */,
 				E91D7E0C16B8E36400F66CD5 /* Foundation.framework in Frameworks */,
 				E91D7E0E16B8E36400F66CD5 /* CoreGraphics.framework in Frameworks */,
+				A0596AF355CD489D9E88F444 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -178,13 +137,13 @@
 			isa = PBXGroup;
 			children = (
 				E93D98DE16D9CBCE00F24220 /* MFSideMenuDemo.xcodeproj */,
-				E93D992C16DDE99900F24220 /* ZXingObjC.xcodeproj */,
 				E93D98EB16DACB3B00F24220 /* sweep_resources */,
 				E91D7E0F16B8E36400F66CD5 /* sweep_source */,
 				E91D7E1016B8E36400F66CD5 /* Supporting Files */,
 				E91D7E0816B8E36400F66CD5 /* Frameworks */,
 				E91D7E0616B8E36400F66CD5 /* Products */,
 				E93D992316DC0ADD00F24220 /* Sweep copy-Info.plist */,
+				95D00E2EDB7A4F6B81B3B3E9 /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -209,6 +168,7 @@
 				E91D7E0916B8E36400F66CD5 /* UIKit.framework */,
 				E91D7E0B16B8E36400F66CD5 /* Foundation.framework */,
 				E91D7E0D16B8E36400F66CD5 /* CoreGraphics.framework */,
+				334D8E4AC2CF472B90A4C638 /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -307,18 +267,6 @@
 			name = iPad;
 			sourceTree = "<group>";
 		};
-		E93D992D16DDE99900F24220 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				E93D993616DDE99A00F24220 /* libZXingObjC-iOS.a */,
-				E93D993816DDE99A00F24220 /* ZXingObjCTests-iOS.octest */,
-				E93D993A16DDE99A00F24220 /* libZXingObjC-osx.a */,
-				E93D993C16DDE99A00F24220 /* ZXingObjCTests-osx.octest */,
-				E93D993E16DDE99A00F24220 /* ZXingObjC.framework */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		E93D994216E508FE00F24220 /* images */ = {
 			isa = PBXGroup;
 			children = (
@@ -344,11 +292,11 @@
 				E91D7E0116B8E36400F66CD5 /* Sources */,
 				E91D7E0216B8E36400F66CD5 /* Frameworks */,
 				E91D7E0316B8E36400F66CD5 /* Resources */,
+				F85052C467D24D6C9F207623 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				E93D994016DDE9AB00F24220 /* PBXTargetDependency */,
 			);
 			name = Sweep;
 			productName = Sweep;
@@ -379,10 +327,6 @@
 					ProductGroup = E93D98DF16D9CBCE00F24220 /* Products */;
 					ProjectRef = E93D98DE16D9CBCE00F24220 /* MFSideMenuDemo.xcodeproj */;
 				},
-				{
-					ProductGroup = E93D992D16DDE99900F24220 /* Products */;
-					ProjectRef = E93D992C16DDE99900F24220 /* ZXingObjC.xcodeproj */;
-				},
 			);
 			projectRoot = "";
 			targets = (
@@ -397,41 +341,6 @@
 			fileType = wrapper.application;
 			path = MFSideMenuDemo.app;
 			remoteRef = E93D98E216D9CBCE00F24220 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		E93D993616DDE99A00F24220 /* libZXingObjC-iOS.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = "libZXingObjC-iOS.a";
-			remoteRef = E93D993516DDE99A00F24220 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		E93D993816DDE99A00F24220 /* ZXingObjCTests-iOS.octest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = "ZXingObjCTests-iOS.octest";
-			remoteRef = E93D993716DDE99A00F24220 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		E93D993A16DDE99A00F24220 /* libZXingObjC-osx.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = "libZXingObjC-osx.a";
-			remoteRef = E93D993916DDE99A00F24220 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		E93D993C16DDE99A00F24220 /* ZXingObjCTests-osx.octest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = "ZXingObjCTests-osx.octest";
-			remoteRef = E93D993B16DDE99A00F24220 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		E93D993E16DDE99A00F24220 /* ZXingObjC.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = ZXingObjC.framework;
-			remoteRef = E93D993D16DDE99A00F24220 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -460,6 +369,23 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		F85052C467D24D6C9F207623 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		E91D7E0116B8E36400F66CD5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -480,14 +406,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		E93D994016DDE9AB00F24220 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "ZXingObjC-iOS";
-			targetProxy = E93D993F16DDE9AB00F24220 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		E91D7E1216B8E36400F66CD5 /* InfoPlist.strings */ = {
@@ -573,10 +491,14 @@
 		};
 		E91D7E2A16B8E36400F66CD5 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 95D00E2EDB7A4F6B81B3B3E9 /* Pods.xcconfig */;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Sweep/Sweep-Prefix.pch";
-				HEADER_SEARCH_PATHS = "/Users/Thomas/Development/Personal/MFSideMenu/**";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/Thomas/Development/Personal/MFSideMenu/**",
+				);
 				INFOPLIST_FILE = "Sweep/Sweep-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -588,10 +510,14 @@
 		};
 		E91D7E2B16B8E36400F66CD5 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 95D00E2EDB7A4F6B81B3B3E9 /* Pods.xcconfig */;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Sweep/Sweep-Prefix.pch";
-				HEADER_SEARCH_PATHS = "/Users/Thomas/Development/Personal/MFSideMenu/**";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/Thomas/Development/Personal/MFSideMenu/**",
+				);
 				INFOPLIST_FILE = "Sweep/Sweep-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";

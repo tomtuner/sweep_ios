@@ -1,0 +1,14 @@
+
+PODS: 
+- AFNetworking (1.1.0)
+- ZXingObjC (2.1.0)
+
+DEPENDENCIES: 
+- AFNetworking (= 1.1.0)
+- ZXingObjC (= 2.1.0)
+
+COCOAPODS: 0.16.4
+
+SPEC CHECKSUMS: 
+  ZXingObjC: 218a8a9a705ca914872f261d41f7db2822a11da2
+  AFNetworking: 761a418233d280c1e0580bcb76ff9cb4c3073d17
