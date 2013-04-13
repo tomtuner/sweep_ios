@@ -93,8 +93,11 @@
         viewController.title = eve.name;
         
         NSArray *controllers = [NSArray arrayWithObject:viewController];
-        self.sideMenu.navigationController.viewControllers = controllers;
-        [self.sideMenu setMenuState:MFSideMenuStateClosed];
+        [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
+            self.viewDeckController.centerController.navigationController.viewControllers = controllers;
+            // ...
+        }];
+//        [self.sideMenu setMenuState:MFSideMenuStateClosed];
     }
 }
 

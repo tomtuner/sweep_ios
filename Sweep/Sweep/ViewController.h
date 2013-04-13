@@ -11,8 +11,9 @@
 
 #import <ZXingObjC/ZXingObjC.h>
 
+#import "IIViewDeckController.h"
 #import "BarcodeCaptureViewController.h"
-#import "MFSideMenu.h"
+//#import "MFSideMenu.h"
 
 @interface ViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, MFMailComposeViewControllerDelegate, SScanDelegate> {
     NSMutableArray *scanHistory;

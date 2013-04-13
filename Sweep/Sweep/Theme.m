@@ -19,7 +19,7 @@
         // Create and return the theme:
         //        sharedTheme = [[SSDefaultTheme alloc] init];
         //        sharedTheme = [[SSTintedTheme alloc] init];
-        sharedTheme = [[RITTheme alloc] init];
+//        sharedTheme = [[RITTheme alloc] init];
     });
     
     return sharedTheme;

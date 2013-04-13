@@ -11,12 +11,13 @@
 #import "MFSideMenu.h"
 #import "SScanEvent.h"
 #import "Theme.h"
+#import "IIViewDeckController.h"
 
 #define kScanListArchiveName @"SScanListArchiveName"
 
 @interface SideMenuViewController : UIViewController 
 
-@property (nonatomic, assign) MFSideMenu *sideMenu;
+//@property (nonatomic, assign) MFSideMenu *sideMenu;
 
 @property(nonatomic, strong) IBOutlet UITableView *scanEventListTable;
 @property(nonatomic, strong) IBOutlet UINavigationBar *navBar;

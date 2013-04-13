@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "Theme.h"
+#import "IIViewDeckController.h"
 
 @class ViewController;
 

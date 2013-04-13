@@ -57,14 +57,9 @@
 }
 
 - (void)setupMenuBarButtonItems {
-    switch (self.navigationController.sideMenu.menuState) {
-        case MFSideMenuStateClosed:
-            self.navigationItem.leftBarButtonItem = [self leftMenuBarButtonItem];
-            break;
-        case MFSideMenuStateLeftMenuOpen:
-            self.navigationItem.leftBarButtonItem = [self leftMenuBarButtonItem];
-            break;
-    }
+
+    self.navigationItem.leftBarButtonItem = [self leftMenuBarButtonItem];
+
     
     self.navigationItem.rightBarButtonItem = [self rightMenuBarButtonItem];
 }
@@ -72,9 +67,10 @@
 - (UIBarButtonItem *)leftMenuBarButtonItem {
     return [[UIBarButtonItem alloc]
             initWithImage:[UIImage imageNamed:@"menu-icon.png"] style:UIBarButtonItemStyleBordered
-            target:self.navigationController.sideMenu
-            action:@selector(toggleLeftSideMenu)];
+            target:self.viewDeckController
+            action:@selector(toggleLeftView)];
 }
+
 
 - (UIBarButtonItem *)rightMenuBarButtonItem {
     return [[UIBarButtonItem alloc]
@@ -87,6 +83,7 @@
 {
     [super viewDidLoad];
     
+//    [self leftMenuBarButtonItem];
     [self setupMenuBarButtonItems];
 }
 
