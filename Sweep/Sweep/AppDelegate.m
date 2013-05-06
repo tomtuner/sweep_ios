@@ -13,10 +13,6 @@
 
 @implementation AppDelegate
 
-- (ViewController *)viewController {
-    return [[ViewController alloc] initWithNibName:@"ViewController" bundle:nil];
-}
-
 - (UINavigationController *)navigationController {
     return [[UINavigationController alloc]
             initWithRootViewController:[self viewController]];
@@ -24,15 +20,20 @@
 
 - (void) setupNavigationControllerApp {
     
+    
+    
 //    UIViewController *leftController = [[UIViewController alloc] init];
     SideMenuViewController *leftSideMenuController = [[SideMenuViewController alloc] initWithNibName:@"SideMenuViewController" bundle:nil];
-
+    SScanEvent *firstEvent = [leftSideMenuController getInitialScanEvent];
+    ViewController *vc = [[ViewController alloc] initWithNibName:@"ViewController" bundle:nil scanDataArchiveString:firstEvent.uuid];
+    vc.title = firstEvent.name;
+    UINavigationController *centerNav = [[UINavigationController alloc] initWithRootViewController:vc];
     
-    IIViewDeckController *deckController = [[IIViewDeckController alloc] initWithCenterViewController:[self navigationController] leftViewController:leftSideMenuController];
+    IIViewDeckController *deckController = [[IIViewDeckController alloc] initWithCenterViewController:centerNav leftViewController:leftSideMenuController];
     
     deckController.openSlideAnimationDuration = 0.2f;
     deckController.closeSlideAnimationDuration = 0.2f;
-    
+        
     self.window.rootViewController = deckController;
     [self.window makeKeyAndVisible];
 }

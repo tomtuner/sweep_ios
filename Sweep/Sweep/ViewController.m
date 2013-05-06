@@ -34,13 +34,13 @@
 		{
             NSLog(@"Exception unarchiving file.");
     	}
-        
+        /*
         // Set up swipe from bottom geasture
         UISwipeGestureRecognizer *swipeUpRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleDoubleLeftSwipe:)];
         swipeUpRecognizer.numberOfTouchesRequired = 2;
         swipeUpRecognizer.direction = UISwipeGestureRecognizerDirectionLeft;
         [self.view addGestureRecognizer:swipeUpRecognizer];
-
+*/
         
 //        pickerController = [[BarcodePickerController alloc] init];
 //        [pickerController setDelegate:self];
@@ -152,7 +152,7 @@
     [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
 	
 	// Restore main screen (and restore title bar for 3.0)
-    [self dismissViewControllerAnimated:YES completion:^(void) {
+    [self dismissViewControllerAnimated:NO completion:^(void) {
         if (barcodeResult && [barcodeResult count])
         {
             NSMutableDictionary *scanSession = [[NSMutableDictionary alloc] init];
@@ -203,8 +203,8 @@
 	// Get the barcodeResult that has the data backing this cell
 //	NSMutableDictionary *scanSession = [scanHistory objectAtIndex:indexPath.section];
 	ZXResult *barcode = [scanHistory objectAtIndex:indexPath.row];
-    
-    cell.textLabel.text = barcode.text;
+    SBarcodeResult *bc = [scanHistory objectAtIndex:indexPath.row];
+    cell.textLabel.text = bc.text;
 	
     return cell;
 }

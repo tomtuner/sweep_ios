@@ -14,6 +14,31 @@
 
 @implementation SBarcodeResult
 
++ (void)globalBarcodeScanWithSBarcodeResult:(SBarcodeResult *) barcodeResult withBlock:(void (^)(NSArray *barcodes, NSError *error))block {
+    
+    NSDictionary *paramDict = [NSDictionary dictionaryWithObjects:@[barcodeResult.text]
+                                                          forKeys:@[@"scan_code"]];
+    
+    AFSweepAPIClient *networkingClient = [AFSweepAPIClient sharedClient];
+    [networkingClient postPath:[NSString stringWithFormat:@"%@/scan/", kAFSweepAPIBaseURLString]
+                    parameters:paramDict
+                       success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                           NSLog(@"Success");
+                           NSLog(@"Response: %@", responseObject);
+                           NSArray *lotsFromResponse = responseObject;
+                           
+                           if (block) {
+                               block([NSArray arrayWithArray:lotsFromResponse], nil);
+                           }
+                       }
+                       failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                           NSLog(@"Fail");
+                           NSLog(@"%@", [error localizedDescription]);
+                           if (block) {
+                               block([NSArray array], error);
+                           }
+                       }];
+}
 
 - (id)initWithCoder:(NSCoder *)coder
 {

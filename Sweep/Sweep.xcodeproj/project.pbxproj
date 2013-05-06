@@ -23,6 +23,8 @@
 		E91D7E3B16B8E44D00F66CD5 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E91D7E3A16B8E44D00F66CD5 /* AVFoundation.framework */; };
 		E91D7E3D16B8E45700F66CD5 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E91D7E3C16B8E45700F66CD5 /* CoreVideo.framework */; };
 		E91D7E3F16B8E45C00F66CD5 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E91D7E3E16B8E45C00F66CD5 /* CoreMedia.framework */; };
+		E939457017382A32007CF607 /* SideMenuTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E939456F17382A32007CF607 /* SideMenuTableViewCell.m */; };
+		E939457217382A7A007CF607 /* SideMenuTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E939457117382A7A007CF607 /* SideMenuTableViewCell.xib */; };
 		E93D98E516D9CBE400F24220 /* MFSideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = E93D98E416D9CBE400F24220 /* MFSideMenu.m */; };
 		E93D98E916D9D07900F24220 /* UINavigationController+MFSideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = E93D98E816D9CDFC00F24220 /* UINavigationController+MFSideMenu.m */; };
 		E93D98F516DACBEF00F24220 /* Theme.m in Sources */ = {isa = PBXBuildFile; fileRef = E93D98F216DACBEE00F24220 /* Theme.m */; };
@@ -30,15 +32,18 @@
 		E93D992B16DC0E2600F24220 /* SideMenuViewController~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = E93D992716DC0AE200F24220 /* SideMenuViewController~ipad.xib */; };
 		E93D994516E5091F00F24220 /* linear_by_braydon_fuller.otf in Resources */ = {isa = PBXBuildFile; fileRef = E93D994416E5091F00F24220 /* linear_by_braydon_fuller.otf */; };
 		E93D994716E5381D00F24220 /* BarcodeCaptureViewController~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = E93D992616DC0AE200F24220 /* BarcodeCaptureViewController~ipad.xib */; };
+		E9471DA61725C2E6009CE39D /* nav_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = E9471DA41725C2E6009CE39D /* nav_bg.png */; };
+		E9471DA71725C2E6009CE39D /* nav_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9471DA51725C2E6009CE39D /* nav_bg@2x.png */; };
+		E9471DAC172638D0009CE39D /* rit_white_bottom.png in Resources */ = {isa = PBXBuildFile; fileRef = E9471DA8172638D0009CE39D /* rit_white_bottom.png */; };
+		E9471DAD172638D0009CE39D /* rit_white_bottom@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9471DA9172638D0009CE39D /* rit_white_bottom@2x.png */; };
+		E9471DAE172638D0009CE39D /* rit_white_top.png in Resources */ = {isa = PBXBuildFile; fileRef = E9471DAA172638D0009CE39D /* rit_white_top.png */; };
+		E9471DAF172638D0009CE39D /* rit_white_top@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9471DAB172638D0009CE39D /* rit_white_top@2x.png */; };
 		E95E759816C0720A00E01F58 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E95E759716C0720900E01F58 /* ImageIO.framework */; };
 		E95E759A16C0720E00E01F58 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E95E759916C0720E00E01F58 /* QuartzCore.framework */; };
 		E95E759F16C072F600E01F58 /* BarcodeCaptureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E95E759D16C072F600E01F58 /* BarcodeCaptureViewController.m */; };
 		E95E75A016C072F600E01F58 /* BarcodeCaptureViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E95E759E16C072F600E01F58 /* BarcodeCaptureViewController.xib */; };
 		E95E75A216C08B2E00E01F58 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E95E75A116C08B2E00E01F58 /* MessageUI.framework */; };
 		E95E75A516C08E3400E01F58 /* SBarcodeResult.m in Sources */ = {isa = PBXBuildFile; fileRef = E95E75A416C08E3400E01F58 /* SBarcodeResult.m */; };
-		E988122C171916630047157A /* IIViewDeckController.m in Sources */ = {isa = PBXBuildFile; fileRef = E988122B171916630047157A /* IIViewDeckController.m */; };
-		E9881231171917950047157A /* IISideController.m in Sources */ = {isa = PBXBuildFile; fileRef = E988122E171917940047157A /* IISideController.m */; };
-		E9881232171917950047157A /* IIWrapController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9881230171917950047157A /* IIWrapController.m */; };
 		E9AA78AE16C564A4002C4723 /* SideMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9AA78AC16C564A4002C4723 /* SideMenuViewController.m */; };
 		E9AA78AF16C564A4002C4723 /* SideMenuViewController~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9AA78AD16C564A4002C4723 /* SideMenuViewController~iphone.xib */; };
 		E9AA78C216C72812002C4723 /* SScanEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = E9AA78C116C72812002C4723 /* SScanEvent.m */; };
@@ -46,6 +51,7 @@
 		E9AA78C816C73AC7002C4723 /* back-arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9AA78C416C73AC7002C4723 /* back-arrow@2x.png */; };
 		E9AA78C916C73AC7002C4723 /* menu-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = E9AA78C516C73AC7002C4723 /* menu-icon.png */; };
 		E9AA78CA16C73AC7002C4723 /* menu-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9AA78C616C73AC7002C4723 /* menu-icon@2x.png */; };
+		E9EDC78817245E68002EE0B9 /* AFSweepAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = E9EDC78717245E68002EE0B9 /* AFSweepAPIClient.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -71,6 +77,9 @@
 		E91D7E3A16B8E44D00F66CD5 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		E91D7E3C16B8E45700F66CD5 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		E91D7E3E16B8E45C00F66CD5 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		E939456E17382A32007CF607 /* SideMenuTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SideMenuTableViewCell.h; sourceTree = "<group>"; };
+		E939456F17382A32007CF607 /* SideMenuTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SideMenuTableViewCell.m; sourceTree = "<group>"; };
+		E939457117382A7A007CF607 /* SideMenuTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SideMenuTableViewCell.xib; sourceTree = "<group>"; };
 		E93D98E416D9CBE400F24220 /* MFSideMenu.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MFSideMenu.m; sourceTree = "<group>"; };
 		E93D98E616D9CCA500F24220 /* MFSideMenu.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MFSideMenu.h; sourceTree = "<group>"; };
 		E93D98E716D9CDFC00F24220 /* UINavigationController+MFSideMenu.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+MFSideMenu.h"; sourceTree = "<group>"; };
@@ -83,6 +92,12 @@
 		E93D992616DC0AE200F24220 /* BarcodeCaptureViewController~ipad.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "BarcodeCaptureViewController~ipad.xib"; path = "Resources-iPad/Sweep/BarcodeCaptureViewController~ipad.xib"; sourceTree = "<group>"; };
 		E93D992716DC0AE200F24220 /* SideMenuViewController~ipad.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "SideMenuViewController~ipad.xib"; path = "Resources-iPad/Sweep/SideMenuViewController~ipad.xib"; sourceTree = "<group>"; };
 		E93D994416E5091F00F24220 /* linear_by_braydon_fuller.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = linear_by_braydon_fuller.otf; sourceTree = "<group>"; };
+		E9471DA41725C2E6009CE39D /* nav_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nav_bg.png; sourceTree = "<group>"; };
+		E9471DA51725C2E6009CE39D /* nav_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav_bg@2x.png"; sourceTree = "<group>"; };
+		E9471DA8172638D0009CE39D /* rit_white_bottom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rit_white_bottom.png; sourceTree = "<group>"; };
+		E9471DA9172638D0009CE39D /* rit_white_bottom@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rit_white_bottom@2x.png"; sourceTree = "<group>"; };
+		E9471DAA172638D0009CE39D /* rit_white_top.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rit_white_top.png; sourceTree = "<group>"; };
+		E9471DAB172638D0009CE39D /* rit_white_top@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rit_white_top@2x.png"; sourceTree = "<group>"; };
 		E95E759716C0720900E01F58 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		E95E759916C0720E00E01F58 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		E95E759C16C072F500E01F58 /* BarcodeCaptureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarcodeCaptureViewController.h; sourceTree = "<group>"; };
@@ -91,12 +106,6 @@
 		E95E75A116C08B2E00E01F58 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		E95E75A316C08E3400E01F58 /* SBarcodeResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBarcodeResult.h; sourceTree = "<group>"; };
 		E95E75A416C08E3400E01F58 /* SBarcodeResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBarcodeResult.m; sourceTree = "<group>"; };
-		E988122A171916630047157A /* IIViewDeckController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IIViewDeckController.h; sourceTree = "<group>"; };
-		E988122B171916630047157A /* IIViewDeckController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IIViewDeckController.m; sourceTree = "<group>"; };
-		E988122D171917940047157A /* IISideController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IISideController.h; sourceTree = "<group>"; };
-		E988122E171917940047157A /* IISideController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IISideController.m; sourceTree = "<group>"; };
-		E988122F171917950047157A /* IIWrapController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IIWrapController.h; sourceTree = "<group>"; };
-		E9881230171917950047157A /* IIWrapController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IIWrapController.m; sourceTree = "<group>"; };
 		E9AA78AB16C564A4002C4723 /* SideMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SideMenuViewController.h; sourceTree = "<group>"; };
 		E9AA78AC16C564A4002C4723 /* SideMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SideMenuViewController.m; sourceTree = "<group>"; };
 		E9AA78AD16C564A4002C4723 /* SideMenuViewController~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "SideMenuViewController~iphone.xib"; sourceTree = "<group>"; };
@@ -106,6 +115,8 @@
 		E9AA78C416C73AC7002C4723 /* back-arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back-arrow@2x.png"; sourceTree = "<group>"; };
 		E9AA78C516C73AC7002C4723 /* menu-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-icon.png"; sourceTree = "<group>"; };
 		E9AA78C616C73AC7002C4723 /* menu-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-icon@2x.png"; sourceTree = "<group>"; };
+		E9EDC78617245E68002EE0B9 /* AFSweepAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFSweepAPIClient.h; sourceTree = "<group>"; };
+		E9EDC78717245E68002EE0B9 /* AFSweepAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFSweepAPIClient.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,7 +182,9 @@
 		E91D7E0F16B8E36400F66CD5 /* sweep_source */ = {
 			isa = PBXGroup;
 			children = (
-				E93D98EC16DACB6F00F24220 /* Visual */,
+				E939456C17382A10007CF607 /* tableview */,
+				E9EDC78517245E1C002EE0B9 /* networking */,
+				E93D98EC16DACB6F00F24220 /* visual */,
 				E91D7E1816B8E36400F66CD5 /* AppDelegate.h */,
 				E91D7E1916B8E36400F66CD5 /* AppDelegate.m */,
 				E91D7E2116B8E36400F66CD5 /* ViewController.h */,
@@ -195,7 +208,7 @@
 		E91D7E1016B8E36400F66CD5 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				E9881229171916460047157A /* ViewDeck */,
+				E9EDC78917249A7A002EE0B9 /* Flurry */,
 				E93D98EA16DACB2600F24220 /* MFSideMenu */,
 				E91D7E1116B8E36400F66CD5 /* Sweep-Info.plist */,
 				E91D7E1216B8E36400F66CD5 /* InfoPlist.strings */,
@@ -207,6 +220,16 @@
 			);
 			name = "Supporting Files";
 			path = Sweep;
+			sourceTree = "<group>";
+		};
+		E939456C17382A10007CF607 /* tableview */ = {
+			isa = PBXGroup;
+			children = (
+				E939456E17382A32007CF607 /* SideMenuTableViewCell.h */,
+				E939456F17382A32007CF607 /* SideMenuTableViewCell.m */,
+				E939457117382A7A007CF607 /* SideMenuTableViewCell.xib */,
+			);
+			name = tableview;
 			sourceTree = "<group>";
 		};
 		E93D98EA16DACB2600F24220 /* MFSideMenu */ = {
@@ -234,7 +257,7 @@
 			name = sweep_resources;
 			sourceTree = "<group>";
 		};
-		E93D98EC16DACB6F00F24220 /* Visual */ = {
+		E93D98EC16DACB6F00F24220 /* visual */ = {
 			isa = PBXGroup;
 			children = (
 				E93D98F116DACBEE00F24220 /* Theme.h */,
@@ -242,7 +265,7 @@
 				E93D98F316DACBEE00F24220 /* RITTheme.h */,
 				E93D98F416DACBEF00F24220 /* RITTheme.m */,
 			);
-			name = Visual;
+			name = visual;
 			sourceTree = "<group>";
 		};
 		E93D992216DC0ADD00F24220 /* iPad */ = {
@@ -258,6 +281,12 @@
 		E93D994216E508FE00F24220 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				E9471DA8172638D0009CE39D /* rit_white_bottom.png */,
+				E9471DA9172638D0009CE39D /* rit_white_bottom@2x.png */,
+				E9471DAA172638D0009CE39D /* rit_white_top.png */,
+				E9471DAB172638D0009CE39D /* rit_white_top@2x.png */,
+				E9471DA41725C2E6009CE39D /* nav_bg.png */,
+				E9471DA51725C2E6009CE39D /* nav_bg@2x.png */,
 			);
 			name = images;
 			sourceTree = "<group>";
@@ -270,17 +299,20 @@
 			name = fonts;
 			sourceTree = "<group>";
 		};
-		E9881229171916460047157A /* ViewDeck */ = {
+		E9EDC78517245E1C002EE0B9 /* networking */ = {
 			isa = PBXGroup;
 			children = (
-				E988122D171917940047157A /* IISideController.h */,
-				E988122E171917940047157A /* IISideController.m */,
-				E988122F171917950047157A /* IIWrapController.h */,
-				E9881230171917950047157A /* IIWrapController.m */,
-				E988122A171916630047157A /* IIViewDeckController.h */,
-				E988122B171916630047157A /* IIViewDeckController.m */,
+				E9EDC78617245E68002EE0B9 /* AFSweepAPIClient.h */,
+				E9EDC78717245E68002EE0B9 /* AFSweepAPIClient.m */,
 			);
-			name = ViewDeck;
+			name = networking;
+			sourceTree = "<group>";
+		};
+		E9EDC78917249A7A002EE0B9 /* Flurry */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Flurry;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -349,6 +381,13 @@
 				E93D992B16DC0E2600F24220 /* SideMenuViewController~ipad.xib in Resources */,
 				E93D994516E5091F00F24220 /* linear_by_braydon_fuller.otf in Resources */,
 				E93D994716E5381D00F24220 /* BarcodeCaptureViewController~ipad.xib in Resources */,
+				E9471DA61725C2E6009CE39D /* nav_bg.png in Resources */,
+				E9471DA71725C2E6009CE39D /* nav_bg@2x.png in Resources */,
+				E9471DAC172638D0009CE39D /* rit_white_bottom.png in Resources */,
+				E9471DAD172638D0009CE39D /* rit_white_bottom@2x.png in Resources */,
+				E9471DAE172638D0009CE39D /* rit_white_top.png in Resources */,
+				E9471DAF172638D0009CE39D /* rit_white_top@2x.png in Resources */,
+				E939457217382A7A007CF607 /* SideMenuTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -387,9 +426,8 @@
 				E93D98E516D9CBE400F24220 /* MFSideMenu.m in Sources */,
 				E93D98F516DACBEF00F24220 /* Theme.m in Sources */,
 				E93D98F616DACBEF00F24220 /* RITTheme.m in Sources */,
-				E988122C171916630047157A /* IIViewDeckController.m in Sources */,
-				E9881231171917950047157A /* IISideController.m in Sources */,
-				E9881232171917950047157A /* IIWrapController.m in Sources */,
+				E9EDC78817245E68002EE0B9 /* AFSweepAPIClient.m in Sources */,
+				E939457017382A32007CF607 /* SideMenuTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

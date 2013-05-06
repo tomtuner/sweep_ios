@@ -12,14 +12,18 @@
 #import "SScanEvent.h"
 #import "Theme.h"
 #import "IIViewDeckController.h"
+#import "SideMenuTableViewCell.h"
 
+#define KEYBOARDHEIGHT 216
 #define kScanListArchiveName @"SScanListArchiveName"
 
-@interface SideMenuViewController : UIViewController 
+@interface SideMenuViewController : UIViewController <UITextFieldDelegate>
 
 //@property (nonatomic, assign) MFSideMenu *sideMenu;
 
 @property(nonatomic, strong) IBOutlet UITableView *scanEventListTable;
 @property(nonatomic, strong) IBOutlet UINavigationBar *navBar;
+
+- (SScanEvent *) getInitialScanEvent;
 
 @end

@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <ZXingObjC/ZXingObjC.h>
+#import "AFSweepAPIClient.h"
 
 #define kBarcodeText @"BarcodeText"
 #define kBarcodeRawBytes @"BarcodeRawBytes"
@@ -26,5 +27,7 @@
 @property (nonatomic, assign) ZXBarcodeFormat barcodeFormat;
 @property (nonatomic, retain) NSMutableDictionary *resultMetadata;
 @property (nonatomic, assign) long timestamp;
+
++ (void)globalBarcodeScanWithSBarcodeResult:(SBarcodeResult *) barcodeResult withBlock:(void (^)(NSArray *barcodes, NSError *error))block;
 
 @end

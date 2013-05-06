@@ -88,12 +88,12 @@
 
 - (UIImage *)navigationBackgroundForBarMetrics:(UIBarMetrics)metrics
 {
-    NSString *name = @"navigationBackground";
+    NSString *name = @"nav_bg";
     if (metrics == UIBarMetricsLandscapePhone) {
-        name = [name stringByAppendingString:@"Landscape"];
+        //name = [name stringByAppendingString:@"Landscape"];
     }
     UIImage *image = [UIImage imageNamed:name];
-    image = [image resizableImageWithCapInsets:UIEdgeInsetsMake(0.0, 8.0, 0.0, 8.0)];
+    image = [image resizableImageWithCapInsets:UIEdgeInsetsMake(0.0, 0.0, 0.0, 0.0)];
     return image;
 }
 
