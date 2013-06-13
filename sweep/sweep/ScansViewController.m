@@ -300,8 +300,8 @@
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
-    NSManagedObject *object = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    cell.textLabel.text = [[object valueForKey:@"value"] description];
+    Scan *object = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    cell.textLabel.text = object.value;
 }
 
 @end

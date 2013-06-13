@@ -41,19 +41,19 @@
 }
 
 
- - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
- {
-     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
-         NSManagedObject *object = [[self fetchedResultsController] objectAtIndexPath:indexPath];
-         self.detailViewController.detailItem = object;
-     }
- }
- 
+// - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+// {
+//     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+//         Event *object = [[self fetchedResultsController] objectAtIndexPath:indexPath];
+//         self.detailViewController.detailItem = object;
+//     }
+// }
+
  - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
  {
      if ([[segue identifier] isEqualToString:@"showSideMenu"]) {
          NSIndexPath *indexPath = [self.eventsTable indexPathForSelectedRow];
-         NSManagedObject *object = [[self fetchedResultsController] objectAtIndexPath:indexPath];
+         Event *object = [[self fetchedResultsController] objectAtIndexPath:indexPath];
          [[segue destinationViewController] setDetailItem:object];
      }
  }
@@ -63,11 +63,12 @@
 {
     NSManagedObjectContext *context = [self.fetchedResultsController managedObjectContext];
     NSEntityDescription *entity = [[self.fetchedResultsController fetchRequest] entity];
-    NSManagedObject *newManagedObject = [NSEntityDescription insertNewObjectForEntityForName:[entity name] inManagedObjectContext:context];
+    Event *newManagedObject = [NSEntityDescription insertNewObjectForEntityForName:[entity name] inManagedObjectContext:context];
     
     // If appropriate, configure the new managed object.
     // Normally you should use accessor methods, but using KVC here avoids the need to add a custom class to the template.
-    [newManagedObject setValue:[NSDate date] forKey:@"value"];
+//    [newManagedObject setValue:[NSDate date] forKey:@"name"];
+
     
     // Save the context.
     NSError *error = nil;
@@ -89,13 +90,31 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     id <NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController sections][section];
-    return [sectionInfo numberOfObjects];
+    return self.eventsTable.editing ? [sectionInfo numberOfObjects] : [sectionInfo numberOfObjects] + 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-    [self configureCell:cell atIndexPath:indexPath];
+//    SideMenuTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+    
+    NSString *CellIdentifier = @"SideMenuTableViewCell";
+    BOOL addCell = (indexPath.row == self.fetchedResultsController.fetchedObjects.count);
+    
+	SideMenuTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil)
+	{
+        cell = [[SideMenuTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
+                                            reuseIdentifier:CellIdentifier];
+    }
+    
+    
+
+    if (addCell) {
+        cell.nameLabel.text = @"Add an event...";
+    }else {
+        [self configureCell:cell atIndexPath:indexPath];
+    }
+    
     return cell;
 }
 /*
@@ -244,10 +263,79 @@
  }
  */
 
+#pragma mark - UITableViewDataSource
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+    // This will create a "invisible" footer
+    return 0.01f;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
+    // This will create a "invisible" footer
+    return [UIView new];
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    // FIXME: This should only happen in else statement, should stay selected during new event
+    if (indexPath.row == [self.fetchedResultsController.fetchedObjects count]) {
+        
+        SideMenuTableViewCell *cell = (SideMenuTableViewCell*)[tableView cellForRowAtIndexPath:indexPath];
+        [cell.nameLabel setHidden:YES];
+        [cell.nameTextField setHidden:NO];
+        [cell.nameTextField setSelected:YES];
+        
+        cell.nameTextField.delegate = self;
+        [cell.nameTextField becomeFirstResponder];
+        
+        // Animate tableview frame change
+        [UIView animateWithDuration:0.3 delay:0.0 options:UIViewAnimationCurveEaseOut animations:^{
+            self.eventsTable.frame = CGRectMake(self.eventsTable.frame.origin.x, self.eventsTable.frame.origin.y, self.eventsTable.frame.size.width, self.eventsTable.frame.size.height - 250.0f);
+        }
+                         completion:^(BOOL finished){
+                             [self.eventsTable scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+                             [tableView deselectRowAtIndexPath:indexPath animated:NO];
+                         }];
+        
+        
+        
+        
+        /*
+         SScanEvent *newEvent = [[SScanEvent alloc] init];
+         NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+         [dateFormat setDateFormat:@"MMMM d ss"];
+         NSString *dateString = [dateFormat stringFromDate:newEvent.date];
+         newEvent.name = dateString;
+         [self.scanLists addObject:newEvent];
+         // Save our new scans out to the archive file
+         NSString *documentsDir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
+         NSUserDomainMask, YES) objectAtIndex:0];
+         NSString *archivePath = [documentsDir stringByAppendingPathComponent:kScanListArchiveName];
+         [NSKeyedArchiver archiveRootObject:self.scanLists toFile:archivePath];
+         [self.scanEventListTable reloadData];
+         */
+    }else {
+       /*
+        SScanEvent *eve = (SScanEvent *)[self.scanLists objectAtIndex:indexPath.row];
+        NSLog(@"Event Name: %@", eve.name);
+        NSLog(@"Event UUID: %@", eve.uuid);
+        EventValuesViewController *viewController = [[EventValuesViewController alloc] initWithNibName:@"EventValuesViewController" bundle:nil scanDataArchiveString:eve.uuid];
+        viewController.title = eve.name;
+        
+        NSArray *controllers = [NSArray arrayWithObject:viewController];
+        [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
+            ((UINavigationController *)controller.centerController).viewControllers = controllers;
+            // ...
+        }];
+        */
+    }
+}
+
+
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
-    NSManagedObject *object = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    cell.textLabel.text = [[object valueForKey:@"name"] description];
+    Event *object = (Event *)[self.fetchedResultsController objectAtIndexPath:indexPath];
+    cell.textLabel.text = object.name;
 }
 
 @end

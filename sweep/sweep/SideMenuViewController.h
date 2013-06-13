@@ -8,9 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreData/CoreData.h>
-
+#import "Event.h"
 #import "ScansViewController.h"
 #import "IIViewDeckController.h"
+#import "SideMenuTableViewCell.h"
 
 @interface SideMenuViewController : UIViewController <NSFetchedResultsControllerDelegate, UITextFieldDelegate>
 

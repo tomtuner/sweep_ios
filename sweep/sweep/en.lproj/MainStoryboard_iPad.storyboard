@@ -30,25 +30,57 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="HIX-m5-Z6v">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" id="MQR-co-w4w">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" id="MQR-co-w4w" customClass="SideMenuTableViewCell">
                                         <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Hi There" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Z1-0q-wAf">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="The Event Planning Party" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="am8-ta-ctZ">
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Add an event..." clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cFD-sa-CAU">
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                                </textField>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7cJ-X1-sg2">
+                                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                </view>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ppb-jX-62Y">
+                                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                </view>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3AG-vy-cBm">
+                                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                </view>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <constraints>
-                                            <constraint firstItem="3Z1-0q-wAf" firstAttribute="top" secondItem="MQR-co-w4w" secondAttribute="top" constant="11" id="HOt-Ag-y4X"/>
-                                            <constraint firstItem="3Z1-0q-wAf" firstAttribute="leading" secondItem="MQR-co-w4w" secondAttribute="leading" constant="20" type="default" id="eGc-3h-OZR"/>
+                                            <constraint firstItem="7cJ-X1-sg2" firstAttribute="bottom" secondItem="MQR-co-w4w" secondAttribute="bottom" type="default" id="3Kj-De-IbJ"/>
+                                            <constraint firstItem="7cJ-X1-sg2" firstAttribute="leading" secondItem="MQR-co-w4w" secondAttribute="leading" type="default" id="4F4-ai-h8p"/>
+                                            <constraint firstItem="cFD-sa-CAU" firstAttribute="leading" secondItem="MQR-co-w4w" secondAttribute="leading" constant="20" type="default" id="4bz-yL-0Q2"/>
+                                            <constraint firstItem="3AG-vy-cBm" firstAttribute="leading" secondItem="MQR-co-w4w" secondAttribute="leading" constant="20" type="default" id="D3N-Im-N7f"/>
+                                            <constraint firstItem="3AG-vy-cBm" firstAttribute="top" secondItem="Ppb-jX-62Y" secondAttribute="top" type="default" id="GlB-x0-Yhi"/>
+                                            <constraint firstAttribute="trailing" secondItem="cFD-sa-CAU" secondAttribute="trailing" constant="20" type="default" id="NVo-F8-PHs"/>
+                                            <constraint firstItem="cFD-sa-CAU" firstAttribute="centerY" secondItem="MQR-co-w4w" secondAttribute="centerY" type="default" id="Nw0-ru-WEN"/>
+                                            <constraint firstItem="Ppb-jX-62Y" firstAttribute="bottom" secondItem="MQR-co-w4w" secondAttribute="bottom" type="default" id="QDT-BY-k15"/>
+                                            <constraint firstItem="am8-ta-ctZ" firstAttribute="leading" secondItem="MQR-co-w4w" secondAttribute="leading" constant="20" type="default" id="SP1-sr-LyP"/>
+                                            <constraint firstAttribute="trailing" secondItem="Ppb-jX-62Y" secondAttribute="trailing" constant="302" id="UCi-nQ-N6E"/>
+                                            <constraint firstItem="am8-ta-ctZ" firstAttribute="top" secondItem="MQR-co-w4w" secondAttribute="top" constant="11" id="crb-Cj-xx2"/>
+                                            <constraint firstItem="Ppb-jX-62Y" firstAttribute="leading" secondItem="MQR-co-w4w" secondAttribute="leading" constant="10" id="fjk-XU-9tM"/>
+                                            <constraint firstItem="3AG-vy-cBm" firstAttribute="bottom" secondItem="MQR-co-w4w" secondAttribute="bottom" type="default" id="gKk-kO-rf4"/>
+                                            <constraint firstAttribute="trailing" secondItem="3AG-vy-cBm" secondAttribute="trailing" constant="292" id="k9x-Iq-0DG"/>
+                                            <constraint firstAttribute="trailing" secondItem="am8-ta-ctZ" secondAttribute="trailing" constant="20" type="default" id="rAT-HA-11e"/>
+                                            <constraint firstItem="Ppb-jX-62Y" firstAttribute="top" secondItem="7cJ-X1-sg2" secondAttribute="top" type="default" id="swz-RH-33i"/>
+                                            <constraint firstItem="7cJ-X1-sg2" firstAttribute="top" secondItem="MQR-co-w4w" secondAttribute="top" constant="42" id="xF7-bI-9BZ"/>
+                                            <constraint firstAttribute="trailing" secondItem="7cJ-X1-sg2" secondAttribute="trailing" constant="312" id="zEh-Kq-dxD"/>
                                         </constraints>
+                                        <connections>
+                                            <outlet property="nameLabel" destination="am8-ta-ctZ" id="fxA-Q0-kIs"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -153,6 +185,30 @@
             <point key="canvasLocation" x="-366" y="248"/>
         </scene>
     </scenes>
+    <classes>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="ScansViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ScansViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="scansTable" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="SideMenuTableViewCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SideMenuTableViewCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="nameLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="nameTextField" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="SideMenuViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SideMenuViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="eventsTable" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackTranslucent"/>
         <simulatedOrientationMetrics key="orientation"/>
