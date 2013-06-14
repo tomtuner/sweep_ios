@@ -22,7 +22,6 @@
 		E9518FAB1768108200EB82C8 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9518FA91768108200EB82C8 /* MainStoryboard_iPad.storyboard */; };
 		E9518FAE1768108200EB82C8 /* sweep.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E9518FAC1768108200EB82C8 /* sweep.xcdatamodeld */; };
 		E9518FB11768108200EB82C8 /* ScansViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9518FB01768108200EB82C8 /* ScansViewController.m */; };
-		E9518FB41768108200EB82C8 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9518FB31768108200EB82C8 /* DetailViewController.m */; };
 		E9E8AD521768224A00F837D7 /* SideMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E8AD511768224A00F837D7 /* SideMenuViewController.m */; };
 		E9E8AD5717682BED00F837D7 /* SettingsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E8AD5617682BED00F837D7 /* SettingsManager.m */; };
 		E9E8AD5D17682C5700F837D7 /* Theme.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E8AD5A17682C5700F837D7 /* Theme.m */; };
@@ -33,7 +32,6 @@
 		E9E8ADA91768D18700F837D7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E9518F9E1768108200EB82C8 /* AppDelegate.m */; };
 		E9E8ADAA1768D18700F837D7 /* sweep.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E9518FAC1768108200EB82C8 /* sweep.xcdatamodeld */; };
 		E9E8ADAB1768D18700F837D7 /* ScansViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9518FB01768108200EB82C8 /* ScansViewController.m */; };
-		E9E8ADAC1768D18700F837D7 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9518FB31768108200EB82C8 /* DetailViewController.m */; };
 		E9E8ADAD1768D18700F837D7 /* SideMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E8AD511768224A00F837D7 /* SideMenuViewController.m */; };
 		E9E8ADAE1768D18700F837D7 /* SettingsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E8AD5617682BED00F837D7 /* SettingsManager.m */; };
 		E9E8ADAF1768D18700F837D7 /* Theme.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E8AD5A17682C5700F837D7 /* Theme.m */; };
@@ -65,6 +63,16 @@
 		E9E8ADDE1769541600F837D7 /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E8ADDD1769541600F837D7 /* Event.m */; };
 		E9E8ADE21769564F00F837D7 /* SideMenuTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E8ADE11769564F00F837D7 /* SideMenuTableViewCell.m */; };
 		E9E8ADE31769564F00F837D7 /* SideMenuTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E8ADE11769564F00F837D7 /* SideMenuTableViewCell.m */; };
+		E9E8ADE6176A142A00F837D7 /* Department.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E8ADE5176A142A00F837D7 /* Department.m */; };
+		E9E8ADE7176A142A00F837D7 /* Department.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E8ADE5176A142A00F837D7 /* Department.m */; };
+		E9E8ADEB176A913600F837D7 /* AFSweepAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E8ADEA176A913600F837D7 /* AFSweepAPIClient.m */; };
+		E9E8ADEC176A913600F837D7 /* AFSweepAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E8ADEA176A913600F837D7 /* AFSweepAPIClient.m */; };
+		E9E8ADEF176AA1C600F837D7 /* LogInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E8ADEE176AA1C600F837D7 /* LogInViewController.m */; };
+		E9E8ADF0176AA1C600F837D7 /* LogInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E8ADEE176AA1C600F837D7 /* LogInViewController.m */; };
+		E9E8ADF4176AAB7500F837D7 /* KeychainWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E8ADF3176AAB7500F837D7 /* KeychainWrapper.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E9E8ADF5176AAB7500F837D7 /* KeychainWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E8ADF3176AAB7500F837D7 /* KeychainWrapper.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E9E8ADF7176AAB9A00F837D7 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9E8ADF6176AAB9A00F837D7 /* Security.framework */; };
+		E9E8ADF8176AB06C00F837D7 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9E8ADF6176AAB9A00F837D7 /* Security.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -89,8 +97,6 @@
 		E9518FAD1768108200EB82C8 /* sweep.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = sweep.xcdatamodel; sourceTree = "<group>"; };
 		E9518FAF1768108200EB82C8 /* ScansViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScansViewController.h; sourceTree = "<group>"; };
 		E9518FB01768108200EB82C8 /* ScansViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScansViewController.m; sourceTree = "<group>"; };
-		E9518FB21768108200EB82C8 /* DetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
-		E9518FB31768108200EB82C8 /* DetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		E9E8AD501768224A00F837D7 /* SideMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SideMenuViewController.h; sourceTree = "<group>"; };
 		E9E8AD511768224A00F837D7 /* SideMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SideMenuViewController.m; sourceTree = "<group>"; };
 		E9E8AD5517682BED00F837D7 /* SettingsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsManager.h; sourceTree = "<group>"; };
@@ -117,6 +123,15 @@
 		E9E8ADDD1769541600F837D7 /* Event.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Event.m; sourceTree = "<group>"; };
 		E9E8ADE01769564F00F837D7 /* SideMenuTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SideMenuTableViewCell.h; sourceTree = "<group>"; };
 		E9E8ADE11769564F00F837D7 /* SideMenuTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SideMenuTableViewCell.m; sourceTree = "<group>"; };
+		E9E8ADE4176A142A00F837D7 /* Department.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Department.h; sourceTree = "<group>"; };
+		E9E8ADE5176A142A00F837D7 /* Department.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Department.m; sourceTree = "<group>"; };
+		E9E8ADE9176A913600F837D7 /* AFSweepAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFSweepAPIClient.h; sourceTree = "<group>"; };
+		E9E8ADEA176A913600F837D7 /* AFSweepAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFSweepAPIClient.m; sourceTree = "<group>"; };
+		E9E8ADED176AA1C500F837D7 /* LogInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogInViewController.h; sourceTree = "<group>"; };
+		E9E8ADEE176AA1C600F837D7 /* LogInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogInViewController.m; sourceTree = "<group>"; };
+		E9E8ADF2176AAB7500F837D7 /* KeychainWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeychainWrapper.h; sourceTree = "<group>"; };
+		E9E8ADF3176AAB7500F837D7 /* KeychainWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainWrapper.m; sourceTree = "<group>"; };
+		E9E8ADF6176AAB9A00F837D7 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +139,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E9E8ADF8176AB06C00F837D7 /* Security.framework in Frameworks */,
 				E9518F8D1768108200EB82C8 /* UIKit.framework in Frameworks */,
 				E9518F8F1768108200EB82C8 /* Foundation.framework in Frameworks */,
 				E9518F911768108200EB82C8 /* CoreGraphics.framework in Frameworks */,
@@ -136,6 +152,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E9E8ADF7176AAB9A00F837D7 /* Security.framework in Frameworks */,
 				E9E8ADB21768D18700F837D7 /* UIKit.framework in Frameworks */,
 				E9E8ADB31768D18700F837D7 /* Foundation.framework in Frameworks */,
 				E9E8ADB41768D18700F837D7 /* CoreGraphics.framework in Frameworks */,
@@ -170,6 +187,7 @@
 		E9518F8B1768108200EB82C8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E9E8ADF6176AAB9A00F837D7 /* Security.framework */,
 				E9518F8C1768108200EB82C8 /* UIKit.framework */,
 				E9518F8E1768108200EB82C8 /* Foundation.framework */,
 				E9518F901768108200EB82C8 /* CoreGraphics.framework */,
@@ -182,6 +200,8 @@
 		E9518F941768108200EB82C8 /* sweep_source */ = {
 			isa = PBXGroup;
 			children = (
+				E9E8ADF1176AAB6300F837D7 /* keychain */,
+				E9E8ADE8176A912800F837D7 /* networking */,
 				E9E8ADDF1769564000F837D7 /* tableview */,
 				E9E8AD5817682C4B00F837D7 /* theme */,
 				E9E8AD5417682BE200F837D7 /* settings */,
@@ -190,11 +210,11 @@
 				E9518F9E1768108200EB82C8 /* AppDelegate.m */,
 				E9518FAF1768108200EB82C8 /* ScansViewController.h */,
 				E9518FB01768108200EB82C8 /* ScansViewController.m */,
-				E9518FB21768108200EB82C8 /* DetailViewController.h */,
-				E9518FB31768108200EB82C8 /* DetailViewController.m */,
-				E9518F951768108200EB82C8 /* Supporting Files */,
 				E9E8AD501768224A00F837D7 /* SideMenuViewController.h */,
 				E9E8AD511768224A00F837D7 /* SideMenuViewController.m */,
+				E9E8ADED176AA1C500F837D7 /* LogInViewController.h */,
+				E9E8ADEE176AA1C600F837D7 /* LogInViewController.m */,
+				E9518F951768108200EB82C8 /* Supporting Files */,
 			);
 			name = sweep_source;
 			path = sweep;
@@ -221,6 +241,8 @@
 				E9E8ADD91768D99700F837D7 /* Scan.m */,
 				E9E8ADDC1769541600F837D7 /* Event.h */,
 				E9E8ADDD1769541600F837D7 /* Event.m */,
+				E9E8ADE4176A142A00F837D7 /* Department.h */,
+				E9E8ADE5176A142A00F837D7 /* Department.m */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -330,6 +352,24 @@
 				E9E8ADE11769564F00F837D7 /* SideMenuTableViewCell.m */,
 			);
 			name = tableview;
+			sourceTree = "<group>";
+		};
+		E9E8ADE8176A912800F837D7 /* networking */ = {
+			isa = PBXGroup;
+			children = (
+				E9E8ADE9176A913600F837D7 /* AFSweepAPIClient.h */,
+				E9E8ADEA176A913600F837D7 /* AFSweepAPIClient.m */,
+			);
+			name = networking;
+			sourceTree = "<group>";
+		};
+		E9E8ADF1176AAB6300F837D7 /* keychain */ = {
+			isa = PBXGroup;
+			children = (
+				E9E8ADF2176AAB7500F837D7 /* KeychainWrapper.h */,
+				E9E8ADF3176AAB7500F837D7 /* KeychainWrapper.m */,
+			);
+			name = keychain;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -511,13 +551,16 @@
 				E9518F9F1768108200EB82C8 /* AppDelegate.m in Sources */,
 				E9518FAE1768108200EB82C8 /* sweep.xcdatamodeld in Sources */,
 				E9518FB11768108200EB82C8 /* ScansViewController.m in Sources */,
-				E9518FB41768108200EB82C8 /* DetailViewController.m in Sources */,
 				E9E8AD521768224A00F837D7 /* SideMenuViewController.m in Sources */,
 				E9E8AD5717682BED00F837D7 /* SettingsManager.m in Sources */,
 				E9E8AD5D17682C5700F837D7 /* Theme.m in Sources */,
 				E9E8ADDA1768D99700F837D7 /* Scan.m in Sources */,
 				E9E8ADDE1769541600F837D7 /* Event.m in Sources */,
 				E9E8ADE21769564F00F837D7 /* SideMenuTableViewCell.m in Sources */,
+				E9E8ADE6176A142A00F837D7 /* Department.m in Sources */,
+				E9E8ADEB176A913600F837D7 /* AFSweepAPIClient.m in Sources */,
+				E9E8ADEF176AA1C600F837D7 /* LogInViewController.m in Sources */,
+				E9E8ADF4176AAB7500F837D7 /* KeychainWrapper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -529,13 +572,16 @@
 				E9E8ADA91768D18700F837D7 /* AppDelegate.m in Sources */,
 				E9E8ADAA1768D18700F837D7 /* sweep.xcdatamodeld in Sources */,
 				E9E8ADAB1768D18700F837D7 /* ScansViewController.m in Sources */,
-				E9E8ADAC1768D18700F837D7 /* DetailViewController.m in Sources */,
 				E9E8ADAD1768D18700F837D7 /* SideMenuViewController.m in Sources */,
 				E9E8ADAE1768D18700F837D7 /* SettingsManager.m in Sources */,
 				E9E8ADAF1768D18700F837D7 /* Theme.m in Sources */,
 				E9E8ADB01768D18700F837D7 /* RITTheme.m in Sources */,
 				E9E8ADDB1768D99700F837D7 /* Scan.m in Sources */,
 				E9E8ADE31769564F00F837D7 /* SideMenuTableViewCell.m in Sources */,
+				E9E8ADE7176A142A00F837D7 /* Department.m in Sources */,
+				E9E8ADEC176A913600F837D7 /* AFSweepAPIClient.m in Sources */,
+				E9E8ADF0176AA1C600F837D7 /* LogInViewController.m in Sources */,
+				E9E8ADF5176AAB7500F837D7 /* KeychainWrapper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -594,7 +640,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -619,7 +665,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";

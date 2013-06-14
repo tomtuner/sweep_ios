@@ -7,9 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-
-//@class DetailViewController;
-
 #import <CoreData/CoreData.h>
 #import "IIViewDeckController.h"
 #import "Scan.h"

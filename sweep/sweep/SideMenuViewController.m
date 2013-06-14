@@ -30,8 +30,8 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-    self.detailViewController = (ScansViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
-    self.detailViewController.managedObjectContext = self.managedObjectContext;
+    self.scansViewController = (ScansViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
+    self.scansViewController.managedObjectContext = self.managedObjectContext;
 }
 
 - (void)didReceiveMemoryWarning
@@ -59,7 +59,7 @@
  }
  
 
-- (void)insertNewObject:(id)sender
+- (void)insertNewObject
 {
     NSManagedObjectContext *context = [self.fetchedResultsController managedObjectContext];
     NSEntityDescription *entity = [[self.fetchedResultsController fetchRequest] entity];
@@ -84,7 +84,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return [[self.fetchedResultsController sections] count];
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

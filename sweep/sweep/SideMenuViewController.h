@@ -15,7 +15,7 @@
 
 @interface SideMenuViewController : UIViewController <NSFetchedResultsControllerDelegate, UITextFieldDelegate>
 
-@property (strong, nonatomic) ScansViewController *detailViewController;
+@property (strong, nonatomic) ScansViewController *scansViewController;
 
 @property(nonatomic, strong) IBOutlet UITableView *eventsTable;
 
