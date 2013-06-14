@@ -420,7 +420,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0460;
-				ORGANIZATIONNAME = Sweep;
+				ORGANIZATIONNAME = "Kanzu LLC";
 			};
 			buildConfigurationList = E9518F841768108200EB82C8 /* Build configuration list for PBXProject "sweep" */;
 			compatibilityVersion = "Xcode 3.2";

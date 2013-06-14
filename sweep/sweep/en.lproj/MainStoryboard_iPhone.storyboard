@@ -22,7 +22,7 @@
         <!--Log In View Controller-->
         <scene sceneID="5GP-Rh-kjP">
             <objects>
-                <viewController storyboardIdentifier="loginViewController" id="uYb-dW-5aO" customClass="LogInViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="logInViewController" id="uYb-dW-5aO" customClass="LogInViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Rz3-nB-i2A">
                         <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -32,12 +32,32 @@
                                     <navigationItem title="Sweep" id="red-Pb-xTH"/>
                                 </items>
                             </navigationBar>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Enter a Sweep access key:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ROc-nl-w35">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="284" id="z7D-Ha-4iL"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Access Key" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4Bz-xa-MWa">
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="uYb-dW-5aO" id="d40-Nm-lmF"/>
+                                </connections>
+                            </textField>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.93725490196078431" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="GkP-9O-8UL" firstAttribute="trailing" secondItem="Rz3-nB-i2A" secondAttribute="trailing" type="default" id="8In-9y-d1d"/>
+                            <constraint firstAttribute="trailing" secondItem="4Bz-xa-MWa" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="KlG-sY-eqf"/>
+                            <constraint firstItem="4Bz-xa-MWa" firstAttribute="leading" secondItem="Rz3-nB-i2A" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="Ong-Dv-cmQ"/>
+                            <constraint firstItem="ROc-nl-w35" firstAttribute="top" secondItem="Rz3-nB-i2A" secondAttribute="top" constant="57" id="b6H-GA-0Cl"/>
                             <constraint firstItem="GkP-9O-8UL" firstAttribute="top" secondItem="Rz3-nB-i2A" secondAttribute="top" type="default" id="bsG-2W-JDn"/>
+                            <constraint firstItem="ROc-nl-w35" firstAttribute="centerX" secondItem="4Bz-xa-MWa" secondAttribute="centerX" type="default" id="cOC-Rh-Wly"/>
                             <constraint firstItem="GkP-9O-8UL" firstAttribute="leading" secondItem="Rz3-nB-i2A" secondAttribute="leading" type="default" id="duP-Lb-mty"/>
+                            <constraint firstItem="4Bz-xa-MWa" firstAttribute="top" secondItem="ROc-nl-w35" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="e5v-E4-9gj"/>
                         </constraints>
                     </view>
                 </viewController>

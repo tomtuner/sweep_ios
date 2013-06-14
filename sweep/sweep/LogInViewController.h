@@ -7,7 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "KeychainWrapper.h"
+#import "Department.h"
 
 @interface LogInViewController : UIViewController <UITextFieldDelegate>
+
+@property (nonatomic, strong) KeychainWrapper *departmentKeyItem;
+@property (nonatomic, strong) UIActivityIndicatorView *validKeyNetworkIndicator;
+
+@property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
+@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 
 @end

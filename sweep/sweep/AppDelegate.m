@@ -18,6 +18,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+
+    [self initKeychainForDepartmentKey];
+    
     NSString *defaultsFileName = [NSString stringWithFormat:@"defaults_%@", [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleName"]];
     NSLog(@"Product Name: %@", defaultsFileName);
     
@@ -25,22 +28,28 @@
     [[NSUserDefaults standardUserDefaults] registerDefaults:defaults];
     
     [ThemeManager customizeAppAppearance];
+
+    UIStoryboard *st = [UIStoryboard storyboardWithName:[[NSBundle mainBundle].infoDictionary objectForKey:@"UIMainStoryboardFile"] bundle:[NSBundle mainBundle]];
     
     // Override point for customization after application launch.
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
         UISplitViewController *splitViewController = (UISplitViewController *)self.window.rootViewController;
         UINavigationController *navigationController = [splitViewController.viewControllers lastObject];
         splitViewController.delegate = (id)navigationController.topViewController;
-        
+        ScansViewController *scanController = (ScansViewController *)navigationController.topViewController;
+        scanController.departmentKeyItem = self.departmentKeyItem;
+
         UINavigationController *masterNavigationController = splitViewController.viewControllers[0];
         SideMenuViewController *controller = (SideMenuViewController *)masterNavigationController.topViewController;
         controller.managedObjectContext = self.managedObjectContext;
+        
     } else {
-        UIStoryboard *st = [UIStoryboard storyboardWithName:[[NSBundle mainBundle].infoDictionary objectForKey:@"UIMainStoryboardFile"] bundle:[NSBundle mainBundle]];
 
         UINavigationController *navigationController = (UINavigationController *)self.window.rootViewController;
         ScansViewController *controller = (ScansViewController *)navigationController.topViewController;
         controller.managedObjectContext = self.managedObjectContext;
+        controller.departmentKeyItem = self.departmentKeyItem;
+        
         SideMenuViewController *sideController = [st instantiateViewControllerWithIdentifier:@"sideMenuController"];
         sideController.managedObjectContext = self.managedObjectContext;
         IIViewDeckController *deckController = [[IIViewDeckController alloc] initWithCenterViewController:navigationController leftViewController:sideController];
@@ -52,7 +61,14 @@
     }
     return YES;
 }
-							
+
+- (void) initKeychainForDepartmentKey
+{
+    // Create the keychain for the department key
+    KeychainWrapper *wrapper = [[KeychainWrapper alloc] initWithIdentifier:@"DepartmentKey" accessGroup:nil];
+    self.departmentKeyItem = wrapper;
+}
+				
 - (void)applicationWillResignActive:(UIApplication *)application
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

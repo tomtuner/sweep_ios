@@ -111,7 +111,7 @@
         <!--Log In View Controller-->
         <scene sceneID="iYa-kX-q2R">
             <objects>
-                <viewController storyboardIdentifier="loginViewController" id="eF9-Pm-7nJ" customClass="LogInViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="logInViewController" modalPresentationStyle="formSheet" id="eF9-Pm-7nJ" customClass="LogInViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="puP-eg-UuN">
                         <rect key="frame" x="0.0" y="20" width="540" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -137,7 +137,7 @@
                                 </connections>
                             </textField>
                         </subviews>
-                        <color key="backgroundColor" red="0.88235294117647056" green="0.93333333333333335" blue="0.5607843137254902" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.93725490196078431" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="r8D-nI-L0z" firstAttribute="leading" secondItem="Nq0-nW-WH5" secondAttribute="leading" type="default" id="2aD-U9-irS"/>
                             <constraint firstItem="4Iv-El-A21" firstAttribute="top" secondItem="puP-eg-UuN" secondAttribute="top" type="default" id="5Qc-2h-eTx"/>

@@ -8,14 +8,18 @@
 
 #import <UIKit/UIKit.h>
 #import "Theme.h"
+#import "KeychainWrapper.h"
 #import "IIViewDeckController.h"
 #import "SettingsManager.h"
 #import "SideMenuViewController.h"
+#import "LogInViewController.h"
 
 //@class EventValuesViewController;
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+@property (nonatomic, strong) KeychainWrapper *departmentKeyItem;
+
 //@property (strong, nonatomic) EventValuesViewController *viewController;
 
 @property (readonly, strong, nonatomic) NSManagedObjectContext *managedObjectContext;

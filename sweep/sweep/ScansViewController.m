@@ -31,9 +31,64 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    
+    // Use this to reset the keychain if needed
+//    [self.departmentKeyItem resetKeychainItem];
+    
     [self setupMenuBarButtonItems];
     [self configureView];
+}
+
+-(void) viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [self displayLoginControllerIfNeeded];
+
+}
+
+-(void) displayLoginControllerIfNeeded
+{
+    NSString *departmentKey = (NSString *)[self.departmentKeyItem objectForKey:(__bridge id)(kSecValueData)];
+    if (departmentKey.length)
+    {
+        [self validateDepartmentKey:departmentKey];
+    }else {
+        UIStoryboard *st = [UIStoryboard storyboardWithName:[[NSBundle mainBundle].infoDictionary objectForKey:@"UIMainStoryboardFile"] bundle:[NSBundle mainBundle]];
+        LogInViewController *logInController = [st instantiateViewControllerWithIdentifier:@"logInViewController"];
+        logInController.departmentKeyItem = self.departmentKeyItem;
+        logInController.managedObjectContext = self.managedObjectContext;
+        logInController.modalPresentationStyle = UIModalPresentationFormSheet;
+        [self presentViewController:logInController animated:YES completion:nil];
+    }
+}
+
+- (void) validateDepartmentKey:(NSString *) departmentKey
+{
+    [Department globalDepartmentVerificationWithValidationKey:departmentKey
+                                                    withBlock:^(NSDictionary *department, NSError *error) {
+        if (!error)
+        {
+            NSLog(@"Department Returned: %@", department);
+            [self.departmentKeyItem setObject:[department objectForKey:@"valid_key"] forKey:(__bridge id)(kSecValueData)];
+            [self dismissViewControllerAnimated:YES completion:nil];
+            
+        }else {
+            NSLog(@"Error Code: %i", [[[error userInfo] objectForKey:AFNetworkingOperationFailingURLResponseErrorKey] statusCode] );
+
+            NSLog(@"Error: %@", [error localizedDescription]);
+            if ([[[error userInfo] objectForKey:AFNetworkingOperationFailingURLResponseErrorKey] statusCode] == 401)
+            {
+                [self.departmentKeyItem resetKeychainItem];
+            }
+            UIStoryboard *st = [UIStoryboard storyboardWithName:[[NSBundle mainBundle].infoDictionary objectForKey:@"UIMainStoryboardFile"] bundle:[NSBundle mainBundle]];
+            LogInViewController *logInController = [st instantiateViewControllerWithIdentifier:@"logInViewController"];
+            logInController.departmentKeyItem = self.departmentKeyItem;
+            logInController.managedObjectContext = self.managedObjectContext;
+            logInController.modalPresentationStyle = UIModalPresentationFormSheet;
+            [self presentViewController:logInController animated:YES completion:nil];
+        }
+        
+    }];
 }
 
 - (void)setupMenuBarButtonItems {
