@@ -51,8 +51,10 @@
     NSString *departmentKey = (NSString *)[self.departmentKeyItem objectForKey:(__bridge id)(kSecValueData)];
     if (departmentKey.length)
     {
+        // Department Key was once valid but validate again on startup
         [self validateDepartmentKey:departmentKey];
     }else {
+        // No department key found
         UIStoryboard *st = [UIStoryboard storyboardWithName:[[NSBundle mainBundle].infoDictionary objectForKey:@"UIMainStoryboardFile"] bundle:[NSBundle mainBundle]];
         LogInViewController *logInController = [st instantiateViewControllerWithIdentifier:@"logInViewController"];
         logInController.departmentKeyItem = self.departmentKeyItem;
@@ -68,6 +70,7 @@
                                                     withBlock:^(NSDictionary *department, NSError *error) {
         if (!error)
         {
+            // Authentication was successful store the key returned
             NSLog(@"Department Returned: %@", department);
             [self.departmentKeyItem setObject:[department objectForKey:@"valid_key"] forKey:(__bridge id)(kSecValueData)];
             [self dismissViewControllerAnimated:YES completion:nil];
@@ -78,16 +81,16 @@
             NSLog(@"Error: %@", [error localizedDescription]);
             if ([[[error userInfo] objectForKey:AFNetworkingOperationFailingURLResponseErrorKey] statusCode] == 401)
             {
+                // Key is no longer valid reset the keychain and reenter
                 [self.departmentKeyItem resetKeychainItem];
+                UIStoryboard *st = [UIStoryboard storyboardWithName:[[NSBundle mainBundle].infoDictionary objectForKey:@"UIMainStoryboardFile"] bundle:[NSBundle mainBundle]];
+                LogInViewController *logInController = [st instantiateViewControllerWithIdentifier:@"logInViewController"];
+                logInController.departmentKeyItem = self.departmentKeyItem;
+                logInController.managedObjectContext = self.managedObjectContext;
+                logInController.modalPresentationStyle = UIModalPresentationFormSheet;
+                [self presentViewController:logInController animated:YES completion:nil];
             }
-            UIStoryboard *st = [UIStoryboard storyboardWithName:[[NSBundle mainBundle].infoDictionary objectForKey:@"UIMainStoryboardFile"] bundle:[NSBundle mainBundle]];
-            LogInViewController *logInController = [st instantiateViewControllerWithIdentifier:@"logInViewController"];
-            logInController.departmentKeyItem = self.departmentKeyItem;
-            logInController.managedObjectContext = self.managedObjectContext;
-            logInController.modalPresentationStyle = UIModalPresentationFormSheet;
-            [self presentViewController:logInController animated:YES completion:nil];
-        }
-        
+        }  
     }];
 }
 
