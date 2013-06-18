@@ -8,6 +8,18 @@
 
 /* Begin PBXBuildFile section */
 		B14420FB51394E40A91F5F42 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2611B6CD07C4463E810F985F /* libPods.a */; };
+		E93850171770261900DC9D97 /* SWSyncEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = E93850161770261900DC9D97 /* SWSyncEngine.m */; };
+		E93850181770261900DC9D97 /* SWSyncEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = E93850161770261900DC9D97 /* SWSyncEngine.m */; };
+		E938501B17702A2300DC9D97 /* SWCoreDataController.m in Sources */ = {isa = PBXBuildFile; fileRef = E938501A17702A2200DC9D97 /* SWCoreDataController.m */; };
+		E938501C17702A2300DC9D97 /* SWCoreDataController.m in Sources */ = {isa = PBXBuildFile; fileRef = E938501A17702A2200DC9D97 /* SWCoreDataController.m */; };
+		E9385043177035C300DC9D97 /* Customers.m in Sources */ = {isa = PBXBuildFile; fileRef = E9385042177035C300DC9D97 /* Customers.m */; };
+		E9385044177035C300DC9D97 /* Customers.m in Sources */ = {isa = PBXBuildFile; fileRef = E9385042177035C300DC9D97 /* Customers.m */; };
+		E9385047177035CD00DC9D97 /* Scans.m in Sources */ = {isa = PBXBuildFile; fileRef = E9385046177035CD00DC9D97 /* Scans.m */; };
+		E9385048177035CD00DC9D97 /* Scans.m in Sources */ = {isa = PBXBuildFile; fileRef = E9385046177035CD00DC9D97 /* Scans.m */; };
+		E938504B177035D600DC9D97 /* Events.m in Sources */ = {isa = PBXBuildFile; fileRef = E938504A177035D600DC9D97 /* Events.m */; };
+		E938504C177035D600DC9D97 /* Events.m in Sources */ = {isa = PBXBuildFile; fileRef = E938504A177035D600DC9D97 /* Events.m */; };
+		E938504F177035DF00DC9D97 /* Departments.m in Sources */ = {isa = PBXBuildFile; fileRef = E938504E177035DF00DC9D97 /* Departments.m */; };
+		E9385050177035DF00DC9D97 /* Departments.m in Sources */ = {isa = PBXBuildFile; fileRef = E938504E177035DF00DC9D97 /* Departments.m */; };
 		E9518F8D1768108200EB82C8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9518F8C1768108200EB82C8 /* UIKit.framework */; };
 		E9518F8F1768108200EB82C8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9518F8E1768108200EB82C8 /* Foundation.framework */; };
 		E9518F911768108200EB82C8 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9518F901768108200EB82C8 /* CoreGraphics.framework */; };
@@ -58,13 +70,8 @@
 		E9E8ADD51768D2E300F837D7 /* rit_white_top@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9E8ADCF1768D2E300F837D7 /* rit_white_top@2x.png */; };
 		E9E8ADD61768D2E300F837D7 /* nav_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = E9E8ADD01768D2E300F837D7 /* nav_bg.png */; };
 		E9E8ADD71768D2E300F837D7 /* nav_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9E8ADD11768D2E300F837D7 /* nav_bg@2x.png */; };
-		E9E8ADDA1768D99700F837D7 /* Scan.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E8ADD91768D99700F837D7 /* Scan.m */; };
-		E9E8ADDB1768D99700F837D7 /* Scan.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E8ADD91768D99700F837D7 /* Scan.m */; };
-		E9E8ADDE1769541600F837D7 /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E8ADDD1769541600F837D7 /* Event.m */; };
 		E9E8ADE21769564F00F837D7 /* SideMenuTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E8ADE11769564F00F837D7 /* SideMenuTableViewCell.m */; };
 		E9E8ADE31769564F00F837D7 /* SideMenuTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E8ADE11769564F00F837D7 /* SideMenuTableViewCell.m */; };
-		E9E8ADE6176A142A00F837D7 /* Department.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E8ADE5176A142A00F837D7 /* Department.m */; };
-		E9E8ADE7176A142A00F837D7 /* Department.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E8ADE5176A142A00F837D7 /* Department.m */; };
 		E9E8ADEB176A913600F837D7 /* AFSweepAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E8ADEA176A913600F837D7 /* AFSweepAPIClient.m */; };
 		E9E8ADEC176A913600F837D7 /* AFSweepAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E8ADEA176A913600F837D7 /* AFSweepAPIClient.m */; };
 		E9E8ADEF176AA1C600F837D7 /* LogInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E8ADEE176AA1C600F837D7 /* LogInViewController.m */; };
@@ -78,6 +85,18 @@
 /* Begin PBXFileReference section */
 		2611B6CD07C4463E810F985F /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1F66A6A01AD42F8916FB975 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = ../Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
+		E93850151770261900DC9D97 /* SWSyncEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWSyncEngine.h; sourceTree = "<group>"; };
+		E93850161770261900DC9D97 /* SWSyncEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWSyncEngine.m; sourceTree = "<group>"; };
+		E938501917702A2200DC9D97 /* SWCoreDataController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWCoreDataController.h; sourceTree = "<group>"; };
+		E938501A17702A2200DC9D97 /* SWCoreDataController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWCoreDataController.m; sourceTree = "<group>"; };
+		E9385041177035C300DC9D97 /* Customers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Customers.h; sourceTree = "<group>"; };
+		E9385042177035C300DC9D97 /* Customers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Customers.m; sourceTree = "<group>"; };
+		E9385045177035CD00DC9D97 /* Scans.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Scans.h; sourceTree = "<group>"; };
+		E9385046177035CD00DC9D97 /* Scans.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Scans.m; sourceTree = "<group>"; };
+		E9385049177035D600DC9D97 /* Events.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Events.h; sourceTree = "<group>"; };
+		E938504A177035D600DC9D97 /* Events.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Events.m; sourceTree = "<group>"; };
+		E938504D177035DF00DC9D97 /* Departments.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Departments.h; sourceTree = "<group>"; };
+		E938504E177035DF00DC9D97 /* Departments.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Departments.m; sourceTree = "<group>"; };
 		E9518F891768108200EB82C8 /* sweep.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sweep.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9518F8C1768108200EB82C8 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		E9518F8E1768108200EB82C8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -117,14 +136,8 @@
 		E9E8ADCF1768D2E300F837D7 /* rit_white_top@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rit_white_top@2x.png"; sourceTree = "<group>"; };
 		E9E8ADD01768D2E300F837D7 /* nav_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nav_bg.png; sourceTree = "<group>"; };
 		E9E8ADD11768D2E300F837D7 /* nav_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav_bg@2x.png"; sourceTree = "<group>"; };
-		E9E8ADD81768D99700F837D7 /* Scan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Scan.h; sourceTree = "<group>"; };
-		E9E8ADD91768D99700F837D7 /* Scan.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Scan.m; sourceTree = "<group>"; };
-		E9E8ADDC1769541600F837D7 /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Event.h; sourceTree = "<group>"; };
-		E9E8ADDD1769541600F837D7 /* Event.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Event.m; sourceTree = "<group>"; };
 		E9E8ADE01769564F00F837D7 /* SideMenuTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SideMenuTableViewCell.h; sourceTree = "<group>"; };
 		E9E8ADE11769564F00F837D7 /* SideMenuTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SideMenuTableViewCell.m; sourceTree = "<group>"; };
-		E9E8ADE4176A142A00F837D7 /* Department.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Department.h; sourceTree = "<group>"; };
-		E9E8ADE5176A142A00F837D7 /* Department.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Department.m; sourceTree = "<group>"; };
 		E9E8ADE9176A913600F837D7 /* AFSweepAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFSweepAPIClient.h; sourceTree = "<group>"; };
 		E9E8ADEA176A913600F837D7 /* AFSweepAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFSweepAPIClient.m; sourceTree = "<group>"; };
 		E9E8ADED176AA1C500F837D7 /* LogInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogInViewController.h; sourceTree = "<group>"; };
@@ -237,12 +250,18 @@
 			isa = PBXGroup;
 			children = (
 				E9518FAC1768108200EB82C8 /* sweep.xcdatamodeld */,
-				E9E8ADD81768D99700F837D7 /* Scan.h */,
-				E9E8ADD91768D99700F837D7 /* Scan.m */,
-				E9E8ADDC1769541600F837D7 /* Event.h */,
-				E9E8ADDD1769541600F837D7 /* Event.m */,
-				E9E8ADE4176A142A00F837D7 /* Department.h */,
-				E9E8ADE5176A142A00F837D7 /* Department.m */,
+				E9385041177035C300DC9D97 /* Customers.h */,
+				E9385042177035C300DC9D97 /* Customers.m */,
+				E9385045177035CD00DC9D97 /* Scans.h */,
+				E9385046177035CD00DC9D97 /* Scans.m */,
+				E9385049177035D600DC9D97 /* Events.h */,
+				E938504A177035D600DC9D97 /* Events.m */,
+				E938504D177035DF00DC9D97 /* Departments.h */,
+				E938504E177035DF00DC9D97 /* Departments.m */,
+				E93850151770261900DC9D97 /* SWSyncEngine.h */,
+				E93850161770261900DC9D97 /* SWSyncEngine.m */,
+				E938501917702A2200DC9D97 /* SWCoreDataController.h */,
+				E938501A17702A2200DC9D97 /* SWCoreDataController.m */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -554,13 +573,16 @@
 				E9E8AD521768224A00F837D7 /* SideMenuViewController.m in Sources */,
 				E9E8AD5717682BED00F837D7 /* SettingsManager.m in Sources */,
 				E9E8AD5D17682C5700F837D7 /* Theme.m in Sources */,
-				E9E8ADDA1768D99700F837D7 /* Scan.m in Sources */,
-				E9E8ADDE1769541600F837D7 /* Event.m in Sources */,
 				E9E8ADE21769564F00F837D7 /* SideMenuTableViewCell.m in Sources */,
-				E9E8ADE6176A142A00F837D7 /* Department.m in Sources */,
 				E9E8ADEB176A913600F837D7 /* AFSweepAPIClient.m in Sources */,
 				E9E8ADEF176AA1C600F837D7 /* LogInViewController.m in Sources */,
 				E9E8ADF4176AAB7500F837D7 /* KeychainWrapper.m in Sources */,
+				E93850171770261900DC9D97 /* SWSyncEngine.m in Sources */,
+				E938501B17702A2300DC9D97 /* SWCoreDataController.m in Sources */,
+				E9385043177035C300DC9D97 /* Customers.m in Sources */,
+				E9385047177035CD00DC9D97 /* Scans.m in Sources */,
+				E938504B177035D600DC9D97 /* Events.m in Sources */,
+				E938504F177035DF00DC9D97 /* Departments.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -576,12 +598,16 @@
 				E9E8ADAE1768D18700F837D7 /* SettingsManager.m in Sources */,
 				E9E8ADAF1768D18700F837D7 /* Theme.m in Sources */,
 				E9E8ADB01768D18700F837D7 /* RITTheme.m in Sources */,
-				E9E8ADDB1768D99700F837D7 /* Scan.m in Sources */,
 				E9E8ADE31769564F00F837D7 /* SideMenuTableViewCell.m in Sources */,
-				E9E8ADE7176A142A00F837D7 /* Department.m in Sources */,
 				E9E8ADEC176A913600F837D7 /* AFSweepAPIClient.m in Sources */,
 				E9E8ADF0176AA1C600F837D7 /* LogInViewController.m in Sources */,
 				E9E8ADF5176AAB7500F837D7 /* KeychainWrapper.m in Sources */,
+				E93850181770261900DC9D97 /* SWSyncEngine.m in Sources */,
+				E938501C17702A2300DC9D97 /* SWCoreDataController.m in Sources */,
+				E9385044177035C300DC9D97 /* Customers.m in Sources */,
+				E9385048177035CD00DC9D97 /* Scans.m in Sources */,
+				E938504C177035D600DC9D97 /* Events.m in Sources */,
+				E9385050177035DF00DC9D97 /* Departments.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

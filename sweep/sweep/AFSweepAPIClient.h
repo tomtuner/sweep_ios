@@ -14,5 +14,7 @@
 @interface AFSweepAPIClient : AFHTTPClient
 
 + (AFSweepAPIClient *)sharedClient;
+- (NSMutableURLRequest *)GETRequestForClass:(NSString *)className parameters:(NSDictionary *)parameters;
+- (NSMutableURLRequest *)GETRequestForAllRecordsOfClass:(NSString *)className withParameters:(NSDictionary *) passedParameters updatedAfterDate:(NSDate *)updatedDate;
 
 @end

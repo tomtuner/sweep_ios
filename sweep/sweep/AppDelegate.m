@@ -18,14 +18,15 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-
-    [self initKeychainForDepartmentKey];
-    
     NSString *defaultsFileName = [NSString stringWithFormat:@"defaults_%@", [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleName"]];
     NSLog(@"Product Name: %@", defaultsFileName);
     
     NSDictionary *defaults = [[NSDictionary alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:defaultsFileName ofType:@"plist"]];
     [[NSUserDefaults standardUserDefaults] registerDefaults:defaults];
+    
+    [self initKeychainForDepartmentKey];
+    [[SWSyncEngine sharedEngine] registerNSManagedObjectClassToSync:[Events class]];
+//    [[SWSyncEngine sharedEngine] registerNSManagedObjectClassToSync:[Scans class]];
     
     [ThemeManager customizeAppAppearance];
 
@@ -88,7 +89,7 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
-    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+//    [[SWSyncEngine sharedEngine] startSync];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
@@ -96,7 +97,7 @@
     // Saves changes in the application's managed object context before the application terminates.
     [self saveContext];
 }
-
+/*
 - (void)saveContext
 {
     NSError *error = nil;
@@ -176,7 +177,7 @@
          
          Lightweight migration will only work for a limited set of schema changes; consult "Core Data Model Versioning and Data Migration Programming Guide" for details.
          
-         */
+         
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
         abort();
     }    
@@ -191,5 +192,6 @@
 {
     return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
 }
+ */
 
 @end

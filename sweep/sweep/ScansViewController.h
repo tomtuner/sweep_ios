@@ -10,7 +10,7 @@
 #import <CoreData/CoreData.h>
 #import "IIViewDeckController.h"
 #import "LogInViewController.h"
-#import "Scan.h"
+#import "Scans.h"
 
 @interface ScansViewController : UIViewController <NSFetchedResultsControllerDelegate, UISplitViewControllerDelegate>
 

@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreData/CoreData.h>
-#import "Event.h"
+#import "Events.h"
 #import "ScansViewController.h"
 #import "IIViewDeckController.h"
 #import "SideMenuTableViewCell.h"

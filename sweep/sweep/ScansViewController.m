@@ -66,7 +66,7 @@
 
 - (void) validateDepartmentKey:(NSString *) departmentKey
 {
-    [Department globalDepartmentVerificationWithValidationKey:departmentKey
+    [Departments globalDepartmentVerificationWithValidationKey:departmentKey
                                                     withBlock:^(NSDictionary *department, NSError *error) {
         if (!error)
         {
@@ -152,7 +152,7 @@
 {
     NSManagedObjectContext *context = [self.fetchedResultsController managedObjectContext];
     NSEntityDescription *entity = [[self.fetchedResultsController fetchRequest] entity];
-    Scan *newManagedObject = [NSEntityDescription insertNewObjectForEntityForName:[entity name] inManagedObjectContext:context];
+    Scans *newManagedObject = [NSEntityDescription insertNewObjectForEntityForName:[entity name] inManagedObjectContext:context];
     
     // If appropriate, configure the new managed object.
     // Normally you should use accessor methods, but using KVC here avoids the need to add a custom class to the template.
@@ -251,7 +251,7 @@
 }
 */
 #pragma mark - Fetched results controller
-
+/*
 - (NSFetchedResultsController *)fetchedResultsController
 {
     if (_fetchedResultsController != nil) {
@@ -288,7 +288,7 @@
     
     return _fetchedResultsController;
 }    
-
+*/
 - (void)controllerWillChangeContent:(NSFetchedResultsController *)controller
 {
     [self.scansTable beginUpdates];
@@ -351,7 +351,7 @@
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
-    Scan *object = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    Scans *object = [self.fetchedResultsController objectAtIndexPath:indexPath];
     cell.textLabel.text = object.value;
 }
 

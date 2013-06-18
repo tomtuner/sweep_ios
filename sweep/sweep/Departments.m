@@ -1,30 +1,32 @@
 //
-//  Department.m
+//  Departments.m
 //  sweep
 //
-//  Created by Thomas DeMeo on 6/13/13.
-//  Copyright (c) 2013 Sweep. All rights reserved.
+//  Created by Thomas DeMeo on 6/18/13.
+//  Copyright (c) 2013 Kanzu LLC. All rights reserved.
 //
 
-#import "Department.h"
+#import "Departments.h"
+#import "Customers.h"
+#import "Events.h"
 
-@implementation Department
 
-@dynamic name;
+@implementation Departments
+
 @dynamic customer_id;
+@dynamic name;
+@dynamic remote_id;
+@dynamic updated_at;
 @dynamic valid_key;
-
-- (void) awakeFromInsert
-{
-    [super awakeFromInsert];
-}
+@dynamic customer;
+@dynamic events;
 
 + (void)globalDepartmentVerificationWithValidationKey:(NSString *) validationKey withBlock:(void (^)(NSDictionary *department, NSError *error))block
 {
-
+    
     NSDictionary *paramDict = [NSDictionary dictionaryWithObjects:@[validationKey]
                                                           forKeys:@[@"valid_key"]];
-
+    
     AFSweepAPIClient *networkingClient = [AFSweepAPIClient sharedClient];
     [networkingClient postPath:[NSString stringWithFormat:@"%@/department_validation", networkingClient.baseURL]
                     parameters:paramDict

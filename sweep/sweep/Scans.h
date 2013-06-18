@@ -1,0 +1,23 @@
+//
+//  Scans.h
+//  sweep
+//
+//  Created by Thomas DeMeo on 6/18/13.
+//  Copyright (c) 2013 Kanzu LLC. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+#import <CoreData/CoreData.h>
+
+@class Events;
+
+@interface Scans : NSManagedObject
+
+@property (nonatomic, retain) NSNumber * created_at;
+@property (nonatomic, retain) NSNumber * remote_id;
+@property (nonatomic, retain) NSDate * scanned_at;
+@property (nonatomic, retain) NSDate * updated_at;
+@property (nonatomic, retain) NSString * value;
+@property (nonatomic, retain) Events *event;
+
+@end

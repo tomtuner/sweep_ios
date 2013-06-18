@@ -53,7 +53,7 @@
  {
      if ([[segue identifier] isEqualToString:@"showSideMenu"]) {
          NSIndexPath *indexPath = [self.eventsTable indexPathForSelectedRow];
-         Event *object = [[self fetchedResultsController] objectAtIndexPath:indexPath];
+         Events *object = [[self fetchedResultsController] objectAtIndexPath:indexPath];
          [[segue destinationViewController] setDetailItem:object];
      }
  }
@@ -63,7 +63,7 @@
 {
     NSManagedObjectContext *context = [self.fetchedResultsController managedObjectContext];
     NSEntityDescription *entity = [[self.fetchedResultsController fetchRequest] entity];
-    Event *newManagedObject = [NSEntityDescription insertNewObjectForEntityForName:[entity name] inManagedObjectContext:context];
+    Events *newManagedObject = [NSEntityDescription insertNewObjectForEntityForName:[entity name] inManagedObjectContext:context];
     
     // If appropriate, configure the new managed object.
     // Normally you should use accessor methods, but using KVC here avoids the need to add a custom class to the template.
@@ -164,6 +164,7 @@
  }
  }
  */
+/*
 #pragma mark - Fetched results controller
 
 - (NSFetchedResultsController *)fetchedResultsController
@@ -174,7 +175,7 @@
     
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     // Edit the entity name as appropriate.
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Events" inManagedObjectContext:self.managedObjectContext];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Departments" inManagedObjectContext:self.managedObjectContext];
     [fetchRequest setEntity:entity];
     
     // Set the batch size to a suitable number.
@@ -202,7 +203,7 @@
     
     return _fetchedResultsController;
 }
-
+*/
 - (void)controllerWillChangeContent:(NSFetchedResultsController *)controller
 {
     [self.eventsTable beginUpdates];
@@ -334,7 +335,7 @@
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
-    Event *object = (Event *)[self.fetchedResultsController objectAtIndexPath:indexPath];
+    Departments *object = (Departments *)[self.fetchedResultsController objectAtIndexPath:indexPath];
     cell.textLabel.text = object.name;
 }
 

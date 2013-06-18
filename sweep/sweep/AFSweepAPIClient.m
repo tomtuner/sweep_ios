@@ -36,4 +36,31 @@
     return self;
 }
 
+- (NSMutableURLRequest *)GETRequestForClass:(NSString *)className parameters:(NSDictionary *)parameters {
+    NSMutableURLRequest *request = nil;
+    request = [self requestWithMethod:@"GET" path:[NSString stringWithFormat:@"%@", [className lowercaseString]] parameters:parameters];
+    return request;
+}
+
+- (NSMutableURLRequest *)GETRequestForAllRecordsOfClass:(NSString *)className withParameters:(NSDictionary *)passedParameters updatedAfterDate:(NSDate *)updatedDate {
+    NSMutableURLRequest *request = nil;
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionaryWithDictionary:passedParameters];
+    if (updatedDate) {
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.'999Z'"];
+        [dateFormatter setTimeZone:[NSTimeZone timeZoneWithName:@"GMT"]];
+        
+        NSString *jsonString = [NSString
+                                stringWithFormat:@"{\"updatedAt\":{\"$gte\":{\"__type\":\"Date\",\"iso\":\"%@\"}}}",
+                                [dateFormatter stringFromDate:updatedDate]];
+        
+//        parameters = [NSDictionary dic dictionaryWithObject:jsonString forKey:@"where"];
+        [parameters setObject:[dateFormatter stringFromDate:updatedDate] forKey:@"updated_at"];
+        parameters = [NSDictionary dictionaryWithDictionary:parameters];
+    }
+    
+    request = [self GETRequestForClass:className parameters:parameters];
+    return request;
+}
+
 @end

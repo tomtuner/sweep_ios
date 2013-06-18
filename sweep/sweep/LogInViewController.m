@@ -44,12 +44,24 @@
 - (void) validateDepartmentKey:(NSString *) departmentKey
 {
     [self showActivtyIndicatorView];
-    [Department globalDepartmentVerificationWithValidationKey:departmentKey
+    [Departments globalDepartmentVerificationWithValidationKey:departmentKey
                                                     withBlock:^(NSDictionary *department, NSError *error) {
         if (!error)
         {
-            NSLog(@"Department Returned: %@", department);
+            NSLog(@"Department Returned From Login View: %@", department);
+            /*Departments *departmentObject = [NSEntityDescription insertNewObjectForEntityForName:@"Departments" inManagedObjectContext:self.managedObjectContext];
+            departmentObject.valid_key = [department objectForKey:@"valid_key"];
+            departmentObject.name = [department objectForKey:@"name"];
+            departmentObject.customer_id = [department objectForKey:@"customer_id"];
+            departmentObject.remote_id = [department objectForKey:@"id"];
+            */
             [self.departmentKeyItem setObject:[department objectForKey:@"valid_key"] forKey:(__bridge id)(kSecValueData)];
+            
+            if (![self.managedObjectContext save:&error]) {
+                NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
+            }
+            [[SWSyncEngine sharedEngine] startSync];
+
             [self dismissViewControllerAnimated:YES completion:nil];
 
         }else {

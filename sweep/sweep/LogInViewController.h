@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "KeychainWrapper.h"
-#import "Department.h"
+#import "Departments.h"
+#import "SWSyncEngine.h"
 
 @interface LogInViewController : UIViewController <UITextFieldDelegate>
 

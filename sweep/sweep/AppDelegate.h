@@ -13,6 +13,10 @@
 #import "SettingsManager.h"
 #import "SideMenuViewController.h"
 #import "LogInViewController.h"
+#import "SWSyncEngine.h"
+#import "Departments.h"
+#import "Events.h"
+#import "Scans.h"
 
 //@class EventValuesViewController;
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
