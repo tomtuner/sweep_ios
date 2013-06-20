@@ -10,6 +10,9 @@
 
 @interface SideMenuViewController ()
 
+
+@property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
+
 @end
 
 @implementation SideMenuViewController
@@ -29,10 +32,42 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    
+//    if ([SWSyncEngine sharedEngine] syncInProgress) {
+//    }
+
     self.scansViewController = (ScansViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
-    self.scansViewController.managedObjectContext = self.managedObjectContext;
+//    self.scansViewController.managedObjectContext = self.managedObjectContext;
+    self.managedObjectContext = [[SWCoreDataController sharedInstance] newManagedObjectContext];
+    [[NSNotificationCenter defaultCenter] addObserverForName:@"SWSyncEngineSyncCompleted" object:nil queue:nil usingBlock:^(NSNotification *note) {
+        [self loadRecordsFromCoreData];
+        [self.eventsTable reloadData];
+    }];
 }
+
+-(void) viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"SWSyncEngineSyncCompleted" object:nil];
+}
+
+- (void)loadRecordsFromCoreData {
+    [self.managedObjectContext performBlockAndWait:^{
+        [self.managedObjectContext reset];
+        NSError *error = nil;
+        NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:@"Events"];
+        [request setSortDescriptors:[NSArray arrayWithObject:
+                                     [NSSortDescriptor sortDescriptorWithKey:@"remote_id" ascending:YES]]];
+        self.events = [self.managedObjectContext executeFetchRequest:request error:&error];
+        
+    }];
+}
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -53,12 +88,12 @@
  {
      if ([[segue identifier] isEqualToString:@"showSideMenu"]) {
          NSIndexPath *indexPath = [self.eventsTable indexPathForSelectedRow];
-         Events *object = [[self fetchedResultsController] objectAtIndexPath:indexPath];
+         Events *object = [self.events objectAtIndex:indexPath.row];
          [[segue destinationViewController] setDetailItem:object];
      }
  }
- 
 
+/*
 - (void)insertNewObject
 {
     NSManagedObjectContext *context = [self.fetchedResultsController managedObjectContext];
@@ -79,7 +114,7 @@
         abort();
     }
 }
-
+*/
 #pragma mark - Table View
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -89,8 +124,8 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    id <NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController sections][section];
-    return self.eventsTable.editing ? [sectionInfo numberOfObjects] : [sectionInfo numberOfObjects] + 1;
+//    id <NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController sections][section];
+    return self.eventsTable.editing ? [self.events count] : [self.events count] + 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -98,7 +133,7 @@
 //    SideMenuTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     
     NSString *CellIdentifier = @"SideMenuTableViewCell";
-    BOOL addCell = (indexPath.row == self.fetchedResultsController.fetchedObjects.count);
+    BOOL addCell = (indexPath.row == self.events.count);
     
 	SideMenuTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil)
@@ -275,7 +310,7 @@
     // This will create a "invisible" footer
     return [UIView new];
 }
-
+/*
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     // FIXME: This should only happen in else statement, should stay selected during new event
@@ -314,9 +349,9 @@
          NSString *archivePath = [documentsDir stringByAppendingPathComponent:kScanListArchiveName];
          [NSKeyedArchiver archiveRootObject:self.scanLists toFile:archivePath];
          [self.scanEventListTable reloadData];
-         */
+         
     }else {
-       /*
+       
         SScanEvent *eve = (SScanEvent *)[self.scanLists objectAtIndex:indexPath.row];
         NSLog(@"Event Name: %@", eve.name);
         NSLog(@"Event UUID: %@", eve.uuid);
@@ -328,14 +363,14 @@
             ((UINavigationController *)controller.centerController).viewControllers = controllers;
             // ...
         }];
-        */
+        
     }
 }
-
+*/
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
-    Departments *object = (Departments *)[self.fetchedResultsController objectAtIndexPath:indexPath];
+    Events *object = [self.events objectAtIndex:indexPath.row];
     cell.textLabel.text = object.name;
 }
 

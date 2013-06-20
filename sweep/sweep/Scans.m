@@ -18,7 +18,7 @@
 @dynamic updated_at;
 @dynamic value;
 @dynamic event;
-
+@dynamic sync_status;
 
 -(void) awakeFromNib
 {

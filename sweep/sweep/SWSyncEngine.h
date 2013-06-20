@@ -11,6 +11,12 @@
 #import "AFSweepAPIClient.h"
 #import "KeychainWrapper.h"
 
+typedef enum {
+    SWObjectSynced = 0,
+    SWObjectCreated,
+    SWObjectDeleted,
+} SWObjectSyncStatus;
+
 @interface SWSyncEngine : NSObject
 
 @property (atomic, readonly) BOOL syncInProgress;

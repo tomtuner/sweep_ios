@@ -20,6 +20,8 @@
 @dynamic valid_key;
 @dynamic customer;
 @dynamic events;
+@dynamic sync_status;
+@dynamic created_at;
 
 + (void)globalDepartmentVerificationWithValidationKey:(NSString *) validationKey withBlock:(void (^)(NSDictionary *department, NSError *error))block
 {

@@ -19,5 +19,7 @@
 @dynamic updated_at;
 @dynamic department;
 @dynamic scans;
+@dynamic sync_status;
+@dynamic created_at;
 
 @end

@@ -17,6 +17,9 @@
 @property (nonatomic, retain) NSNumber * remote_id;
 @property (nonatomic, retain) NSDate * updated_at;
 @property (nonatomic, retain) NSSet *departments;
+@property (nonatomic, retain) NSNumber * sync_status;
+@property (nonatomic, retain) NSDate *created_at;
+
 @end
 
 @interface Customers (CoreDataGeneratedAccessors)

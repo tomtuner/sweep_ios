@@ -38,21 +38,22 @@
         UINavigationController *navigationController = [splitViewController.viewControllers lastObject];
         splitViewController.delegate = (id)navigationController.topViewController;
         ScansViewController *scanController = (ScansViewController *)navigationController.topViewController;
+//        scanController.managedObjectContext = self.managedObjectContext;
         scanController.departmentKeyItem = self.departmentKeyItem;
 
         UINavigationController *masterNavigationController = splitViewController.viewControllers[0];
         SideMenuViewController *controller = (SideMenuViewController *)masterNavigationController.topViewController;
-        controller.managedObjectContext = self.managedObjectContext;
+//        controller.managedObjectContext = self.managedObjectContext;
         
     } else {
 
         UINavigationController *navigationController = (UINavigationController *)self.window.rootViewController;
         ScansViewController *controller = (ScansViewController *)navigationController.topViewController;
-        controller.managedObjectContext = self.managedObjectContext;
+//        controller.managedObjectContext = self.managedObjectContext;
         controller.departmentKeyItem = self.departmentKeyItem;
         
         SideMenuViewController *sideController = [st instantiateViewControllerWithIdentifier:@"sideMenuController"];
-        sideController.managedObjectContext = self.managedObjectContext;
+//        sideController.managedObjectContext = self.managedObjectContext;
         IIViewDeckController *deckController = [[IIViewDeckController alloc] initWithCenterViewController:navigationController leftViewController:sideController];
         
         deckController.openSlideAnimationDuration = 0.2f;

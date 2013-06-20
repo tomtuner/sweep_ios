@@ -18,8 +18,10 @@
 @property (strong, nonatomic) ScansViewController *scansViewController;
 
 @property(nonatomic, strong) IBOutlet UITableView *eventsTable;
+@property (strong, nonatomic) NSArray *events;
 
-@property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
-@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+
+//@property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
+//@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 
 @end

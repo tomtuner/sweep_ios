@@ -17,6 +17,7 @@
 @property (strong, nonatomic) id detailItem;
 @property(strong, nonatomic) IBOutlet UITableView *scansTable;
 @property (nonatomic, strong) KeychainWrapper *departmentKeyItem;
+@property (nonatomic, strong) NSArray *scans;
 
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;

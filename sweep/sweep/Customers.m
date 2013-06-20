@@ -16,5 +16,7 @@
 @dynamic remote_id;
 @dynamic updated_at;
 @dynamic departments;
-
+@dynamic sync_status;
+@dynamic created_at
+;
 @end

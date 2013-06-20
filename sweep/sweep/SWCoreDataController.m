@@ -18,12 +18,12 @@
 @end
 
 @implementation SWCoreDataController
-
+/*
 @synthesize masterManagedObjectContext = _masterManagedObjectContext;
 @synthesize backgroundManagedObjectContext = _backgroundManagedObjectContext;
 @synthesize managedObjectModel = _managedObjectModel;
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
-
+*/
 + (id)sharedInstance {
     static dispatch_once_t once;
     static SWCoreDataController *sharedInstance;
