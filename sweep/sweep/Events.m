@@ -22,4 +22,17 @@
 @dynamic sync_status;
 @dynamic created_at;
 
+- (NSMutableDictionary *)JSONToCreateObjectOnServer {
+    
+    NSDictionary *jsonDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
+                                    self.name, @"name",
+                                    self.department_id, @"department_id",
+                                    self.remote_id, @"id", nil];
+    NSMutableDictionary *event = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                           jsonDictionary, @"event", nil];
+    
+                                
+    return event;
+}
+
 @end

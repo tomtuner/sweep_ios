@@ -19,7 +19,6 @@
 @property (nonatomic, strong) KeychainWrapper *departmentKeyItem;
 @property (nonatomic, strong) NSArray *scans;
 
-@property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 
 @end

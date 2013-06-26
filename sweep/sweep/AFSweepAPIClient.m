@@ -56,10 +56,15 @@
         
 //        parameters = [NSDictionary dic dictionaryWithObject:jsonString forKey:@"where"];
         [parameters setObject:[dateFormatter stringFromDate:updatedDate] forKey:@"updated_at"];
-        parameters = [NSDictionary dictionaryWithDictionary:parameters];
-    }
-    
+    }    
+    parameters = [NSDictionary dictionaryWithDictionary:parameters];
     request = [self GETRequestForClass:className parameters:parameters];
+    return request;
+}
+
+- (NSMutableURLRequest *)POSTRequestForClass:(NSString *)className parameters:(NSDictionary *)parameters {
+    NSMutableURLRequest *request = nil;
+    request = [self requestWithMethod:@"POST" path:[NSString stringWithFormat:@"%@", [className lowercaseString]] parameters:parameters];
     return request;
 }
 

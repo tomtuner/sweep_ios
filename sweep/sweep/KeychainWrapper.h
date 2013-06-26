@@ -22,4 +22,5 @@
 // Initializes and resets the default generic keychain item data.
 - (void)resetKeychainItem;
 
++ (NSString *) returnDepartmentKey;
 @end

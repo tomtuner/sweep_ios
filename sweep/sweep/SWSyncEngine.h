@@ -10,11 +10,11 @@
 #import "SWCoreDataController.h"
 #import "AFSweepAPIClient.h"
 #import "KeychainWrapper.h"
+#import "NSManagedObject+JSON.h"
 
 typedef enum {
     SWObjectSynced = 0,
     SWObjectCreated,
-    SWObjectDeleted,
 } SWObjectSyncStatus;
 
 @interface SWSyncEngine : NSObject
@@ -24,5 +24,6 @@ typedef enum {
 + (SWSyncEngine *) sharedEngine;
 - (void)registerNSManagedObjectClassToSync:(Class)aClass;
 - (void)startSync;
-
+- (void)newManagedObjectUsingMasterContextWithClassName:(NSString *)className forRecord:(NSDictionary *)record;
+- (BOOL)removeCoreDataObjects;
 @end

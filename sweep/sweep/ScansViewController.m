@@ -31,13 +31,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    // Use this to reset the keychain if needed
-//    [self.departmentKeyItem resetKeychainItem];
-    [self displayLoginControllerIfNeeded];
 
     [self setupMenuBarButtonItems];
     [self configureView];
+    
+    [self displayLoginControllerIfNeeded];
+
 }
 
 -(void) viewDidAppear:(BOOL)animated
@@ -75,13 +74,19 @@
         [self validateDepartmentKey:departmentKey];
     }else {
         // No department key found
-        UIStoryboard *st = [UIStoryboard storyboardWithName:[[NSBundle mainBundle].infoDictionary objectForKey:@"UIMainStoryboardFile"] bundle:[NSBundle mainBundle]];
-        LogInViewController *logInController = [st instantiateViewControllerWithIdentifier:@"logInViewController"];
-        logInController.departmentKeyItem = self.departmentKeyItem;
-        logInController.managedObjectContext = self.managedObjectContext;
-        logInController.modalPresentationStyle = UIModalPresentationFormSheet;
-        [self presentViewController:logInController animated:YES completion:nil];
+        // Perform Selector seems to be more stable when loading the view
+        [self performSelector:@selector(showLoginController) withObject:nil afterDelay:0.0];
+//        [self showLoginController];
     }
+}
+
+- (void) showLoginController
+{
+    UIStoryboard *st = [UIStoryboard storyboardWithName:[[NSBundle mainBundle].infoDictionary objectForKey:@"UIMainStoryboardFile"] bundle:[NSBundle mainBundle]];
+    LogInViewController *logInController = [st instantiateViewControllerWithIdentifier:@"logInViewController"];
+    logInController.departmentKeyItem = self.departmentKeyItem;
+    logInController.modalPresentationStyle = UIModalPresentationFormSheet;
+    [self presentViewController:logInController animated:YES completion:nil];
 }
 
 - (void) validateDepartmentKey:(NSString *) departmentKey
@@ -93,6 +98,9 @@
             // Authentication was successful store the key returned
             NSLog(@"Department Returned: %@", department);
             [self.departmentKeyItem setObject:[department objectForKey:@"valid_key"] forKey:(__bridge id)(kSecValueData)];
+            
+//            SWSyncEngine *sync = [SWSyncEngine sharedEngine];
+//            [sync new]
 //            [self dismissViewControllerAnimated:YES completion:nil];
             [[SWSyncEngine sharedEngine] startSync];
             
@@ -100,16 +108,15 @@
             NSLog(@"Error Code: %i", [[[error userInfo] objectForKey:AFNetworkingOperationFailingURLResponseErrorKey] statusCode] );
 
             NSLog(@"Error: %@", [error localizedDescription]);
+            // Look for an unauthorized response code
             if ([[[error userInfo] objectForKey:AFNetworkingOperationFailingURLResponseErrorKey] statusCode] == 401)
             {
                 // Key is no longer valid reset the keychain and reenter
                 [self.departmentKeyItem resetKeychainItem];
-                UIStoryboard *st = [UIStoryboard storyboardWithName:[[NSBundle mainBundle].infoDictionary objectForKey:@"UIMainStoryboardFile"] bundle:[NSBundle mainBundle]];
-                LogInViewController *logInController = [st instantiateViewControllerWithIdentifier:@"logInViewController"];
-                logInController.departmentKeyItem = self.departmentKeyItem;
-                logInController.managedObjectContext = self.managedObjectContext;
-                logInController.modalPresentationStyle = UIModalPresentationFormSheet;
-                [self presentViewController:logInController animated:YES completion:nil];
+                // Remove ALL core data objects when department key is deemed invalid
+                [[SWSyncEngine sharedEngine] removeCoreDataObjects];
+                
+                [self showLoginController];
             }
         }  
     }];

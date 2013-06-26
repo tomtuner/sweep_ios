@@ -29,6 +29,14 @@ static const UInt8 kKeychainItemIdentifier[]    = "com.sweep.Keychain\0";
 @implementation KeychainWrapper
 
 
++ (NSString *) returnDepartmentKey
+{
+    KeychainWrapper *wrapper = [[KeychainWrapper alloc] initWithIdentifier:@"DepartmentKey" accessGroup:nil];
+    NSString *departmentKey = (NSString *)[wrapper objectForKey:(id)(kSecValueData)];
+    [wrapper release];
+    return departmentKey;
+}
+
 - (id)initWithIdentifier: (NSString *)identifier accessGroup:(NSString *) accessGroup;
 {
     if (self = [super init])

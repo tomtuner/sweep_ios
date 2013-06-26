@@ -10,6 +10,8 @@
 
 @interface LogInViewController ()
 
+@property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
+
 @end
 
 @implementation LogInViewController
@@ -26,11 +28,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.managedObjectContext = [[SWCoreDataController sharedInstance] newManagedObjectContext];
 
 }
 
 -(void) viewDidAppear:(BOOL)animated
 {
+    [super viewDidAppear:animated];
+    /*
     NSString *departmentKey = (NSString *)[self.departmentKeyItem objectForKey:(__bridge id)(kSecValueData)];
     if (departmentKey.length)
     {
@@ -39,6 +44,7 @@
     }else {
         NSLog(@"No department key set, do nothing.");
     }
+     */
 }
 
 - (void) validateDepartmentKey:(NSString *) departmentKey
@@ -56,10 +62,38 @@
             departmentObject.remote_id = [department objectForKey:@"id"];
             */
             [self.departmentKeyItem setObject:[department objectForKey:@"valid_key"] forKey:(__bridge id)(kSecValueData)];
-            
+            /*
             if (![self.managedObjectContext save:&error]) {
                 NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
             }
+            */
+            [[SWSyncEngine sharedEngine] newManagedObjectUsingMasterContextWithClassName:@"Departments" forRecord:department];
+//            Departments *t = [NSEntityDescription insertNewObjectForEntityForName:@"Departments" inManagedObjectContext:self.managedObjectContext];
+//            t.valid_key = [department objectForKey:@"valid_key"];
+            [self.managedObjectContext performBlockAndWait:^{
+                [self.managedObjectContext reset];
+                Departments *sharedDepartmentArray = nil;
+                NSError *error = nil;
+                NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:@"Departments"];
+                [request setSortDescriptors:[NSArray arrayWithObject:
+                                             [NSSortDescriptor sortDescriptorWithKey:@"remote_id" ascending:YES]]];
+                sharedDepartmentArray = [[self.managedObjectContext executeFetchRequest:request error:&error] lastObject];
+//                NSLog(@"Shared Department: %@", sharedDepartmentArray);
+//            }];
+
+//            [self.managedObjectContext performBlockAndWait:^{
+                
+//                [[SWSyncEngine sharedEngine] updateManagedObject:sharedDepartmentArray withRecord:department];
+                
+//                NSError *error = nil;
+                BOOL saved = [self.managedObjectContext save:&error];
+                if (!saved) {
+                    // do some real error handling
+                    NSLog(@"Could not save Department due to %@", error);
+                }
+                [[SWCoreDataController sharedInstance] saveMasterContext];
+            }];
+            
             [[SWSyncEngine sharedEngine] startSync];
 
             [self dismissViewControllerAnimated:YES completion:nil];

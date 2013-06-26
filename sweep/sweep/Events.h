@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
+#import "NSManagedObject+JSON.h"
+#import "SWSyncEngine.h"
 
 @class Departments, Scans;
 

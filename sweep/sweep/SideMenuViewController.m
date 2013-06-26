@@ -47,8 +47,6 @@
 -(void) viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    
-    
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
@@ -64,7 +62,7 @@
         [request setSortDescriptors:[NSArray arrayWithObject:
                                      [NSSortDescriptor sortDescriptorWithKey:@"remote_id" ascending:YES]]];
         self.events = [self.managedObjectContext executeFetchRequest:request error:&error];
-        
+        NSLog(@"Events Array: %@", self.events);
     }];
 }
 
@@ -124,14 +122,11 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-//    id <NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController sections][section];
     return self.eventsTable.editing ? [self.events count] : [self.events count] + 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-//    SideMenuTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-    
+{    
     NSString *CellIdentifier = @"SideMenuTableViewCell";
     BOOL addCell = (indexPath.row == self.events.count);
     
@@ -142,12 +137,12 @@
                                             reuseIdentifier:CellIdentifier];
     }
     
-    
-
     if (addCell) {
         cell.nameLabel.text = @"Add an event...";
     }else {
         [self configureCell:cell atIndexPath:indexPath];
+//        Events *object = [self.events objectAtIndex:indexPath.row];
+//        cell.nameLabel.text = object.name;
     }
     
     return cell;
@@ -199,105 +194,6 @@
  }
  }
  */
-/*
-#pragma mark - Fetched results controller
-
-- (NSFetchedResultsController *)fetchedResultsController
-{
-    if (_fetchedResultsController != nil) {
-        return _fetchedResultsController;
-    }
-    
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    // Edit the entity name as appropriate.
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Departments" inManagedObjectContext:self.managedObjectContext];
-    [fetchRequest setEntity:entity];
-    
-    // Set the batch size to a suitable number.
-    [fetchRequest setFetchBatchSize:20];
-    
-    // Edit the sort key as appropriate.
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:NO];
-    NSArray *sortDescriptors = @[sortDescriptor];
-    
-    [fetchRequest setSortDescriptors:sortDescriptors];
-    
-    // Edit the section name key path and cache name if appropriate.
-    // nil for section name key path means "no sections".
-    NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:@"Side"];
-    aFetchedResultsController.delegate = self;
-    self.fetchedResultsController = aFetchedResultsController;
-    
-	NSError *error = nil;
-	if (![self.fetchedResultsController performFetch:&error]) {
-        // Replace this implementation with code to handle the error appropriately.
-        // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-	    NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-	    abort();
-	}
-    
-    return _fetchedResultsController;
-}
-*/
-- (void)controllerWillChangeContent:(NSFetchedResultsController *)controller
-{
-    [self.eventsTable beginUpdates];
-}
-
-- (void)controller:(NSFetchedResultsController *)controller didChangeSection:(id <NSFetchedResultsSectionInfo>)sectionInfo
-           atIndex:(NSUInteger)sectionIndex forChangeType:(NSFetchedResultsChangeType)type
-{
-    switch(type) {
-        case NSFetchedResultsChangeInsert:
-            [self.eventsTable insertSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
-            break;
-            
-        case NSFetchedResultsChangeDelete:
-            [self.eventsTable deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
-            break;
-    }
-}
-
-- (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject
-       atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type
-      newIndexPath:(NSIndexPath *)newIndexPath
-{
-    UITableView *tableView = self.eventsTable;
-    
-    switch(type) {
-        case NSFetchedResultsChangeInsert:
-            [tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
-            break;
-            
-        case NSFetchedResultsChangeDelete:
-            [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-            break;
-            
-        case NSFetchedResultsChangeUpdate:
-            [self configureCell:[tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
-            break;
-            
-        case NSFetchedResultsChangeMove:
-            [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-            [tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
-            break;
-    }
-}
-
-- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
-{
-    [self.eventsTable endUpdates];
-}
-
-/*
- // Implementing the above methods to update the table view in response to individual changes may have performance implications if a large number of changes are made simultaneously. If this proves to be an issue, you can instead just implement controllerDidChangeContent: which notifies the delegate that all section and object changes have been processed.
- 
- - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
- {
- // In the simplest, most efficient, case, reload the table view.
- [self.tableView reloadData];
- }
- */
 
 #pragma mark - UITableViewDataSource
 
@@ -310,11 +206,11 @@
     // This will create a "invisible" footer
     return [UIView new];
 }
-/*
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     // FIXME: This should only happen in else statement, should stay selected during new event
-    if (indexPath.row == [self.fetchedResultsController.fetchedObjects count]) {
+    if (indexPath.row == self.events.count) {
         
         SideMenuTableViewCell *cell = (SideMenuTableViewCell*)[tableView cellForRowAtIndexPath:indexPath];
         [cell.nameLabel setHidden:YES];
@@ -323,16 +219,16 @@
         
         cell.nameTextField.delegate = self;
         [cell.nameTextField becomeFirstResponder];
-        
+        /*
         // Animate tableview frame change
         [UIView animateWithDuration:0.3 delay:0.0 options:UIViewAnimationCurveEaseOut animations:^{
             self.eventsTable.frame = CGRectMake(self.eventsTable.frame.origin.x, self.eventsTable.frame.origin.y, self.eventsTable.frame.size.width, self.eventsTable.frame.size.height - 250.0f);
         }
-                         completion:^(BOOL finished){
-                             [self.eventsTable scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
-                             [tableView deselectRowAtIndexPath:indexPath animated:NO];
-                         }];
-        
+         completion:^(BOOL finished){
+             [self.eventsTable scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+             [tableView deselectRowAtIndexPath:indexPath animated:NO];
+         }];
+        */
         
         
         
@@ -365,13 +261,97 @@
         }];
         
     }
+         */
+    }
 }
-*/
 
-- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
+
+- (void)configureCell:(SideMenuTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
     Events *object = [self.events objectAtIndex:indexPath.row];
-    cell.textLabel.text = object.name;
+    cell.nameLabel.text = object.name;
+}
+
+#pragma mark - UITextFieldDelegate
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+    
+    if (![textField.text isEqualToString:@""]) {
+//        SScanEvent *newEvent = [[SScanEvent alloc] init];
+        //    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+        //    [dateFormat setDateFormat:@"MMMM d ss"];
+        //    NSString *dateString = [dateFormat stringFromDate:newEvent.date];
+//        newEvent.name = textField.text;
+//        [self.events addObject:newEvent];
+        // Save our new scans out to the archive file
+//        NSString *documentsDir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
+//                                                                      NSUserDomainMask, YES) objectAtIndex:0];
+//        NSString *archivePath = [documentsDir stringByAppendingPathComponent:kScanListArchiveName];
+//        [NSKeyedArchiver archiveRootObject:self.scanLists toFile:archivePath];
+//        Events *newObject = [NSEntityDescription insertNewObjectForEntityForName:@"Events" inManagedObjectContext:self.managedObjectContext];
+//        NSString *departmentKey = [KeychainWrapper returnDepartmentKey];
+//        newObject.
+        [self.managedObjectContext performBlockAndWait:^{
+            [self.managedObjectContext reset];
+            NSArray *sharedDepartmentArray = nil;
+            NSError *error = nil;
+            NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:@"Departments"];
+            [request setSortDescriptors:[NSArray arrayWithObject:
+                                         [NSSortDescriptor sortDescriptorWithKey:@"remote_id" ascending:YES]]];
+            sharedDepartmentArray = [self.managedObjectContext executeFetchRequest:request error:&error];
+            Departments *sharedDepartment = [sharedDepartmentArray lastObject];
+            NSLog(@"Shared Department: %@", sharedDepartmentArray);
+            Events *newEvent = [NSEntityDescription insertNewObjectForEntityForName:@"Events" inManagedObjectContext:self.managedObjectContext];
+            newEvent.name = textField.text;
+            newEvent.department_id = sharedDepartment.remote_id;
+            newEvent.sync_status = [NSNumber numberWithInt:SWObjectCreated];
+            
+//            newEvent.
+            
+//            [[SWSyncEngine sharedEngine] newManagedObjectUsingMasterContextWithClassName:@"Events" forRecord:department];
+            //            Departments *t = [NSEntityDescription insertNewObjectForEntityForName:@"Departments" inManagedObjectContext:self.managedObjectContext];
+            //            t.valid_key = [department objectForKey:@"valid_key"];
+//                Departments *sharedDepartmentArray = nil;
+//                NSError *error = nil;
+//                NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:@"Departments"];
+//                [request setSortDescriptors:[NSArray arrayWithObject:
+//                                             [NSSortDescriptor sortDescriptorWithKey:@"remote_id" ascending:YES]]];
+//                sharedDepartmentArray = [[self.managedObjectContext executeFetchRequest:request error:&error] lastObject];
+                //                NSLog(@"Shared Department: %@", sharedDepartmentArray);
+                //            }];
+                
+                //            [self.managedObjectContext performBlockAndWait:^{
+                
+                //                [[SWSyncEngine sharedEngine] updateManagedObject:sharedDepartmentArray withRecord:department];
+                
+                //                NSError *error = nil;
+                BOOL saved = [self.managedObjectContext save:&error];
+                if (!saved) {
+                    // do some real error handling
+                    NSLog(@"Could not save Department due to %@", error);
+                }
+                [[SWCoreDataController sharedInstance] saveMasterContext];
+
+//            [self.eventsTable reloadData];
+        }];
+        [self loadRecordsFromCoreData];
+        [self.eventsTable reloadData];
+        [[SWSyncEngine sharedEngine] startSync];
+//        NSLog(@"Events List: %@", self.events);
+//        [self.eventsTable reloadData];
+        
+    }
+    // Release the keyboard
+    // FIXME: Change 250 Value
+    //self.eventsTable.frame = CGRectMake(self.eventsTable.frame.origin.x, self.eventsTable.frame.origin.y, self.eventsTable.frame.size.width, self.eventsTable.frame.size.height + 250.0f);
+//    [self.eventsTable reloadData];
+    [textField resignFirstResponder];
+    
+    return YES;
+}
+
+- (void) textFieldDidBeginEditing:(UITextField *)textField {
+    [self.eventsTable scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:self.events.count inSection:0] atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
 }
 
 @end

@@ -101,10 +101,135 @@ NSString * const kSWSyncEngineSyncCompletedNotificationName = @"SWSyncEngineSync
 //    [record setValue:[NSNumber numberWithInt:SWObjectSynced] forKey:@"sync_status"];
 }
 
+- (void)newManagedObjectUsingMasterContextWithClassName:(NSString *)className forRecord:(NSDictionary *)record {
+    NSManagedObject *newManagedObject = [NSEntityDescription insertNewObjectForEntityForName:className inManagedObjectContext:[[SWCoreDataController sharedInstance] masterManagedObjectContext]];
+    [record enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+        if ([key isEqualToString:@"id"]) {
+            key = @"remote_id";
+        }
+        [self setValue:obj forKey:key forManagedObject:newManagedObject];
+    }];
+    // Set SYNC status for new object? Can't change immutable NSDictionary
+    //    [record setValue:[NSNumber numberWithInt:SWObjectSynced] forKey:@"sync_status"];
+}
+
 - (void)updateManagedObject:(NSManagedObject *)managedObject withRecord:(NSDictionary *)record {
     [record enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+        if ([key isEqualToString:@"id"]) {
+            key = @"remote_id";
+        }
         [self setValue:obj forKey:key forManagedObject:managedObject];
     }];
+}
+
+-(void) postLocalObjectsToServer
+{
+    NSMutableArray *operations = [NSMutableArray array];
+    for (NSString *className in self.registeredClassesToSync) {
+        NSArray *objectsToCreate = [self managedObjectsUsingMasterContextForClass:className withSyncStatus:SWObjectCreated];
+        for (NSManagedObject *objectToCreate in objectsToCreate) {
+            NSMutableDictionary *jsonString = [objectToCreate JSONToCreateObjectOnServer];
+            
+            NSString *departmentKey = [KeychainWrapper returnDepartmentKey];
+            //        NSMutableDictionary *tempDict = [NSMutableDictionary dictionaryWithDictionary:<#(NSDictionary *)#>]
+//            NSDictionary *paramDict = [NSDictionary dictionaryWithObjects:@[departmentKey]
+//                                                                  forKeys:@[@"valid_key"]];
+            [jsonString setObject:departmentKey forKey:@"valid_key"];
+            
+            NSMutableURLRequest *request = [[AFSweepAPIClient sharedClient] POSTRequestForClass:className parameters:jsonString];
+            
+            AFHTTPRequestOperation *operation = [[AFSweepAPIClient sharedClient] HTTPRequestOperationWithRequest:request success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                NSLog(@"Success creation: %@", responseObject);
+                NSDictionary *responseDictionary = responseObject;
+                NSDate *createdDate = [self dateUsingStringFromAPI:[responseDictionary valueForKey:@"created_at"]];
+                [objectToCreate setValue:createdDate forKey:@"created_at"];
+                [objectToCreate setValue:createdDate forKey:@"updated_at"];
+                [objectToCreate setValue:[responseDictionary valueForKey:@"id"] forKey:@"remote_id"];
+                [objectToCreate setValue:[NSNumber numberWithInt:SWObjectSynced] forKey:@"sync_status"];
+            } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                NSLog(@"Failed creation: %@", error);
+            }];
+            [operations addObject:operation];
+        }
+    }
+    
+    [[AFSweepAPIClient sharedClient] enqueueBatchOfHTTPRequestOperations:operations progressBlock:^(NSUInteger numberOfCompletedOperations, NSUInteger totalNumberOfOperations) {
+        NSLog(@"Completed %d of %d create operations", numberOfCompletedOperations, totalNumberOfOperations);
+    } completionBlock:^(NSArray *operations) {
+        if ([operations count] > 0) {
+            NSLog(@"Creation of objects on server compelete, updated objects in context: %@", [[[SWCoreDataController sharedInstance] masterManagedObjectContext] updatedObjects]);
+            [[SWCoreDataController sharedInstance] saveMasterContext];
+            NSLog(@"SBC After call creation");
+        }
+        
+// Execute sync complete?
+        [self executeSyncCompletedOperations];
+    }];
+}
+
+
+- (BOOL) removeCoreDataObjects
+{
+    NSManagedObjectContext *managedObjectContext = [[SWCoreDataController sharedInstance] backgroundManagedObjectContext];
+    
+    // Remove all classes tracked through SWSyncEngine
+    for (NSString *className in self.registeredClassesToSync) {
+        NSArray *storedRecords = [self
+                                  managedObjectsForClass:className
+                                  sortedByKey:@"remote_id"
+                                  usingArrayOfIds:[NSArray array]
+                                  inArrayOfIds:NO];
+        [managedObjectContext performBlockAndWait:^{
+            for (NSManagedObject *managedObject in storedRecords) {
+                [managedObjectContext deleteObject:managedObject];
+            }
+            NSError *error = nil;
+            BOOL saved = [managedObjectContext save:&error];
+            if (!saved) {
+                NSLog(@"Unable to save context after deleting records for class %@ because %@", className, error);
+            }
+        }];
+    }
+    
+    // Delete all Departments (Should only be 1)
+    [managedObjectContext performBlockAndWait:^{
+        NSArray *coreDataObjectArray = nil;
+        NSError *error = nil;
+        NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:@"Departments"];
+        [request setSortDescriptors:[NSArray arrayWithObject:
+                                     [NSSortDescriptor sortDescriptorWithKey:@"remote_id" ascending:YES]]];
+        coreDataObjectArray = [managedObjectContext executeFetchRequest:request error:&error];
+//        NSLog(@"Shared Department: %@", coreDataObjectArray);
+        for (NSManagedObject *managedObject in coreDataObjectArray)
+        {
+            [managedObjectContext deleteObject:managedObject];
+        }
+        BOOL saved = [managedObjectContext save:&error];
+        if (!saved) {
+            NSLog(@"Unable to save context after deleting records for class Departments because %@", error);
+        }
+    }];
+    
+    // Delete all Scans
+    [managedObjectContext performBlockAndWait:^{
+        //        [managedObjectContext reset];
+        NSArray *coreDataObjectArray = nil;
+        NSError *error = nil;
+        NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:@"Scans"];
+        [request setSortDescriptors:[NSArray arrayWithObject:
+                                     [NSSortDescriptor sortDescriptorWithKey:@"remote_id" ascending:YES]]];
+        coreDataObjectArray = [managedObjectContext executeFetchRequest:request error:&error];
+//        NSLog(@"Shared Department: %@", coreDataObjectArray);
+        for (NSManagedObject *managedObject in coreDataObjectArray)
+        {
+            [managedObjectContext deleteObject:managedObject];
+        }
+        BOOL saved = [managedObjectContext save:&error];
+        if (!saved) {
+            NSLog(@"Unable to save context after deleting records for class Departments because %@", error);
+        }
+    }];
+    return true;
 }
 
 - (void)setValue:(id)value forKey:(NSString *)key forManagedObject:(NSManagedObject *)managedObject {
@@ -131,6 +256,20 @@ NSString * const kSWSyncEngineSyncCompletedNotificationName = @"SWSyncEngineSync
 - (NSArray *)managedObjectsForClass:(NSString *)className withSyncStatus:(SWObjectSyncStatus)syncStatus {
     __block NSArray *results = nil;
     NSManagedObjectContext *managedObjectContext = [[SWCoreDataController sharedInstance] backgroundManagedObjectContext];
+    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:className];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"sync_status = %d", syncStatus];
+    [fetchRequest setPredicate:predicate];
+    [managedObjectContext performBlockAndWait:^{
+        NSError *error = nil;
+        results = [managedObjectContext executeFetchRequest:fetchRequest error:&error];
+    }];
+    
+    return results;
+}
+
+- (NSArray *)managedObjectsUsingMasterContextForClass:(NSString *)className withSyncStatus:(SWObjectSyncStatus)syncStatus {
+    __block NSArray *results = nil;
+    NSManagedObjectContext *managedObjectContext = [[SWCoreDataController sharedInstance] masterManagedObjectContext];
     NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:className];
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"sync_status = %d", syncStatus];
     [fetchRequest setPredicate:predicate];
@@ -195,8 +334,10 @@ NSString * const kSWSyncEngineSyncCompletedNotificationName = @"SWSyncEngineSync
         }
         
         // Add Customer ID to request
-        KeychainWrapper *wrapper = [[KeychainWrapper alloc] initWithIdentifier:@"DepartmentKey" accessGroup:nil];
-        NSString *departmentKey = (NSString *)[wrapper objectForKey:(__bridge id)(kSecValueData)];
+//        KeychainWrapper *wrapper = [[KeychainWrapper alloc] initWithIdentifier:@"DepartmentKey" accessGroup:nil];
+//        NSString *departmentKey = (NSString *)[wrapper objectForKey:(__bridge id)(kSecValueData)];
+        NSString *departmentKey = [KeychainWrapper returnDepartmentKey];
+//        NSMutableDictionary *tempDict = [NSMutableDictionary dictionaryWithDictionary:<#(NSDictionary *)#>]
         NSDictionary *paramDict = [NSDictionary dictionaryWithObjects:@[departmentKey]
                                                               forKeys:@[@"valid_key"]];
         
@@ -227,8 +368,8 @@ NSString * const kSWSyncEngineSyncCompletedNotificationName = @"SWSyncEngineSync
         
     } completionBlock:^(NSArray *operations) {
         NSLog(@"All operations completed");
-        // 2
-        // Need to process JSON records into Core Data
+        
+        [self postLocalObjectsToServer];
     }];
 }
 
@@ -255,13 +396,13 @@ NSString * const kSWSyncEngineSyncCompletedNotificationName = @"SWSyncEngineSync
             // First get the downloaded records from the JSON response, verify there is at least one object in
             // the data, and then fetch all records stored in Core Data whose objectId matches those from the JSON response.
             //
-            NSArray *storedRecords = [self managedObjectsForClass:className sortedByKey:@"remote_id" usingArrayOfIds:[[NSArray arrayWithObject:[data objectForKey:@"id"]] valueForKey:@"remote_id"] inArrayOfIds:YES];
+            NSArray *storedRecords = [self managedObjectsForClass:className sortedByKey:@"remote_id" usingArrayOfIds:[[NSArray arrayWithObject:[data objectForKey:@"id"]] valueForKey:@"id"] inArrayOfIds:YES];
 
             NSManagedObject *storedManagedObject = nil;
             if ([storedRecords count] > 0) {
                 storedManagedObject = [storedRecords objectAtIndex:0];
             }
-            if ([[storedManagedObject valueForKey:@"remote_id"] isEqualToString:[data valueForKey:@"remote_id"]]) {
+            if ([[storedManagedObject valueForKey:@"remote_id"] isEqualToString:[data valueForKey:@"id"]]) {
                 //
                 // Do a quick spot check to validate the objectIds in fact do match, if they do update the stored
                 // object with the values received from the remote service
@@ -279,7 +420,7 @@ NSString * const kSWSyncEngineSyncCompletedNotificationName = @"SWSyncEngineSync
                 }
             }];
 
-            [self executeSyncCompletedOperations];
+//            [self executeSyncCompletedOperations];
         }
     }
 }
@@ -312,7 +453,7 @@ NSString * const kSWSyncEngineSyncCompletedNotificationName = @"SWSyncEngineSync
                 // (based on objectId) from your Core Data store. Iterate over all of the downloaded records
                 // from the remote service.
                 //
-                NSArray *storedRecords = [self managedObjectsForClass:className sortedByKey:@"remote_id" usingArrayOfIds:[data valueForKey:@"remote_id"] inArrayOfIds:YES];
+                NSArray *storedRecords = [self managedObjectsForClass:className sortedByKey:@"remote_id" usingArrayOfIds:[data valueForKey:@"id"] inArrayOfIds:YES];
                 int currentIndex = 0;
                 //
                 // If the number of records in your Core Data store is less than the currentIndex, you know that
@@ -327,7 +468,7 @@ NSString * const kSWSyncEngineSyncCompletedNotificationName = @"SWSyncEngineSync
                         storedManagedObject = [storedRecords objectAtIndex:currentIndex];
                     }
                     
-                    if ([[storedManagedObject valueForKey:@"remote_id"] isEqualToString:[record valueForKey:@"remote_id"]]) {
+                    if ([storedManagedObject valueForKey:@"remote_id"] == [record valueForKey:@"id"]) {
                         //
                         // Do a quick spot check to validate the objectIds in fact do match, if they do update the stored
                         // object with the values received from the remote service
@@ -353,7 +494,7 @@ NSString * const kSWSyncEngineSyncCompletedNotificationName = @"SWSyncEngineSync
             }
         }];
 
-        [self executeSyncCompletedOperations];
+//        [self executeSyncCompletedOperations];
     }
 }
 

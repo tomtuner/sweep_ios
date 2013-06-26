@@ -80,6 +80,8 @@
 		E9E8ADF5176AAB7500F837D7 /* KeychainWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E8ADF3176AAB7500F837D7 /* KeychainWrapper.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		E9E8ADF7176AAB9A00F837D7 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9E8ADF6176AAB9A00F837D7 /* Security.framework */; };
 		E9E8ADF8176AB06C00F837D7 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9E8ADF6176AAB9A00F837D7 /* Security.framework */; };
+		E9FE4CC1177A8F7E0095487C /* NSManagedObject+JSON.m in Sources */ = {isa = PBXBuildFile; fileRef = E9FE4CC0177A8F7E0095487C /* NSManagedObject+JSON.m */; };
+		E9FE4CC2177A8F7E0095487C /* NSManagedObject+JSON.m in Sources */ = {isa = PBXBuildFile; fileRef = E9FE4CC0177A8F7E0095487C /* NSManagedObject+JSON.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -145,6 +147,8 @@
 		E9E8ADF2176AAB7500F837D7 /* KeychainWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeychainWrapper.h; sourceTree = "<group>"; };
 		E9E8ADF3176AAB7500F837D7 /* KeychainWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainWrapper.m; sourceTree = "<group>"; };
 		E9E8ADF6176AAB9A00F837D7 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		E9FE4CBF177A8F7E0095487C /* NSManagedObject+JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSManagedObject+JSON.h"; sourceTree = "<group>"; };
+		E9FE4CC0177A8F7E0095487C /* NSManagedObject+JSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSManagedObject+JSON.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -249,19 +253,14 @@
 		E9E8AD4B176814C000F837D7 /* model */ = {
 			isa = PBXGroup;
 			children = (
+				E9FE4CC3177A8F870095487C /* objects */,
 				E9518FAC1768108200EB82C8 /* sweep.xcdatamodeld */,
-				E9385041177035C300DC9D97 /* Customers.h */,
-				E9385042177035C300DC9D97 /* Customers.m */,
-				E9385045177035CD00DC9D97 /* Scans.h */,
-				E9385046177035CD00DC9D97 /* Scans.m */,
-				E9385049177035D600DC9D97 /* Events.h */,
-				E938504A177035D600DC9D97 /* Events.m */,
-				E938504D177035DF00DC9D97 /* Departments.h */,
-				E938504E177035DF00DC9D97 /* Departments.m */,
 				E93850151770261900DC9D97 /* SWSyncEngine.h */,
 				E93850161770261900DC9D97 /* SWSyncEngine.m */,
 				E938501917702A2200DC9D97 /* SWCoreDataController.h */,
 				E938501A17702A2200DC9D97 /* SWCoreDataController.m */,
+				E9FE4CBF177A8F7E0095487C /* NSManagedObject+JSON.h */,
+				E9FE4CC0177A8F7E0095487C /* NSManagedObject+JSON.m */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -389,6 +388,21 @@
 				E9E8ADF3176AAB7500F837D7 /* KeychainWrapper.m */,
 			);
 			name = keychain;
+			sourceTree = "<group>";
+		};
+		E9FE4CC3177A8F870095487C /* objects */ = {
+			isa = PBXGroup;
+			children = (
+				E9385041177035C300DC9D97 /* Customers.h */,
+				E9385042177035C300DC9D97 /* Customers.m */,
+				E9385045177035CD00DC9D97 /* Scans.h */,
+				E9385046177035CD00DC9D97 /* Scans.m */,
+				E9385049177035D600DC9D97 /* Events.h */,
+				E938504A177035D600DC9D97 /* Events.m */,
+				E938504D177035DF00DC9D97 /* Departments.h */,
+				E938504E177035DF00DC9D97 /* Departments.m */,
+			);
+			name = objects;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -583,6 +597,7 @@
 				E9385047177035CD00DC9D97 /* Scans.m in Sources */,
 				E938504B177035D600DC9D97 /* Events.m in Sources */,
 				E938504F177035DF00DC9D97 /* Departments.m in Sources */,
+				E9FE4CC1177A8F7E0095487C /* NSManagedObject+JSON.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -608,6 +623,7 @@
 				E9385048177035CD00DC9D97 /* Scans.m in Sources */,
 				E938504C177035D600DC9D97 /* Events.m in Sources */,
 				E9385050177035DF00DC9D97 /* Departments.m in Sources */,
+				E9FE4CC2177A8F7E0095487C /* NSManagedObject+JSON.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
