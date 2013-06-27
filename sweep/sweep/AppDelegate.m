@@ -42,7 +42,8 @@
         scanController.departmentKeyItem = self.departmentKeyItem;
 
         UINavigationController *masterNavigationController = splitViewController.viewControllers[0];
-        SideMenuViewController *controller = (SideMenuViewController *)masterNavigationController.topViewController;
+        SideMenuViewController *sideController = (SideMenuViewController *)masterNavigationController.topViewController;
+//        sideController.departmentKeyItem = self.departmentKeyItem;
 //        controller.managedObjectContext = self.managedObjectContext;
         
     } else {
@@ -53,6 +54,8 @@
         controller.departmentKeyItem = self.departmentKeyItem;
         
         SideMenuViewController *sideController = [st instantiateViewControllerWithIdentifier:@"sideMenuController"];
+//        sideController.departmentKeyItem = self.departmentKeyItem;
+
 //        sideController.managedObjectContext = self.managedObjectContext;
         IIViewDeckController *deckController = [[IIViewDeckController alloc] initWithCenterViewController:navigationController leftViewController:sideController];
         

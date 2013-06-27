@@ -65,63 +65,6 @@
     }];
 }
 
--(void) displayLoginControllerIfNeeded
-{
-    NSString *departmentKey = (NSString *)[self.departmentKeyItem objectForKey:(__bridge id)(kSecValueData)];
-    if (departmentKey.length)
-    {
-        // Department Key was once valid but validate again on startup
-        [self validateDepartmentKey:departmentKey];
-    }else {
-        // No department key found
-        // Perform Selector seems to be more stable when loading the view
-        [self performSelector:@selector(showLoginController) withObject:nil afterDelay:0.0];
-//        [self showLoginController];
-    }
-}
-
-- (void) showLoginController
-{
-    UIStoryboard *st = [UIStoryboard storyboardWithName:[[NSBundle mainBundle].infoDictionary objectForKey:@"UIMainStoryboardFile"] bundle:[NSBundle mainBundle]];
-    LogInViewController *logInController = [st instantiateViewControllerWithIdentifier:@"logInViewController"];
-    logInController.departmentKeyItem = self.departmentKeyItem;
-    logInController.modalPresentationStyle = UIModalPresentationFormSheet;
-    [self presentViewController:logInController animated:YES completion:nil];
-}
-
-- (void) validateDepartmentKey:(NSString *) departmentKey
-{
-    [Departments globalDepartmentVerificationWithValidationKey:departmentKey
-                                                    withBlock:^(NSDictionary *department, NSError *error) {
-        if (!error)
-        {
-            // Authentication was successful store the key returned
-            NSLog(@"Department Returned: %@", department);
-            [self.departmentKeyItem setObject:[department objectForKey:@"valid_key"] forKey:(__bridge id)(kSecValueData)];
-            
-//            SWSyncEngine *sync = [SWSyncEngine sharedEngine];
-//            [sync new]
-//            [self dismissViewControllerAnimated:YES completion:nil];
-            [[SWSyncEngine sharedEngine] startSync];
-            
-        }else {
-            NSLog(@"Error Code: %i", [[[error userInfo] objectForKey:AFNetworkingOperationFailingURLResponseErrorKey] statusCode] );
-
-            NSLog(@"Error: %@", [error localizedDescription]);
-            // Look for an unauthorized response code
-            if ([[[error userInfo] objectForKey:AFNetworkingOperationFailingURLResponseErrorKey] statusCode] == 401)
-            {
-                // Key is no longer valid reset the keychain and reenter
-                [self.departmentKeyItem resetKeychainItem];
-                // Remove ALL core data objects when department key is deemed invalid
-                [[SWSyncEngine sharedEngine] removeCoreDataObjects];
-                
-                [self showLoginController];
-            }
-        }  
-    }];
-}
-
 - (void)setupMenuBarButtonItems {
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
 
@@ -167,29 +110,71 @@
     
     if (self.detailItem) {
 //        self.detailDescriptionLabel.text = [[self.detailItem valueForKey:@"scanned_at"] description];
+        self.title = self.detailItem.name;
+        NSLog(@"Event ID: %@", self.detailItem.remote_id);
+        
     }
 }
-/*
-- (void)insertNewObject:(id)sender
+
+#pragma mark - Login Check
+
+-(void) displayLoginControllerIfNeeded
 {
-    NSManagedObjectContext *context = [self.fetchedResultsController managedObjectContext];
-    NSEntityDescription *entity = [[self.fetchedResultsController fetchRequest] entity];
-    Scans *newManagedObject = [NSEntityDescription insertNewObjectForEntityForName:[entity name] inManagedObjectContext:context];
-    
-    // If appropriate, configure the new managed object.
-    // Normally you should use accessor methods, but using KVC here avoids the need to add a custom class to the template.
-    [newManagedObject setValue:[NSDate date] forKey:@"scanned_at"];
-    
-    // Save the context.
-    NSError *error = nil;
-    if (![context save:&error]) {
-         // Replace this implementation with code to handle the error appropriately.
-         // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development. 
-        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-        abort();
+    NSString *departmentKey = (NSString *)[self.departmentKeyItem objectForKey:(__bridge id)(kSecValueData)];
+    if (departmentKey.length)
+    {
+        // Department Key was once valid but validate again on startup
+        [self validateDepartmentKey:departmentKey];
+    }else {
+        // No department key found
+        // Perform Selector seems to be more stable when loading the view
+        [self performSelector:@selector(showLoginController) withObject:nil afterDelay:0.0];
+        //        [self showLoginController];
     }
 }
-*/
+
+- (void) showLoginController
+{
+    UIStoryboard *st = [UIStoryboard storyboardWithName:[[NSBundle mainBundle].infoDictionary objectForKey:@"UIMainStoryboardFile"] bundle:[NSBundle mainBundle]];
+    LogInViewController *logInController = [st instantiateViewControllerWithIdentifier:@"logInViewController"];
+    logInController.departmentKeyItem = self.departmentKeyItem;
+    logInController.modalPresentationStyle = UIModalPresentationFormSheet;
+    [self presentViewController:logInController animated:YES completion:nil];
+}
+
+- (void) validateDepartmentKey:(NSString *) departmentKey
+{
+    [Departments globalDepartmentVerificationWithValidationKey:departmentKey
+                                                     withBlock:^(NSDictionary *department, NSError *error) {
+         if (!error)
+         {
+             // Authentication was successful store the key returned
+             NSLog(@"Department Returned: %@", department);
+             [self.departmentKeyItem setObject:[department objectForKey:@"valid_key"] forKey:(__bridge id)(kSecValueData)];
+             
+             //            SWSyncEngine *sync = [SWSyncEngine sharedEngine];
+             //            [sync new]
+             //            [self dismissViewControllerAnimated:YES completion:nil];
+             [[SWSyncEngine sharedEngine] startSync];
+             
+         }else {
+             NSLog(@"Error Code: %i", [[[error userInfo] objectForKey:AFNetworkingOperationFailingURLResponseErrorKey] statusCode] );
+             
+             NSLog(@"Error: %@", [error localizedDescription]);
+             // Look for an unauthorized response code
+             if ([[[error userInfo] objectForKey:AFNetworkingOperationFailingURLResponseErrorKey] statusCode] == 401)
+             {
+                 // Key is no longer valid reset the keychain and reenter
+                 [self.departmentKeyItem resetKeychainItem];
+                 // Remove ALL core data objects when department key is deemed invalid
+                 [[SWSyncEngine sharedEngine] removeCoreDataObjects];
+                 
+                 [self showLoginController];
+             }
+         }  
+     }];
+}
+
 #pragma mark - Split view
 
 - (void)splitViewController:(UISplitViewController *)splitController willHideViewController:(UIViewController *)viewController withBarButtonItem:(UIBarButtonItem *)barButtonItem forPopoverController:(UIPopoverController *)popoverController

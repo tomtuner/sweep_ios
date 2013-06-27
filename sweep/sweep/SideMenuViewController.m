@@ -10,7 +10,7 @@
 
 @interface SideMenuViewController ()
 
-
+@property (nonatomic, strong) UITextField *activeField;
 @property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 
 @end
@@ -36,11 +36,13 @@
 //    }
 
     self.scansViewController = (ScansViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
-//    self.scansViewController.managedObjectContext = self.managedObjectContext;
     self.managedObjectContext = [[SWCoreDataController sharedInstance] newManagedObjectContext];
+    [self registerForKeyboardNotifications];
+    
     [[NSNotificationCenter defaultCenter] addObserverForName:@"SWSyncEngineSyncCompleted" object:nil queue:nil usingBlock:^(NSNotification *note) {
         [self loadRecordsFromCoreData];
         [self.eventsTable reloadData];
+        self.scansViewController.detailItem = (Events *)[self.events objectAtIndex:0];
     }];
 }
 
@@ -245,23 +247,29 @@
          NSString *archivePath = [documentsDir stringByAppendingPathComponent:kScanListArchiveName];
          [NSKeyedArchiver archiveRootObject:self.scanLists toFile:archivePath];
          [self.scanEventListTable reloadData];
-         
+         */
     }else {
-       
+       /*
         SScanEvent *eve = (SScanEvent *)[self.scanLists objectAtIndex:indexPath.row];
         NSLog(@"Event Name: %@", eve.name);
         NSLog(@"Event UUID: %@", eve.uuid);
         EventValuesViewController *viewController = [[EventValuesViewController alloc] initWithNibName:@"EventValuesViewController" bundle:nil scanDataArchiveString:eve.uuid];
         viewController.title = eve.name;
+        */
         
-        NSArray *controllers = [NSArray arrayWithObject:viewController];
-        [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
-            ((UINavigationController *)controller.centerController).viewControllers = controllers;
-            // ...
-        }];
+        Events *selectedEvent = (Events *) [self.events objectAtIndex:indexPath.row];
+        if (self.scansViewController)
+        {
+            self.scansViewController.detailItem = selectedEvent;
+        }else
+        {
+            NSArray *controllers = [NSArray arrayWithObject:self.scansViewController];
+            [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
+                ((UINavigationController *)controller.centerController).viewControllers = controllers;
+                // ...
+            }];
+        }
         
-    }
-         */
     }
 }
 
@@ -272,27 +280,68 @@
     cell.nameLabel.text = object.name;
 }
 
+#pragma mark - UIKeyboardNotifications
+
+// Call this method somewhere in your view controller setup code.
+- (void)registerForKeyboardNotifications
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWasShown:)
+                                                 name:UIKeyboardDidShowNotification object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillBeHidden:)
+                                                 name:UIKeyboardWillHideNotification object:nil];
+/*    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardDidHide:)
+                                                 name:UIKeyboardDidHideNotification object:nil];
+ */
+    
+}
+
+// Called when the UIKeyboardDidShowNotification is sent.
+- (void)keyboardWasShown:(NSNotification*)aNotification
+{
+    NSDictionary* info = [aNotification userInfo];
+    CGRect kbFrame = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue];
+    CGRect convertedFrame = [self.view convertRect:kbFrame fromView:self.view.window];
+
+    UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, convertedFrame.size.height, 0.0);
+    self.eventsTable.contentInset = contentInsets;
+    self.eventsTable.scrollIndicatorInsets = contentInsets;
+    
+    // If active text field is hidden by keyboard, scroll it so it's visible
+    // Your application might not need or want this behavior.
+    CGRect aRect = self.view.frame;
+    aRect.size.height -= kbFrame.size.height;
+    if (!CGRectContainsPoint(aRect, self.activeField.frame.origin) ) {
+        [self.eventsTable scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:self.events.count inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
+    }
+}
+
+// Called when the UIKeyboardWillHideNotification is sent
+- (void)keyboardWillBeHidden:(NSNotification*)aNotification
+{
+    UIEdgeInsets contentInsets = UIEdgeInsetsZero;
+    self.eventsTable.contentInset = contentInsets;
+    self.eventsTable.scrollIndicatorInsets = contentInsets;
+}
+/*
+- (void) keyboardDidHide:(NSNotification*)aNotification
+{
+    [self.eventsTable scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:self.events.count inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
+}
+*/
 #pragma mark - UITextFieldDelegate
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
     
     if (![textField.text isEqualToString:@""]) {
-//        SScanEvent *newEvent = [[SScanEvent alloc] init];
-        //    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-        //    [dateFormat setDateFormat:@"MMMM d ss"];
-        //    NSString *dateString = [dateFormat stringFromDate:newEvent.date];
-//        newEvent.name = textField.text;
-//        [self.events addObject:newEvent];
-        // Save our new scans out to the archive file
-//        NSString *documentsDir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
-//                                                                      NSUserDomainMask, YES) objectAtIndex:0];
-//        NSString *archivePath = [documentsDir stringByAppendingPathComponent:kScanListArchiveName];
-//        [NSKeyedArchiver archiveRootObject:self.scanLists toFile:archivePath];
-//        Events *newObject = [NSEntityDescription insertNewObjectForEntityForName:@"Events" inManagedObjectContext:self.managedObjectContext];
-//        NSString *departmentKey = [KeychainWrapper returnDepartmentKey];
-//        newObject.
+
         [self.managedObjectContext performBlockAndWait:^{
             [self.managedObjectContext reset];
+            
+            // Get the Department for use
             NSArray *sharedDepartmentArray = nil;
             NSError *error = nil;
             NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:@"Departments"];
@@ -301,45 +350,26 @@
             sharedDepartmentArray = [self.managedObjectContext executeFetchRequest:request error:&error];
             Departments *sharedDepartment = [sharedDepartmentArray lastObject];
             NSLog(@"Shared Department: %@", sharedDepartmentArray);
+            
+            // Create new event and add to core data
             Events *newEvent = [NSEntityDescription insertNewObjectForEntityForName:@"Events" inManagedObjectContext:self.managedObjectContext];
             newEvent.name = textField.text;
             newEvent.department_id = sharedDepartment.remote_id;
             newEvent.sync_status = [NSNumber numberWithInt:SWObjectCreated];
-            
-//            newEvent.
-            
-//            [[SWSyncEngine sharedEngine] newManagedObjectUsingMasterContextWithClassName:@"Events" forRecord:department];
-            //            Departments *t = [NSEntityDescription insertNewObjectForEntityForName:@"Departments" inManagedObjectContext:self.managedObjectContext];
-            //            t.valid_key = [department objectForKey:@"valid_key"];
-//                Departments *sharedDepartmentArray = nil;
-//                NSError *error = nil;
-//                NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:@"Departments"];
-//                [request setSortDescriptors:[NSArray arrayWithObject:
-//                                             [NSSortDescriptor sortDescriptorWithKey:@"remote_id" ascending:YES]]];
-//                sharedDepartmentArray = [[self.managedObjectContext executeFetchRequest:request error:&error] lastObject];
-                //                NSLog(@"Shared Department: %@", sharedDepartmentArray);
-                //            }];
-                
-                //            [self.managedObjectContext performBlockAndWait:^{
-                
-                //                [[SWSyncEngine sharedEngine] updateManagedObject:sharedDepartmentArray withRecord:department];
-                
-                //                NSError *error = nil;
-                BOOL saved = [self.managedObjectContext save:&error];
-                if (!saved) {
-                    // do some real error handling
-                    NSLog(@"Could not save Department due to %@", error);
-                }
-                [[SWCoreDataController sharedInstance] saveMasterContext];
 
-//            [self.eventsTable reloadData];
+            BOOL saved = [self.managedObjectContext save:&error];
+            if (!saved) {
+                // do some real error handling
+                NSLog(@"Could not save Department due to %@", error);
+            }
+            [[SWCoreDataController sharedInstance] saveMasterContext];
+
         }];
         [self loadRecordsFromCoreData];
         [self.eventsTable reloadData];
-        [[SWSyncEngine sharedEngine] startSync];
-//        NSLog(@"Events List: %@", self.events);
-//        [self.eventsTable reloadData];
         
+        // Start sync of event to server
+        [[SWSyncEngine sharedEngine] startSync];        
     }
     // Release the keyboard
     // FIXME: Change 250 Value
@@ -349,9 +379,19 @@
     
     return YES;
 }
-
+/*
 - (void) textFieldDidBeginEditing:(UITextField *)textField {
     [self.eventsTable scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:self.events.count inSection:0] atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+}
+*/
+- (void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    self.activeField = textField;
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+    self.activeField = nil;
 }
 
 @end
