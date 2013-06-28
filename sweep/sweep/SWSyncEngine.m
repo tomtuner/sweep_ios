@@ -65,7 +65,7 @@ NSString * const kSWSyncEngineSyncCompletedNotificationName = @"SWSyncEngineSync
     //
     // Create a new fetch request for the specified entity
     //
-    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entityName];
+    NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:entityName];
     //
     // Set the sort descriptors on the request to sort by updatedAt in descending order
     //
@@ -74,10 +74,11 @@ NSString * const kSWSyncEngineSyncCompletedNotificationName = @"SWSyncEngineSync
     //
     // You are only interested in 1 result so limit the request to 1
     //
+    NSManagedObjectContext *con = [[SWCoreDataController sharedInstance] backgroundManagedObjectContext];
     [request setFetchLimit:1];
-    [[[SWCoreDataController sharedInstance] backgroundManagedObjectContext] performBlockAndWait:^{
+    [con performBlockAndWait:^{
         NSError *error = nil;
-        NSArray *results = [[[SWCoreDataController sharedInstance] backgroundManagedObjectContext] executeFetchRequest:request error:&error];
+        NSArray *results = [con executeFetchRequest:request error:&error];
         if ([results lastObject])   {
             //
             // Set date to the fetched result
@@ -98,7 +99,7 @@ NSString * const kSWSyncEngineSyncCompletedNotificationName = @"SWSyncEngineSync
         [self setValue:obj forKey:key forManagedObject:newManagedObject];
     }];
     // Set SYNC status for new object? Can't change immutable NSDictionary
-//    [record setValue:[NSNumber numberWithInt:SWObjectSynced] forKey:@"sync_status"];
+    [self setValue:[NSNumber numberWithInt:SWObjectSynced] forKey:@"sync_status" forManagedObject:newManagedObject];
 }
 
 - (void)newManagedObjectUsingMasterContextWithClassName:(NSString *)className forRecord:(NSDictionary *)record {
@@ -110,7 +111,7 @@ NSString * const kSWSyncEngineSyncCompletedNotificationName = @"SWSyncEngineSync
         [self setValue:obj forKey:key forManagedObject:newManagedObject];
     }];
     // Set SYNC status for new object? Can't change immutable NSDictionary
-    //    [record setValue:[NSNumber numberWithInt:SWObjectSynced] forKey:@"sync_status"];
+    [self setValue:[NSNumber numberWithInt:SWObjectSynced] forKey:@"sync_status" forManagedObject:newManagedObject];
 }
 
 - (void)updateManagedObject:(NSManagedObject *)managedObject withRecord:(NSDictionary *)record {
@@ -162,9 +163,36 @@ NSString * const kSWSyncEngineSyncCompletedNotificationName = @"SWSyncEngineSync
             NSLog(@"SBC After call creation");
         }
         
-// Execute sync complete?
         [self executeSyncCompletedOperations];
     }];
+}
+
+- (BOOL) removeDepartmentObjects
+{
+    __block BOOL end = NO;
+    NSManagedObjectContext *managedObjectContext = [[SWCoreDataController sharedInstance] backgroundManagedObjectContext];
+
+    // Delete all Departments (Should only be 1)
+    [managedObjectContext performBlockAndWait:^{
+        NSArray *coreDataObjectArray = nil;
+        NSError *error = nil;
+        NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:@"Departments"];
+        [request setSortDescriptors:[NSArray arrayWithObject:
+                                     [NSSortDescriptor sortDescriptorWithKey:@"remote_id" ascending:YES]]];
+        coreDataObjectArray = [managedObjectContext executeFetchRequest:request error:&error];
+        //        NSLog(@"Shared Department: %@", coreDataObjectArray);
+        for (NSManagedObject *managedObject in coreDataObjectArray)
+        {
+            [managedObjectContext deleteObject:managedObject];
+        }
+        BOOL saved = [managedObjectContext save:&error];
+        if (!saved) {
+            NSLog(@"Unable to save context after deleting records for class Departments because %@", error);
+//            return NO;
+        }
+        end = YES;
+    }];
+    return end;
 }
 
 
@@ -282,22 +310,35 @@ NSString * const kSWSyncEngineSyncCompletedNotificationName = @"SWSyncEngineSync
 }
 
 - (NSArray *)managedObjectsForClass:(NSString *)className sortedByKey:(NSString *)key usingArrayOfIds:(NSArray *)idArray inArrayOfIds:(BOOL)inIds {
+//    NSMutableArray *intArray = [NSMutableArray array];
+//    NSInteger myInts[idArray.count];
+//    int count = 0;
+//    for (NSString *stringID in idArray)
+//    {
+//        myInts[count] = [stringID integerValue];
+////        [intArray addObject:[NSNumber numberWithInt:[stringID intValue]]];
+//    }
     __block NSArray *results = nil;
     NSManagedObjectContext *managedObjectContext = [[SWCoreDataController sharedInstance] backgroundManagedObjectContext];
-    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:className];
-    NSPredicate *predicate;
-    if (inIds) {
-        predicate = [NSPredicate predicateWithFormat:@"remote_id IN %@", idArray];
-    } else {
-        predicate = [NSPredicate predicateWithFormat:@"NOT (remote_id IN %@)", idArray];
-    }
-    
-    [fetchRequest setPredicate:predicate];
-    [fetchRequest setSortDescriptors:[NSArray arrayWithObject:
-                                      [NSSortDescriptor sortDescriptorWithKey:@"remote_id" ascending:YES]]];
+//    [NSManagedObjectContext mergeChan]
     [managedObjectContext performBlockAndWait:^{
+        [managedObjectContext reset];
+        
+        NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:className];
+        NSPredicate *predicate;
+        if (inIds) {
+            predicate = [NSPredicate predicateWithFormat:@"remote_id IN %@", idArray];
+        } else {
+            predicate = [NSPredicate predicateWithFormat:@"NOT (remote_id IN %@)", idArray];
+        }
+        
+        [fetchRequest setPredicate:predicate];
+        [fetchRequest setSortDescriptors:[NSArray arrayWithObject:
+                                          [NSSortDescriptor sortDescriptorWithKey:@"remote_id" ascending:YES]]];
         NSError *error = nil;
         results = [managedObjectContext executeFetchRequest:fetchRequest error:&error];
+        NSLog(@"Error: %@", error);
+        NSLog(@"Results: %@", results);
     }];
     
     return results;
@@ -420,7 +461,7 @@ NSString * const kSWSyncEngineSyncCompletedNotificationName = @"SWSyncEngineSync
                 }
             }];
 
-//            [self executeSyncCompletedOperations];
+            [self executeSyncCompletedOperations];
         }
     }
 }
@@ -474,7 +515,7 @@ NSString * const kSWSyncEngineSyncCompletedNotificationName = @"SWSyncEngineSync
                         // object with the values received from the remote service
                         //
                         [self updateManagedObject:[storedRecords objectAtIndex:currentIndex] withRecord:record];
-                    } else {
+                    } else if (!storedManagedObject) {
                         //
                         // Otherwise you have a new object coming in from your remote service so create a new
                         // NSManagedObject to represent this remote object locally
@@ -485,7 +526,9 @@ NSString * const kSWSyncEngineSyncCompletedNotificationName = @"SWSyncEngineSync
                 }
             }
         }
-
+        
+        
+        
         // Persist Store
         [managedObjectContext performBlockAndWait:^{
             NSError *error = nil;
@@ -493,8 +536,9 @@ NSString * const kSWSyncEngineSyncCompletedNotificationName = @"SWSyncEngineSync
                 NSLog(@"Unable to save context for class %@", className);
             }
         }];
-
-//        [self executeSyncCompletedOperations];
+        
+//        [[SWCoreDataController sharedInstance] saveMasterContext];
+        //        [self executeSyncCompletedOperations];
     }
 }
 

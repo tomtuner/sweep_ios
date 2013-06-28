@@ -35,16 +35,6 @@
 -(void) viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    /*
-    NSString *departmentKey = (NSString *)[self.departmentKeyItem objectForKey:(__bridge id)(kSecValueData)];
-    if (departmentKey.length)
-    {
-        NSLog(@"Department Key: %@", departmentKey);
-        [self validateDepartmentKey:departmentKey];
-    }else {
-        NSLog(@"No department key set, do nothing.");
-    }
-     */
 }
 
 - (void) validateDepartmentKey:(NSString *) departmentKey
@@ -55,37 +45,14 @@
         if (!error)
         {
             NSLog(@"Department Returned From Login View: %@", department);
-            /*Departments *departmentObject = [NSEntityDescription insertNewObjectForEntityForName:@"Departments" inManagedObjectContext:self.managedObjectContext];
-            departmentObject.valid_key = [department objectForKey:@"valid_key"];
-            departmentObject.name = [department objectForKey:@"name"];
-            departmentObject.customer_id = [department objectForKey:@"customer_id"];
-            departmentObject.remote_id = [department objectForKey:@"id"];
-            */
             [self.departmentKeyItem setObject:[department objectForKey:@"valid_key"] forKey:(__bridge id)(kSecValueData)];
-            /*
-            if (![self.managedObjectContext save:&error]) {
-                NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
-            }
-            */
+
             [[SWSyncEngine sharedEngine] newManagedObjectUsingMasterContextWithClassName:@"Departments" forRecord:department];
-//            Departments *t = [NSEntityDescription insertNewObjectForEntityForName:@"Departments" inManagedObjectContext:self.managedObjectContext];
-//            t.valid_key = [department objectForKey:@"valid_key"];
+
             [self.managedObjectContext performBlockAndWait:^{
                 [self.managedObjectContext reset];
-                Departments *sharedDepartmentArray = nil;
-                NSError *error = nil;
-                NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:@"Departments"];
-                [request setSortDescriptors:[NSArray arrayWithObject:
-                                             [NSSortDescriptor sortDescriptorWithKey:@"remote_id" ascending:YES]]];
-                sharedDepartmentArray = [[self.managedObjectContext executeFetchRequest:request error:&error] lastObject];
-//                NSLog(@"Shared Department: %@", sharedDepartmentArray);
-//            }];
 
-//            [self.managedObjectContext performBlockAndWait:^{
-                
-//                [[SWSyncEngine sharedEngine] updateManagedObject:sharedDepartmentArray withRecord:department];
-                
-//                NSError *error = nil;
+                NSError *error = nil;
                 BOOL saved = [self.managedObjectContext save:&error];
                 if (!saved) {
                     // do some real error handling

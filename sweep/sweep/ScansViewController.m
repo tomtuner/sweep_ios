@@ -112,6 +112,7 @@
 //        self.detailDescriptionLabel.text = [[self.detailItem valueForKey:@"scanned_at"] description];
         self.title = self.detailItem.name;
         NSLog(@"Event ID: %@", self.detailItem.remote_id);
+        NSLog(@"Department ID: %@", self.detailItem.department.remote_id);
         
     }
 }
@@ -148,13 +149,25 @@
                                                      withBlock:^(NSDictionary *department, NSError *error) {
          if (!error)
          {
+             [[SWSyncEngine sharedEngine] removeDepartmentObjects];
              // Authentication was successful store the key returned
              NSLog(@"Department Returned: %@", department);
              [self.departmentKeyItem setObject:[department objectForKey:@"valid_key"] forKey:(__bridge id)(kSecValueData)];
              
-             //            SWSyncEngine *sync = [SWSyncEngine sharedEngine];
-             //            [sync new]
-             //            [self dismissViewControllerAnimated:YES completion:nil];
+             [[SWSyncEngine sharedEngine] newManagedObjectUsingMasterContextWithClassName:@"Departments" forRecord:department];
+
+             [self.managedObjectContext performBlockAndWait:^{
+                 [self.managedObjectContext reset];
+                 
+                 NSError *error = nil;
+                 BOOL saved = [self.managedObjectContext save:&error];
+                 if (!saved) {
+                     // do some real error handling
+                     NSLog(@"Could not save Department due to %@", error);
+                 }
+                 [[SWCoreDataController sharedInstance] saveMasterContext];
+             }];
+
              [[SWSyncEngine sharedEngine] startSync];
              
          }else {

@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreData/CoreData.h>
 #import "SWCoreDataController.h"
 #import "AFSweepAPIClient.h"
 #import "KeychainWrapper.h"
@@ -26,4 +27,6 @@ typedef enum {
 - (void)startSync;
 - (void)newManagedObjectUsingMasterContextWithClassName:(NSString *)className forRecord:(NSDictionary *)record;
 - (BOOL)removeCoreDataObjects;
+- (BOOL)removeDepartmentObjects;
+
 @end

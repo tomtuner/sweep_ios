@@ -41,8 +41,7 @@
     
     [[NSNotificationCenter defaultCenter] addObserverForName:@"SWSyncEngineSyncCompleted" object:nil queue:nil usingBlock:^(NSNotification *note) {
         [self loadRecordsFromCoreData];
-        [self.eventsTable reloadData];
-        self.scansViewController.detailItem = (Events *)[self.events objectAtIndex:0];
+//        self.scansViewController.detailItem = (Events *)[self.events objectAtIndex:0];
     }];
 }
 
@@ -61,10 +60,16 @@
         [self.managedObjectContext reset];
         NSError *error = nil;
         NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:@"Events"];
+        
+        NSPredicate *predicate;
+//        if (inIds) {
+            predicate = [NSPredicate predicateWithFormat:@"remote_id == %d", 7];
+//        [request setPredicate:predicate];
         [request setSortDescriptors:[NSArray arrayWithObject:
                                      [NSSortDescriptor sortDescriptorWithKey:@"remote_id" ascending:YES]]];
         self.events = [self.managedObjectContext executeFetchRequest:request error:&error];
         NSLog(@"Events Array: %@", self.events);
+        [self.eventsTable reloadData];
     }];
 }
 
@@ -179,13 +184,6 @@
     return NO;
 }
 /*
- - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
- {
- if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
- NSManagedObject *object = [[self fetchedResultsController] objectAtIndexPath:indexPath];
- self.detailViewController.detailItem = object;
- }
- }
  
  - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
  {
@@ -248,6 +246,7 @@
          [NSKeyedArchiver archiveRootObject:self.scanLists toFile:archivePath];
          [self.scanEventListTable reloadData];
          */
+        [tableView deselectRowAtIndexPath:indexPath animated:NO];
     }else {
        /*
         SScanEvent *eve = (SScanEvent *)[self.scanLists objectAtIndex:indexPath.row];
@@ -363,20 +362,16 @@
                 NSLog(@"Could not save Department due to %@", error);
             }
             [[SWCoreDataController sharedInstance] saveMasterContext];
-
+            [self loadRecordsFromCoreData];
+//            [self.eventsTable reloadData];
+            
+            // Start sync of event to server
+            [[SWSyncEngine sharedEngine] startSync];
         }];
-        [self loadRecordsFromCoreData];
-        [self.eventsTable reloadData];
-        
-        // Start sync of event to server
-        [[SWSyncEngine sharedEngine] startSync];        
     }
-    // Release the keyboard
-    // FIXME: Change 250 Value
-    //self.eventsTable.frame = CGRectMake(self.eventsTable.frame.origin.x, self.eventsTable.frame.origin.y, self.eventsTable.frame.size.width, self.eventsTable.frame.size.height + 250.0f);
-//    [self.eventsTable reloadData];
+    [self performSelector:@selector(loadRecordsFromCoreData) withObject:nil afterDelay:5.0];
+//    [se];f
     [textField resignFirstResponder];
-    
     return YES;
 }
 /*
