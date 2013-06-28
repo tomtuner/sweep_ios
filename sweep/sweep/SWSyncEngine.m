@@ -390,7 +390,7 @@ NSString * const kSWSyncEngineSyncCompletedNotificationName = @"SWSyncEngineSync
                 NSLog(@"Response for %@: %@", className, responseObject);
                 // 1
                 // Need to write response object to disk
-                [self processIntoCoreDataWithDictionary:responseObject];
+                [self processIntoCoreDataWithArray:[NSArray arrayWithObject:responseObject]];
                 
             }else if ([responseObject isKindOfClass:[NSArray class]]) {
                 NSLog(@"Response for %@: %@", className, responseObject);
@@ -461,7 +461,7 @@ NSString * const kSWSyncEngineSyncCompletedNotificationName = @"SWSyncEngineSync
                 }
             }];
 
-            [self executeSyncCompletedOperations];
+            [[SWCoreDataController sharedInstance] saveMasterContext];
         }
     }
 }
@@ -537,8 +537,7 @@ NSString * const kSWSyncEngineSyncCompletedNotificationName = @"SWSyncEngineSync
             }
         }];
         
-//        [[SWCoreDataController sharedInstance] saveMasterContext];
-        //        [self executeSyncCompletedOperations];
+        [[SWCoreDataController sharedInstance] saveMasterContext];
     }
 }
 
@@ -553,7 +552,7 @@ NSString * const kSWSyncEngineSyncCompletedNotificationName = @"SWSyncEngineSync
 - (NSDate *)dateUsingStringFromAPI:(NSString *)dateString {
     [self initializeDateFormatter];
     // NSDateFormatter does not like ISO 8601 so strip the milliseconds and timezone
-    dateString = [dateString substringWithRange:NSMakeRange(0, [dateString length]-5)];
+//    dateString = [dateString substringWithRange:NSMakeRange(0, [dateString length])];
     
     return [self.dateFormatter dateFromString:dateString];
 }
@@ -562,9 +561,9 @@ NSString * const kSWSyncEngineSyncCompletedNotificationName = @"SWSyncEngineSync
     [self initializeDateFormatter];
     NSString *dateString = [self.dateFormatter stringFromDate:date];
     // remove Z
-    dateString = [dateString substringWithRange:NSMakeRange(0, [dateString length]-1)];
+//    dateString = [dateString substringWithRange:NSMakeRange(0, [dateString length]-1)];
     // add milliseconds and put Z back on
-    dateString = [dateString stringByAppendingFormat:@".000Z"];
+//    dateString = [dateString stringByAppendingFormat:@".000Z"];
     
     return dateString;
 }
