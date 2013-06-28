@@ -13,6 +13,8 @@
 @property (nonatomic, strong) UITextField *activeField;
 @property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 
+@property (nonatomic) BOOL addTextFieldWasEmpty;
+
 @end
 
 @implementation SideMenuViewController
@@ -60,15 +62,11 @@
         [self.managedObjectContext reset];
         NSError *error = nil;
         NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:@"Events"];
-        
-        NSPredicate *predicate;
-//        if (inIds) {
-            predicate = [NSPredicate predicateWithFormat:@"remote_id == %d", 7];
-//        [request setPredicate:predicate];
+
         [request setSortDescriptors:[NSArray arrayWithObject:
                                      [NSSortDescriptor sortDescriptorWithKey:@"remote_id" ascending:YES]]];
         self.events = [self.managedObjectContext executeFetchRequest:request error:&error];
-        NSLog(@"Events Array: %@", self.events);
+//        NSLog(@"Events Array: %@", self.events);
         [self.eventsTable reloadData];
     }];
 }
@@ -284,23 +282,28 @@
 // Call this method somewhere in your view controller setup code.
 - (void)registerForKeyboardNotifications
 {
+    
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(keyboardWasShown:)
                                                  name:UIKeyboardDidShowNotification object:nil];
-    
+    /*[[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillShow:)
+                                                 name:UIKeyboardWillShowNotification object:nil];*/
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(keyboardWillBeHidden:)
                                                  name:UIKeyboardWillHideNotification object:nil];
-/*    [[NSNotificationCenter defaultCenter] addObserver:self
+    [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(keyboardDidHide:)
                                                  name:UIKeyboardDidHideNotification object:nil];
- */
+ 
     
 }
+
 
 // Called when the UIKeyboardDidShowNotification is sent.
 - (void)keyboardWasShown:(NSNotification*)aNotification
 {
+    
     NSDictionary* info = [aNotification userInfo];
     CGRect kbFrame = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue];
     CGRect convertedFrame = [self.view convertRect:kbFrame fromView:self.view.window];
@@ -324,31 +327,42 @@
     UIEdgeInsets contentInsets = UIEdgeInsetsZero;
     self.eventsTable.contentInset = contentInsets;
     self.eventsTable.scrollIndicatorInsets = contentInsets;
+    
 }
-/*
+
 - (void) keyboardDidHide:(NSNotification*)aNotification
 {
-    [self.eventsTable scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:self.events.count inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
+    [self.eventsTable reloadData];
+  /*  if (self.addTextFieldWasEmpty)
+    {
+        [self.eventsTable reloadData];
+
+    }else {
+//        [self loadRecordsFromCoreData];
+    }
+    [self.eventsTable reloadData]; */
 }
-*/
+
 #pragma mark - UITextFieldDelegate
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
     
     if (![textField.text isEqualToString:@""]) {
 
+        NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:@"Departments"];
+        [request setSortDescriptors:[NSArray arrayWithObject:
+                                     [NSSortDescriptor sortDescriptorWithKey:@"remote_id" ascending:YES]]];
+        
         [self.managedObjectContext performBlockAndWait:^{
             [self.managedObjectContext reset];
             
             // Get the Department for use
             NSArray *sharedDepartmentArray = nil;
             NSError *error = nil;
-            NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:@"Departments"];
-            [request setSortDescriptors:[NSArray arrayWithObject:
-                                         [NSSortDescriptor sortDescriptorWithKey:@"remote_id" ascending:YES]]];
+            
             sharedDepartmentArray = [self.managedObjectContext executeFetchRequest:request error:&error];
             Departments *sharedDepartment = [sharedDepartmentArray lastObject];
-            NSLog(@"Shared Department: %@", sharedDepartmentArray);
+//            NSLog(@"Shared Department: %@", sharedDepartmentArray);
             
             // Create new event and add to core data
             Events *newEvent = [NSEntityDescription insertNewObjectForEntityForName:@"Events" inManagedObjectContext:self.managedObjectContext];
@@ -362,15 +376,17 @@
                 NSLog(@"Could not save Department due to %@", error);
             }
             [[SWCoreDataController sharedInstance] saveMasterContext];
-            [self loadRecordsFromCoreData];
+//            [self loadRecordsFromCoreData];
 //            [self.eventsTable reloadData];
             
             // Start sync of event to server
             [[SWSyncEngine sharedEngine] startSync];
         }];
     }
-    [self performSelector:@selector(loadRecordsFromCoreData) withObject:nil afterDelay:5.0];
-//    [se];f
+//    [self loadRecordsFromCoreData];
+
+//    [self.eventsTable reloadData];
+//    [textField setHidden:YES];
     [textField resignFirstResponder];
     return YES;
 }
