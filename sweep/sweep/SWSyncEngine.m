@@ -237,7 +237,7 @@ NSString * const kSWSyncEngineSyncCompletedNotificationName = @"SWSyncEngineSync
             NSLog(@"Unable to save context after deleting records for class Departments because %@", error);
         }
     }];
-    
+    /*
     // Delete all Scans
     [managedObjectContext performBlockAndWait:^{
         //        [managedObjectContext reset];
@@ -257,11 +257,12 @@ NSString * const kSWSyncEngineSyncCompletedNotificationName = @"SWSyncEngineSync
             NSLog(@"Unable to save context after deleting records for class Departments because %@", error);
         }
     }];
+     */
     return true;
 }
 
 - (void)setValue:(id)value forKey:(NSString *)key forManagedObject:(NSManagedObject *)managedObject {
-    if ([key isEqualToString:@"created_at"] || [key isEqualToString:@"updated_at"]) {
+    if ([key isEqualToString:@"created_at"] || [key isEqualToString:@"updated_at"] || [key isEqualToString:@"scanned_at"]) {
         NSDate *date = [self dateUsingStringFromAPI:value];
         [managedObject setValue:date forKey:key];
     } else if ([value isKindOfClass:[NSDictionary class]]) {
@@ -310,14 +311,6 @@ NSString * const kSWSyncEngineSyncCompletedNotificationName = @"SWSyncEngineSync
 }
 
 - (NSArray *)managedObjectsForClass:(NSString *)className sortedByKey:(NSString *)key usingArrayOfIds:(NSArray *)idArray inArrayOfIds:(BOOL)inIds {
-//    NSMutableArray *intArray = [NSMutableArray array];
-//    NSInteger myInts[idArray.count];
-//    int count = 0;
-//    for (NSString *stringID in idArray)
-//    {
-//        myInts[count] = [stringID integerValue];
-////        [intArray addObject:[NSNumber numberWithInt:[stringID intValue]]];
-//    }
     __block NSArray *results = nil;
     NSManagedObjectContext *managedObjectContext = [[SWCoreDataController sharedInstance] backgroundManagedObjectContext];
 //    [NSManagedObjectContext mergeChan]
@@ -378,7 +371,7 @@ NSString * const kSWSyncEngineSyncCompletedNotificationName = @"SWSyncEngineSync
 //        KeychainWrapper *wrapper = [[KeychainWrapper alloc] initWithIdentifier:@"DepartmentKey" accessGroup:nil];
 //        NSString *departmentKey = (NSString *)[wrapper objectForKey:(__bridge id)(kSecValueData)];
         NSString *departmentKey = [KeychainWrapper returnDepartmentKey];
-//        NSMutableDictionary *tempDict = [NSMutableDictionary dictionaryWithDictionary:<#(NSDictionary *)#>]
+
         NSDictionary *paramDict = [NSDictionary dictionaryWithObjects:@[departmentKey]
                                                               forKeys:@[@"valid_key"]];
         
@@ -390,13 +383,13 @@ NSString * const kSWSyncEngineSyncCompletedNotificationName = @"SWSyncEngineSync
                 NSLog(@"Response for %@: %@", className, responseObject);
                 // 1
                 // Need to write response object to disk
-                [self processIntoCoreDataWithArray:[NSArray arrayWithObject:responseObject]];
+                [self processIntoCoreDataForClassName: className WithArray:[NSArray arrayWithObject:responseObject]];
                 
             }else if ([responseObject isKindOfClass:[NSArray class]]) {
                 NSLog(@"Response for %@: %@", className, responseObject);
                 // 1
                 // Need to write responmse object to disk
-                [self processIntoCoreDataWithArray:responseObject];
+                [self processIntoCoreDataForClassName: className WithArray:responseObject];
             }
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             NSLog(@"Request for class %@ failed with error: %@", className, error);
@@ -466,13 +459,13 @@ NSString * const kSWSyncEngineSyncCompletedNotificationName = @"SWSyncEngineSync
     }
 }
 
-- (void)processIntoCoreDataWithArray: (NSArray *) data {
+- (void)processIntoCoreDataForClassName:(NSString *) className WithArray: (NSArray *) data {
     
     NSManagedObjectContext *managedObjectContext = [[SWCoreDataController sharedInstance] backgroundManagedObjectContext];
     //
     // Iterate over all registered classes to sync
     //
-    for (NSString *className in self.registeredClassesToSync) {
+//    for (NSString *className in self.registeredClassesToSync) {
         if (![self initialSyncComplete]) { // import all downloaded data to Core Data for initial sync
             //
             // If this is the initial sync then the logic is pretty simple, you will fetch the JSON data from disk
@@ -525,7 +518,7 @@ NSString * const kSWSyncEngineSyncCompletedNotificationName = @"SWSyncEngineSync
                     currentIndex++;
                 }
             }
-        }
+//        }
         
         
         

@@ -26,7 +26,7 @@
     
     [self initKeychainForDepartmentKey];
     [[SWSyncEngine sharedEngine] registerNSManagedObjectClassToSync:[Events class]];
-//    [[SWSyncEngine sharedEngine] registerNSManagedObjectClassToSync:[Scans class]];
+    [[SWSyncEngine sharedEngine] registerNSManagedObjectClassToSync:[Scans class]];
     
     [ThemeManager customizeAppAppearance];
 

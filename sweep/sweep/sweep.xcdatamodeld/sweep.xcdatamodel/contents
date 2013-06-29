@@ -31,6 +31,7 @@
     </entity>
     <entity name="Scans" representedClassName="Scans" syncable="YES">
         <attribute name="created_at" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="event_id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="remote_id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="scanned_at" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="sync_status" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
@@ -42,6 +43,6 @@
         <element name="Customers" positionX="313" positionY="360" width="128" height="133"/>
         <element name="Departments" positionX="160" positionY="192" width="128" height="178"/>
         <element name="Events" positionX="-144" positionY="171" width="128" height="163"/>
-        <element name="Scans" positionX="-486" positionY="161" width="128" height="148"/>
+        <element name="Scans" positionX="-486" positionY="161" width="128" height="165"/>
     </elements>
 </model>

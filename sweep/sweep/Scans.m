@@ -12,6 +12,7 @@
 
 @implementation Scans
 
+@dynamic event_id;
 @dynamic created_at;
 @dynamic remote_id;
 @dynamic scanned_at;

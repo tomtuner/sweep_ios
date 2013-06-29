@@ -13,6 +13,7 @@
 
 @interface Scans : NSManagedObject
 
+@property (nonatomic, retain) NSNumber * event_id;
 @property (nonatomic, retain) NSDate * created_at;
 @property (nonatomic, retain) NSNumber * remote_id;
 @property (nonatomic, retain) NSNumber * sync_status;

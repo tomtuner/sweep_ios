@@ -209,7 +209,6 @@
     
     // FIXME: This should only happen in else statement, should stay selected during new event
     if (indexPath.row == self.events.count) {
-        
         SideMenuTableViewCell *cell = (SideMenuTableViewCell*)[tableView cellForRowAtIndexPath:indexPath];
         [cell.nameLabel setHidden:YES];
         [cell.nameTextField setHidden:NO];
@@ -217,43 +216,9 @@
         
         cell.nameTextField.delegate = self;
         [cell.nameTextField becomeFirstResponder];
-        /*
-        // Animate tableview frame change
-        [UIView animateWithDuration:0.3 delay:0.0 options:UIViewAnimationCurveEaseOut animations:^{
-            self.eventsTable.frame = CGRectMake(self.eventsTable.frame.origin.x, self.eventsTable.frame.origin.y, self.eventsTable.frame.size.width, self.eventsTable.frame.size.height - 250.0f);
-        }
-         completion:^(BOOL finished){
-             [self.eventsTable scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
-             [tableView deselectRowAtIndexPath:indexPath animated:NO];
-         }];
-        */
-        
-        
-        
-        /*
-         SScanEvent *newEvent = [[SScanEvent alloc] init];
-         NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-         [dateFormat setDateFormat:@"MMMM d ss"];
-         NSString *dateString = [dateFormat stringFromDate:newEvent.date];
-         newEvent.name = dateString;
-         [self.scanLists addObject:newEvent];
-         // Save our new scans out to the archive file
-         NSString *documentsDir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
-         NSUserDomainMask, YES) objectAtIndex:0];
-         NSString *archivePath = [documentsDir stringByAppendingPathComponent:kScanListArchiveName];
-         [NSKeyedArchiver archiveRootObject:self.scanLists toFile:archivePath];
-         [self.scanEventListTable reloadData];
-         */
+ 
         [tableView deselectRowAtIndexPath:indexPath animated:NO];
     }else {
-       /*
-        SScanEvent *eve = (SScanEvent *)[self.scanLists objectAtIndex:indexPath.row];
-        NSLog(@"Event Name: %@", eve.name);
-        NSLog(@"Event UUID: %@", eve.uuid);
-        EventValuesViewController *viewController = [[EventValuesViewController alloc] initWithNibName:@"EventValuesViewController" bundle:nil scanDataArchiveString:eve.uuid];
-        viewController.title = eve.name;
-        */
-        
         Events *selectedEvent = (Events *) [self.events objectAtIndex:indexPath.row];
         if (self.scansViewController)
         {
