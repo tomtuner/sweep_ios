@@ -20,8 +20,4 @@
 @property(nonatomic, strong) IBOutlet UITableView *eventsTable;
 @property (strong, nonatomic) NSArray *events;
 
-
-//@property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
-//@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
-
 @end

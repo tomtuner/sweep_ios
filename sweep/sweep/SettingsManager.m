@@ -59,4 +59,9 @@ static BOOL initialized = NO;
     return [_userDefaults stringForKey:SETTING_THEME];
 }
 
+-(NSNumber *) percent_visible
+{
+    return [_userDefaults objectForKey:SETTING_PERCENT_VISIBLE];
+}
+
 @end

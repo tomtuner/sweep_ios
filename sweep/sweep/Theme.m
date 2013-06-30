@@ -16,14 +16,14 @@
 {
     static id <Theme> sharedTheme = nil;
     static dispatch_once_t onceToken;
-    NSString *sm = [[SettingsManager sharedSettingsManager] theme];
-    NSLog(@"Class THeme: %@", sm);
+    NSString *classString = [[SettingsManager sharedSettingsManager] theme];
+    NSLog(@"Class THeme: %@", classString);
     
-    if ([[NSUserDefaults standardUserDefaults] stringForKey:@"theme"]) {
-        NSLog(@"Theme Defautl: %@", [[NSUserDefaults standardUserDefaults] stringForKey:@"theme"]);
-    }
+//    if ([[NSUserDefaults standardUserDefaults] stringForKey:@"theme"]) {
+//        NSLog(@"Theme Defautl: %@", [[NSUserDefaults standardUserDefaults] stringForKey:@"theme"]);
+//    }
     
-    NSString *classString = [[NSUserDefaults standardUserDefaults] stringForKey:@"theme"];
+//    NSString *classString = [[NSUserDefaults standardUserDefaults] stringForKey:@"theme"];
     
     Class thisClass = NSClassFromString(classString);
 //    id themeClass = [[thisClass alloc] init];

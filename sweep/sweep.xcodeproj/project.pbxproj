@@ -34,6 +34,8 @@
 		E9518FAB1768108200EB82C8 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9518FA91768108200EB82C8 /* MainStoryboard_iPad.storyboard */; };
 		E9518FAE1768108200EB82C8 /* sweep.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E9518FAC1768108200EB82C8 /* sweep.xcdatamodeld */; };
 		E9518FB11768108200EB82C8 /* ScansViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9518FB01768108200EB82C8 /* ScansViewController.m */; };
+		E9C4F45C177FE52C00C99B22 /* CameraCaptureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9C4F45B177FE52B00C99B22 /* CameraCaptureViewController.m */; };
+		E9C4F45D177FE52C00C99B22 /* CameraCaptureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9C4F45B177FE52B00C99B22 /* CameraCaptureViewController.m */; };
 		E9E8AD521768224A00F837D7 /* SideMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E8AD511768224A00F837D7 /* SideMenuViewController.m */; };
 		E9E8AD5717682BED00F837D7 /* SettingsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E8AD5617682BED00F837D7 /* SettingsManager.m */; };
 		E9E8AD5D17682C5700F837D7 /* Theme.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E8AD5A17682C5700F837D7 /* Theme.m */; };
@@ -118,6 +120,8 @@
 		E9518FAD1768108200EB82C8 /* sweep.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = sweep.xcdatamodel; sourceTree = "<group>"; };
 		E9518FAF1768108200EB82C8 /* ScansViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScansViewController.h; sourceTree = "<group>"; };
 		E9518FB01768108200EB82C8 /* ScansViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScansViewController.m; sourceTree = "<group>"; };
+		E9C4F45A177FE52B00C99B22 /* CameraCaptureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraCaptureViewController.h; sourceTree = "<group>"; };
+		E9C4F45B177FE52B00C99B22 /* CameraCaptureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraCaptureViewController.m; sourceTree = "<group>"; };
 		E9E8AD501768224A00F837D7 /* SideMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SideMenuViewController.h; sourceTree = "<group>"; };
 		E9E8AD511768224A00F837D7 /* SideMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SideMenuViewController.m; sourceTree = "<group>"; };
 		E9E8AD5517682BED00F837D7 /* SettingsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsManager.h; sourceTree = "<group>"; };
@@ -229,6 +233,8 @@
 				E9518FB01768108200EB82C8 /* ScansViewController.m */,
 				E9E8AD501768224A00F837D7 /* SideMenuViewController.h */,
 				E9E8AD511768224A00F837D7 /* SideMenuViewController.m */,
+				E9C4F45A177FE52B00C99B22 /* CameraCaptureViewController.h */,
+				E9C4F45B177FE52B00C99B22 /* CameraCaptureViewController.m */,
 				E9E8ADED176AA1C500F837D7 /* LogInViewController.h */,
 				E9E8ADEE176AA1C600F837D7 /* LogInViewController.m */,
 				E9518F951768108200EB82C8 /* Supporting Files */,
@@ -598,6 +604,7 @@
 				E938504B177035D600DC9D97 /* Events.m in Sources */,
 				E938504F177035DF00DC9D97 /* Departments.m in Sources */,
 				E9FE4CC1177A8F7E0095487C /* NSManagedObject+JSON.m in Sources */,
+				E9C4F45C177FE52C00C99B22 /* CameraCaptureViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -624,6 +631,7 @@
 				E938504C177035D600DC9D97 /* Events.m in Sources */,
 				E9385050177035DF00DC9D97 /* Departments.m in Sources */,
 				E9FE4CC2177A8F7E0095487C /* NSManagedObject+JSON.m in Sources */,
+				E9C4F45D177FE52C00C99B22 /* CameraCaptureViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

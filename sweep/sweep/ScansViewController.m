@@ -32,21 +32,22 @@
 {
     [super viewDidLoad];
 
+    self.managedObjectContext = [[SWCoreDataController sharedInstance] newManagedObjectContext];
+
     [self setupMenuBarButtonItems];
     [self configureView];
     
     [self displayLoginControllerIfNeeded];
-
+    [[NSNotificationCenter defaultCenter] addObserverForName:@"SWSyncEngineSyncCompleted" object:nil queue:nil usingBlock:^(NSNotification *note) {
+        [self loadRecordsFromCoreData];
+    }];
 }
 
 -(void) viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
 
-    [[NSNotificationCenter defaultCenter] addObserverForName:@"SWSyncEngineSyncCompleted" object:nil queue:nil usingBlock:^(NSNotification *note) {
-        [self loadRecordsFromCoreData];
-        [self.scansTable reloadData];
-    }];
+    
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
@@ -59,9 +60,13 @@
         [self.managedObjectContext reset];
         NSError *error = nil;
         NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:@"Scans"];
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"event_id = %@", self.detailItem.remote_id];
+        NSLog(@"Event_ID: %@", self.detailItem.remote_id);
+        [request setPredicate:predicate];
         [request setSortDescriptors:[NSArray arrayWithObject:
                                      [NSSortDescriptor sortDescriptorWithKey:@"created_at" ascending:YES]]];
         self.scans = [self.managedObjectContext executeFetchRequest:request error:&error];
+        [self.scansTable reloadData];
     }];
 }
 
@@ -89,6 +94,18 @@
             action:@selector(scanPressed:)];
 }
 
+- (IBAction)scanPressed:(id)sender {
+	UIStoryboard *st = [UIStoryboard storyboardWithName:[[NSBundle mainBundle].infoDictionary objectForKey:@"UIMainStoryboardFile"] bundle:[NSBundle mainBundle]];
+    CameraCaptureViewController *cameraCapture = [st instantiateViewControllerWithIdentifier:@"cameraCaptureViewController"];
+    cameraCapture.delegate = self;
+    cameraCapture.event = self.detailItem;
+    cameraCapture.modalPresentationStyle = UIModalPresentationFullScreen;
+    [self presentViewController:cameraCapture animated:YES completion:nil];
+    /*BarcodeCaptureViewController *vc = [[BarcodeCaptureViewController alloc] initWithNibName:@"BarcodeCaptureViewController" bundle:nil];
+    vc.delegate = self;
+    [self presentViewController:vc animated:NO completion:nil];*/
+}
+
 
 - (void)setDetailItem:(id)newDetailItem
 {
@@ -107,13 +124,9 @@
 - (void)configureView
 {
     // Update the user interface for the detail item.
-    
     if (self.detailItem) {
-//        self.detailDescriptionLabel.text = [[self.detailItem valueForKey:@"scanned_at"] description];
         self.title = self.detailItem.name;
-        NSLog(@"Event ID: %@", self.detailItem.remote_id);
-        NSLog(@"Department ID: %@", self.detailItem.department.remote_id);
-        
+        [self loadRecordsFromCoreData];
     }
 }
 
@@ -205,112 +218,62 @@
     self.masterPopoverController = nil;
 }
 
+#pragma mark - SScanDelegate
+
+- (void) cameraCaptureController:(CameraCaptureViewController *)controller
+{
+    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
+//    NSLog(@"Keys: %@ Values: %@", [scanSession allKeys], [scanSession allValues]);
+//    NSLog(@"Barcode Result: %@", barcodeResult);
+//    self.detailItem = controller.event;
+	// Restore main screen (and restore title bar for 3.0)
+    [self dismissViewControllerAnimated:NO completion:^(void) {
+        /*if (barcodeResult && [barcodeResult count])
+        {
+            NSMutableDictionary *scanSession = [[NSMutableDictionary alloc] init];
+            [scanSession setObject:[NSDate date] forKey:@"Session End Time"];
+            [scanSession setObject:barcodeResult forKey:@"Scanned Items"];
+            NSLog(@"Keys: %@ Values: %@", [scanSession allKeys], [scanSession allValues]);
+            
+            for( NSObject *bar in barcodeResult ) {
+                [scanHistory insertObject:bar atIndex:0];
+            }
+            
+            //            [scanHistory insertObject:scanSession atIndex:0];
+            
+            // Save our new scans out to the archive file
+            NSString *documentsDir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
+                                                                          NSUserDomainMask, YES) objectAtIndex:0];
+            NSString *archivePath = [documentsDir stringByAppendingPathComponent:self.scanDataArchiveString];
+            [NSKeyedArchiver archiveRootObject:scanHistory toFile:archivePath];
+            
+            [self.scanHistoryTable reloadData];
+         
+        }*/
+        [[SWSyncEngine sharedEngine] startSync];
+    }];
+}
+
 #pragma mark - Table View
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return [self.scans count];
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
 //    id <NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController sections][section];
-    return 1;
+    return [self.scans count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ScanValuesTableViewCell" forIndexPath:indexPath];
     [self configureCell:cell atIndexPath:indexPath];
     return cell;
 }
-/*
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    /*
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        NSManagedObjectContext *context = [self.fetchedResultsController managedObjectContext];
-        [context deleteObject:[self.fetchedResultsController objectAtIndexPath:indexPath]];
-        
-        NSError *error = nil;
-        if (![context save:&error]) {
-             // Replace this implementation with code to handle the error appropriately.
-             // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development. 
-            NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-            abort();
-        }
-    }   
-     */
-}
 
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // The table view should not be re-orderable.
-    return NO;
-}
-/*
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
-        NSManagedObject *object = [[self fetchedResultsController] objectAtIndexPath:indexPath];
-        self.detailViewController.detailItem = object;
-    }
-}
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    if ([[segue identifier] isEqualToString:@"showDetail"]) {
-        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        NSManagedObject *object = [[self fetchedResultsController] objectAtIndexPath:indexPath];
-        [[segue destinationViewController] setDetailItem:object];
-    }
-}
-*/
-#pragma mark - Fetched results controller
-/*
-- (NSFetchedResultsController *)fetchedResultsController
-{
-    if (_fetchedResultsController != nil) {
-        return _fetchedResultsController;
-    }
-    
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    // Edit the entity name as appropriate.
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Scans" inManagedObjectContext:self.managedObjectContext];
-    [fetchRequest setEntity:entity];
-    
-    // Set the batch size to a suitable number.
-    [fetchRequest setFetchBatchSize:20];
-    
-    // Edit the sort key as appropriate.
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"scanned_at" ascending:NO];
-    NSArray *sortDescriptors = @[sortDescriptor];
-    
-    [fetchRequest setSortDescriptors:sortDescriptors];
-    
-    // Edit the section name key path and cache name if appropriate.
-    // nil for section name key path means "no sections".
-    NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:@"Master"];
-    aFetchedResultsController.delegate = self;
-    self.fetchedResultsController = aFetchedResultsController;
-    
-	NSError *error = nil;
-	if (![self.fetchedResultsController performFetch:&error]) {
-	     // Replace this implementation with code to handle the error appropriately.
-	     // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development. 
-	    NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-	    abort();
-	}
-    
-    return _fetchedResultsController;
-}    
-*/
 - (void)controllerWillChangeContent:(NSFetchedResultsController *)controller
 {
     [self.scansTable beginUpdates];
@@ -330,51 +293,25 @@
     }
 }
 
-- (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject
-       atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type
-      newIndexPath:(NSIndexPath *)newIndexPath
-{
-    UITableView *tableView = self.scansTable;
-    
-    switch(type) {
-        case NSFetchedResultsChangeInsert:
-            [tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
-            break;
-            
-        case NSFetchedResultsChangeDelete:
-            [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-            break;
-            
-        case NSFetchedResultsChangeUpdate:
-            [self configureCell:[tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
-            break;
-            
-        case NSFetchedResultsChangeMove:
-            [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-            [tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
-            break;
-    }
-}
-
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
 {
     [self.scansTable endUpdates];
 }
 
-/*
-// Implementing the above methods to update the table view in response to individual changes may have performance implications if a large number of changes are made simultaneously. If this proves to be an issue, you can instead just implement controllerDidChangeContent: which notifies the delegate that all section and object changes have been processed. 
- 
- - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
-{
-    // In the simplest, most efficient, case, reload the table view.
-    [self.tableView reloadData];
-}
- */
-
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
-    Scans *object = [self.scans objectAtIndex:indexPath];
-    cell.textLabel.text = object.value;
+    // FIXME: Do this whole block more efficiently
+    Scans *scan = [self.scans objectAtIndex:indexPath.row];
+    NSString *valueString;
+    NSInteger num = (scan.value.length * [[[SettingsManager sharedSettingsManager] percent_visible] integerValue]) / 100;
+    valueString = [scan.value substringFromIndex:(scan.value.length - num) ];
+    NSMutableString *padString = [NSMutableString string];
+    for (int i = 0; i < (scan.value.length - num); i++)
+    {
+        [padString appendString:@"*"];
+    }
+    valueString = [NSString stringWithFormat:@"%@%@", padString, valueString];
+    cell.textLabel.text = valueString;
 }
 
 @end

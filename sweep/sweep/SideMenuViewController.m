@@ -13,22 +13,20 @@
 @property (nonatomic, strong) UITextField *activeField;
 @property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 
-@property (nonatomic) BOOL addTextFieldWasEmpty;
+@property (nonatomic) BOOL firstTimeLoad;
 
 @end
 
 @implementation SideMenuViewController
 
-
- - (void)awakeFromNib
- {
+- (void)awakeFromNib
+{
      if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
          //        self.scansTable.clearsSelectionOnViewWillAppear = NO;
          self.contentSizeForViewInPopover = CGSizeMake(320.0, 600.0);
      }
      [super awakeFromNib];
- }
- 
+}
 
 - (void)viewDidLoad
 {
@@ -36,14 +34,18 @@
 	// Do any additional setup after loading the view.
 //    if ([SWSyncEngine sharedEngine] syncInProgress) {
 //    }
-
+    self.firstTimeLoad = YES;
     self.scansViewController = (ScansViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
     self.managedObjectContext = [[SWCoreDataController sharedInstance] newManagedObjectContext];
     [self registerForKeyboardNotifications];
     
     [[NSNotificationCenter defaultCenter] addObserverForName:@"SWSyncEngineSyncCompleted" object:nil queue:nil usingBlock:^(NSNotification *note) {
         [self loadRecordsFromCoreData];
-//        self.scansViewController.detailItem = (Events *)[self.events objectAtIndex:0];
+        if (self.firstTimeLoad)
+        {
+            [self tableView:self.eventsTable didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+            self.firstTimeLoad = NO;
+        }
     }];
 }
 

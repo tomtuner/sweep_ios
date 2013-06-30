@@ -50,11 +50,10 @@
         [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss'Z'"];
         [dateFormatter setTimeZone:[NSTimeZone timeZoneWithName:@"UTC"]];
         
-        NSString *jsonString = [NSString
+       /* NSString *jsonString = [NSString
                                 stringWithFormat:@"{\"updatedAt\":{\"$gte\":{\"__type\":\"Date\",\"iso\":\"%@\"}}}",
                                 [dateFormatter stringFromDate:updatedDate]];
-        
-//        parameters = [NSDictionary dic dictionaryWithObject:jsonString forKey:@"where"];
+        */
         [parameters setObject:[dateFormatter stringFromDate:updatedDate] forKey:@"updated_at"];
     }    
     parameters = [NSDictionary dictionaryWithDictionary:parameters];

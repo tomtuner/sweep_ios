@@ -407,8 +407,8 @@ NSString * const kSWSyncEngineSyncCompletedNotificationName = @"SWSyncEngineSync
     }];
 }
 
-// ADD ANOTHER METHOD FOR ARRAYS
-
+// ADD ANOTHER METHOD FOR ARRAYS - Remove this one
+/*
 -(void) processIntoCoreDataWithDictionary:(NSDictionary *) data
 {
      NSManagedObjectContext *managedObjectContext = [[SWCoreDataController sharedInstance] backgroundManagedObjectContext];
@@ -458,7 +458,7 @@ NSString * const kSWSyncEngineSyncCompletedNotificationName = @"SWSyncEngineSync
         }
     }
 }
-
+*/
 - (void)processIntoCoreDataForClassName:(NSString *) className WithArray: (NSArray *) data {
     
     NSManagedObjectContext *managedObjectContext = [[SWCoreDataController sharedInstance] backgroundManagedObjectContext];
@@ -473,7 +473,7 @@ NSString * const kSWSyncEngineSyncCompletedNotificationName = @"SWSyncEngineSync
             //
 
             for (NSDictionary *record in data) {
-                [self newManagedObjectWithClassName:className forRecord:record];
+                [self newManagedObjectUsingMasterContextWithClassName:className forRecord:record];
             }
         } else {
             //

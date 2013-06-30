@@ -41,8 +41,8 @@
 //        scanController.managedObjectContext = self.managedObjectContext;
         scanController.departmentKeyItem = self.departmentKeyItem;
 
-        UINavigationController *masterNavigationController = splitViewController.viewControllers[0];
-        SideMenuViewController *sideController = (SideMenuViewController *)masterNavigationController.topViewController;
+//        UINavigationController *masterNavigationController = splitViewController.viewControllers[0];
+//        SideMenuViewController *sideController = (SideMenuViewController *)masterNavigationController.topViewController;
 //        sideController.departmentKeyItem = self.departmentKeyItem;
 //        controller.managedObjectContext = self.managedObjectContext;
         

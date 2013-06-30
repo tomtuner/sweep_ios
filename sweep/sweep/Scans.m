@@ -21,10 +21,24 @@
 @dynamic event;
 @dynamic sync_status;
 
--(void) awakeFromNib
+-(void) awakeFromInsert
 {
     [super awakeFromNib];
-    [self setCreated_at:[NSDate date]];
+    self.scanned_at = [NSDate date];
 
+}
+
+- (NSMutableDictionary *)JSONToCreateObjectOnServer {
+    
+    NSDictionary *jsonDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
+                                    self.value, @"value",
+                                    self.event_id, @"event_id",
+                                    self.scanned_at, @"scanned_at", nil];
+    NSLog(@"Scanned_at: %@", self.scanned_at);
+    NSMutableDictionary *event = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                  jsonDictionary, @"scan", nil];
+    
+    
+    return event;
 }
 @end

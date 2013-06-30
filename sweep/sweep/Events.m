@@ -26,8 +26,7 @@
     
     NSDictionary *jsonDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
                                     self.name, @"name",
-                                    self.department_id, @"department_id",
-                                    self.remote_id, @"id", nil];
+                                    self.department_id, @"department_id", nil];
     NSMutableDictionary *event = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                            jsonDictionary, @"event", nil];
     

@@ -10,6 +10,7 @@
 
 static NSString *SETTING_FIRST_TIME_RUN = @"SETTING_FIRST_TIME_RUN";
 static NSString *SETTING_THEME = @"THEME";
+static NSString *SETTING_PERCENT_VISIBLE = @"PERCENT_VISIBLE";
 
 @interface SettingsManager : NSObject {
     SettingsManager * settingsManager;
@@ -19,6 +20,6 @@ static NSString *SETTING_THEME = @"THEME";
 + (SettingsManager *) sharedSettingsManager;
 
 -(NSString *) theme;
-
+-(NSNumber *) percent_visible;
 
 @end
