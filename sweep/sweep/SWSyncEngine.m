@@ -501,8 +501,8 @@ NSString * const kSWSyncEngineSyncCompletedNotificationName = @"SWSyncEngineSync
                     if ([storedRecords count] > currentIndex) {
                         storedManagedObject = [storedRecords objectAtIndex:currentIndex];
                     }
-                    
-                    if ([storedManagedObject valueForKey:@"remote_id"] == [record valueForKey:@"id"]) {
+
+                    if ([[storedManagedObject valueForKey:@"remote_id"] intValue] == [[record valueForKey:@"id"] intValue]) {
                         //
                         // Do a quick spot check to validate the objectIds in fact do match, if they do update the stored
                         // object with the values received from the remote service

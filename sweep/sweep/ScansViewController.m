@@ -10,7 +10,9 @@
 
 
 @interface ScansViewController ()
-@property (strong, nonatomic) UIPopoverController *masterPopoverController;
+
+@property (nonatomic, strong) UIPopoverController *masterPopoverController;
+@property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath;
 - (void)configureView;
@@ -46,8 +48,6 @@
 -(void) viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-
-    
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
@@ -72,7 +72,6 @@
 
 - (void)setupMenuBarButtonItems {
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-
         self.navigationItem.leftBarButtonItem = [self leftMenuBarButtonItem];
     }
     
@@ -223,10 +222,7 @@
 - (void) cameraCaptureController:(CameraCaptureViewController *)controller
 {
     [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
-//    NSLog(@"Keys: %@ Values: %@", [scanSession allKeys], [scanSession allValues]);
-//    NSLog(@"Barcode Result: %@", barcodeResult);
-//    self.detailItem = controller.event;
-	// Restore main screen (and restore title bar for 3.0)
+
     [self dismissViewControllerAnimated:NO completion:^(void) {
         /*if (barcodeResult && [barcodeResult count])
         {

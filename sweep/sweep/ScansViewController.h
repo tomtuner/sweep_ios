@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreData/CoreData.h>
+#import "SWSyncEngine.h"
 #import "IIViewDeckController.h"
 #import "LogInViewController.h"
 #import "Scans.h"
@@ -17,12 +18,9 @@
 
 @interface ScansViewController : UIViewController <NSFetchedResultsControllerDelegate, UISplitViewControllerDelegate>
 
-@property (strong, nonatomic) Events *detailItem;
-@property(strong, nonatomic) IBOutlet UITableView *scansTable;
+@property (nonatomic, strong) Events *detailItem;
+@property (nonatomic, strong) IBOutlet UITableView *scansTable;
 @property (nonatomic, strong) NSArray *scans;
 
 @property (nonatomic, strong) KeychainWrapper *departmentKeyItem;
-
-@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
-
 @end
