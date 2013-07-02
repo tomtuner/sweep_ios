@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "E9518F881768108200EB82C8"
-               BuildableName = "sweep.app"
-               BlueprintName = "sweep"
+               BlueprintIdentifier = "E9828AF817837D0500619FB4"
+               BuildableName = "sweep rit copy.app"
+               BlueprintName = "sweep_rit-dev"
                ReferencedContainer = "container:sweep.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -32,9 +32,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "E9518F881768108200EB82C8"
-            BuildableName = "sweep.app"
-            BlueprintName = "sweep"
+            BlueprintIdentifier = "E9828AF817837D0500619FB4"
+            BuildableName = "sweep rit copy.app"
+            BlueprintName = "sweep_rit-dev"
             ReferencedContainer = "container:sweep.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -51,9 +51,9 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "E9518F881768108200EB82C8"
-            BuildableName = "sweep.app"
-            BlueprintName = "sweep"
+            BlueprintIdentifier = "E9828AF817837D0500619FB4"
+            BuildableName = "sweep rit copy.app"
+            BlueprintName = "sweep_rit-dev"
             ReferencedContainer = "container:sweep.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -69,9 +69,9 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "E9518F881768108200EB82C8"
-            BuildableName = "sweep.app"
-            BlueprintName = "sweep"
+            BlueprintIdentifier = "E9828AF817837D0500619FB4"
+            BuildableName = "sweep rit copy.app"
+            BlueprintName = "sweep_rit-dev"
             ReferencedContainer = "container:sweep.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

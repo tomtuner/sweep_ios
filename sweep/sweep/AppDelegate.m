@@ -18,12 +18,13 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    NSString *defaultsFileName = [NSString stringWithFormat:@"defaults_%@", [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleName"]];
+    NSString *defaultsFileName = [NSString stringWithFormat:@"defaults%@", [[[NSBundle mainBundle] infoDictionary] objectForKey:@"DEFAULTS_EXT"]];
     NSLog(@"Product Name: %@", defaultsFileName);
     
     NSDictionary *defaults = [[NSDictionary alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:defaultsFileName ofType:@"plist"]];
     [[NSUserDefaults standardUserDefaults] registerDefaults:defaults];
     
+    [self setupHockeyApp];
     [self initKeychainForDepartmentKey];
     [[SWSyncEngine sharedEngine] registerNSManagedObjectClassToSync:[Events class]];
     [[SWSyncEngine sharedEngine] registerNSManagedObjectClassToSync:[Scans class]];
@@ -72,6 +73,26 @@
     // Create the keychain for the department key
     KeychainWrapper *wrapper = [[KeychainWrapper alloc] initWithIdentifier:@"DepartmentKey" accessGroup:nil];
     self.departmentKeyItem = wrapper;
+}
+
+- (void) setupHockeyApp
+{
+    NSString *hockeyBetaID = [[SettingsManager sharedSettingsManager] hockeyAppBetaID];
+    NSString *hockeyID = [[SettingsManager sharedSettingsManager] hockeyAppID];
+
+    [[BITHockeyManager sharedHockeyManager] configureWithBetaIdentifier:hockeyBetaID
+                                                         liveIdentifier:hockeyID
+                                                               delegate:self];
+    [[BITHockeyManager sharedHockeyManager] startManager];
+}
+
+#pragma mark - BITUpdateManagerDelegate
+- (NSString *)customDeviceIdentifierForUpdateManager:(BITUpdateManager *)updateManager {
+#ifndef CONFIGURATION_AppStore
+    if ([[UIDevice currentDevice] respondsToSelector:@selector(uniqueIdentifier)])
+        return [[UIDevice currentDevice] performSelector:@selector(uniqueIdentifier)];
+#endif
+    return nil;
 }
 				
 - (void)applicationWillResignActive:(UIApplication *)application

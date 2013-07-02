@@ -2,5 +2,6 @@
 #define __COCOA_PODS
 
 #define __POD_AFNetworking
+#define __POD_HockeySDK
 #define __POD_ViewDeck
 #define __POD_ZXingObjC

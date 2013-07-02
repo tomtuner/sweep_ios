@@ -11,6 +11,8 @@
 static NSString *SETTING_FIRST_TIME_RUN = @"SETTING_FIRST_TIME_RUN";
 static NSString *SETTING_THEME = @"THEME";
 static NSString *SETTING_PERCENT_VISIBLE = @"PERCENT_VISIBLE";
+static NSString *HOCKEY_APP_BETA_ID = @"HOCKEY_APP_BETA_ID";
+static NSString *HOCKEY_APP_ID = @"HOCKEY_APP_ID";
 
 @interface SettingsManager : NSObject {
     SettingsManager * settingsManager;
@@ -21,5 +23,7 @@ static NSString *SETTING_PERCENT_VISIBLE = @"PERCENT_VISIBLE";
 
 -(NSString *) theme;
 -(NSNumber *) percent_visible;
+-(NSString *) hockeyAppID;
+-(NSString *) hockeyAppBetaID;
 
 @end

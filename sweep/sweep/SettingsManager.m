@@ -54,6 +54,16 @@ static BOOL initialized = NO;
     return self;
 }
 
+-(NSString *) hockeyAppBetaID
+{
+    return [_userDefaults stringForKey:HOCKEY_APP_BETA_ID];
+}
+
+-(NSString *) hockeyAppID
+{
+    return [_userDefaults stringForKey:HOCKEY_APP_ID];
+}
+
 -(NSString *) theme
 {
     return [_userDefaults stringForKey:SETTING_THEME];

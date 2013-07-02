@@ -4,20 +4,40 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>sweep rit.xcscheme</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>2</integer>
-		</dict>
 		<key>sweep.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>sweep_dev.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
+		<key>sweep_rit.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
+		<key>sweep_rit_dev.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>3</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>E9518F881768108200EB82C8</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E9828AC917837CF700619FB4</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E9828AF817837D0500619FB4</key>
 		<dict>
 			<key>primary</key>
 			<true/>

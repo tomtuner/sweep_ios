@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <HockeySDK/HockeySDK.h>
 #import "Theme.h"
 #import "KeychainWrapper.h"
 #import "IIViewDeckController.h"
@@ -19,7 +20,7 @@
 #import "Scans.h"
 
 //@class EventValuesViewController;
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate, BITHockeyManagerDelegate, BITUpdateManagerDelegate, BITCrashManagerDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 @property (nonatomic, strong) KeychainWrapper *departmentKeyItem;

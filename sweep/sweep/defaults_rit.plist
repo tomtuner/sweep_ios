@@ -8,5 +8,9 @@
 	<false/>
 	<key>PERCENT_VISIBLE</key>
 	<integer>25</integer>
+	<key>HOCKEY_APP_BETA_ID</key>
+	<string>4a08fbb8fb6a59c328850d64c63c936d</string>
+	<key>HOCKEY_APP_ID</key>
+	<string>f455c7062ee3ba4356646c80cb8b3736</string>
 </dict>
 </plist>
