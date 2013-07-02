@@ -1,0 +1,687 @@
+THockeySDKResources
+v3
+r1
+cCheck dependencies
+cProcessInfoPlistFile /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/Info.plist ../Resources/HockeySDK-Info.plist
+cCopyPNGFile /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/authorize_denied@2x.png ../Resources/authorize_denied@2x.png
+cCopyPNGFile /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/authorize_denied.png ../Resources/authorize_denied.png
+cCopyPNGFile /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/authorize_request@2x.png ../Resources/authorize_request@2x.png
+cCopyPNGFile /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/authorize_request.png ../Resources/authorize_request.png
+cCopyPNGFile /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/bg.png ../Resources/bg.png
+cCopyPNGFile /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/buttonHighlight.png ../Resources/buttonHighlight.png
+cCopyPNGFile /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/buttonHighlight@2x.png ../Resources/buttonHighlight@2x.png
+cCopyPNGFile /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/IconGradient.png ../Resources/IconGradient.png
+cCopyPNGFile /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/IconGradient@2x.png ../Resources/IconGradient@2x.png
+cCopyPNGFile /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/feedbackActivity@2x~ipad.png ../Resources/feedbackActivity@2x~ipad.png
+cCopyPNGFile /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/feedbackActivity~ipad.png ../Resources/feedbackActivity~ipad.png
+cCopyPNGFile /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/feedbackActiviy.png ../Resources/feedbackActiviy.png
+cCopyPNGFile /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/feedbackActiviy@2x.png ../Resources/feedbackActiviy@2x.png
+cCopyPNGFile /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/buttonRoundedDelete.png ../Resources/buttonRoundedDelete.png
+cCopyPNGFile /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/buttonRoundedDelete@2x.png ../Resources/buttonRoundedDelete@2x.png
+cCopyPNGFile /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/buttonRoundedDeleteHighlighted.png ../Resources/buttonRoundedDeleteHighlighted.png
+cCopyPNGFile /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/buttonRoundedRegular.png ../Resources/buttonRoundedRegular.png
+cCopyPNGFile /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/buttonRoundedDeleteHighlighted@2x.png ../Resources/buttonRoundedDeleteHighlighted@2x.png
+cCopyPNGFile /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/buttonRoundedRegular@2x.png ../Resources/buttonRoundedRegular@2x.png
+cCopyPNGFile /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/buttonRoundedRegularHighlighted.png ../Resources/buttonRoundedRegularHighlighted.png
+cCopyPNGFile /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/buttonRoundedRegularHighlighted@2x.png ../Resources/buttonRoundedRegularHighlighted@2x.png
+cCopyStringsFile /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/de.lproj/HockeySDK.strings ../Resources/de.lproj/HockeySDK.strings
+cCopyStringsFile /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/es.lproj/HockeySDK.strings ../Resources/es.lproj/HockeySDK.strings
+cCopyStringsFile /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/fr.lproj/HockeySDK.strings ../Resources/fr.lproj/HockeySDK.strings
+cCopyStringsFile /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/it.lproj/HockeySDK.strings ../Resources/it.lproj/HockeySDK.strings
+cCopyStringsFile /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/ja.lproj/HockeySDK.strings ../Resources/ja.lproj/HockeySDK.strings
+cCopyStringsFile /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/pt.lproj/HockeySDK.strings ../Resources/pt.lproj/HockeySDK.strings
+cCopyStringsFile /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/ru.lproj/HockeySDK.strings ../Resources/ru.lproj/HockeySDK.strings
+cCopyStringsFile /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/hr.lproj/HockeySDK.strings ../Resources/hr.lproj/HockeySDK.strings
+cCopyStringsFile /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/pt-PT.lproj/HockeySDK.strings ../Resources/pt-PT.lproj/HockeySDK.strings
+cCopyStringsFile /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/en.lproj/HockeySDK.strings ../Resources/en.lproj/HockeySDK.strings
+cCopyStringsFile /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/zh-Hans.lproj/HockeySDK.strings ../Resources/zh-Hans.lproj/HockeySDK.strings
+cCopyStringsFile /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/ro.lproj/HockeySDK.strings ../Resources/ro.lproj/HockeySDK.strings
+cCopyStringsFile /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/hu.lproj/HockeySDK.strings ../Resources/hu.lproj/HockeySDK.strings
+cTouch /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle
+
+N../Resources/HockeySDK-Info.plist
+c0000000051D1895D00000000000003D2
+t1372686685
+s978
+
+N/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle
+t2
+s0
+
+N/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/IconGradient.png
+t2
+s0
+
+N/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/IconGradient@2x.png
+t2
+s0
+
+N/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/Info.plist
+t2
+s0
+
+N/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/authorize_denied.png
+t2
+s0
+
+N/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/authorize_denied@2x.png
+t2
+s0
+
+N/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/authorize_request.png
+t2
+s0
+
+N/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/authorize_request@2x.png
+t2
+s0
+
+N/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/bg.png
+t2
+s0
+
+N/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/buttonHighlight.png
+t2
+s0
+
+N/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/buttonHighlight@2x.png
+t2
+s0
+
+N/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/buttonRoundedDelete.png
+t2
+s0
+
+N/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/buttonRoundedDelete@2x.png
+t2
+s0
+
+N/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/buttonRoundedDeleteHighlighted.png
+t2
+s0
+
+N/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/buttonRoundedDeleteHighlighted@2x.png
+t2
+s0
+
+N/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/buttonRoundedRegular.png
+t2
+s0
+
+N/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/buttonRoundedRegular@2x.png
+t2
+s0
+
+N/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/buttonRoundedRegularHighlighted.png
+t2
+s0
+
+N/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/buttonRoundedRegularHighlighted@2x.png
+t2
+s0
+
+N/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/de.lproj/HockeySDK.strings
+t2
+s0
+
+N/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/en.lproj/HockeySDK.strings
+t2
+s0
+
+N/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/es.lproj/HockeySDK.strings
+t2
+s0
+
+N/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/feedbackActivity@2x~ipad.png
+t2
+s0
+
+N/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/feedbackActivity~ipad.png
+t2
+s0
+
+N/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/feedbackActiviy.png
+t2
+s0
+
+N/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/feedbackActiviy@2x.png
+t2
+s0
+
+N/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/fr.lproj/HockeySDK.strings
+t2
+s0
+
+N/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/hr.lproj/HockeySDK.strings
+t2
+s0
+
+N/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/hu.lproj/HockeySDK.strings
+t2
+s0
+
+N/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/it.lproj/HockeySDK.strings
+t2
+s0
+
+N/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/ja.lproj/HockeySDK.strings
+t2
+s0
+
+N/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/pt-PT.lproj/HockeySDK.strings
+t2
+s0
+
+N/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/pt.lproj/HockeySDK.strings
+t2
+s0
+
+N/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/ro.lproj/HockeySDK.strings
+t2
+s0
+
+N/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/ru.lproj/HockeySDK.strings
+t2
+s0
+
+N/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/zh-Hans.lproj/HockeySDK.strings
+t2
+s0
+
+N/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/IconGradient.png
+c0000000051D1895D0000000000000AE6
+t1372686685
+s2790
+
+N/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/IconGradient@2x.png
+c0000000051D1895D0000000000000E2C
+t1372686685
+s3628
+
+N/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/authorize_denied.png
+c0000000051D1895D0000000000000924
+t1372686685
+s2340
+
+N/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/authorize_denied@2x.png
+c0000000051D1895D0000000000001120
+t1372686685
+s4384
+
+N/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/authorize_request.png
+c0000000051D1895D0000000000000990
+t1372686685
+s2448
+
+N/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/authorize_request@2x.png
+c0000000051D1895D00000000000012B9
+t1372686685
+s4793
+
+N/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/bg.png
+c0000000051D1895D0000000000000628
+t1372686685
+s1576
+
+N/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/buttonHighlight.png
+c0000000051D1895D00000000000003FD
+t1372686685
+s1021
+
+N/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/buttonHighlight@2x.png
+c0000000051D1895D000000000000044D
+t1372686685
+s1101
+
+N/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/buttonRoundedDelete.png
+c0000000051D1895D0000000000000D58
+t1372686685
+s3416
+
+N/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/buttonRoundedDelete@2x.png
+c0000000051D1895D000000000000104B
+t1372686685
+s4171
+
+N/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/buttonRoundedDeleteHighlighted.png
+c0000000051D1895D0000000000000DD2
+t1372686685
+s3538
+
+N/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/buttonRoundedDeleteHighlighted@2x.png
+c0000000051D1895D000000000000125B
+t1372686685
+s4699
+
+N/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/buttonRoundedRegular.png
+c0000000051D1895D0000000000000D1B
+t1372686685
+s3355
+
+N/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/buttonRoundedRegular@2x.png
+c0000000051D1895D000000000000100C
+t1372686685
+s4108
+
+N/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/buttonRoundedRegularHighlighted.png
+c0000000051D1895D0000000000000E15
+t1372686685
+s3605
+
+N/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/buttonRoundedRegularHighlighted@2x.png
+c0000000051D1895D000000000000126D
+t1372686685
+s4717
+
+N/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/de.lproj/HockeySDK.strings
+c0000000051D1895D00000000000017FF
+t1372686685
+s6143
+
+N/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/en.lproj/HockeySDK.strings
+c0000000051D1895D00000000000016E4
+t1372686685
+s5860
+
+N/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/es.lproj/HockeySDK.strings
+c0000000051D1895D00000000000017BB
+t1372686685
+s6075
+
+N/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/feedbackActivity@2x~ipad.png
+c0000000051D1895D00000000000009CE
+t1372686685
+s2510
+
+N/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/feedbackActivity~ipad.png
+c0000000051D1895D00000000000006C4
+t1372686685
+s1732
+
+N/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/feedbackActiviy.png
+c0000000051D1895D000000000000064E
+t1372686685
+s1614
+
+N/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/feedbackActiviy@2x.png
+c0000000051D1895D0000000000000932
+t1372686685
+s2354
+
+N/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/fr.lproj/HockeySDK.strings
+c0000000051D1895D000000000000180D
+t1372686685
+s6157
+
+N/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/hr.lproj/HockeySDK.strings
+c0000000051D1895D000000000000174E
+t1372686685
+s5966
+
+N/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/hu.lproj/HockeySDK.strings
+c0000000051D1895D0000000000001806
+t1372686685
+s6150
+
+N/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/it.lproj/HockeySDK.strings
+c0000000051D1895D00000000000017B5
+t1372686685
+s6069
+
+N/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/ja.lproj/HockeySDK.strings
+c0000000051D1895D000000000000192F
+t1372686685
+s6447
+
+N/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/pt-PT.lproj/HockeySDK.strings
+c0000000051D1895D00000000000017BB
+t1372686685
+s6075
+
+N/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/pt.lproj/HockeySDK.strings
+c0000000051D1895D00000000000017A5
+t1372686685
+s6053
+
+N/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/ro.lproj/HockeySDK.strings
+c0000000051D1895D0000000000001754
+t1372686685
+s5972
+
+N/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/ru.lproj/HockeySDK.strings
+c0000000051D1895D0000000000001AE1
+t1372686685
+s6881
+
+N/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/zh-Hans.lproj/HockeySDK.strings
+c0000000051D1895D00000000000016FC
+t1372686685
+s5884
+
+CCheck dependencies
+r0
+lSLF03#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection18"Check dependenciesa8a6a4e2c081b741^9510cce2c081b741^---0#1#0#--18"Check dependencies
+
+CCopyPNGFile /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/IconGradient.png ../Resources/IconGradient.png
+s394379490.848462
+e394379491.049365
+r1
+xCopyPNGFile
+x/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/IconGradient.png
+x../Resources/IconGradient.png
+lSLF03#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection97"CopyPNGFile ../Resources/HockeySDKResources.bundle/IconGradient.png ../Resources/IconGradient.png8065d9e2c081b741^c9aa0ce3c081b741^---0#0#0#-19%DVTDocumentLocation2@110"file://localhost/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/IconGradient.png0000000000000000^858"CopyPNGFile ../Resources/HockeySDKResources.bundle/IconGradient.png ../Resources/IconGradient.png    cd /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/opt/local/bin:/opt/local/sbin:/usr/local/bin/git-completion.bash:/Developer/usr/bin/:/Library/Frameworks/Python.framework/Versions/2.6/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/Users/Thomas/aspectj1.7/bin/"    "/Developer/Platforms/iPhoneOS.platform/Developer/Library/Xcode/PrivatePlugIns/iPhoneOS Build System Support.xcplugin/Contents/Resources/copypng" -compress "" /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/IconGradient.png /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/IconGradient.png
+
+CCopyPNGFile /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/IconGradient@2x.png ../Resources/IconGradient@2x.png
+s394379491.045949
+e394379491.088510
+r1
+xCopyPNGFile
+x/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/IconGradient@2x.png
+x../Resources/IconGradient@2x.png
+lSLF03#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection103"CopyPNGFile ../Resources/HockeySDKResources.bundle/IconGradient@2x.png ../Resources/IconGradient@2x.png9dd80be3c081b741^ada716e3c081b741^---0#0#0#-19%DVTDocumentLocation2@113"file://localhost/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/IconGradient@2x.png0000000000000000^878"CopyPNGFile "../Resources/HockeySDKResources.bundle/IconGradient@2x.png" "../Resources/IconGradient@2x.png"    cd /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/opt/local/bin:/opt/local/sbin:/usr/local/bin/git-completion.bash:/Developer/usr/bin/:/Library/Frameworks/Python.framework/Versions/2.6/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/Users/Thomas/aspectj1.7/bin/"    "/Developer/Platforms/iPhoneOS.platform/Developer/Library/Xcode/PrivatePlugIns/iPhoneOS Build System Support.xcplugin/Contents/Resources/copypng" -compress "" "/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/IconGradient@2x.png" "/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/IconGradient@2x.png"
+
+CCopyPNGFile /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/authorize_denied.png ../Resources/authorize_denied.png
+s394379490.847892
+e394379491.054786
+r1
+xCopyPNGFile
+x/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/authorize_denied.png
+x../Resources/authorize_denied.png
+lSLF03#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection105"CopyPNGFile ../Resources/HockeySDKResources.bundle/authorize_denied.png ../Resources/authorize_denied.png4e61d9e2c081b741^9a050ee3c081b741^---0#0#0#-19%DVTDocumentLocation2@114"file://localhost/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/authorize_denied.png0000000000000000^874"CopyPNGFile ../Resources/HockeySDKResources.bundle/authorize_denied.png ../Resources/authorize_denied.png    cd /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/opt/local/bin:/opt/local/sbin:/usr/local/bin/git-completion.bash:/Developer/usr/bin/:/Library/Frameworks/Python.framework/Versions/2.6/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/Users/Thomas/aspectj1.7/bin/"    "/Developer/Platforms/iPhoneOS.platform/Developer/Library/Xcode/PrivatePlugIns/iPhoneOS Build System Support.xcplugin/Contents/Resources/copypng" -compress "" /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/authorize_denied.png /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/authorize_denied.png
+
+CCopyPNGFile /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/authorize_denied@2x.png ../Resources/authorize_denied@2x.png
+s394379490.847858
+e394379491.067697
+r1
+xCopyPNGFile
+x/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/authorize_denied@2x.png
+x../Resources/authorize_denied@2x.png
+lSLF03#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection111"CopyPNGFile ../Resources/HockeySDKResources.bundle/authorize_denied@2x.png ../Resources/authorize_denied@2x.png7061d9e2c081b741^2e5511e3c081b741^---0#0#0#-19%DVTDocumentLocation2@117"file://localhost/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/authorize_denied@2x.png0000000000000000^894"CopyPNGFile "../Resources/HockeySDKResources.bundle/authorize_denied@2x.png" "../Resources/authorize_denied@2x.png"    cd /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/opt/local/bin:/opt/local/sbin:/usr/local/bin/git-completion.bash:/Developer/usr/bin/:/Library/Frameworks/Python.framework/Versions/2.6/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/Users/Thomas/aspectj1.7/bin/"    "/Developer/Platforms/iPhoneOS.platform/Developer/Library/Xcode/PrivatePlugIns/iPhoneOS Build System Support.xcplugin/Contents/Resources/copypng" -compress "" "/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/authorize_denied@2x.png" "/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/authorize_denied@2x.png"
+
+CCopyPNGFile /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/authorize_request.png ../Resources/authorize_request.png
+s394379490.847922
+e394379491.055138
+r1
+xCopyPNGFile
+x/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/authorize_request.png
+x../Resources/authorize_request.png
+lSLF03#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection107"CopyPNGFile ../Resources/HockeySDKResources.bundle/authorize_request.png ../Resources/authorize_request.pngd864d9e2c081b741^8a200ee3c081b741^---0#0#0#-19%DVTDocumentLocation2@115"file://localhost/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/authorize_request.png0000000000000000^878"CopyPNGFile ../Resources/HockeySDKResources.bundle/authorize_request.png ../Resources/authorize_request.png    cd /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/opt/local/bin:/opt/local/sbin:/usr/local/bin/git-completion.bash:/Developer/usr/bin/:/Library/Frameworks/Python.framework/Versions/2.6/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/Users/Thomas/aspectj1.7/bin/"    "/Developer/Platforms/iPhoneOS.platform/Developer/Library/Xcode/PrivatePlugIns/iPhoneOS Build System Support.xcplugin/Contents/Resources/copypng" -compress "" /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/authorize_request.png /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/authorize_request.png
+
+CCopyPNGFile /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/authorize_request@2x.png ../Resources/authorize_request@2x.png
+s394379490.847911
+e394379491.073673
+r1
+xCopyPNGFile
+x/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/authorize_request@2x.png
+x../Resources/authorize_request@2x.png
+lSLF03#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection113"CopyPNGFile ../Resources/HockeySDKResources.bundle/authorize_request@2x.png ../Resources/authorize_request@2x.pnge162d9e2c081b741^a6ee12e3c081b741^---0#0#0#-19%DVTDocumentLocation2@118"file://localhost/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/authorize_request@2x.png0000000000000000^898"CopyPNGFile "../Resources/HockeySDKResources.bundle/authorize_request@2x.png" "../Resources/authorize_request@2x.png"    cd /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/opt/local/bin:/opt/local/sbin:/usr/local/bin/git-completion.bash:/Developer/usr/bin/:/Library/Frameworks/Python.framework/Versions/2.6/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/Users/Thomas/aspectj1.7/bin/"    "/Developer/Platforms/iPhoneOS.platform/Developer/Library/Xcode/PrivatePlugIns/iPhoneOS Build System Support.xcplugin/Contents/Resources/copypng" -compress "" "/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/authorize_request@2x.png" "/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/authorize_request@2x.png"
+
+CCopyPNGFile /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/bg.png ../Resources/bg.png
+s394379490.847975
+e394379491.046188
+r1
+xCopyPNGFile
+x/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/bg.png
+x../Resources/bg.png
+lSLF03#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection77"CopyPNGFile ../Resources/HockeySDKResources.bundle/bg.png ../Resources/bg.pnga660d9e2c081b741^97e10be3c081b741^---0#0#0#-19%DVTDocumentLocation2@100"file://localhost/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/bg.png0000000000000000^818"CopyPNGFile ../Resources/HockeySDKResources.bundle/bg.png ../Resources/bg.png    cd /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/opt/local/bin:/opt/local/sbin:/usr/local/bin/git-completion.bash:/Developer/usr/bin/:/Library/Frameworks/Python.framework/Versions/2.6/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/Users/Thomas/aspectj1.7/bin/"    "/Developer/Platforms/iPhoneOS.platform/Developer/Library/Xcode/PrivatePlugIns/iPhoneOS Build System Support.xcplugin/Contents/Resources/copypng" -compress "" /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/bg.png /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/bg.png
+
+CCopyPNGFile /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/buttonHighlight.png ../Resources/buttonHighlight.png
+s394379490.847991
+e394379491.044724
+r1
+xCopyPNGFile
+x/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/buttonHighlight.png
+x../Resources/buttonHighlight.png
+lSLF03#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection103"CopyPNGFile ../Resources/HockeySDKResources.bundle/buttonHighlight.png ../Resources/buttonHighlight.png1f64d9e2c081b741^7d770be3c081b741^---0#0#0#-19%DVTDocumentLocation2@113"file://localhost/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/buttonHighlight.png0000000000000000^870"CopyPNGFile ../Resources/HockeySDKResources.bundle/buttonHighlight.png ../Resources/buttonHighlight.png    cd /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/opt/local/bin:/opt/local/sbin:/usr/local/bin/git-completion.bash:/Developer/usr/bin/:/Library/Frameworks/Python.framework/Versions/2.6/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/Users/Thomas/aspectj1.7/bin/"    "/Developer/Platforms/iPhoneOS.platform/Developer/Library/Xcode/PrivatePlugIns/iPhoneOS Build System Support.xcplugin/Contents/Resources/copypng" -compress "" /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/buttonHighlight.png /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/buttonHighlight.png
+
+CCopyPNGFile /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/buttonHighlight@2x.png ../Resources/buttonHighlight@2x.png
+s394379490.848036
+e394379491.045478
+r1
+xCopyPNGFile
+x/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/buttonHighlight@2x.png
+x../Resources/buttonHighlight@2x.png
+lSLF03#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection109"CopyPNGFile ../Resources/HockeySDKResources.bundle/buttonHighlight@2x.png ../Resources/buttonHighlight@2x.pngd465d9e2c081b741^16a60be3c081b741^---0#0#0#-19%DVTDocumentLocation2@116"file://localhost/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/buttonHighlight@2x.png0000000000000000^890"CopyPNGFile "../Resources/HockeySDKResources.bundle/buttonHighlight@2x.png" "../Resources/buttonHighlight@2x.png"    cd /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/opt/local/bin:/opt/local/sbin:/usr/local/bin/git-completion.bash:/Developer/usr/bin/:/Library/Frameworks/Python.framework/Versions/2.6/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/Users/Thomas/aspectj1.7/bin/"    "/Developer/Platforms/iPhoneOS.platform/Developer/Library/Xcode/PrivatePlugIns/iPhoneOS Build System Support.xcplugin/Contents/Resources/copypng" -compress "" "/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/buttonHighlight@2x.png" "/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/buttonHighlight@2x.png"
+
+CCopyPNGFile /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/buttonRoundedDelete.png ../Resources/buttonRoundedDelete.png
+s394379491.056072
+e394379491.091904
+r1
+xCopyPNGFile
+x/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/buttonRoundedDelete.png
+x../Resources/buttonRoundedDelete.png
+lSLF03#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection111"CopyPNGFile ../Resources/HockeySDKResources.bundle/buttonRoundedDelete.png ../Resources/buttonRoundedDelete.png58750ee3c081b741^388717e3c081b741^---0#0#0#-19%DVTDocumentLocation2@117"file://localhost/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/buttonRoundedDelete.png0000000000000000^886"CopyPNGFile ../Resources/HockeySDKResources.bundle/buttonRoundedDelete.png ../Resources/buttonRoundedDelete.png    cd /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/opt/local/bin:/opt/local/sbin:/usr/local/bin/git-completion.bash:/Developer/usr/bin/:/Library/Frameworks/Python.framework/Versions/2.6/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/Users/Thomas/aspectj1.7/bin/"    "/Developer/Platforms/iPhoneOS.platform/Developer/Library/Xcode/PrivatePlugIns/iPhoneOS Build System Support.xcplugin/Contents/Resources/copypng" -compress "" /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/buttonRoundedDelete.png /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/buttonRoundedDelete.png
+
+CCopyPNGFile /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/buttonRoundedDelete@2x.png ../Resources/buttonRoundedDelete@2x.png
+s394379491.069008
+e394379491.110792
+r1
+xCopyPNGFile
+x/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/buttonRoundedDelete@2x.png
+x../Resources/buttonRoundedDelete@2x.png
+lSLF03#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection117"CopyPNGFile ../Resources/HockeySDKResources.bundle/buttonRoundedDelete@2x.png ../Resources/buttonRoundedDelete@2x.pngf0c311e3c081b741^7c5f1ce3c081b741^---0#0#0#-19%DVTDocumentLocation2@120"file://localhost/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/buttonRoundedDelete@2x.png0000000000000000^906"CopyPNGFile "../Resources/HockeySDKResources.bundle/buttonRoundedDelete@2x.png" "../Resources/buttonRoundedDelete@2x.png"    cd /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/opt/local/bin:/opt/local/sbin:/usr/local/bin/git-completion.bash:/Developer/usr/bin/:/Library/Frameworks/Python.framework/Versions/2.6/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/Users/Thomas/aspectj1.7/bin/"    "/Developer/Platforms/iPhoneOS.platform/Developer/Library/Xcode/PrivatePlugIns/iPhoneOS Build System Support.xcplugin/Contents/Resources/copypng" -compress "" "/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/buttonRoundedDelete@2x.png" "/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/buttonRoundedDelete@2x.png"
+
+CCopyPNGFile /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/buttonRoundedDeleteHighlighted.png ../Resources/buttonRoundedDeleteHighlighted.png
+s394379491.075895
+e394379491.115636
+r1
+xCopyPNGFile
+x/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/buttonRoundedDeleteHighlighted.png
+x../Resources/buttonRoundedDeleteHighlighted.png
+lSLF03#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection133"CopyPNGFile ../Resources/HockeySDKResources.bundle/buttonRoundedDeleteHighlighted.png ../Resources/buttonRoundedDeleteHighlighted.pngbe8313e3c081b741^739e1de3c081b741^---0#0#0#-19%DVTDocumentLocation2@128"file://localhost/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/buttonRoundedDeleteHighlighted.png0000000000000000^930"CopyPNGFile ../Resources/HockeySDKResources.bundle/buttonRoundedDeleteHighlighted.png ../Resources/buttonRoundedDeleteHighlighted.png    cd /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/opt/local/bin:/opt/local/sbin:/usr/local/bin/git-completion.bash:/Developer/usr/bin/:/Library/Frameworks/Python.framework/Versions/2.6/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/Users/Thomas/aspectj1.7/bin/"    "/Developer/Platforms/iPhoneOS.platform/Developer/Library/Xcode/PrivatePlugIns/iPhoneOS Build System Support.xcplugin/Contents/Resources/copypng" -compress "" /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/buttonRoundedDeleteHighlighted.png /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/buttonRoundedDeleteHighlighted.png
+
+CCopyPNGFile /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/buttonRoundedDeleteHighlighted@2x.png ../Resources/buttonRoundedDeleteHighlighted@2x.png
+s394379491.089289
+e394379491.129928
+r1
+xCopyPNGFile
+x/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/buttonRoundedDeleteHighlighted@2x.png
+x../Resources/buttonRoundedDeleteHighlighted@2x.png
+lSLF03#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection139"CopyPNGFile ../Resources/HockeySDKResources.bundle/buttonRoundedDeleteHighlighted@2x.png ../Resources/buttonRoundedDeleteHighlighted@2x.png7cf016e3c081b741^2d4221e3c081b741^---0#0#0#-19%DVTDocumentLocation2@131"file://localhost/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/buttonRoundedDeleteHighlighted@2x.png0000000000000000^950"CopyPNGFile "../Resources/HockeySDKResources.bundle/buttonRoundedDeleteHighlighted@2x.png" "../Resources/buttonRoundedDeleteHighlighted@2x.png"    cd /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/opt/local/bin:/opt/local/sbin:/usr/local/bin/git-completion.bash:/Developer/usr/bin/:/Library/Frameworks/Python.framework/Versions/2.6/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/Users/Thomas/aspectj1.7/bin/"    "/Developer/Platforms/iPhoneOS.platform/Developer/Library/Xcode/PrivatePlugIns/iPhoneOS Build System Support.xcplugin/Contents/Resources/copypng" -compress "" "/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/buttonRoundedDeleteHighlighted@2x.png" "/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/buttonRoundedDeleteHighlighted@2x.png"
+
+CCopyPNGFile /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/buttonRoundedRegular.png ../Resources/buttonRoundedRegular.png
+s394379491.089262
+e394379491.122858
+r1
+xCopyPNGFile
+x/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/buttonRoundedRegular.png
+x../Resources/buttonRoundedRegular.png
+lSLF03#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection113"CopyPNGFile ../Resources/HockeySDKResources.bundle/buttonRoundedRegular.png ../Resources/buttonRoundedRegular.png4af016e3c081b741^bc741fe3c081b741^---0#0#0#-19%DVTDocumentLocation2@118"file://localhost/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/buttonRoundedRegular.png0000000000000000^890"CopyPNGFile ../Resources/HockeySDKResources.bundle/buttonRoundedRegular.png ../Resources/buttonRoundedRegular.png    cd /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/opt/local/bin:/opt/local/sbin:/usr/local/bin/git-completion.bash:/Developer/usr/bin/:/Library/Frameworks/Python.framework/Versions/2.6/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/Users/Thomas/aspectj1.7/bin/"    "/Developer/Platforms/iPhoneOS.platform/Developer/Library/Xcode/PrivatePlugIns/iPhoneOS Build System Support.xcplugin/Contents/Resources/copypng" -compress "" /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/buttonRoundedRegular.png /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/buttonRoundedRegular.png
+
+CCopyPNGFile /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/buttonRoundedRegular@2x.png ../Resources/buttonRoundedRegular@2x.png
+s394379491.089328
+e394379491.129574
+r1
+xCopyPNGFile
+x/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/buttonRoundedRegular@2x.png
+x../Resources/buttonRoundedRegular@2x.png
+lSLF03#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection119"CopyPNGFile ../Resources/HockeySDKResources.bundle/buttonRoundedRegular@2x.png ../Resources/buttonRoundedRegular@2x.pngaaf116e3c081b741^0a2b21e3c081b741^---0#0#0#-19%DVTDocumentLocation2@121"file://localhost/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/buttonRoundedRegular@2x.png0000000000000000^910"CopyPNGFile "../Resources/HockeySDKResources.bundle/buttonRoundedRegular@2x.png" "../Resources/buttonRoundedRegular@2x.png"    cd /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/opt/local/bin:/opt/local/sbin:/usr/local/bin/git-completion.bash:/Developer/usr/bin/:/Library/Frameworks/Python.framework/Versions/2.6/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/Users/Thomas/aspectj1.7/bin/"    "/Developer/Platforms/iPhoneOS.platform/Developer/Library/Xcode/PrivatePlugIns/iPhoneOS Build System Support.xcplugin/Contents/Resources/copypng" -compress "" "/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/buttonRoundedRegular@2x.png" "/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/buttonRoundedRegular@2x.png"
+
+CCopyPNGFile /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/buttonRoundedRegularHighlighted.png ../Resources/buttonRoundedRegularHighlighted.png
+s394379491.093195
+e394379491.130054
+r1
+xCopyPNGFile
+x/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/buttonRoundedRegularHighlighted.png
+x../Resources/buttonRoundedRegularHighlighted.png
+lSLF03#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection135"CopyPNGFile ../Resources/HockeySDKResources.bundle/buttonRoundedRegularHighlighted.png ../Resources/buttonRoundedRegularHighlighted.png2ff917e3c081b741^a04e21e3c081b741^---0#0#0#-19%DVTDocumentLocation2@129"file://localhost/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/buttonRoundedRegularHighlighted.png0000000000000000^934"CopyPNGFile ../Resources/HockeySDKResources.bundle/buttonRoundedRegularHighlighted.png ../Resources/buttonRoundedRegularHighlighted.png    cd /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/opt/local/bin:/opt/local/sbin:/usr/local/bin/git-completion.bash:/Developer/usr/bin/:/Library/Frameworks/Python.framework/Versions/2.6/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/Users/Thomas/aspectj1.7/bin/"    "/Developer/Platforms/iPhoneOS.platform/Developer/Library/Xcode/PrivatePlugIns/iPhoneOS Build System Support.xcplugin/Contents/Resources/copypng" -compress "" /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/buttonRoundedRegularHighlighted.png /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/buttonRoundedRegularHighlighted.png
+
+CCopyPNGFile /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/buttonRoundedRegularHighlighted@2x.png ../Resources/buttonRoundedRegularHighlighted@2x.png
+s394379491.102667
+e394379491.138588
+r1
+xCopyPNGFile
+x/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/buttonRoundedRegularHighlighted@2x.png
+x../Resources/buttonRoundedRegularHighlighted@2x.png
+lSLF03#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection141"CopyPNGFile ../Resources/HockeySDKResources.bundle/buttonRoundedRegularHighlighted@2x.png ../Resources/buttonRoundedRegularHighlighted@2x.pngbe881ae3c081b741^0b7a23e3c081b741^---0#0#0#-19%DVTDocumentLocation2@132"file://localhost/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/buttonRoundedRegularHighlighted@2x.png0000000000000000^954"CopyPNGFile "../Resources/HockeySDKResources.bundle/buttonRoundedRegularHighlighted@2x.png" "../Resources/buttonRoundedRegularHighlighted@2x.png"    cd /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/opt/local/bin:/opt/local/sbin:/usr/local/bin/git-completion.bash:/Developer/usr/bin/:/Library/Frameworks/Python.framework/Versions/2.6/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/Users/Thomas/aspectj1.7/bin/"    "/Developer/Platforms/iPhoneOS.platform/Developer/Library/Xcode/PrivatePlugIns/iPhoneOS Build System Support.xcplugin/Contents/Resources/copypng" -compress "" "/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/buttonRoundedRegularHighlighted@2x.png" "/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/buttonRoundedRegularHighlighted@2x.png"
+
+CCopyPNGFile /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/feedbackActivity@2x~ipad.png ../Resources/feedbackActivity@2x~ipad.png
+s394379491.045969
+e394379491.101146
+r1
+xCopyPNGFile
+x/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/feedbackActivity@2x~ipad.png
+x../Resources/feedbackActivity@2x~ipad.png
+lSLF03#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection121"CopyPNGFile ../Resources/HockeySDKResources.bundle/feedbackActivity@2x~ipad.png ../Resources/feedbackActivity@2x~ipad.png98dd0be3c081b741^2ee419e3c081b741^---0#0#0#-19%DVTDocumentLocation2@122"file://localhost/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/feedbackActivity@2x~ipad.png0000000000000000^914"CopyPNGFile "../Resources/HockeySDKResources.bundle/feedbackActivity@2x~ipad.png" "../Resources/feedbackActivity@2x~ipad.png"    cd /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/opt/local/bin:/opt/local/sbin:/usr/local/bin/git-completion.bash:/Developer/usr/bin/:/Library/Frameworks/Python.framework/Versions/2.6/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/Users/Thomas/aspectj1.7/bin/"    "/Developer/Platforms/iPhoneOS.platform/Developer/Library/Xcode/PrivatePlugIns/iPhoneOS Build System Support.xcplugin/Contents/Resources/copypng" -compress "" "/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/feedbackActivity@2x~ipad.png" "/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/feedbackActivity@2x~ipad.png"
+
+CCopyPNGFile /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/feedbackActivity~ipad.png ../Resources/feedbackActivity~ipad.png
+s394379491.047452
+e394379491.087990
+r1
+xCopyPNGFile
+x/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/feedbackActivity~ipad.png
+x../Resources/feedbackActivity~ipad.png
+lSLF03#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection115"CopyPNGFile ../Resources/HockeySDKResources.bundle/feedbackActivity~ipad.png ../Resources/feedbackActivity~ipad.png603b0ce3c081b741^f88a16e3c081b741^---0#0#0#-19%DVTDocumentLocation2@119"file://localhost/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/feedbackActivity~ipad.png0000000000000000^902"CopyPNGFile "../Resources/HockeySDKResources.bundle/feedbackActivity~ipad.png" "../Resources/feedbackActivity~ipad.png"    cd /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/opt/local/bin:/opt/local/sbin:/usr/local/bin/git-completion.bash:/Developer/usr/bin/:/Library/Frameworks/Python.framework/Versions/2.6/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/Users/Thomas/aspectj1.7/bin/"    "/Developer/Platforms/iPhoneOS.platform/Developer/Library/Xcode/PrivatePlugIns/iPhoneOS Build System Support.xcplugin/Contents/Resources/copypng" -compress "" "/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/feedbackActivity~ipad.png" "/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/feedbackActivity~ipad.png"
+
+CCopyPNGFile /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/feedbackActiviy.png ../Resources/feedbackActiviy.png
+s394379491.050597
+e394379491.088150
+r1
+xCopyPNGFile
+x/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/feedbackActiviy.png
+x../Resources/feedbackActiviy.png
+lSLF03#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection103"CopyPNGFile ../Resources/HockeySDKResources.bundle/feedbackActiviy.png ../Resources/feedbackActiviy.png130a0de3c081b741^979116e3c081b741^---0#0#0#-19%DVTDocumentLocation2@113"file://localhost/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/feedbackActiviy.png0000000000000000^870"CopyPNGFile ../Resources/HockeySDKResources.bundle/feedbackActiviy.png ../Resources/feedbackActiviy.png    cd /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/opt/local/bin:/opt/local/sbin:/usr/local/bin/git-completion.bash:/Developer/usr/bin/:/Library/Frameworks/Python.framework/Versions/2.6/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/Users/Thomas/aspectj1.7/bin/"    "/Developer/Platforms/iPhoneOS.platform/Developer/Library/Xcode/PrivatePlugIns/iPhoneOS Build System Support.xcplugin/Contents/Resources/copypng" -compress "" /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/feedbackActiviy.png /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/feedbackActiviy.png
+
+CCopyPNGFile /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/feedbackActiviy@2x.png ../Resources/feedbackActiviy@2x.png
+s394379491.056069
+e394379491.107152
+r1
+xCopyPNGFile
+x/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/feedbackActiviy@2x.png
+x../Resources/feedbackActiviy@2x.png
+lSLF03#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection109"CopyPNGFile ../Resources/HockeySDKResources.bundle/feedbackActiviy@2x.png ../Resources/feedbackActiviy@2x.pngb37b0ee3c081b741^ce701be3c081b741^---0#0#0#-19%DVTDocumentLocation2@116"file://localhost/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/feedbackActiviy@2x.png0000000000000000^890"CopyPNGFile "../Resources/HockeySDKResources.bundle/feedbackActiviy@2x.png" "../Resources/feedbackActiviy@2x.png"    cd /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/opt/local/bin:/opt/local/sbin:/usr/local/bin/git-completion.bash:/Developer/usr/bin/:/Library/Frameworks/Python.framework/Versions/2.6/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/Users/Thomas/aspectj1.7/bin/"    "/Developer/Platforms/iPhoneOS.platform/Developer/Library/Xcode/PrivatePlugIns/iPhoneOS Build System Support.xcplugin/Contents/Resources/copypng" -compress "" "/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/feedbackActiviy@2x.png" "/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/feedbackActiviy@2x.png"
+
+CCopyStringsFile /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/de.lproj/HockeySDK.strings ../Resources/de.lproj/HockeySDK.strings
+s394379491.108445
+e394379491.112194
+r1
+xCopyStringsFile
+x/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/de.lproj/HockeySDK.strings
+x../Resources/de.lproj/HockeySDK.strings
+lSLF03#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection44"Copy ../Resources/de.lproj/HockeySDK.strings32e51be3c081b741^76c11ce3c081b741^---0#0#0#-19%DVTDocumentLocation2@120"file://localhost/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/de.lproj/HockeySDK.strings0000000000000000^749"CopyStringsFile ../Resources/HockeySDKResources.bundle/de.lproj/HockeySDK.strings ../Resources/de.lproj/HockeySDK.strings    cd /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/opt/local/bin:/opt/local/sbin:/usr/local/bin/git-completion.bash:/Developer/usr/bin/:/Library/Frameworks/Python.framework/Versions/2.6/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/Users/Thomas/aspectj1.7/bin/"    builtin-copyStrings --validate --inputencoding utf-8 --outputencoding binary --outdir /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/de.lproj -- ../Resources/de.lproj/HockeySDK.strings
+
+CCopyStringsFile /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/en.lproj/HockeySDK.strings ../Resources/en.lproj/HockeySDK.strings
+s394379491.123723
+e394379491.126453
+r1
+xCopyStringsFile
+x/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/en.lproj/HockeySDK.strings
+x../Resources/en.lproj/HockeySDK.strings
+lSLF03#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection44"Copy ../Resources/en.lproj/HockeySDK.strings76c21fe3c081b741^cc6020e3c081b741^---0#0#0#-19%DVTDocumentLocation2@120"file://localhost/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/en.lproj/HockeySDK.strings0000000000000000^749"CopyStringsFile ../Resources/HockeySDKResources.bundle/en.lproj/HockeySDK.strings ../Resources/en.lproj/HockeySDK.strings    cd /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/opt/local/bin:/opt/local/sbin:/usr/local/bin/git-completion.bash:/Developer/usr/bin/:/Library/Frameworks/Python.framework/Versions/2.6/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/Users/Thomas/aspectj1.7/bin/"    builtin-copyStrings --validate --inputencoding utf-8 --outputencoding binary --outdir /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/en.lproj -- ../Resources/en.lproj/HockeySDK.strings
+
+CCopyStringsFile /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/es.lproj/HockeySDK.strings ../Resources/es.lproj/HockeySDK.strings
+s394379491.112031
+e394379491.115402
+r1
+xCopyStringsFile
+x/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/es.lproj/HockeySDK.strings
+x../Resources/es.lproj/HockeySDK.strings
+lSLF03#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection44"Copy ../Resources/es.lproj/HockeySDK.strings71c61ce3c081b741^c9921de3c081b741^---0#0#0#-19%DVTDocumentLocation2@120"file://localhost/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/es.lproj/HockeySDK.strings0000000000000000^749"CopyStringsFile ../Resources/HockeySDKResources.bundle/es.lproj/HockeySDK.strings ../Resources/es.lproj/HockeySDK.strings    cd /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/opt/local/bin:/opt/local/sbin:/usr/local/bin/git-completion.bash:/Developer/usr/bin/:/Library/Frameworks/Python.framework/Versions/2.6/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/Users/Thomas/aspectj1.7/bin/"    builtin-copyStrings --validate --inputencoding utf-8 --outputencoding binary --outdir /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/es.lproj -- ../Resources/es.lproj/HockeySDK.strings
+
+CCopyStringsFile /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/fr.lproj/HockeySDK.strings ../Resources/fr.lproj/HockeySDK.strings
+s394379491.113424
+e394379491.117134
+r1
+xCopyStringsFile
+x/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/fr.lproj/HockeySDK.strings
+x../Resources/fr.lproj/HockeySDK.strings
+lSLF03#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection44"Copy ../Resources/fr.lproj/HockeySDK.strings541e1de3c081b741^4cfc1de3c081b741^---0#0#0#-19%DVTDocumentLocation2@120"file://localhost/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/fr.lproj/HockeySDK.strings0000000000000000^749"CopyStringsFile ../Resources/HockeySDKResources.bundle/fr.lproj/HockeySDK.strings ../Resources/fr.lproj/HockeySDK.strings    cd /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/opt/local/bin:/opt/local/sbin:/usr/local/bin/git-completion.bash:/Developer/usr/bin/:/Library/Frameworks/Python.framework/Versions/2.6/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/Users/Thomas/aspectj1.7/bin/"    builtin-copyStrings --validate --inputencoding utf-8 --outputencoding binary --outdir /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/fr.lproj -- ../Resources/fr.lproj/HockeySDK.strings
+
+CCopyStringsFile /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/hr.lproj/HockeySDK.strings ../Resources/hr.lproj/HockeySDK.strings
+s394379491.120975
+e394379491.125034
+r1
+xCopyStringsFile
+x/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/hr.lproj/HockeySDK.strings
+x../Resources/hr.lproj/HockeySDK.strings
+lSLF03#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection44"Copy ../Resources/hr.lproj/HockeySDK.stringsb7091fe3c081b741^820120e3c081b741^---0#0#0#-19%DVTDocumentLocation2@120"file://localhost/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/hr.lproj/HockeySDK.strings0000000000000000^749"CopyStringsFile ../Resources/HockeySDKResources.bundle/hr.lproj/HockeySDK.strings ../Resources/hr.lproj/HockeySDK.strings    cd /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/opt/local/bin:/opt/local/sbin:/usr/local/bin/git-completion.bash:/Developer/usr/bin/:/Library/Frameworks/Python.framework/Versions/2.6/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/Users/Thomas/aspectj1.7/bin/"    builtin-copyStrings --validate --inputencoding utf-8 --outputencoding binary --outdir /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/hr.lproj -- ../Resources/hr.lproj/HockeySDK.strings
+
+CCopyStringsFile /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/hu.lproj/HockeySDK.strings ../Resources/hu.lproj/HockeySDK.strings
+s394379491.127693
+e394379491.131128
+r1
+xCopyStringsFile
+x/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/hu.lproj/HockeySDK.strings
+x../Resources/hu.lproj/HockeySDK.strings
+lSLF03#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection44"Copy ../Resources/hu.lproj/HockeySDK.strings76c120e3c081b741^9b9121e3c081b741^---0#0#0#-19%DVTDocumentLocation2@120"file://localhost/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/hu.lproj/HockeySDK.strings0000000000000000^749"CopyStringsFile ../Resources/HockeySDKResources.bundle/hu.lproj/HockeySDK.strings ../Resources/hu.lproj/HockeySDK.strings    cd /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/opt/local/bin:/opt/local/sbin:/usr/local/bin/git-completion.bash:/Developer/usr/bin/:/Library/Frameworks/Python.framework/Versions/2.6/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/Users/Thomas/aspectj1.7/bin/"    builtin-copyStrings --validate --inputencoding utf-8 --outputencoding binary --outdir /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/hu.lproj -- ../Resources/hu.lproj/HockeySDK.strings
+
+CCopyStringsFile /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/it.lproj/HockeySDK.strings ../Resources/it.lproj/HockeySDK.strings
+s394379491.116585
+e394379491.120692
+r1
+xCopyStringsFile
+x/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/it.lproj/HockeySDK.strings
+x../Resources/it.lproj/HockeySDK.strings
+lSLF03#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection44"Copy ../Resources/it.lproj/HockeySDK.strings63ef1de3c081b741^21e61ee3c081b741^---0#0#0#-19%DVTDocumentLocation2@120"file://localhost/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/it.lproj/HockeySDK.strings0000000000000000^749"CopyStringsFile ../Resources/HockeySDKResources.bundle/it.lproj/HockeySDK.strings ../Resources/it.lproj/HockeySDK.strings    cd /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/opt/local/bin:/opt/local/sbin:/usr/local/bin/git-completion.bash:/Developer/usr/bin/:/Library/Frameworks/Python.framework/Versions/2.6/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/Users/Thomas/aspectj1.7/bin/"    builtin-copyStrings --validate --inputencoding utf-8 --outputencoding binary --outdir /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/it.lproj -- ../Resources/it.lproj/HockeySDK.strings
+
+CCopyStringsFile /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/ja.lproj/HockeySDK.strings ../Resources/ja.lproj/HockeySDK.strings
+s394379491.116663
+e394379491.119677
+r1
+xCopyStringsFile
+x/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/ja.lproj/HockeySDK.strings
+x../Resources/ja.lproj/HockeySDK.strings
+lSLF03#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection44"Copy ../Resources/ja.lproj/HockeySDK.strings95ef1de3c081b741^99a01ee3c081b741^---0#0#0#-19%DVTDocumentLocation2@120"file://localhost/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/ja.lproj/HockeySDK.strings0000000000000000^749"CopyStringsFile ../Resources/HockeySDKResources.bundle/ja.lproj/HockeySDK.strings ../Resources/ja.lproj/HockeySDK.strings    cd /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/opt/local/bin:/opt/local/sbin:/usr/local/bin/git-completion.bash:/Developer/usr/bin/:/Library/Frameworks/Python.framework/Versions/2.6/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/Users/Thomas/aspectj1.7/bin/"    builtin-copyStrings --validate --inputencoding utf-8 --outputencoding binary --outdir /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/ja.lproj -- ../Resources/ja.lproj/HockeySDK.strings
+
+CCopyStringsFile /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/pt-PT.lproj/HockeySDK.strings ../Resources/pt-PT.lproj/HockeySDK.strings
+s394379491.123716
+e394379491.127675
+r1
+xCopyStringsFile
+x/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/pt-PT.lproj/HockeySDK.strings
+x../Resources/pt-PT.lproj/HockeySDK.strings
+lSLF03#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection47"Copy ../Resources/pt-PT.lproj/HockeySDK.stringscac21fe3c081b741^97ae20e3c081b741^---0#0#0#-19%DVTDocumentLocation2@123"file://localhost/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/pt-PT.lproj/HockeySDK.strings0000000000000000^761"CopyStringsFile ../Resources/HockeySDKResources.bundle/pt-PT.lproj/HockeySDK.strings ../Resources/pt-PT.lproj/HockeySDK.strings    cd /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/opt/local/bin:/opt/local/sbin:/usr/local/bin/git-completion.bash:/Developer/usr/bin/:/Library/Frameworks/Python.framework/Versions/2.6/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/Users/Thomas/aspectj1.7/bin/"    builtin-copyStrings --validate --inputencoding utf-8 --outputencoding binary --outdir /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/pt-PT.lproj -- ../Resources/pt-PT.lproj/HockeySDK.strings
+
+CCopyStringsFile /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/pt.lproj/HockeySDK.strings ../Resources/pt.lproj/HockeySDK.strings
+s394379491.118272
+e394379491.122549
+r1
+xCopyStringsFile
+x/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/pt.lproj/HockeySDK.strings
+x../Resources/pt.lproj/HockeySDK.strings
+lSLF03#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection44"Copy ../Resources/pt.lproj/HockeySDK.strings3a5d1ee3c081b741^1c5f1fe3c081b741^---0#0#0#-19%DVTDocumentLocation2@120"file://localhost/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/pt.lproj/HockeySDK.strings0000000000000000^749"CopyStringsFile ../Resources/HockeySDKResources.bundle/pt.lproj/HockeySDK.strings ../Resources/pt.lproj/HockeySDK.strings    cd /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/opt/local/bin:/opt/local/sbin:/usr/local/bin/git-completion.bash:/Developer/usr/bin/:/Library/Frameworks/Python.framework/Versions/2.6/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/Users/Thomas/aspectj1.7/bin/"    builtin-copyStrings --validate --inputencoding utf-8 --outputencoding binary --outdir /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/pt.lproj -- ../Resources/pt.lproj/HockeySDK.strings
+
+CCopyStringsFile /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/ro.lproj/HockeySDK.strings ../Resources/ro.lproj/HockeySDK.strings
+s394379491.126235
+e394379491.130112
+r1
+xCopyStringsFile
+x/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/ro.lproj/HockeySDK.strings
+x../Resources/ro.lproj/HockeySDK.strings
+lSLF03#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection44"Copy ../Resources/ro.lproj/HockeySDK.stringsa26220e3c081b741^005421e3c081b741^---0#0#0#-19%DVTDocumentLocation2@120"file://localhost/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/ro.lproj/HockeySDK.strings0000000000000000^749"CopyStringsFile ../Resources/HockeySDKResources.bundle/ro.lproj/HockeySDK.strings ../Resources/ro.lproj/HockeySDK.strings    cd /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/opt/local/bin:/opt/local/sbin:/usr/local/bin/git-completion.bash:/Developer/usr/bin/:/Library/Frameworks/Python.framework/Versions/2.6/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/Users/Thomas/aspectj1.7/bin/"    builtin-copyStrings --validate --inputencoding utf-8 --outputencoding binary --outdir /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/ro.lproj -- ../Resources/ro.lproj/HockeySDK.strings
+
+CCopyStringsFile /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/ru.lproj/HockeySDK.strings ../Resources/ru.lproj/HockeySDK.strings
+s394379491.120904
+e394379491.123889
+r1
+xCopyStringsFile
+x/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/ru.lproj/HockeySDK.strings
+x../Resources/ru.lproj/HockeySDK.strings
+lSLF03#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection44"Copy ../Resources/ru.lproj/HockeySDK.strings68081fe3c081b741^a5bb1fe3c081b741^---0#0#0#-19%DVTDocumentLocation2@120"file://localhost/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/ru.lproj/HockeySDK.strings0000000000000000^749"CopyStringsFile ../Resources/HockeySDKResources.bundle/ru.lproj/HockeySDK.strings ../Resources/ru.lproj/HockeySDK.strings    cd /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/opt/local/bin:/opt/local/sbin:/usr/local/bin/git-completion.bash:/Developer/usr/bin/:/Library/Frameworks/Python.framework/Versions/2.6/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/Users/Thomas/aspectj1.7/bin/"    builtin-copyStrings --validate --inputencoding utf-8 --outputencoding binary --outdir /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/ru.lproj -- ../Resources/ru.lproj/HockeySDK.strings
+
+CCopyStringsFile /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/zh-Hans.lproj/HockeySDK.strings ../Resources/zh-Hans.lproj/HockeySDK.strings
+s394379491.125040
+e394379491.128695
+r1
+xCopyStringsFile
+x/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/zh-Hans.lproj/HockeySDK.strings
+x../Resources/zh-Hans.lproj/HockeySDK.strings
+lSLF03#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection49"Copy ../Resources/zh-Hans.lproj/HockeySDK.strings901520e3c081b741^91f120e3c081b741^---0#0#0#-19%DVTDocumentLocation2@125"file://localhost/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/zh-Hans.lproj/HockeySDK.strings0000000000000000^769"CopyStringsFile ../Resources/HockeySDKResources.bundle/zh-Hans.lproj/HockeySDK.strings ../Resources/zh-Hans.lproj/HockeySDK.strings    cd /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/opt/local/bin:/opt/local/sbin:/usr/local/bin/git-completion.bash:/Developer/usr/bin/:/Library/Frameworks/Python.framework/Versions/2.6/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/Users/Thomas/aspectj1.7/bin/"    builtin-copyStrings --validate --inputencoding utf-8 --outputencoding binary --outdir /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/zh-Hans.lproj -- ../Resources/zh-Hans.lproj/HockeySDK.strings
+
+CProcessInfoPlistFile /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/Info.plist ../Resources/HockeySDK-Info.plist
+s394379490.828213
+e394379490.838809
+r1
+xProcessInfoPlistFile
+x/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/Info.plist
+x../Resources/HockeySDK-Info.plist
+lSLF03#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection41"Process ../Resources/HockeySDK-Info.plist6d1dd4e2c081b741^59bed6e2c081b741^---0#0#0#-19%DVTDocumentLocation2@114"file://localhost/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDK-Info.plist0000000000000000^722"ProcessInfoPlistFile ../Resources/HockeySDKResources.bundle/Info.plist ../Resources/HockeySDK-Info.plist    cd /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/opt/local/bin:/opt/local/sbin:/usr/local/bin/git-completion.bash:/Developer/usr/bin/:/Library/Frameworks/Python.framework/Versions/2.6/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/Users/Thomas/aspectj1.7/bin/"    builtin-infoPlistUtility ../Resources/HockeySDK-Info.plist -expandbuildsettings -format binary -platform iphoneos -o /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/Info.plist
+
+CTouch /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle
+s394379491.146787
+e394379491.204236
+r1
+xTouch
+x/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle
+lSLF03#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection109"Touch /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundlee4a325e3c081b741^774934e3c081b741^---0#0#0#--552"Touch ../Resources/HockeySDKResources.bundle    cd /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/opt/local/bin:/opt/local/sbin:/usr/local/bin/git-completion.bash:/Developer/usr/bin/:/Library/Frameworks/Python.framework/Versions/2.6/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/Users/Thomas/aspectj1.7/bin/"    /usr/bin/touch -c /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle
+
