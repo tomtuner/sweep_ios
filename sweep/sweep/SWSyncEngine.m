@@ -167,6 +167,27 @@ NSString * const kSWSyncEngineSyncCompletedNotificationName = @"SWSyncEngineSync
     }];
 }
 
+- (Customers *) sharedCustomer
+{
+    NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:@"Customers"];
+    [request setSortDescriptors:[NSArray arrayWithObject:
+                                 [NSSortDescriptor sortDescriptorWithKey:@"remote_id" ascending:YES]]];
+    NSManagedObjectContext * bgContext = [[SWCoreDataController sharedInstance] backgroundManagedObjectContext];
+    __block Customers *sharedCustomer = nil;
+    [bgContext performBlockAndWait:^{
+        [bgContext reset];
+        
+        // Get the Department for use
+        NSArray *sharedDepartmentArray = nil;
+        NSError *error = nil;
+        
+        sharedDepartmentArray = [bgContext executeFetchRequest:request error:&error];
+        sharedCustomer = [sharedDepartmentArray lastObject];
+//        return sharedCustomer;
+    }];
+    return sharedCustomer;
+}
+
 - (BOOL) removeDepartmentObjects
 {
     __block BOOL end = NO;
@@ -189,6 +210,34 @@ NSString * const kSWSyncEngineSyncCompletedNotificationName = @"SWSyncEngineSync
         if (!saved) {
             NSLog(@"Unable to save context after deleting records for class Departments because %@", error);
 //            return NO;
+        }
+        end = YES;
+    }];
+    return end;
+}
+
+- (BOOL) removeCustomerObjects
+{
+    __block BOOL end = NO;
+    NSManagedObjectContext *managedObjectContext = [[SWCoreDataController sharedInstance] backgroundManagedObjectContext];
+    
+    // Delete all Departments (Should only be 1)
+    [managedObjectContext performBlockAndWait:^{
+        NSArray *coreDataObjectArray = nil;
+        NSError *error = nil;
+        NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:@"Customers"];
+        [request setSortDescriptors:[NSArray arrayWithObject:
+                                     [NSSortDescriptor sortDescriptorWithKey:@"remote_id" ascending:YES]]];
+        coreDataObjectArray = [managedObjectContext executeFetchRequest:request error:&error];
+        //        NSLog(@"Shared Department: %@", coreDataObjectArray);
+        for (NSManagedObject *managedObject in coreDataObjectArray)
+        {
+            [managedObjectContext deleteObject:managedObject];
+        }
+        BOOL saved = [managedObjectContext save:&error];
+        if (!saved) {
+            NSLog(@"Unable to save context after deleting records for class Customers because %@", error);
+            //            return NO;
         }
         end = YES;
     }];
@@ -220,23 +269,30 @@ NSString * const kSWSyncEngineSyncCompletedNotificationName = @"SWSyncEngineSync
     }
     
     // Delete all Departments (Should only be 1)
-    [managedObjectContext performBlockAndWait:^{
-        NSArray *coreDataObjectArray = nil;
-        NSError *error = nil;
-        NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:@"Departments"];
-        [request setSortDescriptors:[NSArray arrayWithObject:
-                                     [NSSortDescriptor sortDescriptorWithKey:@"remote_id" ascending:YES]]];
-        coreDataObjectArray = [managedObjectContext executeFetchRequest:request error:&error];
-//        NSLog(@"Shared Department: %@", coreDataObjectArray);
-        for (NSManagedObject *managedObject in coreDataObjectArray)
-        {
-            [managedObjectContext deleteObject:managedObject];
-        }
-        BOOL saved = [managedObjectContext save:&error];
-        if (!saved) {
-            NSLog(@"Unable to save context after deleting records for class Departments because %@", error);
-        }
-    }];
+    
+    [self removeDepartmentObjects];
+    
+    // Delete all Customers (Should only be 1)
+    [self removeCustomerObjects];
+    
+    
+//    [managedObjectContext performBlockAndWait:^{
+//        NSArray *coreDataObjectArray = nil;
+//        NSError *error = nil;
+//        NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:@"Departments"];
+//        [request setSortDescriptors:[NSArray arrayWithObject:
+//                                     [NSSortDescriptor sortDescriptorWithKey:@"remote_id" ascending:YES]]];
+//        coreDataObjectArray = [managedObjectContext executeFetchRequest:request error:&error];
+////        NSLog(@"Shared Department: %@", coreDataObjectArray);
+//        for (NSManagedObject *managedObject in coreDataObjectArray)
+//        {
+//            [managedObjectContext deleteObject:managedObject];
+//        }
+//        BOOL saved = [managedObjectContext save:&error];
+//        if (!saved) {
+//            NSLog(@"Unable to save context after deleting records for class Departments because %@", error);
+//        }
+//    }];
     /*
     // Delete all Scans
     [managedObjectContext performBlockAndWait:^{
@@ -258,6 +314,9 @@ NSString * const kSWSyncEngineSyncCompletedNotificationName = @"SWSyncEngineSync
         }
     }];
      */
+    [[SWCoreDataController sharedInstance] saveBackgroundContext];
+    [[SWCoreDataController sharedInstance] saveMasterContext];
+
     return true;
 }
 

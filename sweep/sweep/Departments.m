@@ -23,7 +23,7 @@
 @dynamic sync_status;
 @dynamic created_at;
 
-+ (void)globalDepartmentVerificationWithValidationKey:(NSString *) validationKey withBlock:(void (^)(NSDictionary *department, NSError *error))block
++ (void)globalDepartmentVerificationWithValidationKey:(NSString *) validationKey withBlock:(void (^)(NSDictionary *departmentAndCustomer, NSError *error))block
 {
     
     NSDictionary *paramDict = [NSDictionary dictionaryWithObjects:@[validationKey]

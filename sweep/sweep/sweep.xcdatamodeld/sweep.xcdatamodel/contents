@@ -5,6 +5,7 @@
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="remote_id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="sync_status" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="theme" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="updated_at" optional="YES" attributeType="Date" syncable="YES"/>
         <relationship name="departments" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Departments" syncable="YES"/>
     </entity>
@@ -40,7 +41,7 @@
         <relationship name="event" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Events" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Customers" positionX="313" positionY="360" width="128" height="133"/>
+        <element name="Customers" positionX="313" positionY="360" width="128" height="150"/>
         <element name="Departments" positionX="160" positionY="192" width="128" height="178"/>
         <element name="Events" positionX="-144" positionY="171" width="128" height="163"/>
         <element name="Scans" positionX="-486" positionY="161" width="128" height="165"/>

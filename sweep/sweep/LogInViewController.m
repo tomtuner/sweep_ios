@@ -35,20 +35,24 @@
 -(void) viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+//    [self.view setNeedsDisplay];
 }
 
 - (void) validateDepartmentKey:(NSString *) departmentKey
 {
     [self showActivtyIndicatorView];
     [Departments globalDepartmentVerificationWithValidationKey:departmentKey
-                                                    withBlock:^(NSDictionary *department, NSError *error) {
+                                                    withBlock:^(NSDictionary *departmentAndCustomer, NSError *error) {
         if (!error)
         {
-            NSLog(@"Department Returned From Login View: %@", department);
-            [self.departmentKeyItem setObject:[department objectForKey:@"valid_key"] forKey:(__bridge id)(kSecValueData)];
+            NSLog(@"Department Returned: %@", [departmentAndCustomer valueForKey:@"department"]);
+            NSLog(@"Customer Returned: %@", [departmentAndCustomer valueForKey:@"customer"]);
+            
+            [self.departmentKeyItem setObject:[[departmentAndCustomer valueForKey:@"department"] objectForKey:@"valid_key"] forKey:(__bridge id)(kSecValueData)];
 
-            [[SWSyncEngine sharedEngine] newManagedObjectUsingMasterContextWithClassName:@"Departments" forRecord:department];
-
+            [[SWSyncEngine sharedEngine] newManagedObjectUsingMasterContextWithClassName:@"Departments" forRecord: [departmentAndCustomer valueForKey: @"department"]];
+            [[SWSyncEngine sharedEngine] newManagedObjectUsingMasterContextWithClassName:@"Customers" forRecord:[departmentAndCustomer valueForKey:@"customer"]];
+            
             [self.managedObjectContext performBlockAndWait:^{
                 [self.managedObjectContext reset];
 
@@ -58,7 +62,10 @@
                     // do some real error handling
                     NSLog(@"Could not save Department due to %@", error);
                 }
+
                 [[SWCoreDataController sharedInstance] saveMasterContext];
+                [ThemeManager customizeAppAppearance];
+                [self.view setNeedsDisplay];
             }];
             
             [[SWSyncEngine sharedEngine] startSync];

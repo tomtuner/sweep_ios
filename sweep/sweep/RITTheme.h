@@ -1,9 +1,9 @@
 //
 //  RITTheme.h
-//  rit_bus
+//  Sweep
 //
 //  Created by Thomas DeMeo on 6/29/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2012 Kanzu LLC. All rights reserved.
 //
 
 #import "Theme.h"

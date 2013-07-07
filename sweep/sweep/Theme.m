@@ -9,6 +9,8 @@
 #import "Theme.h"
 #import "RITTheme.h"
 #import "SettingsManager.h"
+#import "Customers.h"
+#import "SWSyncEngine.h"
 
 @implementation ThemeManager
 
@@ -16,16 +18,22 @@
 {
     static id <Theme> sharedTheme = nil;
     static dispatch_once_t onceToken;
-    NSString *classString = [[SettingsManager sharedSettingsManager] theme];
-    NSLog(@"Class THeme: %@", classString);
+    Customers *customer = [[SWSyncEngine sharedEngine] sharedCustomer];
+    NSString *classString = customer.theme;
+    NSLog(@"Class Theme: %@", customer.theme);
     
 //    if ([[NSUserDefaults standardUserDefaults] stringForKey:@"theme"]) {
 //        NSLog(@"Theme Defautl: %@", [[NSUserDefaults standardUserDefaults] stringForKey:@"theme"]);
 //    }
     
 //    NSString *classString = [[NSUserDefaults standardUserDefaults] stringForKey:@"theme"];
-    
-    Class thisClass = NSClassFromString(classString);
+    Class thisClass;
+    if (customer.theme)
+    {
+        thisClass = NSClassFromString(classString);
+    }else {
+        thisClass = NSClassFromString(@"SWTheme");
+    }
 //    id themeClass = [[thisClass alloc] init];
     dispatch_once(&onceToken, ^{
         // Create and return the theme:

@@ -10,6 +10,7 @@
 #import "KeychainWrapper.h"
 #import "Departments.h"
 #import "SWSyncEngine.h"
+#import "Theme.h"
 
 @interface LogInViewController : UIViewController <UITextFieldDelegate>
 

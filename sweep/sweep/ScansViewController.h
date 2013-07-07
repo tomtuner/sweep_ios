@@ -15,6 +15,7 @@
 #import "Events.h"
 #import "SettingsManager.h"
 #import "CameraCaptureViewController.h"
+#import "Theme.h"
 
 @interface ScansViewController : UIViewController <NSFetchedResultsControllerDelegate, UISplitViewControllerDelegate>
 

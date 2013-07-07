@@ -14,6 +14,7 @@
 @interface Customers : NSManagedObject
 
 @property (nonatomic, retain) NSString * name;
+@property (nonatomic, retain) NSString * theme;
 @property (nonatomic, retain) NSNumber * remote_id;
 @property (nonatomic, retain) NSDate * updated_at;
 @property (nonatomic, retain) NSSet *departments;

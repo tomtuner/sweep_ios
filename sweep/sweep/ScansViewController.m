@@ -48,6 +48,7 @@
 -(void) viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+//    [self.view setNeedsDisplay];
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
@@ -158,16 +159,20 @@
 - (void) validateDepartmentKey:(NSString *) departmentKey
 {
     [Departments globalDepartmentVerificationWithValidationKey:departmentKey
-                                                     withBlock:^(NSDictionary *department, NSError *error) {
+                                                     withBlock:^(NSDictionary *departmentAndCustomer, NSError *error) {
          if (!error)
          {
              [[SWSyncEngine sharedEngine] removeDepartmentObjects];
-             // Authentication was successful store the key returned
-             NSLog(@"Department Returned: %@", department);
-             [self.departmentKeyItem setObject:[department objectForKey:@"valid_key"] forKey:(__bridge id)(kSecValueData)];
+             [[SWSyncEngine sharedEngine] removeCustomerObjects];
+            
+             NSLog(@"Department Returned: %@", [departmentAndCustomer valueForKey:@"department"]);
+             NSLog(@"Customer Returned: %@", [departmentAndCustomer valueForKey:@"customer"]);
              
-             [[SWSyncEngine sharedEngine] newManagedObjectUsingMasterContextWithClassName:@"Departments" forRecord:department];
-
+             [self.departmentKeyItem setObject:[[departmentAndCustomer valueForKey:@"department"] objectForKey:@"valid_key"] forKey:(__bridge id)(kSecValueData)];
+             
+             [[SWSyncEngine sharedEngine] newManagedObjectUsingMasterContextWithClassName:@"Departments" forRecord: [departmentAndCustomer valueForKey: @"department"]];
+             [[SWSyncEngine sharedEngine] newManagedObjectUsingMasterContextWithClassName:@"Customers" forRecord:[departmentAndCustomer valueForKey:@"customer"]];
+             
              [self.managedObjectContext performBlockAndWait:^{
                  [self.managedObjectContext reset];
                  
@@ -178,8 +183,10 @@
                      NSLog(@"Could not save Department due to %@", error);
                  }
                  [[SWCoreDataController sharedInstance] saveMasterContext];
+                 [ThemeManager customizeAppAppearance];
+                 [self.view setNeedsDisplay];
              }];
-
+             
              [[SWSyncEngine sharedEngine] startSync];
              
          }else {
@@ -191,9 +198,11 @@
              {
                  // Key is no longer valid reset the keychain and reenter
                  [self.departmentKeyItem resetKeychainItem];
+                 
                  // Remove ALL core data objects when department key is deemed invalid
                  [[SWSyncEngine sharedEngine] removeCoreDataObjects];
-                 
+                 [ThemeManager customizeAppAppearance];
+
                  [self showLoginController];
              }
          }  

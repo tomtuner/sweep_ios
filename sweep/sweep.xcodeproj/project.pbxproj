@@ -111,6 +111,24 @@
 		E9828B2417837D0500619FB4 /* rit_white_top@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9E8ADCF1768D2E300F837D7 /* rit_white_top@2x.png */; };
 		E9828B2517837D0500619FB4 /* nav_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = E9E8ADD01768D2E300F837D7 /* nav_bg.png */; };
 		E9828B2617837D0500619FB4 /* nav_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9E8ADD11768D2E300F837D7 /* nav_bg@2x.png */; };
+		E9828B2E17893F4A00619FB4 /* rit_white_bottom.png in Resources */ = {isa = PBXBuildFile; fileRef = E9E8ADCC1768D2E300F837D7 /* rit_white_bottom.png */; };
+		E9828B2F17893F4A00619FB4 /* rit_white_bottom@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9E8ADCD1768D2E300F837D7 /* rit_white_bottom@2x.png */; };
+		E9828B3017893F4A00619FB4 /* rit_white_top.png in Resources */ = {isa = PBXBuildFile; fileRef = E9E8ADCE1768D2E300F837D7 /* rit_white_top.png */; };
+		E9828B3117893F4A00619FB4 /* rit_white_top@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9E8ADCF1768D2E300F837D7 /* rit_white_top@2x.png */; };
+		E9828B3217893F4A00619FB4 /* nav_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = E9E8ADD01768D2E300F837D7 /* nav_bg.png */; };
+		E9828B3317893F4A00619FB4 /* nav_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9E8ADD11768D2E300F837D7 /* nav_bg@2x.png */; };
+		E9828B3417893F4B00619FB4 /* rit_white_bottom.png in Resources */ = {isa = PBXBuildFile; fileRef = E9E8ADCC1768D2E300F837D7 /* rit_white_bottom.png */; };
+		E9828B3517893F4B00619FB4 /* rit_white_bottom@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9E8ADCD1768D2E300F837D7 /* rit_white_bottom@2x.png */; };
+		E9828B3617893F4B00619FB4 /* rit_white_top.png in Resources */ = {isa = PBXBuildFile; fileRef = E9E8ADCE1768D2E300F837D7 /* rit_white_top.png */; };
+		E9828B3717893F4B00619FB4 /* rit_white_top@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9E8ADCF1768D2E300F837D7 /* rit_white_top@2x.png */; };
+		E9828B3817893F4B00619FB4 /* nav_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = E9E8ADD01768D2E300F837D7 /* nav_bg.png */; };
+		E9828B3917893F4B00619FB4 /* nav_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9E8ADD11768D2E300F837D7 /* nav_bg@2x.png */; };
+		E9828B3A17893F7C00619FB4 /* RITTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E8AD5C17682C5700F837D7 /* RITTheme.m */; };
+		E9828B3B17893F7C00619FB4 /* RITTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E8AD5C17682C5700F837D7 /* RITTheme.m */; };
+		E9828B3E178943CC00619FB4 /* SWTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = E9828B3D178943CC00619FB4 /* SWTheme.m */; };
+		E9828B3F178943CC00619FB4 /* SWTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = E9828B3D178943CC00619FB4 /* SWTheme.m */; };
+		E9828B40178943CC00619FB4 /* SWTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = E9828B3D178943CC00619FB4 /* SWTheme.m */; };
+		E9828B41178943CC00619FB4 /* SWTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = E9828B3D178943CC00619FB4 /* SWTheme.m */; };
 		E9C4F45C177FE52C00C99B22 /* CameraCaptureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9C4F45B177FE52B00C99B22 /* CameraCaptureViewController.m */; };
 		E9C4F45D177FE52C00C99B22 /* CameraCaptureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9C4F45B177FE52B00C99B22 /* CameraCaptureViewController.m */; };
 		E9E8AD521768224A00F837D7 /* SideMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E8AD511768224A00F837D7 /* SideMenuViewController.m */; };
@@ -197,10 +215,12 @@
 		E9518FAD1768108200EB82C8 /* sweep.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = sweep.xcdatamodel; sourceTree = "<group>"; };
 		E9518FAF1768108200EB82C8 /* ScansViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScansViewController.h; sourceTree = "<group>"; };
 		E9518FB01768108200EB82C8 /* ScansViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScansViewController.m; sourceTree = "<group>"; };
-		E9828AF617837CF700619FB4 /* sweep-dev.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "sweep-dev.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E9828AF617837CF700619FB4 /* dev.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = dev.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9828AF717837CF700619FB4 /* sweep copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "sweep copy-Info.plist"; path = "/Users/Thomas/Development/sweep/sweep_ios/sweep/sweep copy-Info.plist"; sourceTree = "<absolute>"; };
 		E9828B2C17837D0500619FB4 /* rit-dev.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "rit-dev.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9828B2D17837D0500619FB4 /* sweep rit copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "sweep rit copy-Info.plist"; path = "/Users/Thomas/Development/sweep/sweep_ios/sweep/sweep rit copy-Info.plist"; sourceTree = "<absolute>"; };
+		E9828B3C178943CB00619FB4 /* SWTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWTheme.h; sourceTree = "<group>"; };
+		E9828B3D178943CC00619FB4 /* SWTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWTheme.m; sourceTree = "<group>"; };
 		E9C4F45A177FE52B00C99B22 /* CameraCaptureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraCaptureViewController.h; sourceTree = "<group>"; };
 		E9C4F45B177FE52B00C99B22 /* CameraCaptureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraCaptureViewController.m; sourceTree = "<group>"; };
 		E9E8AD501768224A00F837D7 /* SideMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SideMenuViewController.h; sourceTree = "<group>"; };
@@ -310,7 +330,7 @@
 			children = (
 				E9518F891768108200EB82C8 /* sweep.app */,
 				E9E8ADC61768D18700F837D7 /* rit.app */,
-				E9828AF617837CF700619FB4 /* sweep-dev.app */,
+				E9828AF617837CF700619FB4 /* dev.app */,
 				E9828B2C17837D0500619FB4 /* rit-dev.app */,
 			);
 			name = Products;
@@ -416,6 +436,8 @@
 			children = (
 				E9E8AD5917682C5700F837D7 /* Theme.h */,
 				E9E8AD5A17682C5700F837D7 /* Theme.m */,
+				E9828B3C178943CB00619FB4 /* SWTheme.h */,
+				E9828B3D178943CC00619FB4 /* SWTheme.m */,
 				E9E8AD5B17682C5700F837D7 /* RITTheme.h */,
 				E9E8AD5C17682C5700F837D7 /* RITTheme.m */,
 			);
@@ -560,7 +582,7 @@
 			);
 			name = "sweep-dev";
 			productName = sweep;
-			productReference = E9828AF617837CF700619FB4 /* sweep-dev.app */;
+			productReference = E9828AF617837CF700619FB4 /* dev.app */;
 			productType = "com.apple.product-type.application";
 		};
 		E9828AF817837D0500619FB4 /* sweep_rit-dev */ = {
@@ -645,6 +667,12 @@
 				E9E8AD631768331C00F837D7 /* menu_icon@2x.png in Resources */,
 				E9E8ADA11768D14D00F837D7 /* defaults.plist in Resources */,
 				E9E8ADC81768D29100F837D7 /* sweep-Info.plist in Resources */,
+				E9828B2E17893F4A00619FB4 /* rit_white_bottom.png in Resources */,
+				E9828B2F17893F4A00619FB4 /* rit_white_bottom@2x.png in Resources */,
+				E9828B3017893F4A00619FB4 /* rit_white_top.png in Resources */,
+				E9828B3117893F4A00619FB4 /* rit_white_top@2x.png in Resources */,
+				E9828B3217893F4A00619FB4 /* nav_bg.png in Resources */,
+				E9828B3317893F4A00619FB4 /* nav_bg@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -662,6 +690,12 @@
 				E9828AEE17837CF700619FB4 /* menu_icon@2x.png in Resources */,
 				E9828AEF17837CF700619FB4 /* defaults.plist in Resources */,
 				E9828AF017837CF700619FB4 /* sweep-Info.plist in Resources */,
+				E9828B3417893F4B00619FB4 /* rit_white_bottom.png in Resources */,
+				E9828B3517893F4B00619FB4 /* rit_white_bottom@2x.png in Resources */,
+				E9828B3617893F4B00619FB4 /* rit_white_top.png in Resources */,
+				E9828B3717893F4B00619FB4 /* rit_white_top@2x.png in Resources */,
+				E9828B3817893F4B00619FB4 /* nav_bg.png in Resources */,
+				E9828B3917893F4B00619FB4 /* nav_bg@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -852,6 +886,8 @@
 				E938504F177035DF00DC9D97 /* Departments.m in Sources */,
 				E9FE4CC1177A8F7E0095487C /* NSManagedObject+JSON.m in Sources */,
 				E9C4F45C177FE52C00C99B22 /* CameraCaptureViewController.m in Sources */,
+				E9828B3A17893F7C00619FB4 /* RITTheme.m in Sources */,
+				E9828B3E178943CC00619FB4 /* SWTheme.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -878,6 +914,8 @@
 				E9828ADC17837CF700619FB4 /* Departments.m in Sources */,
 				E9828ADD17837CF700619FB4 /* NSManagedObject+JSON.m in Sources */,
 				E9828ADE17837CF700619FB4 /* CameraCaptureViewController.m in Sources */,
+				E9828B3B17893F7C00619FB4 /* RITTheme.m in Sources */,
+				E9828B3F178943CC00619FB4 /* SWTheme.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -905,6 +943,7 @@
 				E9828B0C17837D0500619FB4 /* Departments.m in Sources */,
 				E9828B0D17837D0500619FB4 /* NSManagedObject+JSON.m in Sources */,
 				E9828B0E17837D0500619FB4 /* CameraCaptureViewController.m in Sources */,
+				E9828B41178943CC00619FB4 /* SWTheme.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -932,6 +971,7 @@
 				E9385050177035DF00DC9D97 /* Departments.m in Sources */,
 				E9FE4CC2177A8F7E0095487C /* NSManagedObject+JSON.m in Sources */,
 				E9C4F45D177FE52C00C99B22 /* CameraCaptureViewController.m in Sources */,
+				E9828B40178943CC00619FB4 /* SWTheme.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1126,7 +1166,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "sweep/sweep-Prefix.pch";
 				INFOPLIST_FILE = "sweep copy-Info.plist";
-				PRODUCT_NAME = "sweep-dev";
+				PRODUCT_NAME = dev;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1138,7 +1178,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "sweep/sweep-Prefix.pch";
 				INFOPLIST_FILE = "sweep copy-Info.plist";
-				PRODUCT_NAME = "sweep-dev";
+				PRODUCT_NAME = dev;
 				WRAPPER_EXTENSION = app;
 			};
 			name = AppStore;
@@ -1150,7 +1190,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "sweep/sweep-Prefix.pch";
 				INFOPLIST_FILE = "sweep copy-Info.plist";
-				PRODUCT_NAME = "sweep-dev";
+				PRODUCT_NAME = dev;
 				WRAPPER_EXTENSION = app;
 			};
 			name = AdHoc;

@@ -276,7 +276,6 @@
 //            [self loadRecordsFromCoreData];
 //            [self.eventsTable reloadData];
             
-            // Start sync of event to server
             [[SWSyncEngine sharedEngine] startSync];
         }];
     }

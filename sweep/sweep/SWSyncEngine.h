@@ -12,6 +12,7 @@
 #import "AFSweepAPIClient.h"
 #import "KeychainWrapper.h"
 #import "NSManagedObject+JSON.h"
+#import "Customers.h"
 
 typedef enum {
     SWObjectSynced = 0,
@@ -28,5 +29,8 @@ typedef enum {
 - (void)newManagedObjectUsingMasterContextWithClassName:(NSString *)className forRecord:(NSDictionary *)record;
 - (BOOL)removeCoreDataObjects;
 - (BOOL)removeDepartmentObjects;
+- (BOOL)removeCustomerObjects;
 
+
+- (Customers *) sharedCustomer;
 @end
