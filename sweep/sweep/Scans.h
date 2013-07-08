@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 #import "NSManagedObject+JSON.h"
+#import "StringEncryptionTransformer.h"
 
 @class Events;
 
@@ -20,7 +21,7 @@
 @property (nonatomic, retain) NSNumber * sync_status;
 @property (nonatomic, retain) NSDate * scanned_at;
 @property (nonatomic, retain) NSDate * updated_at;
-@property (nonatomic, retain) NSString * value;
+@property (nonatomic, retain) NSString *value;
 @property (nonatomic, retain) Events *event;
 
 @end

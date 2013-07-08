@@ -37,7 +37,7 @@
         <attribute name="scanned_at" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="sync_status" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="updated_at" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="value" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="value" optional="YES" attributeType="Transformable" valueTransformerName="StringEncryptionTransformer" syncable="YES"/>
         <relationship name="event" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Events" syncable="YES"/>
     </entity>
     <elements>

@@ -12,7 +12,7 @@
 
 - (UIColor *)mainColor
 {
-    return [UIColor greenColor];
+    return [UIColor whiteColor];
 }
 
 - (UIColor *)highlightColor
@@ -32,23 +32,21 @@
 
 - (UIColor *)baseTintColor
 {
-    return [self mainColor];
+    return [self peaGreen];
+}
+
+-(UIColor *) peaGreen
+{
+    return [UIColor colorWithRed:0.7137254902 green:0.8235294118 blue:0.1333333333 alpha:1.0];
+}
+
+-(UIColor *) sandTan
+{
+    return [UIColor colorWithRed:0.9 green:0.9333333333 blue:0.5607843137 alpha:1.0];
 }
 
 - (UIColor *)accentTintColor
 {
-    return nil;
-}
-
-- (UIColor *)ritOrangeColor {
-    return [UIColor colorWithRed:(0.9529411765) green:(0.431372549) blue:(0.1294117647) alpha:1.0];
-}
-
-- (UIColor *)ritBrownColor {
-    return nil;
-}
-
-- (UIColor *)ritBlackColor {
     return nil;
 }
 
