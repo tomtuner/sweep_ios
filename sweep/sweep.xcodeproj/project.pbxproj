@@ -1223,6 +1223,11 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "sweep/sweep-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"BITHOCKEY_VERSION=\"@\\\"3.0.0\\\"\"",
+					"CONFIGURATION_$(CONFIGURATION)",
+				);
 				INFOPLIST_FILE = "sweep copy-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1239,6 +1244,11 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "sweep/sweep-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"BITHOCKEY_VERSION=\"@\\\"3.0.0\\\"\"",
+					"CONFIGURATION_$(CONFIGURATION)",
+				);
 				INFOPLIST_FILE = "sweep copy-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1255,6 +1265,11 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "sweep/sweep-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"BITHOCKEY_VERSION=\"@\\\"3.0.0\\\"\"",
+					"CONFIGURATION_$(CONFIGURATION)",
+				);
 				INFOPLIST_FILE = "sweep copy-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
