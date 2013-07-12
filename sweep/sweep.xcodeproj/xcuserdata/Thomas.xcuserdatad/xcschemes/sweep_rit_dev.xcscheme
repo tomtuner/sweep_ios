@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "E9828AF817837D0500619FB4"
-               BuildableName = "sweep rit copy.app"
+               BuildableName = "rit-dev.app"
                BlueprintName = "sweep_rit-dev"
                ReferencedContainer = "container:sweep.xcodeproj">
             </BuildableReference>
@@ -33,7 +33,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E9828AF817837D0500619FB4"
-            BuildableName = "sweep rit copy.app"
+            BuildableName = "rit-dev.app"
             BlueprintName = "sweep_rit-dev"
             ReferencedContainer = "container:sweep.xcodeproj">
          </BuildableReference>
@@ -52,7 +52,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E9828AF817837D0500619FB4"
-            BuildableName = "sweep rit copy.app"
+            BuildableName = "rit-dev.app"
             BlueprintName = "sweep_rit-dev"
             ReferencedContainer = "container:sweep.xcodeproj">
          </BuildableReference>
@@ -70,7 +70,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E9828AF817837D0500619FB4"
-            BuildableName = "sweep rit copy.app"
+            BuildableName = "rit-dev.app"
             BlueprintName = "sweep_rit-dev"
             ReferencedContainer = "container:sweep.xcodeproj">
          </BuildableReference>

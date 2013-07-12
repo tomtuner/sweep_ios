@@ -22,7 +22,7 @@
 
 -(NSString *) key
 {
-    return @"11111111112222222222333333333344";
+    return @"SweepEvents9";
 }
 
 -(id) transformedValue:(NSData *) data
