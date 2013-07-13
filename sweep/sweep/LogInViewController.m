@@ -28,8 +28,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+//    [ThemeManager customizeNavigationControllerTitleView:self.navigationController];
+    UIImage *navCenter = [UIImage imageNamed:@"nav_bar_logo"];
+    UIImageView *titleView = [[UIImageView alloc] initWithImage:navCenter];
+    [self.navBar.topItem setTitleView:titleView];
     self.managedObjectContext = [[SWCoreDataController sharedInstance] newManagedObjectContext];
-
 }
 
 -(void) viewDidAppear:(BOOL)animated

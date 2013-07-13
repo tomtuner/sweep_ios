@@ -12,7 +12,7 @@
 
 + (id)sharedInstance;
 
-- (NSString *)applicationDocumentsDirectory;
+- (NSURL *)applicationDocumentsDirectory;
 
 - (NSManagedObjectContext *)masterManagedObjectContext;
 - (NSManagedObjectContext *)backgroundManagedObjectContext;

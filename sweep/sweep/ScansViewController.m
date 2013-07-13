@@ -56,6 +56,12 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"SWSyncEngineSyncCompleted" object:nil];
 }
 
+- (void) dealloc
+{
+    //    [super dealloc];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"SWSyncEngineSyncCompleted" object:nil];
+}
+
 - (void)loadRecordsFromCoreData {
     [self.managedObjectContext performBlockAndWait:^{
         [self.managedObjectContext reset];

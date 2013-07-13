@@ -73,11 +73,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "sweep/sweep/SideMenuViewController.m"
-         timestampString = "394334318.430591"
+         timestampString = "395363862.393513"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "215"
-         endingLineNumber = "215"
+         startingLineNumber = "237"
+         endingLineNumber = "237"
          landmarkName = "-keyboardWasShown:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -86,11 +86,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "sweep/sweep/SideMenuViewController.m"
-         timestampString = "394334318.430591"
+         timestampString = "395363862.393513"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "142"
-         endingLineNumber = "142"
+         startingLineNumber = "159"
+         endingLineNumber = "159"
          landmarkName = "-tableView:didSelectRowAtIndexPath:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -99,11 +99,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "sweep/sweep/SideMenuViewController.m"
-         timestampString = "394334318.430591"
+         timestampString = "395363862.393513"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "103"
-         endingLineNumber = "103"
+         startingLineNumber = "120"
+         endingLineNumber = "120"
          landmarkName = "-tableView:cellForRowAtIndexPath:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -281,11 +281,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "sweep/sweep/SideMenuViewController.m"
-         timestampString = "394334318.430591"
+         timestampString = "395363862.393513"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "210"
-         endingLineNumber = "210"
+         startingLineNumber = "232"
+         endingLineNumber = "232"
          landmarkName = "-keyboardWasShown:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -307,11 +307,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "sweep/sweep/SideMenuViewController.m"
-         timestampString = "394334318.430591"
+         timestampString = "395363862.393513"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "75"
-         endingLineNumber = "75"
+         startingLineNumber = "92"
+         endingLineNumber = "92"
          landmarkName = "-loadRecordsFromCoreData"
          landmarkType = "5">
       </FileBreakpoint>
@@ -336,19 +336,6 @@
          timestampString = "394871436.572505"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "463"
-         endingLineNumber = "463"
-         landmarkName = "-downloadDataForRegisteredObjects:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "sweep/sweep/SWSyncEngine.m"
-         timestampString = "394871436.572505"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
          startingLineNumber = "451"
          endingLineNumber = "451"
          landmarkName = "-downloadDataForRegisteredObjects:"
@@ -359,11 +346,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "sweep/sweep/ScansViewController.m"
-         timestampString = "394872400.818774"
+         timestampString = "395350551.402082"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "69"
-         endingLineNumber = "69"
+         startingLineNumber = "75"
+         endingLineNumber = "75"
          landmarkName = "-loadRecordsFromCoreData"
          landmarkType = "5">
       </FileBreakpoint>
@@ -372,11 +359,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "sweep/sweep/ScansViewController.m"
-         timestampString = "394872400.818774"
+         timestampString = "395350551.402082"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "135"
-         endingLineNumber = "135"
+         startingLineNumber = "141"
+         endingLineNumber = "141"
          landmarkName = "-displayLoginControllerIfNeeded"
          landmarkType = "5">
       </FileBreakpoint>
@@ -385,11 +372,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "sweep/sweep/ScansViewController.m"
-         timestampString = "394872400.818774"
+         timestampString = "395350551.402082"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "321"
-         endingLineNumber = "321"
+         startingLineNumber = "327"
+         endingLineNumber = "327"
          landmarkName = "@implementation ScansViewController"
          landmarkType = "3">
       </FileBreakpoint>
@@ -398,46 +385,33 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "sweep/sweep/ScansViewController.m"
-         timestampString = "394872400.818774"
+         timestampString = "395350551.402082"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "331"
-         endingLineNumber = "331">
+         startingLineNumber = "337"
+         endingLineNumber = "337">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "sweep/sweep/ScansViewController.m"
-         timestampString = "394872400.818774"
+         timestampString = "395350551.402082"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "323"
-         endingLineNumber = "323">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "sweep/sweep/SideMenuViewController.m"
-         timestampString = "394334318.430591"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "47"
-         endingLineNumber = "47"
-         landmarkName = "-viewDidLoad"
-         landmarkType = "5">
+         startingLineNumber = "329"
+         endingLineNumber = "329">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "sweep/sweep/ScansViewController.m"
-         timestampString = "394872400.818774"
+         timestampString = "395350551.402082"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "108"
-         endingLineNumber = "108"
+         startingLineNumber = "114"
+         endingLineNumber = "114"
          landmarkName = "@implementation ScansViewController"
          landmarkType = "3">
       </FileBreakpoint>
@@ -446,11 +420,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "sweep/sweep/ScansViewController.m"
-         timestampString = "394872400.818774"
+         timestampString = "395350551.402082"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "189"
-         endingLineNumber = "189"
+         startingLineNumber = "195"
+         endingLineNumber = "195"
          landmarkName = "-validateDepartmentKey:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -485,11 +459,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "sweep/sweep/ScansViewController.m"
-         timestampString = "394993842.272867"
+         timestampString = "395350551.402082"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "309"
-         endingLineNumber = "309"
+         startingLineNumber = "315"
+         endingLineNumber = "315"
          landmarkName = "-configureCell:atIndexPath:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -517,6 +491,97 @@
          startingLineNumber = "30"
          endingLineNumber = "30"
          landmarkName = "-reverseTransformedValue:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "sweep/sweep/AppDelegate.m"
+         timestampString = "395349563.137322"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "55"
+         endingLineNumber = "55"
+         landmarkName = "-application:didFinishLaunchingWithOptions:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "sweep/sweep/ScansViewController.m"
+         timestampString = "395349618.040265"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "35"
+         endingLineNumber = "35"
+         landmarkName = "-viewDidLoad"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "sweep/sweep/SWSyncEngine.m"
+         timestampString = "395350054.233457"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "128"
+         endingLineNumber = "128"
+         landmarkName = "-postLocalObjectsToServer"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "sweep/sweep/SWSyncEngine.m"
+         timestampString = "395350060.721496"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "166"
+         endingLineNumber = "166"
+         landmarkName = "-postLocalObjectsToServer"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "sweep/sweep/SideMenuViewController.m"
+         timestampString = "395363862.393513"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "67"
+         endingLineNumber = "67"
+         landmarkName = "-viewDidAppear:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "sweep/sweep/SideMenuViewController.m"
+         timestampString = "395363862.393513"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "78"
+         endingLineNumber = "78"
+         landmarkName = "-viewDidDisappear:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "sweep/sweep/SideMenuViewController.m"
+         timestampString = "395363862.393513"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "170"
+         endingLineNumber = "170"
+         landmarkName = "-tableView:didSelectRowAtIndexPath:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

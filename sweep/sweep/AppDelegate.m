@@ -54,11 +54,14 @@
 //        controller.managedObjectContext = self.managedObjectContext;
         controller.departmentKeyItem = self.departmentKeyItem;
         
-        SideMenuViewController *sideController = [st instantiateViewControllerWithIdentifier:@"sideMenuController"];
+        UINavigationController *sideMenuNav = [st instantiateViewControllerWithIdentifier:@"sideMenuController"];
+        SideMenuViewController *sideController = (SideMenuViewController *)sideMenuNav.topViewController;
+
+        sideController.scansViewController = controller;
 //        sideController.departmentKeyItem = self.departmentKeyItem;
 
 //        sideController.managedObjectContext = self.managedObjectContext;
-        IIViewDeckController *deckController = [[IIViewDeckController alloc] initWithCenterViewController:navigationController leftViewController:sideController];
+        IIViewDeckController *deckController = [[IIViewDeckController alloc] initWithCenterViewController:navigationController leftViewController:sideMenuNav];
         
         deckController.openSlideAnimationDuration = 0.2f;
         deckController.closeSlideAnimationDuration = 0.2f;

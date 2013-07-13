@@ -203,6 +203,13 @@
     button.titleLabel.font = font;
 }
 
++ (void) customizeNavigationControllerTitleView:(UINavigationController *)navController
+{
+    id <Theme> theme = [self sharedTheme];
+    UIImageView *titleView = [theme customeNavigationBarTitleView];
+    [navController.navigationItem setTitleView:titleView];
+}
+
 + (void)customizeTableView:(UITableView *)tableView
 {
     id <Theme> theme = [self sharedTheme];

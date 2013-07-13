@@ -32,7 +32,7 @@
 
 - (UIColor *)baseTintColor
 {
-    return [self peaGreen];
+    return [self yellowTan];
 }
 
 -(UIColor *) peaGreen
@@ -42,7 +42,12 @@
 
 -(UIColor *) sandTan
 {
-    return [UIColor colorWithRed:0.9 green:0.9333333333 blue:0.5607843137 alpha:1.0];
+    return [UIColor colorWithRed:0.98 green:0.78 blue:0.5607843137 alpha:1.0];
+}
+
+-(UIColor *) yellowTan
+{
+    return [UIColor colorWithRed:0.98 green:0.78 blue:0.368 alpha:1.0];
 }
 
 - (UIColor *)accentTintColor
@@ -86,7 +91,7 @@
 
 - (UIImage *)navigationBackgroundForBarMetrics:(UIBarMetrics)metrics
 {
-    NSString *name = @"bg";
+    NSString *name = @"nav_bg_sweep";
     if (metrics == UIBarMetricsLandscapePhone) {
         //name = [name stringByAppendingString:@"Landscape"];
     }
@@ -325,6 +330,12 @@
 {
     return [UIFont fontWithName:@"Linear" size:fontSize];
 }
+
+- (UIImageView *) customeNavigationBarTitleView
+{
+    return [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"nav_bar_logo"]];
+}
+
 /*- (UIImage *)imageForTab:(SSThemeTab)tab
  {
  return nil;

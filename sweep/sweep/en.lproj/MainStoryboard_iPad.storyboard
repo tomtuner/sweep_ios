@@ -19,7 +19,7 @@
             </objects>
             <point key="canvasLocation" x="448" y="-630"/>
         </scene>
-        <!--Side Menu View Controller - Sweep-->
+        <!--Side Menu View Controller-->
         <scene sceneID="Fgy-hd-C9X">
             <objects>
                 <viewController id="4Ny-YM-kdR" customClass="SideMenuViewController" sceneMemberID="viewController">
@@ -98,7 +98,7 @@
                         </constraints>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Sweep" id="Rps-x8-Sox"/>
+                    <navigationItem key="navigationItem" id="Rps-x8-Sox"/>
                     <connections>
                         <outlet property="eventsTable" destination="HIX-m5-Z6v" id="hVF-Y0-B1z"/>
                         <outlet property="view" destination="Ger-kx-Rja" id="rbN-UG-c1o"/>
@@ -126,7 +126,7 @@
                             </label>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Iv-El-A21">
                                 <items>
-                                    <navigationItem title="Sweep" id="LcY-cQ-Bfp"/>
+                                    <navigationItem id="LcY-cQ-Bfp"/>
                                 </items>
                             </navigationBar>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Access Key" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="r8D-nI-L0z">
@@ -151,6 +151,7 @@
                     </view>
                     <modalFormSheetSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
+                        <outlet property="navBar" destination="4Iv-El-A21" id="vtq-JR-egh"/>
                         <outlet property="view" destination="puP-eg-UuN" id="bD0-6L-JXR"/>
                     </connections>
                 </viewController>
@@ -210,7 +211,7 @@
                             <outlet property="delegate" destination="19" id="21"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Master" id="40"/>
+                    <navigationItem key="navigationItem" id="40"/>
                     <connections>
                         <outlet property="scansTable" destination="20" id="KHG-SR-bCh"/>
                     </connections>
@@ -318,41 +319,6 @@
             <point key="canvasLocation" x="1413" y="248"/>
         </scene>
     </scenes>
-    <classes>
-        <class className="CameraCaptureViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CameraCaptureViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="flash:"/>
-                <relationship kind="outlet" name="buttonOverlayView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="scannerView" candidateClass="UIView"/>
-            </relationships>
-        </class>
-        <class className="LogInViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/LogInViewController.h"/>
-        </class>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-        <class className="ScansViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ScansViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="scansTable" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-        <class className="SideMenuTableViewCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SideMenuTableViewCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="nameLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="nameTextField" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="SideMenuViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SideMenuViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="eventsTable" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackTranslucent"/>
         <simulatedOrientationMetrics key="orientation"/>

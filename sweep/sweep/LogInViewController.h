@@ -17,6 +17,8 @@
 @property (nonatomic, strong) KeychainWrapper *departmentKeyItem;
 @property (nonatomic, strong) UIActivityIndicatorView *validKeyNetworkIndicator;
 
+@property (nonatomic, strong) IBOutlet UINavigationBar *navBar;
+
 //@property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 //@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 

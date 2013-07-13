@@ -37,24 +37,41 @@
 //    if ([SWSyncEngine sharedEngine] syncInProgress) {
 //    }
 //    self.firstTimeLoad = YES;
+    [ThemeManager customizeNavigationControllerTitleView:self];
+//    UIImage *navCenter = [UIImage imageNamed:@"nav_bar_logo"];
+//    UIImageView *titleView = [[UIImageView alloc] initWithImage:navCenter];
+//    [self.navigationItem setTitleView:titleView];
+    
     self.indexToGoToAfterSync = 0;
-    self.scansViewController = (ScansViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
+    {
+        self.scansViewController = (ScansViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
+    }
     self.managedObjectContext = [[SWCoreDataController sharedInstance] newManagedObjectContext];
     [self registerForKeyboardNotifications];
     
-    [[NSNotificationCenter defaultCenter] addObserverForName:@"SWSyncEngineSyncCompleted" object:nil queue:nil usingBlock:^(NSNotification *note) {
-        [self loadRecordsFromCoreData];
-//        if (self.firstTimeLoad)
-//        {
-            [self tableView:self.eventsTable didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:self.indexToGoToAfterSync inSection:0]];
-//            self.firstTimeLoad = NO;
-//        }
-    }];
+//    [[NSNotificationCenter defaultCenter] addObserverForName:@"SWSyncEngineSyncCompleted" object:nil queue:nil usingBlock:^(NSNotification *note) {
+//        [self loadRecordsFromCoreData];
+////        if (self.firstTimeLoad)
+////        {
+//            [self tableView:self.eventsTable didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:self.indexToGoToAfterSync inSection:0]];
+////            self.firstTimeLoad = NO;
+////        }
+//    }];
 }
 
 -(void) viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    
+    [[NSNotificationCenter defaultCenter] addObserverForName:@"SWSyncEngineSyncCompleted" object:nil queue:nil usingBlock:^(NSNotification *note) {
+        [self loadRecordsFromCoreData];
+        //        if (self.firstTimeLoad)
+        //        {
+        [self tableView:self.eventsTable didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:self.indexToGoToAfterSync inSection:0]];
+        //            self.firstTimeLoad = NO;
+        //        }
+    }];
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
@@ -155,11 +172,16 @@
         {
             self.indexToGoToAfterSync = indexPath.row;
             self.scansViewController.detailItem = selectedEvent;
+            
+            [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
+                //                ((UINavigationController *)controller.centerController).viewControllers = controllers;
+                // ...
+            }];
         }else
         {
             NSArray *controllers = [NSArray arrayWithObject:self.scansViewController];
             [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
-                ((UINavigationController *)controller.centerController).viewControllers = controllers;
+//                ((UINavigationController *)controller.centerController).viewControllers = controllers;
                 // ...
             }];
         }

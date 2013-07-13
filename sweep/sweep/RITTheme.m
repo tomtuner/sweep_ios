@@ -327,6 +327,12 @@
 {
     return [UIFont fontWithName:@"Linear" size:fontSize];
 }
+
+- (UIImageView *) customeNavigationBarTitleView
+{
+    return [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"nav_bar_logo"]];
+}
+
 /*- (UIImage *)imageForTab:(SSThemeTab)tab
 {
     return nil;
