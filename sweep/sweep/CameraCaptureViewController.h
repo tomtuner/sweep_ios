@@ -23,5 +23,7 @@
 
 @property(nonatomic,assign)id delegate;
 @property(nonatomic,strong) Events *event;
+@property (nonatomic, strong) IBOutlet UIView *scannerView;
+
 
 @end

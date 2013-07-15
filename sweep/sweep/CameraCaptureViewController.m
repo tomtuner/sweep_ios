@@ -14,8 +14,12 @@
 
 @property (nonatomic, retain) ZXCapture *capture;
 @property(nonatomic, strong) NSMutableArray *barcodeResultArray;
-@property (nonatomic, strong) IBOutlet UIView *scannerView;
 @property (nonatomic, strong) IBOutlet UIView *buttonOverlayView;
+@property (nonatomic, strong) IBOutlet UIButton *finishButton;
+@property (nonatomic, strong) IBOutlet UIButton *flashButton;
+@property (nonatomic, strong) IBOutlet UIButton *multiScanButton;
+@property (nonatomic, strong) IBOutlet UILabel *lastScannedCode;
+@property (nonatomic, strong) IBOutlet UILabel *lastScannedTitleLabel;
 
 @property (nonatomic) BOOL multiScan;
 
@@ -35,10 +39,20 @@
     return self;
 }
 */
+
+- (id)initWithCoder:(NSCoder*)aDecoder
+{
+    if(self = [super initWithCoder:aDecoder])
+    {
+        // Do something
+        [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationFade];
+
+    }
+    return self;
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationFade];
 
 	// Do any additional setup after loading the view.
     self.managedObjectContext = [[SWCoreDataController sharedInstance] newManagedObjectContext];
@@ -62,8 +76,8 @@
             [UIView animateWithDuration:0.5
                              animations:^{
                                  [self animateCameraMaskViews];
-                                 [self.scannerView.layer addSublayer:self.buttonOverlayView.layer];
-                                 
+//                                 [self.scannerView addSubview:self.buttonOverlayView];
+                                 [self.view addSubview:self.buttonOverlayView];
                              }
                              completion:^(BOOL finished){
                                  [_topMaskView removeFromSuperview];
@@ -118,6 +132,33 @@
     return UIInterfaceOrientationMaskPortrait;
 }
 
+- (void) playSoundAndVibrate
+{
+    // Get the main bundle for the app
+    CFBundleRef mainBundle = CFBundleGetMainBundle ();
+    
+    // Get the URL to the sound file to play. The file in this case
+    // is "tap.aif"
+    CFURLRef soundFileURLRef  = CFBundleCopyResourceURL (
+                                                mainBundle,
+                                                CFSTR ("DING"),
+                                                CFSTR ("caf"),
+                                                NULL
+                                                );
+    
+    // Create a system sound object representing the sound file
+    SystemSoundID soundFileObject;
+    AudioServicesCreateSystemSoundID (
+                                      soundFileURLRef,
+                                      &soundFileObject
+                                      );
+    // Play the sound
+    AudioServicesPlaySystemSound (soundFileObject);
+    
+    // And Vibrate if possible
+    AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+}
+
 #pragma mark - ZXCaptureDelegate Methods
 
 - (void)captureResult:(ZXCapture*)capture result:(ZXResult*)result {
@@ -134,7 +175,8 @@
             
 #if !(TARGET_IPHONE_SIMULATOR)
             // Vibrate
-            AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+//            AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+            [self playSoundAndVibrate];
 #endif
             
            /* SBarcodeResult *br = [[SBarcodeResult alloc] init];
@@ -157,6 +199,9 @@
             newScan.event_id = self.event.remote_id;
             newScan.sync_status = [NSNumber numberWithInt:SWObjectCreated];
 
+            // Set the visual feedback for user
+            self.lastScannedCode.text = result.text;
+            
             NSError *error = nil;
             BOOL saved = [self.managedObjectContext save:&error];
             if (!saved) {
@@ -198,7 +243,7 @@
 }
 
 -(void) cleanUpCamera {
-//    [self.buttonOverlayView.layer removeFromSuperlayer];
+    [self.buttonOverlayView removeFromSuperview];
     [self.capture.layer removeFromSuperlayer];
     [self.capture stop];
 }
@@ -208,6 +253,7 @@
     [self returnBarcodeResults];
 }
 
+/*
 -(IBAction)cancel:(id)sender
 {
     if([self.delegate respondsToSelector:@selector(barcodeCaptureController:)])
@@ -217,10 +263,31 @@
         [self.delegate cameraCaptureController:self];
     }
 }
+*/
 
 -(IBAction)flash:(id)sender {
     if ([self.capture hasTorch]) {
         self.capture.torch = !self.capture.torch;
     }
 }
+
+-(IBAction)multiScan:(id)sender {
+    NSLog(@"MultiScan");
+    NSLog(@"MultiScan was %i", self.multiScan);
+    if (self.multiScan == NO) {
+        self.lastScannedTitleLabel.hidden = NO;
+        self.lastScannedCode.hidden = NO;
+        self.finishButton.titleLabel.text = @"Done";
+    }else {
+        self.lastScannedTitleLabel.hidden = YES;
+        self.lastScannedCode.hidden = YES;
+        self.finishButton.titleLabel.text = @"Cancel";
+    }
+    self.multiScan = !self.multiScan;
+    NSLog(@"MultiScan is %i", self.multiScan);
+    self.finishButton.titleLabel.text = self.multiScan ? @"Done" : @"Cancel";
+    
+//    [self.finishButton.titleLabel setTextAlignment:NSTextAlignmentCenter];
+}
+
 @end

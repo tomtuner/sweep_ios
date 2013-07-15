@@ -105,8 +105,8 @@
     CameraCaptureViewController *cameraCapture = [st instantiateViewControllerWithIdentifier:@"cameraCaptureViewController"];
     cameraCapture.delegate = self;
     cameraCapture.event = self.detailItem;
-    cameraCapture.modalPresentationStyle = UIModalPresentationFullScreen;
-    [self presentViewController:cameraCapture animated:YES completion:nil];
+//    cameraCapture.modalPresentationStyle = UIModalPresentationFullScreen;
+    [self presentViewController:cameraCapture animated:NO completion:nil];
     /*BarcodeCaptureViewController *vc = [[BarcodeCaptureViewController alloc] initWithNibName:@"BarcodeCaptureViewController" bundle:nil];
     vc.delegate = self;
     [self presentViewController:vc animated:NO completion:nil];*/
@@ -210,8 +210,10 @@
                  [ThemeManager customizeAppAppearance];
 
                  [self showLoginController];
+             }else {
+                 [[SWSyncEngine sharedEngine] startSync];
              }
-         }  
+         }
      }];
 }
 

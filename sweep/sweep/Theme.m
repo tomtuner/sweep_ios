@@ -101,8 +101,8 @@
     [searchBarAppearance setScopeBarButtonDividerImage:[theme searchScopeButtonDivider] forLeftSegmentState:UIControlStateNormal rightSegmentState:UIControlStateNormal];
     
     UIButton *buttonAppearance = [UIButton appearance];
-    [buttonAppearance setTitleColor:[theme mainColor] forState:UIControlStateNormal];
-    [buttonAppearance setTitleColor:[theme baseTintColor] forState:UIControlStateHighlighted];
+//    [buttonAppearance setTitleColor:[theme mainColor] forState:UIControlStateNormal];
+//    [buttonAppearance setTitleColor:[theme baseTintColor] forState:UIControlStateHighlighted];
     
     UISlider *sliderAppearance = [UISlider appearance];
     [sliderAppearance setThumbImage:[theme sliderThumbForState:UIControlStateNormal] forState:UIControlStateNormal];

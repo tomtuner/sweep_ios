@@ -159,6 +159,12 @@
 		E9CA01AF1790D8AD00CAFA5C /* app_icon_iPhone_beta.png in Resources */ = {isa = PBXBuildFile; fileRef = E9CA01AE1790D8AC00CAFA5C /* app_icon_iPhone_beta.png */; };
 		E9CA01B11790D8B700CAFA5C /* app_icon_iPad_retina_beta.png in Resources */ = {isa = PBXBuildFile; fileRef = E9CA01B01790D8B700CAFA5C /* app_icon_iPad_retina_beta.png */; };
 		E9CA01B31790D8BD00CAFA5C /* app_icon_iPad_beta.png in Resources */ = {isa = PBXBuildFile; fileRef = E9CA01B21790D8BD00CAFA5C /* app_icon_iPad_beta.png */; };
+		E9CA01B517943BFE00CAFA5C /* ButtonOverlayView_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9CA01B417943BFE00CAFA5C /* ButtonOverlayView_iPhone.xib */; };
+		E9CA01B617943BFE00CAFA5C /* ButtonOverlayView_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9CA01B417943BFE00CAFA5C /* ButtonOverlayView_iPhone.xib */; };
+		E9CA01B817943C0F00CAFA5C /* ButtonOverlayView_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9CA01B717943C0F00CAFA5C /* ButtonOverlayView_iPad.xib */; };
+		E9CA01B917943C0F00CAFA5C /* ButtonOverlayView_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9CA01B717943C0F00CAFA5C /* ButtonOverlayView_iPad.xib */; };
+		E9CA01BC179451DE00CAFA5C /* DING.caf in Resources */ = {isa = PBXBuildFile; fileRef = E9CA01BB179451DE00CAFA5C /* DING.caf */; };
+		E9CA01BD179451DE00CAFA5C /* DING.caf in Resources */ = {isa = PBXBuildFile; fileRef = E9CA01BB179451DE00CAFA5C /* DING.caf */; };
 		E9E8AD521768224A00F837D7 /* SideMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E8AD511768224A00F837D7 /* SideMenuViewController.m */; };
 		E9E8AD5717682BED00F837D7 /* SettingsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E8AD5617682BED00F837D7 /* SettingsManager.m */; };
 		E9E8AD5D17682C5700F837D7 /* Theme.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E8AD5A17682C5700F837D7 /* Theme.m */; };
@@ -270,6 +276,9 @@
 		E9CA01AE1790D8AC00CAFA5C /* app_icon_iPhone_beta.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = app_icon_iPhone_beta.png; path = ../app_icon_iPhone_beta.png; sourceTree = "<group>"; };
 		E9CA01B01790D8B700CAFA5C /* app_icon_iPad_retina_beta.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = app_icon_iPad_retina_beta.png; path = ../app_icon_iPad_retina_beta.png; sourceTree = "<group>"; };
 		E9CA01B21790D8BD00CAFA5C /* app_icon_iPad_beta.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = app_icon_iPad_beta.png; path = ../app_icon_iPad_beta.png; sourceTree = "<group>"; };
+		E9CA01B417943BFE00CAFA5C /* ButtonOverlayView_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ButtonOverlayView_iPhone.xib; sourceTree = "<group>"; };
+		E9CA01B717943C0F00CAFA5C /* ButtonOverlayView_iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ButtonOverlayView_iPad.xib; sourceTree = "<group>"; };
+		E9CA01BB179451DE00CAFA5C /* DING.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = DING.caf; sourceTree = "<group>"; };
 		E9E8AD501768224A00F837D7 /* SideMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SideMenuViewController.h; sourceTree = "<group>"; };
 		E9E8AD511768224A00F837D7 /* SideMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SideMenuViewController.m; sourceTree = "<group>"; };
 		E9E8AD5517682BED00F837D7 /* SettingsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsManager.h; sourceTree = "<group>"; };
@@ -480,6 +489,14 @@
 			name = beta;
 			sourceTree = "<group>";
 		};
+		E9CA01BA179451D600CAFA5C /* sounds */ = {
+			isa = PBXGroup;
+			children = (
+				E9CA01BB179451DE00CAFA5C /* DING.caf */,
+			);
+			name = sounds;
+			sourceTree = "<group>";
+		};
 		E9E8AD4B176814C000F837D7 /* model */ = {
 			isa = PBXGroup;
 			children = (
@@ -499,6 +516,7 @@
 		E9E8AD4C17681F5D00F837D7 /* sweep_resources */ = {
 			isa = PBXGroup;
 			children = (
+				E9CA01BA179451D600CAFA5C /* sounds */,
 				E9CA01821790BB8100CAFA5C /* app_icon */,
 				E9E8AD9E1768D14400F837D7 /* plists */,
 				E9E8AD5F1768330600F837D7 /* images */,
@@ -513,6 +531,8 @@
 			children = (
 				E9518FA61768108200EB82C8 /* MainStoryboard_iPhone.storyboard */,
 				E9518FA91768108200EB82C8 /* MainStoryboard_iPad.storyboard */,
+				E9CA01B417943BFE00CAFA5C /* ButtonOverlayView_iPhone.xib */,
+				E9CA01B717943C0F00CAFA5C /* ButtonOverlayView_iPad.xib */,
 			);
 			name = storyboard;
 			sourceTree = "<group>";
@@ -779,6 +799,9 @@
 				E9CA01911790D1C400CAFA5C /* app_icon_iPhone.png in Resources */,
 				E9CA01921790D1CE00CAFA5C /* app_icon_iPad_retina.png in Resources */,
 				E9CA01931790D1D100CAFA5C /* app_icon_iPad.png in Resources */,
+				E9CA01B517943BFE00CAFA5C /* ButtonOverlayView_iPhone.xib in Resources */,
+				E9CA01B817943C0F00CAFA5C /* ButtonOverlayView_iPad.xib in Resources */,
+				E9CA01BC179451DE00CAFA5C /* DING.caf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -810,6 +833,9 @@
 				E9CA01AF1790D8AD00CAFA5C /* app_icon_iPhone_beta.png in Resources */,
 				E9CA01B11790D8B700CAFA5C /* app_icon_iPad_retina_beta.png in Resources */,
 				E9CA01B31790D8BD00CAFA5C /* app_icon_iPad_beta.png in Resources */,
+				E9CA01B617943BFE00CAFA5C /* ButtonOverlayView_iPhone.xib in Resources */,
+				E9CA01B917943C0F00CAFA5C /* ButtonOverlayView_iPad.xib in Resources */,
+				E9CA01BD179451DE00CAFA5C /* DING.caf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

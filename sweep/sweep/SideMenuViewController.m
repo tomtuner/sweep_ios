@@ -50,21 +50,23 @@
     self.managedObjectContext = [[SWCoreDataController sharedInstance] newManagedObjectContext];
     [self registerForKeyboardNotifications];
     
-//    [[NSNotificationCenter defaultCenter] addObserverForName:@"SWSyncEngineSyncCompleted" object:nil queue:nil usingBlock:^(NSNotification *note) {
-//        [self loadRecordsFromCoreData];
+    [[NSNotificationCenter defaultCenter] addObserverForName:@"SWSyncEngineSyncCompleted" object:nil queue:nil usingBlock:^(NSNotification *note) {
+        [self loadRecordsFromCoreData];
 ////        if (self.firstTimeLoad)
 ////        {
-//            [self tableView:self.eventsTable didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:self.indexToGoToAfterSync inSection:0]];
+            /*[self tableView:self.eventsTable didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:self.indexToGoToAfterSync inSection:0]];*/
 ////            self.firstTimeLoad = NO;
 ////        }
-//    }];
+//        [self stopActivityIndicatorView];
+    }];
+//    [self showActivtyIndicatorView];
 }
 
 -(void) viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
     
-    [[NSNotificationCenter defaultCenter] addObserverForName:@"SWSyncEngineSyncCompleted" object:nil queue:nil usingBlock:^(NSNotification *note) {
+    /*[[NSNotificationCenter defaultCenter] addObserverForName:@"SWSyncEngineSyncCompleted" object:nil queue:nil usingBlock:^(NSNotification *note) {
         [self loadRecordsFromCoreData];
         //        if (self.firstTimeLoad)
         //        {
@@ -72,6 +74,7 @@
         //            self.firstTimeLoad = NO;
         //        }
     }];
+     */
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
@@ -141,6 +144,22 @@
     return NO;
 }
 
+- (void) stopActivityIndicatorView
+{
+    [_eventRefreshNetworkIndicator stopAnimating];
+    [self.overlayView setBackgroundColor:[UIColor whiteColor]];
+}
+
+- (void) showActivtyIndicatorView
+{
+    _eventRefreshNetworkIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    [_eventRefreshNetworkIndicator setCenter:CGPointMake(self.overlayView.frame.size.width / 2.0, self.overlayView.frame.size.height / 2.0)]; // I do this because I'm in landscape mode
+    [self.overlayView setBackgroundColor:[UIColor colorWithWhite:0.2 alpha:0.3]];
+    [self.overlayView addSubview:_eventRefreshNetworkIndicator]; // spinner is not visible until started
+    
+    [_eventRefreshNetworkIndicator startAnimating];
+}
+
 #pragma mark - UITableViewDataSource
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
@@ -192,6 +211,10 @@
 
 - (void)configureCell:(SideMenuTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
+    [cell.nameLabel setHidden:NO];
+    [cell.nameTextField setHidden:YES];
+    [cell.nameTextField setSelected:NO];
+    
     Events *object = [self.events objectAtIndex:indexPath.row];
     cell.nameLabel.text = object.name;
 }
@@ -295,9 +318,10 @@
                 NSLog(@"Could not save Department due to %@", error);
             }
             [[SWCoreDataController sharedInstance] saveMasterContext];
-//            [self loadRecordsFromCoreData];
+
+//            [self.events addObject:newEvent];
 //            [self.eventsTable reloadData];
-            
+//             [self loadRecordsFromCoreData];           
             [[SWSyncEngine sharedEngine] startSync];
         }];
     }

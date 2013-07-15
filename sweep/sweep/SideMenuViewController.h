@@ -18,6 +18,10 @@
 @property (strong, nonatomic) ScansViewController *scansViewController;
 
 @property(nonatomic, strong) IBOutlet UITableView *eventsTable;
+@property(nonatomic, strong) IBOutlet UIView *overlayView;
+
 @property (strong, nonatomic) NSArray *events;
+
+@property (nonatomic, strong) UIActivityIndicatorView *eventRefreshNetworkIndicator;
 
 @end
