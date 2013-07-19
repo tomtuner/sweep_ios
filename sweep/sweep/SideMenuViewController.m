@@ -12,9 +12,7 @@
 
 @property (nonatomic, strong) UITextField *activeField;
 @property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
-
 @property (nonatomic) NSInteger indexToGoToAfterSync;
-
 @property (nonatomic) BOOL firstTimeLoad;
 
 @end
@@ -37,10 +35,7 @@
 //    if ([SWSyncEngine sharedEngine] syncInProgress) {
 //    }
     self.firstTimeLoad = YES;
-    [ThemeManager customizeNavigationControllerTitleView:self];
-//    UIImage *navCenter = [UIImage imageNamed:@"nav_bar_logo"];
-//    UIImageView *titleView = [[UIImageView alloc] initWithImage:navCenter];
-//    [self.navigationItem setTitleView:titleView];
+    [ThemeManager customizeNavigationControllerTitleView:self.navigationController];
     
     self.indexToGoToAfterSync = 0;
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
@@ -103,6 +98,10 @@
     }];
 }
 
+-(IBAction)logOutPressed:(id)sender
+{
+    [self.scansViewController resetDepartment];
+}
 
 - (void)didReceiveMemoryWarning
 {

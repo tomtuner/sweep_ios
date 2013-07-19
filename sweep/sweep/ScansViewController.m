@@ -202,19 +202,24 @@
              // Look for an unauthorized response code
              if ([[[error userInfo] objectForKey:AFNetworkingOperationFailingURLResponseErrorKey] statusCode] == 401)
              {
-                 // Key is no longer valid reset the keychain and reenter
-                 [self.departmentKeyItem resetKeychainItem];
-                 
-                 // Remove ALL core data objects when department key is deemed invalid
-                 [[SWSyncEngine sharedEngine] removeCoreDataObjects];
-                 [ThemeManager customizeAppAppearance];
-
-                 [self showLoginController];
+                 [self resetDepartment];
              }else {
                  [[SWSyncEngine sharedEngine] startSync];
              }
          }
      }];
+}
+
+- (void) resetDepartment
+{
+    // Key is no longer valid reset the keychain and reenter
+    [self.departmentKeyItem resetKeychainItem];
+    
+    // Remove ALL core data objects when department key is deemed invalid
+    [[SWSyncEngine sharedEngine] removeCoreDataObjects];
+    [ThemeManager customizeAppAppearance];
+    
+    [self showLoginController];
 }
 
 #pragma mark - Split view

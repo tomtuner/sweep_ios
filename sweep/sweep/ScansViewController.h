@@ -24,4 +24,7 @@
 @property (nonatomic, strong) NSArray *scans;
 
 @property (nonatomic, strong) KeychainWrapper *departmentKeyItem;
+
+- (void) resetDepartment;
+
 @end
