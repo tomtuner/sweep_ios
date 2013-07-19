@@ -336,7 +336,10 @@ NSString * const kSWSyncEngineSyncCompletedNotificationName = @"SWSyncEngineSync
                 [managedObject setValue:nil forKey:key];
             }
         }
-    } else {
+    } else if ([key isEqualToString:@"encrypted_key"] || [key isEqualToString:@"encrypted_iv"]) {
+        // Don't store these two
+    }
+    else {
         [managedObject setValue:value forKey:key];
     }
 }

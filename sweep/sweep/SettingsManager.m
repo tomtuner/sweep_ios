@@ -42,7 +42,7 @@ static BOOL initialized = NO;
         NSObject *setting = [_userDefaults objectForKey:SETTING_FIRST_TIME_RUN];
         if (setting == nil) {
             // Do any first time initialization here
-            [_userDefaults setObject:[NSNumber numberWithInt:9] forKey:SETTING_FIRST_TIME_RUN];
+            [_userDefaults setObject:[NSNumber numberWithInt:0] forKey:SETTING_FIRST_TIME_RUN];
 //            self.useSelfSignedSSLCertificates = NO;
 //            [self.userDefaults setObject:SERVER_URL forKey:SETTING_SERVER];
             [_userDefaults synchronize];
@@ -72,6 +72,17 @@ static BOOL initialized = NO;
 -(NSNumber *) percent_visible
 {
     return [_userDefaults objectForKey:SETTING_PERCENT_VISIBLE];
+}
+
+-(NSInteger) indexOfLastViewedEvent
+{
+    return [_userDefaults integerForKey:SETTING_LAST_EVENT_INDEX];
+}
+
+-(void) setIndexOfLastViewedEvent:(NSInteger) index
+{
+    [self.userDefaults setInteger:index forKey:SETTING_LAST_EVENT_INDEX];
+    [self.userDefaults synchronize];
 }
 
 @end

@@ -36,7 +36,7 @@
 	// Do any additional setup after loading the view.
 //    if ([SWSyncEngine sharedEngine] syncInProgress) {
 //    }
-//    self.firstTimeLoad = YES;
+    self.firstTimeLoad = YES;
     [ThemeManager customizeNavigationControllerTitleView:self];
 //    UIImage *navCenter = [UIImage imageNamed:@"nav_bar_logo"];
 //    UIImageView *titleView = [[UIImageView alloc] initWithImage:navCenter];
@@ -54,7 +54,14 @@
         [self loadRecordsFromCoreData];
 ////        if (self.firstTimeLoad)
 ////        {
-            /*[self tableView:self.eventsTable didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:self.indexToGoToAfterSync inSection:0]];*/
+        if (self.firstTimeLoad)
+        {
+            [self tableView:self.eventsTable didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:[SettingsManager sharedSettingsManager].indexOfLastViewedEvent inSection:0]];
+            self.firstTimeLoad = NO;
+        }
+        else{
+            [self tableView:self.eventsTable didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:self.indexToGoToAfterSync inSection:0]];
+        }
 ////            self.firstTimeLoad = NO;
 ////        }
 //        [self stopActivityIndicatorView];
@@ -190,6 +197,7 @@
         if (self.scansViewController)
         {
             self.indexToGoToAfterSync = indexPath.row;
+            [[SettingsManager sharedSettingsManager] setIndexOfLastViewedEvent:self.indexToGoToAfterSync];
             self.scansViewController.detailItem = selectedEvent;
             
             [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller) {
