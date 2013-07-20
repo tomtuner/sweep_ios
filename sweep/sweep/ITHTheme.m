@@ -1,14 +1,14 @@
 //
-//  SWTheme.m
+//  ITHTheme.m
 //  sweep
 //
-//  Created by Thomas DeMeo on 7/7/13.
+//  Created by Thomas DeMeo on 7/20/13.
 //  Copyright (c) 2013 Kanzu LLC. All rights reserved.
 //
 
-#import "SWTheme.h"
+#import "ITHTheme.h"
 
-@implementation SWTheme
+@implementation ITHTheme
 
 - (UIColor *)mainColor
 {
@@ -32,23 +32,34 @@
 
 - (UIColor *)baseTintColor
 {
-    return [self yellowTan];
+    return [self goldColor];
 }
 
 - (UIColor *)customerPrimaryColor
 {
-    return [self yellowTan];
+    return [self blueColor];
 }
 
 - (UIColor *)customerSecondaryColor
 {
-    return [self peaGreen];
+    return [self goldColor];
 }
 
 - (UIColor *)cameraOverlayBackgroundColor
 {
-    return [self customerSecondaryColor];
+    return [self customerPrimaryColor];
 }
+
+-(UIColor *) blueColor
+{
+    return [UIColor colorWithRed:0.003921568627 green:0.1921568627 blue:0.3450980392 alpha:1.0];
+}
+
+-(UIColor *) goldColor
+{
+    return [UIColor colorWithRed:1.0 green:0.7176470588 blue:0 alpha:1.0];
+}
+
 
 -(UIColor *) peaGreen
 {
@@ -106,7 +117,7 @@
 
 - (UIImage *)navigationBackgroundForBarMetrics:(UIBarMetrics)metrics
 {
-    NSString *name = @"nav_bg_sweep";
+    NSString *name = @"nav_bg_ithaca_gold";
     if (metrics == UIBarMetricsLandscapePhone) {
         //name = [name stringByAppendingString:@"Landscape"];
     }
@@ -353,12 +364,12 @@
 
 - (UIImage *) customerTopCameraMaskImage
 {
-    //TODO: ADD Sweep Mask Logo
+    return [UIImage imageNamed:@"ithaca_white_top"];
 }
 
 - (UIImage *) customerBottomCameraMaskImage
 {
-    //TODO: ADD Sweep Mask Logo
+    return [UIImage imageNamed:@"ithaca_white_bottom"];
 }
 
 /*- (UIImage *)imageForTab:(SSThemeTab)tab

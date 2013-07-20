@@ -75,9 +75,13 @@
                                     </tableView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nfE-zg-fut">
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Upp-ys-G7u">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="diq-vL-Dgw">
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="26" id="g9b-RT-x8S"/>
+                                                    <constraint firstAttribute="height" constant="26" id="voV-7a-wP6"/>
+                                                </constraints>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                                <state key="normal" title="Log Out">
+                                                <state key="normal" title="Button" image="gray_gear.png">
                                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
@@ -85,15 +89,26 @@
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="logOutPressed:" destination="4Ny-YM-kdR" eventType="touchUpInside" id="d5D-sc-mk5"/>
+                                                    <action selector="settingsGearPressed:" destination="4Ny-YM-kdR" eventType="touchUpInside" id="UQN-WZ-Nse"/>
                                                 </connections>
                                             </button>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EFR-tm-tRO">
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="36" id="aHZ-75-WtY"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
-                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="Upp-ys-G7u" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="6o9-ay-dhV"/>
+                                            <constraint firstAttribute="trailing" secondItem="diq-vL-Dgw" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="4Xl-ks-bkQ"/>
+                                            <constraint firstItem="EFR-tm-tRO" firstAttribute="leading" secondItem="nfE-zg-fut" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="8Df-39-AUj"/>
+                                            <constraint firstItem="EFR-tm-tRO" firstAttribute="centerY" secondItem="diq-vL-Dgw" secondAttribute="centerY" type="default" id="8W5-B5-Wgy"/>
+                                            <constraint firstItem="diq-vL-Dgw" firstAttribute="leading" secondItem="EFR-tm-tRO" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="BMp-tL-x8c"/>
                                             <constraint firstAttribute="height" constant="65" type="user" id="fLA-R9-lap"/>
-                                            <constraint firstItem="Upp-ys-G7u" firstAttribute="centerY" secondItem="nfE-zg-fut" secondAttribute="centerY" type="default" id="hex-lg-8MT"/>
+                                            <constraint firstItem="diq-vL-Dgw" firstAttribute="top" secondItem="nfE-zg-fut" secondAttribute="top" constant="20" symbolic="YES" type="default" id="hHv-MH-52P"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -121,7 +136,9 @@
                     </view>
                     <navigationItem key="navigationItem" id="Rps-x8-Sox"/>
                     <connections>
+                        <outlet property="departmentNameLabel" destination="EFR-tm-tRO" id="fiu-wT-ZpZ"/>
                         <outlet property="eventsTable" destination="HIX-m5-Z6v" id="hVF-Y0-B1z"/>
+                        <outlet property="footerView" destination="nfE-zg-fut" id="cgr-bX-fIB"/>
                         <outlet property="overlayView" destination="lVa-eo-gfX" id="Kle-Px-1gN"/>
                         <outlet property="view" destination="Ger-kx-Rja" id="rbN-UG-c1o"/>
                     </connections>
@@ -427,6 +444,9 @@
             <point key="canvasLocation" x="1413" y="248"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="gray_gear.png" width="44" height="44"/>
+    </resources>
     <classes>
         <class className="CameraCaptureViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/CameraCaptureViewController.h"/>
@@ -452,7 +472,6 @@
         <class className="ScansViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ScansViewController.h"/>
             <relationships>
-                <relationship kind="action" name="scanPressed:"/>
                 <relationship kind="outlet" name="scansTable" candidateClass="UITableView"/>
             </relationships>
         </class>
@@ -466,8 +485,10 @@
         <class className="SideMenuViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SideMenuViewController.h"/>
             <relationships>
-                <relationship kind="action" name="logOutPressed:"/>
+                <relationship kind="action" name="settingsGearPressed:"/>
+                <relationship kind="outlet" name="departmentNameLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="eventsTable" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="footerView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="overlayView" candidateClass="UIView"/>
             </relationships>
         </class>

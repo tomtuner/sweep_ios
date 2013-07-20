@@ -206,7 +206,7 @@
 + (void) customizeNavigationControllerTitleView:(UINavigationController *)navController
 {
     id <Theme> theme = [self sharedTheme];
-    UIImageView *titleView = [theme customeNavigationBarTitleView];
+    UIImageView *titleView = [theme customNavigationBarTitleView];
     [navController.navigationItem setTitleView:titleView];
 }
 

@@ -15,6 +15,9 @@
 @property (nonatomic) NSInteger indexToGoToAfterSync;
 @property (nonatomic) BOOL firstTimeLoad;
 
+@property (nonatomic, strong) IBOutlet UILabel *departmentNameLabel;
+
+
 @end
 
 @implementation SideMenuViewController
@@ -35,39 +38,53 @@
 //    if ([SWSyncEngine sharedEngine] syncInProgress) {
 //    }
     self.firstTimeLoad = YES;
-    [ThemeManager customizeNavigationControllerTitleView:self.navigationController];
     
+    [self customizeView];
+    [ThemeManager customizeNavigationControllerTitleView:self];
     self.indexToGoToAfterSync = 0;
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
     {
         self.scansViewController = (ScansViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
     }
     self.managedObjectContext = [[SWCoreDataController sharedInstance] newManagedObjectContext];
+//    self.eventsTable.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"gray_texture"]];
     [self registerForKeyboardNotifications];
     
     [[NSNotificationCenter defaultCenter] addObserverForName:@"SWSyncEngineSyncCompleted" object:nil queue:nil usingBlock:^(NSNotification *note) {
         [self loadRecordsFromCoreData];
 ////        if (self.firstTimeLoad)
 ////        {
-        if (self.firstTimeLoad)
+        if (self.events.count != 0)
         {
-            [self tableView:self.eventsTable didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:[SettingsManager sharedSettingsManager].indexOfLastViewedEvent inSection:0]];
-            self.firstTimeLoad = NO;
+            if (self.firstTimeLoad)
+            {
+                [self tableView:self.eventsTable didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:[SettingsManager sharedSettingsManager].indexOfLastViewedEvent inSection:0]];
+                self.firstTimeLoad = NO;
+            }
+            else{
+                [self tableView:self.eventsTable didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:self.indexToGoToAfterSync inSection:0]];
+            }
+    ////            self.firstTimeLoad = NO;
+    ////        }
+    //        [self stopActivityIndicatorView];
         }
-        else{
-            [self tableView:self.eventsTable didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:self.indexToGoToAfterSync inSection:0]];
-        }
-////            self.firstTimeLoad = NO;
-////        }
-//        [self stopActivityIndicatorView];
+        [self customizeView];
     }];
-//    [self showActivtyIndicatorView];
+
+    // TODO: Put this somewhere else
+    self.footerView.layer.masksToBounds = NO;
+    self.footerView.layer.cornerRadius = 3.0f;
+    self.footerView.layer.shadowOpacity = 0.8f;
+    self.footerView.layer.shadowColor = [UIColor lightGrayColor].CGColor;
+    self.footerView.layer.shadowOffset = CGSizeMake(0.0f, -1.0f);
+    self.footerView.layer.shadowRadius = 4.0f;
+
 }
 
 -(void) viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    
+
     /*[[NSNotificationCenter defaultCenter] addObserverForName:@"SWSyncEngineSyncCompleted" object:nil queue:nil usingBlock:^(NSNotification *note) {
         [self loadRecordsFromCoreData];
         //        if (self.firstTimeLoad)
@@ -84,6 +101,15 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"SWSyncEngineSyncCompleted" object:nil];
 }
 
+- (void) customizeView
+{
+    if (self.events.count == 0){
+        self.scansViewController.detailItem = nil;
+    }
+    Departments *dept = [[SWSyncEngine sharedEngine] sharedDepartment];
+    self.departmentNameLabel.text = dept.name;
+}
+
 - (void)loadRecordsFromCoreData {
     [self.managedObjectContext performBlockAndWait:^{
         [self.managedObjectContext reset];
@@ -98,15 +124,40 @@
     }];
 }
 
--(IBAction)logOutPressed:(id)sender
+-(void)logOutPressed
 {
     [self.scansViewController resetDepartment];
+    [self loadRecordsFromCoreData];
+    self.departmentNameLabel.text = nil;
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - UIActionSheet
+
+-(IBAction)settingsGearPressed:(id)sender
+{
+    UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:@"Please select from the following:"
+                                                       delegate:self
+                                              cancelButtonTitle:@"Cancel"
+                                         destructiveButtonTitle:nil
+                                              otherButtonTitles:@"Log Out", nil];
+    
+    // Show the sheet
+    [sheet showInView:self.view];
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    NSLog(@"Button %d", buttonIndex);
+    if (buttonIndex == 0)
+    {
+        [self logOutPressed];
+    }
 }
 
 #pragma mark - Table View

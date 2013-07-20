@@ -11,6 +11,7 @@
 #import "Scans.h"
 #import "Events.h"
 #import "SWCoreDataController.h"
+#import "Theme.h"
 
 @class CameraCaptureViewController;
 

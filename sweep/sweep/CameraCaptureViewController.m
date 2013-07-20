@@ -102,28 +102,31 @@
 {
     
     _topMaskView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height/2)];
-    _topMaskView.backgroundColor = [UIColor colorWithRed:0.3176470588 green:0.1921568627 blue:0.1529411765 alpha:1.0];
+    _topMaskView.backgroundColor = [[ThemeManager sharedTheme] cameraOverlayBackgroundColor];
     
     // Add the top RIT Logo
-    UIImage *ritTopImage = [UIImage imageNamed:@"rit_white_top"];
-    CGRect topRIT = CGRectMake((_topMaskView.frame.size.width / 2) - (ritTopImage.size.width / 2), (_topMaskView.frame.size.height - ritTopImage.size.height), ritTopImage.size.width, ritTopImage.size.height);
-    UIImageView *ritTop = [[UIImageView alloc] initWithFrame:topRIT];
-    ritTop.image = ritTopImage;
+//    UIImage *ritTopImage = [UIImage imageNamed:@"rit_white_top"];
+    UIImage *logoTopImage = [[ThemeManager sharedTheme] customerTopCameraMaskImage];
+    CGRect topRect = CGRectMake((_topMaskView.frame.size.width / 2) - (logoTopImage.size.width / 2), (_topMaskView.frame.size.height - logoTopImage.size.height), logoTopImage.size.width, logoTopImage.size.height);
+    UIImageView *topMask = [[UIImageView alloc] initWithFrame:topRect];
+    topMask.image = logoTopImage;
     
-    [_topMaskView addSubview:ritTop];
+    [_topMaskView addSubview:topMask];
     
     [self.view addSubview:_topMaskView];
     
     _bottomMaskView = [[UIView alloc] initWithFrame:CGRectMake(0, self.view.bounds.size.height/2, self.view.bounds.size.width, self.view.bounds.size.height/2)];
-    _bottomMaskView.backgroundColor = [UIColor colorWithRed:0.3176470588 green:0.1921568627 blue:0.1529411765 alpha:1.0];
+    _bottomMaskView.backgroundColor = [[ThemeManager sharedTheme] cameraOverlayBackgroundColor];
     
     // Add the top RIT Logo
-    UIImage *ritBottomImage = [UIImage imageNamed:@"rit_white_bottom"];
-    CGRect bottomRIT = CGRectMake((_bottomMaskView.frame.size.width / 2) - (ritBottomImage.size.width / 2), 0, ritBottomImage.size.width, ritBottomImage.size.height);
-    UIImageView *ritBottom = [[UIImageView alloc] initWithFrame:bottomRIT];
-    ritBottom.image = ritBottomImage;
+//    UIImage *ritBottomImage = [UIImage imageNamed:@"rit_white_bottom"];
+    UIImage *logoBottomImage = [[ThemeManager sharedTheme] customerTopCameraMaskImage];
+
+    CGRect bottomRect = CGRectMake((_bottomMaskView.frame.size.width / 2) - (logoBottomImage.size.width / 2), 0, logoBottomImage.size.width, logoBottomImage.size.height);
+    UIImageView *bottomMask = [[UIImageView alloc] initWithFrame:bottomRect];
+    bottomMask.image = logoBottomImage;
     
-    [_bottomMaskView addSubview:ritBottom];
+    [_bottomMaskView addSubview:bottomMask];
     
     [self.view addSubview:_bottomMaskView];
 }

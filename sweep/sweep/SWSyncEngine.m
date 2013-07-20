@@ -178,14 +178,35 @@ NSString * const kSWSyncEngineSyncCompletedNotificationName = @"SWSyncEngineSync
         [bgContext reset];
         
         // Get the Department for use
+        NSArray *sharedCustomerArray = nil;
+        NSError *error = nil;
+        
+        sharedCustomerArray = [bgContext executeFetchRequest:request error:&error];
+        sharedCustomer = [sharedCustomerArray lastObject];
+//        return sharedCustomer;
+    }];
+    return sharedCustomer;
+}
+
+- (Departments *) sharedDepartment
+{
+    NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:@"Departments"];
+    [request setSortDescriptors:[NSArray arrayWithObject:
+                                 [NSSortDescriptor sortDescriptorWithKey:@"remote_id" ascending:YES]]];
+    NSManagedObjectContext * bgContext = [[SWCoreDataController sharedInstance] backgroundManagedObjectContext];
+    __block Departments *sharedDepartment = nil;
+    [bgContext performBlockAndWait:^{
+        [bgContext reset];
+        
+        // Get the Department for use
         NSArray *sharedDepartmentArray = nil;
         NSError *error = nil;
         
         sharedDepartmentArray = [bgContext executeFetchRequest:request error:&error];
-        sharedCustomer = [sharedDepartmentArray lastObject];
-//        return sharedCustomer;
+        sharedDepartment = [sharedDepartmentArray lastObject];
+        //        return sharedCustomer;
     }];
-    return sharedCustomer;
+    return sharedDepartment;
 }
 
 - (BOOL) removeDepartmentObjects

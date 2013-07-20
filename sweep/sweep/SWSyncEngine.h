@@ -33,4 +33,6 @@ typedef enum {
 
 
 - (Customers *) sharedCustomer;
+- (Departments *) sharedDepartment;
+
 @end

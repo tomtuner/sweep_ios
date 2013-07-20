@@ -16,6 +16,11 @@
 - (UIColor *)baseTintColor;
 - (UIColor *)accentTintColor;
 
+- (UIColor *)customerPrimaryColor;
+- (UIColor *)customerSecondaryColor;
+
+- (UIColor *)cameraOverlayBackgroundColor;
+
 - (UIColor *)navigationTintColor;
 
 - (UIColor *)switchThumbColor;
@@ -66,7 +71,11 @@
 - (UIImage *)tabBarBackground;
 - (UIImage *)tabBarSelectionIndicator;
 - (UIFont *)customFontWithSize:(CGFloat)fontSize;
-- (UIImageView *) customeNavigationBarTitleView;
+- (UIImageView *) customNavigationBarTitleView;
+
+- (UIImage *) customerTopCameraMaskImage;
+- (UIImage *) customerBottomCameraMaskImage;
+
 // One of these must return a non-nil image for each tab:
 //- (UIImage *)imageForTab:(SSThemeTab)tab;
 //- (UIImage *)finishedImageForTab:(SSThemeTab)tab selected:(BOOL)selected;

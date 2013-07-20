@@ -208,9 +208,13 @@
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a79-LV-DXg">
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hH5-yC-x7n">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hH5-yC-x7n">
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="27" id="aQl-bn-AwC"/>
+                                            <constraint firstAttribute="width" constant="26" id="nMk-Ew-w0w"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                        <state key="normal" title="Log Out">
+                                        <state key="normal" title="Log Out" image="gray_gear.png">
                                             <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -218,14 +222,14 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <action selector="logOutPressed:" destination="UJW-sR-cdf" eventType="touchUpInside" id="L5C-Ys-pVR"/>
+                                            <action selector="settingsGearPressed:" destination="UJW-sR-cdf" eventType="touchUpInside" id="gGe-qM-Owg"/>
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="hH5-yC-x7n" secondAttribute="trailing" constant="64" id="YFG-vq-SQt"/>
-                                    <constraint firstItem="hH5-yC-x7n" firstAttribute="centerY" secondItem="a79-LV-DXg" secondAttribute="centerY" type="default" id="jvL-ZS-H7E"/>
+                                    <constraint firstItem="hH5-yC-x7n" firstAttribute="top" secondItem="a79-LV-DXg" secondAttribute="top" constant="20" symbolic="YES" type="default" id="4cP-nl-DTp"/>
+                                    <constraint firstAttribute="trailing" secondItem="hH5-yC-x7n" secondAttribute="trailing" constant="69" id="gEc-Nt-aIK"/>
                                     <constraint firstAttribute="height" constant="65" type="user" id="vdk-aH-Pqj"/>
                                 </constraints>
                             </view>
@@ -245,6 +249,7 @@
                     <navigationItem key="navigationItem" id="nwy-2z-Lh4"/>
                     <connections>
                         <outlet property="eventsTable" destination="9vu-Nn-uyo" id="zxC-LX-zTh"/>
+                        <outlet property="footerView" destination="a79-LV-DXg" id="WKx-Pd-Res"/>
                         <outlet property="view" destination="Yg5-7k-aoC" id="ssv-eQ-pdd"/>
                     </connections>
                 </viewController>
@@ -430,6 +435,9 @@
             <point key="canvasLocation" x="1254" y="64"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="gray_gear.png" width="44" height="44"/>
+    </resources>
     <classes>
         <class className="CameraCaptureViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/CameraCaptureViewController.h"/>
@@ -468,7 +476,9 @@
         <class className="SideMenuViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SideMenuViewController.h"/>
             <relationships>
+                <relationship kind="action" name="settingsGearPressed:"/>
                 <relationship kind="outlet" name="eventsTable" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="footerView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="overlayView" candidateClass="UIView"/>
             </relationships>
         </class>
