@@ -321,7 +321,8 @@
     // FIXME: Do this whole block more efficiently
     Scans *scan = [self.scans objectAtIndex:indexPath.row];
     NSString *valueString;
-    NSInteger num = (scan.value.length * [[[SettingsManager sharedSettingsManager] percent_visible] integerValue]) / 100;
+    NSInteger num = (scan.value.length * [[[ThemeManager sharedTheme] percentageIDAvailable] integerValue]) / 100;
+    
     valueString = [scan.value substringFromIndex:(scan.value.length - num) ];
     NSMutableString *padString = [NSMutableString string];
     for (int i = 0; i < (scan.value.length - num); i++)

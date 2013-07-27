@@ -62,6 +62,7 @@
                     </view>
                     <connections>
                         <outlet property="navBar" destination="GkP-9O-8UL" id="O6g-B2-799"/>
+                        <outlet property="view" destination="Rz3-nB-i2A" id="64n-Bx-7k8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l05-ed-hzm" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -225,11 +226,22 @@
                                             <action selector="settingsGearPressed:" destination="UJW-sR-cdf" eventType="touchUpInside" id="gGe-qM-Owg"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6dh-xg-evc">
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="36" id="8RJ-5s-usI"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="hH5-yC-x7n" firstAttribute="top" secondItem="a79-LV-DXg" secondAttribute="top" constant="20" symbolic="YES" type="default" id="4cP-nl-DTp"/>
-                                    <constraint firstAttribute="trailing" secondItem="hH5-yC-x7n" secondAttribute="trailing" constant="69" id="gEc-Nt-aIK"/>
+                                    <constraint firstItem="6dh-xg-evc" firstAttribute="centerY" secondItem="hH5-yC-x7n" secondAttribute="centerY" type="default" id="JtH-tg-NsK"/>
+                                    <constraint firstItem="hH5-yC-x7n" firstAttribute="leading" secondItem="6dh-xg-evc" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="UVW-vd-EZL"/>
+                                    <constraint firstItem="hH5-yC-x7n" firstAttribute="trailing" secondItem="a79-LV-DXg" secondAttribute="trailing" constant="-75" type="user" id="fxV-go-14h"/>
+                                    <constraint firstItem="6dh-xg-evc" firstAttribute="leading" secondItem="a79-LV-DXg" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="n6y-9e-0MU"/>
                                     <constraint firstAttribute="height" constant="65" type="user" id="vdk-aH-Pqj"/>
                                 </constraints>
                             </view>
@@ -248,6 +260,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="nwy-2z-Lh4"/>
                     <connections>
+                        <outlet property="departmentNameLabel" destination="6dh-xg-evc" id="eML-lg-sa4"/>
                         <outlet property="eventsTable" destination="9vu-Nn-uyo" id="zxC-LX-zTh"/>
                         <outlet property="footerView" destination="a79-LV-DXg" id="WKx-Pd-Res"/>
                         <outlet property="view" destination="Yg5-7k-aoC" id="ssv-eQ-pdd"/>
@@ -350,7 +363,7 @@
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="5555555555" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b9R-LO-jgy">
+                                            <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b9R-LO-jgy">
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="21" id="CCV-Ne-RBg"/>
                                                     <constraint firstAttribute="width" constant="208" id="D49-Z3-c6v"/>
@@ -463,6 +476,7 @@
         <class className="ScansViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ScansViewController.h"/>
             <relationships>
+                <relationship kind="action" name="scanPressed:"/>
                 <relationship kind="outlet" name="scansTable" candidateClass="UITableView"/>
             </relationships>
         </class>
@@ -476,7 +490,7 @@
         <class className="SideMenuViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SideMenuViewController.h"/>
             <relationships>
-                <relationship kind="action" name="settingsGearPressed:"/>
+                <relationship kind="outlet" name="departmentNameLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="eventsTable" candidateClass="UITableView"/>
                 <relationship kind="outlet" name="footerView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="overlayView" candidateClass="UIView"/>

@@ -358,6 +358,11 @@
     return [UIImage imageNamed:@"rit_white_bottom"];
 }
 
+- (NSNumber *) percentageIDAvailable{
+    
+    return [[NSNumber alloc] initWithInt:25];
+}
+
 /*- (UIImage *)imageForTab:(SSThemeTab)tab
 {
     return nil;

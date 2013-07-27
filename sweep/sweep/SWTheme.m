@@ -354,11 +354,20 @@
 - (UIImage *) customerTopCameraMaskImage
 {
     //TODO: ADD Sweep Mask Logo
+
+    return [UIImage imageNamed:@"rit_white_top"];
 }
 
 - (UIImage *) customerBottomCameraMaskImage
 {
     //TODO: ADD Sweep Mask Logo
+
+    return [UIImage imageNamed:@"rit_white_bottom"];
+}
+
+- (NSNumber *) percentageIDAvailable{
+    
+    return [[NSNumber alloc] initWithInt:25];
 }
 
 /*- (UIImage *)imageForTab:(SSThemeTab)tab

@@ -120,7 +120,7 @@
     
     // Add the top RIT Logo
 //    UIImage *ritBottomImage = [UIImage imageNamed:@"rit_white_bottom"];
-    UIImage *logoBottomImage = [[ThemeManager sharedTheme] customerTopCameraMaskImage];
+    UIImage *logoBottomImage = [[ThemeManager sharedTheme] customerBottomCameraMaskImage];
 
     CGRect bottomRect = CGRectMake((_bottomMaskView.frame.size.width / 2) - (logoBottomImage.size.width / 2), 0, logoBottomImage.size.width, logoBottomImage.size.height);
     UIImageView *bottomMask = [[UIImageView alloc] initWithFrame:bottomRect];
@@ -202,8 +202,18 @@
             newScan.event_id = self.event.remote_id;
             newScan.sync_status = [NSNumber numberWithInt:SWObjectCreated];
 
+            NSString *valueString;
+            NSInteger num = (result.text.length * [[[ThemeManager sharedTheme] percentageIDAvailable] integerValue]) / 100;
+            
+            valueString = [result.text substringFromIndex:(result.text.length - num) ];
+            NSMutableString *padString = [NSMutableString string];
+            for (int i = 0; i < (result.text.length - num); i++)
+            {
+                [padString appendString:@"*"];
+            }
+            valueString = [NSString stringWithFormat:@"%@%@", padString, valueString];
             // Set the visual feedback for user
-            self.lastScannedCode.text = result.text;
+            self.lastScannedCode.text = valueString;
             
             NSError *error = nil;
             BOOL saved = [self.managedObjectContext save:&error];

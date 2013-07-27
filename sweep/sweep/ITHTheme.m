@@ -364,12 +364,21 @@
 
 - (UIImage *) customerTopCameraMaskImage
 {
-    return [UIImage imageNamed:@"ithaca_white_top"];
+    //TODO: ADD Ithaca Mask Logo
+    
+    return [UIImage imageNamed:@"rit_white_top"];
 }
 
 - (UIImage *) customerBottomCameraMaskImage
 {
-    return [UIImage imageNamed:@"ithaca_white_bottom"];
+    //TODO: ADD Ithaca Mask Logo
+    
+    return [UIImage imageNamed:@"rit_white_bottom"];
+}
+
+- (NSNumber *) percentageIDAvailable{
+    
+    return [[NSNumber alloc] initWithInt:25];
 }
 
 /*- (UIImage *)imageForTab:(SSThemeTab)tab

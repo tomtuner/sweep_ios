@@ -3,38 +3,38 @@ v3
 r1
 cCheck dependencies
 cProcessInfoPlistFile /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/Info.plist ../Resources/HockeySDK-Info.plist
-cCopyPNGFile /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/authorize_denied@2x.png ../Resources/authorize_denied@2x.png
 cCopyPNGFile /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/authorize_denied.png ../Resources/authorize_denied.png
-cCopyPNGFile /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/authorize_request@2x.png ../Resources/authorize_request@2x.png
+cCopyPNGFile /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/authorize_denied@2x.png ../Resources/authorize_denied@2x.png
 cCopyPNGFile /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/authorize_request.png ../Resources/authorize_request.png
 cCopyPNGFile /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/bg.png ../Resources/bg.png
-cCopyPNGFile /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/buttonHighlight.png ../Resources/buttonHighlight.png
-cCopyPNGFile /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/buttonHighlight@2x.png ../Resources/buttonHighlight@2x.png
+cCopyPNGFile /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/authorize_request@2x.png ../Resources/authorize_request@2x.png
 cCopyPNGFile /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/IconGradient.png ../Resources/IconGradient.png
+cCopyPNGFile /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/buttonHighlight@2x.png ../Resources/buttonHighlight@2x.png
+cCopyPNGFile /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/buttonHighlight.png ../Resources/buttonHighlight.png
 cCopyPNGFile /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/IconGradient@2x.png ../Resources/IconGradient@2x.png
 cCopyPNGFile /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/feedbackActivity@2x~ipad.png ../Resources/feedbackActivity@2x~ipad.png
-cCopyPNGFile /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/feedbackActivity~ipad.png ../Resources/feedbackActivity~ipad.png
 cCopyPNGFile /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/feedbackActiviy.png ../Resources/feedbackActiviy.png
 cCopyPNGFile /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/feedbackActiviy@2x.png ../Resources/feedbackActiviy@2x.png
+cCopyPNGFile /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/feedbackActivity~ipad.png ../Resources/feedbackActivity~ipad.png
 cCopyPNGFile /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/buttonRoundedDelete.png ../Resources/buttonRoundedDelete.png
 cCopyPNGFile /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/buttonRoundedDelete@2x.png ../Resources/buttonRoundedDelete@2x.png
 cCopyPNGFile /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/buttonRoundedDeleteHighlighted.png ../Resources/buttonRoundedDeleteHighlighted.png
-cCopyPNGFile /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/buttonRoundedRegular.png ../Resources/buttonRoundedRegular.png
 cCopyPNGFile /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/buttonRoundedDeleteHighlighted@2x.png ../Resources/buttonRoundedDeleteHighlighted@2x.png
+cCopyPNGFile /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/buttonRoundedRegular.png ../Resources/buttonRoundedRegular.png
 cCopyPNGFile /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/buttonRoundedRegular@2x.png ../Resources/buttonRoundedRegular@2x.png
-cCopyPNGFile /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/buttonRoundedRegularHighlighted.png ../Resources/buttonRoundedRegularHighlighted.png
-cCopyPNGFile /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/buttonRoundedRegularHighlighted@2x.png ../Resources/buttonRoundedRegularHighlighted@2x.png
 cCopyStringsFile /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/de.lproj/HockeySDK.strings ../Resources/de.lproj/HockeySDK.strings
-cCopyStringsFile /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/es.lproj/HockeySDK.strings ../Resources/es.lproj/HockeySDK.strings
+cCopyPNGFile /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/buttonRoundedRegularHighlighted.png ../Resources/buttonRoundedRegularHighlighted.png
 cCopyStringsFile /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/fr.lproj/HockeySDK.strings ../Resources/fr.lproj/HockeySDK.strings
+cCopyPNGFile /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/buttonRoundedRegularHighlighted@2x.png ../Resources/buttonRoundedRegularHighlighted@2x.png
+cCopyStringsFile /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/es.lproj/HockeySDK.strings ../Resources/es.lproj/HockeySDK.strings
 cCopyStringsFile /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/it.lproj/HockeySDK.strings ../Resources/it.lproj/HockeySDK.strings
 cCopyStringsFile /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/ja.lproj/HockeySDK.strings ../Resources/ja.lproj/HockeySDK.strings
 cCopyStringsFile /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/pt.lproj/HockeySDK.strings ../Resources/pt.lproj/HockeySDK.strings
 cCopyStringsFile /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/ru.lproj/HockeySDK.strings ../Resources/ru.lproj/HockeySDK.strings
 cCopyStringsFile /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/hr.lproj/HockeySDK.strings ../Resources/hr.lproj/HockeySDK.strings
+cCopyStringsFile /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/zh-Hans.lproj/HockeySDK.strings ../Resources/zh-Hans.lproj/HockeySDK.strings
 cCopyStringsFile /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/pt-PT.lproj/HockeySDK.strings ../Resources/pt-PT.lproj/HockeySDK.strings
 cCopyStringsFile /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/en.lproj/HockeySDK.strings ../Resources/en.lproj/HockeySDK.strings
-cCopyStringsFile /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/zh-Hans.lproj/HockeySDK.strings ../Resources/zh-Hans.lproj/HockeySDK.strings
 cCopyStringsFile /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/ro.lproj/HockeySDK.strings ../Resources/ro.lproj/HockeySDK.strings
 cCopyStringsFile /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/hu.lproj/HockeySDK.strings ../Resources/hu.lproj/HockeySDK.strings
 cTouch /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle
@@ -45,148 +45,148 @@ t1372686685
 s978
 
 N/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle
-t2
-s0
+t1372686691
+s1258
 
 N/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/IconGradient.png
-t2
-s0
+t1372686691
+s2894
 
 N/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/IconGradient@2x.png
-t2
-s0
+t1372686691
+s4076
 
 N/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/Info.plist
-t2
-s0
+t1372686690
+s906
 
 N/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/authorize_denied.png
-t2
-s0
+t1372686691
+s3297
 
 N/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/authorize_denied@2x.png
-t2
-s0
+t1372686691
+s5845
 
 N/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/authorize_request.png
-t2
-s0
+t1372686691
+s3510
 
 N/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/authorize_request@2x.png
-t2
-s0
+t1372686691
+s6680
 
 N/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/bg.png
-t2
-s0
+t1372686691
+s1079
 
 N/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/buttonHighlight.png
-t2
-s0
+t1372686691
+s996
 
 N/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/buttonHighlight@2x.png
-t2
-s0
+t1372686691
+s1029
 
 N/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/buttonRoundedDelete.png
-t2
-s0
+t1372686691
+s3427
 
 N/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/buttonRoundedDelete@2x.png
-t2
-s0
+t1372686691
+s4211
 
 N/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/buttonRoundedDeleteHighlighted.png
-t2
-s0
+t1372686691
+s3522
 
 N/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/buttonRoundedDeleteHighlighted@2x.png
-t2
-s0
+t1372686691
+s4593
 
 N/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/buttonRoundedRegular.png
-t2
-s0
+t1372686691
+s3535
 
 N/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/buttonRoundedRegular@2x.png
-t2
-s0
+t1372686691
+s4460
 
 N/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/buttonRoundedRegularHighlighted.png
-t2
-s0
+t1372686691
+s3783
 
 N/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/buttonRoundedRegularHighlighted@2x.png
-t2
-s0
+t1372686691
+s5178
 
 N/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/de.lproj/HockeySDK.strings
-t2
-s0
+t1372686691
+s4488
 
 N/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/en.lproj/HockeySDK.strings
-t2
-s0
+t1372686691
+s3562
 
 N/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/es.lproj/HockeySDK.strings
-t2
-s0
+t1372686691
+s4496
 
 N/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/feedbackActivity@2x~ipad.png
-t2
-s0
+t1372686691
+s2792
 
 N/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/feedbackActivity~ipad.png
-t2
-s0
+t1372686691
+s1868
 
 N/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/feedbackActiviy.png
-t2
-s0
+t1372686691
+s1685
 
 N/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/feedbackActiviy@2x.png
-t2
-s0
+t1372686691
+s2604
 
 N/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/fr.lproj/HockeySDK.strings
-t2
-s0
+t1372686691
+s4787
 
 N/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/hr.lproj/HockeySDK.strings
-t2
-s0
+t1372686691
+s4436
 
 N/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/hu.lproj/HockeySDK.strings
-t2
-s0
+t1372686691
+s4928
 
 N/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/it.lproj/HockeySDK.strings
-t2
-s0
+t1372686691
+s4141
 
 N/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/ja.lproj/HockeySDK.strings
-t2
-s0
+t1372686691
+s3630
 
 N/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/pt-PT.lproj/HockeySDK.strings
-t2
-s0
+t1372686691
+s4668
 
 N/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/pt.lproj/HockeySDK.strings
-t2
-s0
+t1372686691
+s4496
 
 N/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/ro.lproj/HockeySDK.strings
-t2
-s0
+t1372686691
+s4655
 
 N/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/ru.lproj/HockeySDK.strings
-t2
-s0
+t1372686691
+s4730
 
 N/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/zh-Hans.lproj/HockeySDK.strings
-t2
-s0
+t1372686691
+s3266
 
 N/Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/IconGradient.png
 c0000000051D1895D0000000000000AE6
@@ -360,7 +360,7 @@ s5884
 
 CCheck dependencies
 r0
-lSLF03#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection18"Check dependenciesa8a6a4e2c081b741^9510cce2c081b741^---0#1#0#--18"Check dependencies
+lSLF03#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection18"Check dependencies709a8a6183a4b741^6e18b16183a4b741^---0#1#0#--18"Check dependencies
 
 CCopyPNGFile /Users/Thomas/Development/sweep/sweep_ios/Pods/HockeySDK/Support/../Resources/HockeySDKResources.bundle/IconGradient.png ../Resources/IconGradient.png
 s394379490.848462

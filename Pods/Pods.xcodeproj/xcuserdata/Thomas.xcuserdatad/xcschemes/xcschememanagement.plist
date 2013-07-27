@@ -4,6 +4,26 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Pods-AFNetworking.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>5</integer>
+		</dict>
+		<key>Pods-HockeySDK.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>6</integer>
+		</dict>
+		<key>Pods-ViewDeck.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>7</integer>
+		</dict>
+		<key>Pods-ZXingObjC.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>8</integer>
+		</dict>
 		<key>Pods.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -12,12 +32,37 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>388915CBAD844D9FB1C8F1F4</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>6188DC78B59A466DB009FA80</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>B77729E9806240EF885E47A1</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C3B4E4BF6D9E410E877C51B4</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>CE09B00CF75E4E1B87DC5801</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F897602AD10E4D39B36B897F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FAD141AF9E0745F8B1A555C0</key>
 		<dict>
 			<key>primary</key>
 			<true/>
