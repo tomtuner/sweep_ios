@@ -9,7 +9,11 @@
 #import "AFHTTPClient.h"
 #import "AFJSONRequestOperation.h"
 
-#define kAFSweepAPIBaseURLString @"http://developer.sweepevents.com/api/"
+#ifdef DEBUG
+    #define kAFSweepAPIBaseURLString @"http://developer.sweepevents.com/api/"
+#else
+    #define kAFSweepAPIBaseURLString @"http://api.sweepevents.com/api/"
+#endif
 
 @interface AFSweepAPIClient : AFHTTPClient
 

@@ -338,7 +338,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "81"
          endingLineNumber = "81"
-         landmarkName = "-loadRecordsFromCoreData"
+         landmarkName = "-setupMenuBarButtonItems"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -363,9 +363,7 @@
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "341"
-         endingLineNumber = "341"
-         landmarkName = "@implementation ScansViewController"
-         landmarkType = "3">
+         endingLineNumber = "341">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -399,8 +397,8 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "120"
          endingLineNumber = "120"
-         landmarkName = "@implementation ScansViewController"
-         landmarkType = "3">
+         landmarkName = "-setDetailItem:"
+         landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"

@@ -21,6 +21,10 @@
 @property (nonatomic, strong) IBOutlet UILabel *lastScannedCode;
 @property (nonatomic, strong) IBOutlet UILabel *lastScannedTitleLabel;
 
+
+@property (nonatomic, strong) IBOutlet UIView *topGrayBar;
+@property (nonatomic, strong) IBOutlet UIView *bottomGrayBar;
+
 @property (nonatomic) BOOL multiScan;
 
 @property (nonatomic, strong) UIView *topMaskView;
@@ -88,6 +92,21 @@
         });
     });
     self.multiScan = NO;
+    
+    self.topGrayBar.layer.masksToBounds = NO;
+    self.topGrayBar.layer.cornerRadius = 3.0f;
+    self.topGrayBar.layer.shadowOpacity = 0.8f;
+    self.topGrayBar.layer.shadowColor = [UIColor blackColor].CGColor;
+    self.topGrayBar.layer.shadowOffset = CGSizeMake(0.0f, 1.5f);
+    self.topGrayBar.layer.shadowRadius = 4.0f;
+    
+    self.bottomGrayBar.layer.masksToBounds = NO;
+    self.bottomGrayBar.layer.cornerRadius = 3.0f;
+    self.bottomGrayBar.layer.shadowOpacity = 0.8f;
+    self.bottomGrayBar.layer.shadowColor = [UIColor blackColor].CGColor;
+    self.bottomGrayBar.layer.shadowOffset = CGSizeMake(0.0f, -1.5f);
+    self.bottomGrayBar.layer.shadowRadius = 4.0f;
+    
 //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(deviceDidRotate:) name:UIDeviceOrientationDidChangeNotification object:nil];
 }
 
