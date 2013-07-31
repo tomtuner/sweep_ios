@@ -108,6 +108,9 @@
     self.bottomGrayBar.layer.shadowRadius = 4.0f;
     
 //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(deviceDidRotate:) name:UIDeviceOrientationDidChangeNotification object:nil];
+    if (![self.capture hasTorch]) {
+        self.flashButton.hidden = YES;
+    }
 }
 
 
