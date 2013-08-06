@@ -80,9 +80,10 @@
                              animations:^{
                                  [self animateCameraMaskViews];
 //                                 [self.scannerView addSubview:self.buttonOverlayView];
-                                 [self.view addSubview:self.buttonOverlayView];
                              }
                              completion:^(BOOL finished){
+                                 [self.view addSubview:self.buttonOverlayView];
+
                                  [_topMaskView removeFromSuperview];
                                  [_bottomMaskView removeFromSuperview];
                                  

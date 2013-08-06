@@ -366,14 +366,14 @@
 {
     //TODO: ADD Ithaca Mask Logo
     
-    return [UIImage imageNamed:@"rit_white_top"];
+    return [UIImage imageNamed:@"w_top"];
 }
 
 - (UIImage *) customerBottomCameraMaskImage
 {
     //TODO: ADD Ithaca Mask Logo
     
-    return [UIImage imageNamed:@"rit_white_bottom"];
+    return [UIImage imageNamed:@"w_bottom"];
 }
 
 - (NSNumber *) percentageIDAvailable{

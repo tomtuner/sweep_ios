@@ -346,12 +346,12 @@
 
 - (UIImage *) customerTopCameraMaskImage
 {
-    return [UIImage imageNamed:@"rit_white_top"];
+    return [UIImage imageNamed:@"w_top"];
 }
 
 - (UIImage *) customerBottomCameraMaskImage
 {
-    return [UIImage imageNamed:@"rit_white_bottom"];
+    return [UIImage imageNamed:@"w_bottom"];
 }
 
 - (NSNumber *) percentageIDAvailable{
