@@ -65,7 +65,6 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         
         self.capture = [[ZXCapture alloc] init];
-        
         dispatch_async(dispatch_get_main_queue(), ^{
             
             //    });
@@ -89,6 +88,10 @@
                                  
                                  //                                [self.scannerView.layer addSublayer:self.buttonOverlayView.layer];
                              }];
+            if (![self.capture hasTorch]) {
+                self.flashButton.hidden = YES;
+            }
+
         });
     });
     self.multiScan = NO;
@@ -108,9 +111,10 @@
     self.bottomGrayBar.layer.shadowRadius = 4.0f;
     
 //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(deviceDidRotate:) name:UIDeviceOrientationDidChangeNotification object:nil];
-    if (![self.capture hasTorch]) {
-        self.flashButton.hidden = YES;
-    }
+//    if (![self.capture hasTorch]) {
+//        self.flashButton.hidden = YES;
+//    }
+    
 }
 
 
@@ -159,6 +163,8 @@
 
 - (void) playSoundAndVibrate
 {
+#if !(TARGET_IPHONE_SIMULATOR)
+
     // Get the main bundle for the app
     CFBundleRef mainBundle = CFBundleGetMainBundle ();
     
@@ -182,6 +188,7 @@
     
     // And Vibrate if possible
     AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+#endif
 }
 
 #pragma mark - ZXCaptureDelegate Methods

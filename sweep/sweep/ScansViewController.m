@@ -13,6 +13,11 @@
 
 @property (nonatomic, strong) UIPopoverController *masterPopoverController;
 @property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
+@property (nonatomic, strong) IBOutlet UILabel *totalScansLabel;
+@property (nonatomic, strong) IBOutlet UIView *headerView;
+
+@property (nonatomic, strong) IBOutlet UIActivityIndicatorView *validKeyNetworkIndicator;
+
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath;
 - (void)configureView;
@@ -33,7 +38,18 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    CGRect frame = self.scansTable.bounds;
+    frame.origin.y = -frame.size.height;
+    UIView* grayView = [[UIView alloc] initWithFrame:frame];
+    grayView.backgroundColor = [UIColor grayColor];
+    UIView *topview = [[UIView alloc] initWithFrame:CGRectMake(0,-480,self.view.frame.size.width,480)];
+    topview.backgroundColor = [UIColor blackColor];
+    
+    [self.scansTable addSubview:topview];
+    
 
+//    [self.scansTable addSubview:grayView];
+    
     self.managedObjectContext = [[SWCoreDataController sharedInstance] newManagedObjectContext];
 
     [self setupMenuBarButtonItems];
@@ -43,6 +59,15 @@
     [[NSNotificationCenter defaultCenter] addObserverForName:@"SWSyncEngineSyncCompleted" object:nil queue:nil usingBlock:^(NSNotification *note) {
         [self loadRecordsFromCoreData];
     }];
+    
+    [self showActivtyIndicatorView];
+    
+    self.headerView.layer.masksToBounds = NO;
+    self.headerView.layer.cornerRadius = 3.0f;
+    self.headerView.layer.shadowOpacity = 0.8f;
+    self.headerView.layer.shadowColor = [UIColor lightGrayColor].CGColor;
+    self.headerView.layer.shadowOffset = CGSizeMake(0.0f, 1.0f);
+    self.headerView.layer.shadowRadius = 4.0f;
 }
 
 -(void) viewDidAppear:(BOOL)animated
@@ -73,8 +98,22 @@
         [request setSortDescriptors:[NSArray arrayWithObject:
                                      [NSSortDescriptor sortDescriptorWithKey:@"created_at" ascending:YES]]];
         self.scans = [self.managedObjectContext executeFetchRequest:request error:&error];
+        self.totalScansLabel.text = [NSString stringWithFormat:@"%i", self.scans.count];
         [self.scansTable reloadData];
+        [self stopActivityIndicatorView];
     }];
+}
+
+- (void) stopActivityIndicatorView
+{
+    [_validKeyNetworkIndicator stopAnimating];
+}
+
+- (void) showActivtyIndicatorView
+{
+    [self.validKeyNetworkIndicator setHidesWhenStopped:YES];
+    
+    [_validKeyNetworkIndicator startAnimating];
 }
 
 - (void)setupMenuBarButtonItems {

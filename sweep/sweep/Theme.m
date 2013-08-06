@@ -28,7 +28,7 @@
     
 //    NSString *classString = [[NSUserDefaults standardUserDefaults] stringForKey:@"theme"];
     Class thisClass;
-    if (customer.theme)
+    if (customer.theme && (customer.theme.length != 0))
     {
         thisClass = NSClassFromString(classString);
     }else {

@@ -147,6 +147,10 @@
 		E9828B55178B042000619FB4 /* StringEncryptionTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = E9828B53178B042000619FB4 /* StringEncryptionTransformer.m */; };
 		E9828B56178B042000619FB4 /* StringEncryptionTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = E9828B53178B042000619FB4 /* StringEncryptionTransformer.m */; };
 		E9828B57178B042000619FB4 /* StringEncryptionTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = E9828B53178B042000619FB4 /* StringEncryptionTransformer.m */; };
+		E991D96917B072CD000B1395 /* card_grayscale.png in Resources */ = {isa = PBXBuildFile; fileRef = E991D96717B072CD000B1395 /* card_grayscale.png */; };
+		E991D96A17B072CD000B1395 /* card_grayscale.png in Resources */ = {isa = PBXBuildFile; fileRef = E991D96717B072CD000B1395 /* card_grayscale.png */; };
+		E991D96B17B072CD000B1395 /* card_grayscale@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E991D96817B072CD000B1395 /* card_grayscale@2x.png */; };
+		E991D96C17B072CD000B1395 /* card_grayscale@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E991D96817B072CD000B1395 /* card_grayscale@2x.png */; };
 		E9A2DA971799DD310063F034 /* carbon3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E9A2DA961799DD310063F034 /* carbon3.jpg */; };
 		E9A2DA981799DD310063F034 /* carbon3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E9A2DA961799DD310063F034 /* carbon3.jpg */; };
 		E9A2DA9B1799DE8C0063F034 /* texturetastic_gray.png in Resources */ = {isa = PBXBuildFile; fileRef = E9A2DA991799DE8C0063F034 /* texturetastic_gray.png */; };
@@ -296,6 +300,8 @@
 		E9828B4F178B01AA00619FB4 /* libcommonCrypto.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcommonCrypto.dylib; path = usr/lib/system/libcommonCrypto.dylib; sourceTree = SDKROOT; };
 		E9828B52178B042000619FB4 /* StringEncryptionTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StringEncryptionTransformer.h; sourceTree = "<group>"; };
 		E9828B53178B042000619FB4 /* StringEncryptionTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StringEncryptionTransformer.m; sourceTree = "<group>"; };
+		E991D96717B072CD000B1395 /* card_grayscale.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = card_grayscale.png; sourceTree = "<group>"; };
+		E991D96817B072CD000B1395 /* card_grayscale@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "card_grayscale@2x.png"; sourceTree = "<group>"; };
 		E9A2DA961799DD310063F034 /* carbon3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = carbon3.jpg; sourceTree = "<group>"; };
 		E9A2DA991799DE8C0063F034 /* texturetastic_gray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = texturetastic_gray.png; sourceTree = "<group>"; };
 		E9A2DA9A1799DE8C0063F034 /* texturetastic_gray@2X.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "texturetastic_gray@2X.png"; sourceTree = "<group>"; };
@@ -683,6 +689,8 @@
 		E9E8ADCB1768D2B800F837D7 /* common */ = {
 			isa = PBXGroup;
 			children = (
+				E991D96717B072CD000B1395 /* card_grayscale.png */,
+				E991D96817B072CD000B1395 /* card_grayscale@2x.png */,
 				E9A2DAA51799F0BB0063F034 /* gray_gear.png */,
 				E9A2DAA61799F0BB0063F034 /* gray_gear@2x.png */,
 				E9A2DA9F1799E6360063F034 /* gray_texture.png */,
@@ -897,6 +905,8 @@
 				E9A2DAD5179B299F0063F034 /* nav_bg_ithaca_gold@2x.png in Resources */,
 				E929947217A8376500F1EB3B /* nav_bg_keuka_yellow.png in Resources */,
 				E929947417A8376500F1EB3B /* nav_bg_keuka_yellow@2x.png in Resources */,
+				E991D96917B072CD000B1395 /* card_grayscale.png in Resources */,
+				E991D96B17B072CD000B1395 /* card_grayscale@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -944,6 +954,8 @@
 				E9A2DAD6179B299F0063F034 /* nav_bg_ithaca_gold@2x.png in Resources */,
 				E929947317A8376500F1EB3B /* nav_bg_keuka_yellow.png in Resources */,
 				E929947517A8376500F1EB3B /* nav_bg_keuka_yellow@2x.png in Resources */,
+				E991D96A17B072CD000B1395 /* card_grayscale.png in Resources */,
+				E991D96C17B072CD000B1395 /* card_grayscale@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
