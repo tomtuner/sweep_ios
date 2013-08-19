@@ -205,6 +205,15 @@
 		E9D6985417B1C0C30089F5BA /* Default-Portrait~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = E9D6985317B1C0C30089F5BA /* Default-Portrait~ipad.png */; };
 		E9D6985517B1C11B0089F5BA /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9D6984917B1BB9A0089F5BA /* Default@2x.png */; };
 		E9D6985617B1C11E0089F5BA /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = E9D6984B17B1BB9E0089F5BA /* Default.png */; };
+		E9D6985A17B1CE920089F5BA /* libFlurry_4.2.2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E9D6985917B1CE920089F5BA /* libFlurry_4.2.2.a */; };
+		E9D6985B17B1CE930089F5BA /* libFlurry_4.2.2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E9D6985917B1CE920089F5BA /* libFlurry_4.2.2.a */; };
+		E9D6985C17B1CF850089F5BA /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9D6984717B1BB940089F5BA /* Default-568h@2x.png */; };
+		E9D6985D17B1CF870089F5BA /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9D6984917B1BB9A0089F5BA /* Default@2x.png */; };
+		E9D6985E17B1CF8A0089F5BA /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = E9D6984B17B1BB9E0089F5BA /* Default.png */; };
+		E9D6985F17B1CF910089F5BA /* Default-Landscape@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = E9D6984D17B1BFB40089F5BA /* Default-Landscape@2x~ipad.png */; };
+		E9D6986017B1CF940089F5BA /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = E9D6984F17B1BFB90089F5BA /* Default-Landscape~ipad.png */; };
+		E9D6986117B1CF960089F5BA /* Default-Portrait@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = E9D6985117B1C0BC0089F5BA /* Default-Portrait@2x~ipad.png */; };
+		E9D6986217B1CF980089F5BA /* Default-Portrait~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = E9D6985317B1C0C30089F5BA /* Default-Portrait~ipad.png */; };
 		E9E8AD521768224A00F837D7 /* SideMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E8AD511768224A00F837D7 /* SideMenuViewController.m */; };
 		E9E8AD5717682BED00F837D7 /* SettingsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E8AD5617682BED00F837D7 /* SettingsManager.m */; };
 		E9E8AD5D17682C5700F837D7 /* Theme.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E8AD5A17682C5700F837D7 /* Theme.m */; };
@@ -343,6 +352,8 @@
 		E9D6984F17B1BFB90089F5BA /* Default-Landscape~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Landscape~ipad.png"; path = "../Default-Landscape~ipad.png"; sourceTree = "<group>"; };
 		E9D6985117B1C0BC0089F5BA /* Default-Portrait@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Portrait@2x~ipad.png"; path = "../Default-Portrait@2x~ipad.png"; sourceTree = "<group>"; };
 		E9D6985317B1C0C30089F5BA /* Default-Portrait~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Portrait~ipad.png"; path = "../Default-Portrait~ipad.png"; sourceTree = "<group>"; };
+		E9D6985817B1CE920089F5BA /* Flurry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Flurry.h; sourceTree = "<group>"; };
+		E9D6985917B1CE920089F5BA /* libFlurry_4.2.2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry_4.2.2.a; sourceTree = "<group>"; };
 		E9E8AD501768224A00F837D7 /* SideMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SideMenuViewController.h; sourceTree = "<group>"; };
 		E9E8AD511768224A00F837D7 /* SideMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SideMenuViewController.m; sourceTree = "<group>"; };
 		E9E8AD5517682BED00F837D7 /* SettingsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsManager.h; sourceTree = "<group>"; };
@@ -387,6 +398,7 @@
 				E9518F911768108200EB82C8 /* CoreGraphics.framework in Frameworks */,
 				E9518F931768108200EB82C8 /* CoreData.framework in Frameworks */,
 				B14420FB51394E40A91F5F42 /* libPods.a in Frameworks */,
+				E9D6985A17B1CE920089F5BA /* libFlurry_4.2.2.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -400,6 +412,7 @@
 				E9828AE317837CF700619FB4 /* CoreGraphics.framework in Frameworks */,
 				E9828AE417837CF700619FB4 /* CoreData.framework in Frameworks */,
 				E9828AE517837CF700619FB4 /* libPods.a in Frameworks */,
+				E9D6985B17B1CE930089F5BA /* libFlurry_4.2.2.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -507,6 +520,8 @@
 		E9518F951768108200EB82C8 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				E9D6985817B1CE920089F5BA /* Flurry.h */,
+				E9D6985917B1CE920089F5BA /* libFlurry_4.2.2.a */,
 				E9518F971768108200EB82C8 /* InfoPlist.strings */,
 				E9518F9A1768108200EB82C8 /* main.m */,
 				E9518F9C1768108200EB82C8 /* sweep-Prefix.pch */,
@@ -935,6 +950,13 @@
 				E9D6984117B17CDE0089F5BA /* w_bottom@2x.png in Resources */,
 				E9D6984317B17CDE0089F5BA /* w_top.png in Resources */,
 				E9D6984517B17CDE0089F5BA /* w_top@2x.png in Resources */,
+				E9D6985C17B1CF850089F5BA /* Default-568h@2x.png in Resources */,
+				E9D6985D17B1CF870089F5BA /* Default@2x.png in Resources */,
+				E9D6985E17B1CF8A0089F5BA /* Default.png in Resources */,
+				E9D6985F17B1CF910089F5BA /* Default-Landscape@2x~ipad.png in Resources */,
+				E9D6986017B1CF940089F5BA /* Default-Landscape~ipad.png in Resources */,
+				E9D6986117B1CF960089F5BA /* Default-Portrait@2x~ipad.png in Resources */,
+				E9D6986217B1CF980089F5BA /* Default-Portrait~ipad.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1415,6 +1437,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SDKROOT)/usr/lib/system\"",
+					"\"$(SRCROOT)/sweep\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
@@ -1425,6 +1448,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E1F66A6A01AD42F8916FB975 /* Pods.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Thomas Demeo";
 				DEFAULTS_EXT = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "sweep/sweep-Prefix.pch";
@@ -1437,8 +1461,10 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SDKROOT)/usr/lib/system\"",
+					"\"$(SRCROOT)/sweep\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "8522557B-54AC-4E0A-95DD-623378C0B508";
 				WRAPPER_EXTENSION = app;
 			};
 			name = AppStore;
@@ -1490,6 +1516,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SDKROOT)/usr/lib/system\"",
+					"\"$(SRCROOT)/sweep\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
@@ -1524,6 +1551,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SDKROOT)/usr/lib/system\"",
+					"\"$(SRCROOT)/sweep\"",
 				);
 				PRODUCT_NAME = dev;
 				WRAPPER_EXTENSION = app;
@@ -1545,6 +1573,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SDKROOT)/usr/lib/system\"",
+					"\"$(SRCROOT)/sweep\"",
 				);
 				PRODUCT_NAME = dev;
 				WRAPPER_EXTENSION = app;
@@ -1567,6 +1596,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SDKROOT)/usr/lib/system\"",
+					"\"$(SRCROOT)/sweep\"",
 				);
 				PRODUCT_NAME = dev;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "CCE73EDF-39CF-4DC4-B9B5-33CBC242714E";

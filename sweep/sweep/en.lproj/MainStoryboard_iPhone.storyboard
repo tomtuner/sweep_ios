@@ -139,7 +139,7 @@
                                                 </label>
                                                 <textField hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Add an event..." clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="krG-ec-Lxh">
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
                                                 </textField>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -513,58 +513,6 @@
     <resources>
         <image name="gray_gear.png" width="44" height="44"/>
     </resources>
-    <classes>
-        <class className="CameraCaptureViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CameraCaptureViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="flash:"/>
-                <relationship kind="outlet" name="bottomGrayBar" candidateClass="UIView"/>
-                <relationship kind="outlet" name="buttonOverlayView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="finishButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="flashButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="lastScannedCode" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="lastScannedTitleLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="multiScanButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="scannerView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="topGrayBar" candidateClass="UIView"/>
-            </relationships>
-        </class>
-        <class className="LogInViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/LogInViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="navBar" candidateClass="UINavigationBar"/>
-            </relationships>
-        </class>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-        <class className="ScansViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ScansViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="scanPressed:"/>
-                <relationship kind="outlet" name="headerView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="scansTable" candidateClass="UITableView"/>
-                <relationship kind="outlet" name="totalScansLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="validKeyNetworkIndicator" candidateClass="UIActivityIndicatorView"/>
-            </relationships>
-        </class>
-        <class className="SideMenuTableViewCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SideMenuTableViewCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="nameLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="nameTextField" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="SideMenuViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SideMenuViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="departmentNameLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="eventsTable" candidateClass="UITableView"/>
-                <relationship kind="outlet" name="footerView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="overlayView" candidateClass="UIView"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

@@ -20,7 +20,7 @@
     static dispatch_once_t onceToken;
     Customers *customer = [[SWSyncEngine sharedEngine] sharedCustomer];
     NSString *classString = customer.theme;
-    NSLog(@"Class Theme: %@", customer.theme);
+//    NSLog(@"Class Theme: %@", customer.theme);
     
 //    if ([[NSUserDefaults standardUserDefaults] stringForKey:@"theme"]) {
 //        NSLog(@"Theme Defautl: %@", [[NSUserDefaults standardUserDefaults] stringForKey:@"theme"]);

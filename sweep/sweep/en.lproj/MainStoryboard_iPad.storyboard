@@ -49,7 +49,7 @@
                                                         </label>
                                                         <textField hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Add an event..." clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cFD-sa-CAU">
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                            <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
                                                         </textField>
                                                     </subviews>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -508,8 +508,6 @@
         <class className="CameraCaptureViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/CameraCaptureViewController.h"/>
             <relationships>
-                <relationship kind="action" name="done:"/>
-                <relationship kind="action" name="flash:"/>
                 <relationship kind="outlet" name="bottomGrayBar" candidateClass="UIView"/>
                 <relationship kind="outlet" name="buttonOverlayView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="finishButton" candidateClass="UIButton"/>

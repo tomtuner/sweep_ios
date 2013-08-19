@@ -99,6 +99,8 @@
                                      [NSSortDescriptor sortDescriptorWithKey:@"created_at" ascending:YES]]];
         self.scans = [self.managedObjectContext executeFetchRequest:request error:&error];
         self.totalScansLabel.text = [NSString stringWithFormat:@"%i", self.scans.count];
+        NSSet *uniqueStates = [NSSet setWithArray:[self.scans valueForKey:@"value"]];
+        NSLog(@"Unique Entries: %i", uniqueStates.count);
         [self.scansTable reloadData];
         [self stopActivityIndicatorView];
     }];
@@ -130,7 +132,6 @@
             target:self.viewDeckController
             action:@selector(toggleLeftView)];
 }
-
 
 - (UIBarButtonItem *)rightMenuBarButtonItem {
     return [[UIBarButtonItem alloc]

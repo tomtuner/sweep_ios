@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "Flurry.h"
 
 #import "ScansViewController.h"
 
@@ -26,6 +27,11 @@
     
     [self setupHockeyApp];
     [self initKeychainForDepartmentKey];
+    
+#ifndef DEBUG
+    [Flurry startSession:@"7YP39Z3HVGP3V4Z5M9MX"];
+#endif
+    
     [[SWSyncEngine sharedEngine] registerNSManagedObjectClassToSync:[Events class]];
     [[SWSyncEngine sharedEngine] registerNSManagedObjectClassToSync:[Scans class]];
     
