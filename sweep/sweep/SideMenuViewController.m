@@ -310,52 +310,17 @@
 // Called when the UIKeyboardDidShowNotification is sent.
 - (void)keyboardWasShown:(NSNotification*)aNotification
 {
-//    [self.eventsTable scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:self.events.count inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:YES];
-//    
-//    NSDictionary* info = [aNotification userInfo];
-//    CGRect kbFrame = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue];
-//    CGRect convertedFrame = [self.view convertRect:kbFrame fromView:self.view.window];
-//
-//    UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, convertedFrame.size.height, 0.0);
-//    self.eventsTable.contentInset = contentInsets;
-//    self.eventsTable.scrollIndicatorInsets = contentInsets;
-//    
-//    // If active text field is hidden by keyboard, scroll it so it's visible
-//    // Your application might not need or want this behavior.
-//    CGRect aRect = self.eventsTable.frame;
-//    aRect.size.height -= kbFrame.size.height;
-////    aRect.origin.y += kbFrame.size.height;
-//    if (!CGRectContainsPoint(aRect, self.activeField.frame.origin) ) {
-//        CGPoint scrollPoint = CGPointMake(0.0, self.activeField.frame.origin.y + kbFrame.size.height);
-//        [self.eventsTable setContentOffset:scrollPoint animated:YES];
-//    }
-    
-//    // Step 1: Get the size of the keyboard.
-//    CGSize keyboardSize = [[[aNotification userInfo] objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
-//    // Step 2: Adjust the bottom content inset of your scroll view by the keyboard height.
-//    UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, keyboardSize.height, 0.0);
-//    self.eventsTable.contentInset = contentInsets;
-//    self.eventsTable.scrollIndicatorInsets = contentInsets;
     NSDictionary* info = [aNotification userInfo];
-        CGRect kbFrame = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue];
-        CGRect convertedFrame = [self.view convertRect:kbFrame fromView:self.view.window];
-    
-        UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, convertedFrame.size.height, 0.0);
+    CGRect kbFrame = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue];
+    CGRect convertedFrame = [self.view convertRect:kbFrame fromView:self.view.window];
+
+    UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, convertedFrame.size.height, 0.0);
     self.eventsTable.contentInset = contentInsets;
     self.eventsTable.scrollIndicatorInsets = contentInsets;
-
-    // Step 3: Scroll the target text field into view.
-//    CGRect aRect = self.eventsTable.frame;
-//    aRect.size.height -= keyboardSize.height;
-//    NSLog(@"Active Frame: %@", [self.activeField superview]);
-    
     CGRect rectOfCellInTableView = [self.eventsTable rectForRowAtIndexPath:[NSIndexPath indexPathForRow:self.events.count inSection:0]];
     CGRect rectOfCellInSuperview = [self.eventsTable convertRect:rectOfCellInTableView toView:[self.eventsTable superview]];
 
     if (!CGRectContainsPoint(rectOfCellInSuperview, [self.activeField superview].frame.origin) ) {
-//        CGPoint scrollPoint = CGPointMake(0.0, [self.activeField superview].frame.origin.y - (keyboardSize.height-15));
-//        [self.eventsTable setContentOffset:scrollPoint animated:YES];
-//        [self.eventsTable reloadData];
         [self.eventsTable scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:self.events.count inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:YES];
     }
 }
@@ -376,14 +341,6 @@
 - (void) keyboardDidHide:(NSNotification*)aNotification
 {
     [self.eventsTable reloadData];
-  /*  if (self.addTextFieldWasEmpty)
-    {
-        [self.eventsTable reloadData];
-
-    }else {
-//        [self loadRecordsFromCoreData];
-    }
-    [self.eventsTable reloadData]; */
 }
 
 #pragma mark - UITextFieldDelegate
@@ -435,11 +392,7 @@
     [textField resignFirstResponder];
     return YES;
 }
-/*
-- (void) textFieldDidBeginEditing:(UITextField *)textField {
-    [self.eventsTable scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:self.events.count inSection:0] atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
-}
-*/
+
 - (void)textFieldDidBeginEditing:(UITextField *)textField
 {
     self.activeField = textField;
