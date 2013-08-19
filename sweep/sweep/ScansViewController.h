@@ -18,7 +18,7 @@
 #import "CameraCaptureViewController.h"
 #import "Theme.h"
 
-@interface ScansViewController : UIViewController <NSFetchedResultsControllerDelegate, UISplitViewControllerDelegate>
+@interface ScansViewController : UIViewController <NSFetchedResultsControllerDelegate, UISplitViewControllerDelegate, UIScrollViewDelegate>
 
 @property (nonatomic, strong) Events *detailItem;
 @property (nonatomic, strong) IBOutlet UITableView *scansTable;

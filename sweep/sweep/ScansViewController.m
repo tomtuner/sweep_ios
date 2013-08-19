@@ -8,6 +8,8 @@
 
 #import "ScansViewController.h"
 
+static NSUInteger kNumberOfPages = 2;
+
 
 @interface ScansViewController ()
 
@@ -15,6 +17,9 @@
 @property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, strong) IBOutlet UILabel *totalScansLabel;
 @property (nonatomic, strong) IBOutlet UIView *headerView;
+
+@property (nonatomic, strong) IBOutlet UIScrollView *scrollView;
+@property (nonatomic, strong) IBOutlet UIPageControl *pageControl;
 
 @property (nonatomic, strong) IBOutlet UIActivityIndicatorView *validKeyNetworkIndicator;
 
@@ -35,6 +40,9 @@
     [super awakeFromNib];
 }
 */
+
+
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -46,6 +54,9 @@
     topview.backgroundColor = [UIColor blackColor];
     
     [self.scansTable addSubview:topview];
+    
+   
+
     
 
 //    [self.scansTable addSubview:grayView];
@@ -68,6 +79,75 @@
     self.headerView.layer.shadowColor = [UIColor lightGrayColor].CGColor;
     self.headerView.layer.shadowOffset = CGSizeMake(0.0f, 1.0f);
     self.headerView.layer.shadowRadius = 4.0f;
+    
+   
+}
+
+- (void) viewDidLayoutSubviews
+{
+    [super viewDidLayoutSubviews];
+    [self sizeImagesAndContentSize];
+//        self.scrollView.layer.masksToBounds = YES;
+//        self.scrollView.layer.cornerRadius = 3.0f;
+//        self.scrollView.layer.shadowOpacity = 0.8f;
+//        self.scrollView.layer.shadowColor = [UIColor lightGrayColor].CGColor;
+//        self.scrollView.layer.shadowOffset = CGSizeMake(0.0f, 1.0f);
+//        self.scrollView.layer.shadowRadius = 4.0f;
+//
+//        self.scrollView.layer.shadowPath = [UIBezierPath bezierPathWithRect:self.scrollView.bounds].CGPath;
+
+        
+    
+}
+
+- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)orientation  duration:(NSTimeInterval)duration {
+    [super willAnimateRotationToInterfaceOrientation:orientation duration:duration];
+
+    if ( UI_USER_INTERFACE_IDIOM() != UIUserInterfaceIdiomPad )
+    {
+        [self sizeImagesAndContentSize];
+    }
+}
+
+- (void) sizeImagesAndContentSize
+{
+    if ( UI_USER_INTERFACE_IDIOM() != UIUserInterfaceIdiomPad )
+    {
+        for (int i = 0; i < kNumberOfPages; i++) {
+            //We'll create an imageView object in every 'page' of our scrollView.
+            CGRect frame;
+            frame.origin.x = self.scrollView.frame.size.width * i;
+            frame.origin.y = 0;
+            frame.size = self.scrollView.frame.size;
+            
+            UIView *view = [[UIView alloc] initWithFrame:frame];
+            //            CGFloat hue = ( arc4random() % 256 / 256.0 );  //  0.0 to 1.0
+            //            CGFloat saturation = ( arc4random() % 128 / 256.0 ) + 0.5;  //  0.5 to 1.0, away from white
+            //            CGFloat brightness = ( arc4random() % 128 / 256.0 ) + 0.5;  //  0.5 to 1.0, away from black
+            //            UIColor *color = [UIColor colorWithHue:hue saturation:saturation brightness:brightness alpha:1];
+            //            view.backgroundColor = color;
+            NSString *text;
+            UIFont *font = [UIFont boldSystemFontOfSize:20.0f];
+            text = [NSString stringWithFormat:@"Total Attendees:"];
+            CGSize labelSize = [text sizeWithFont:font];
+            
+            UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(34, 11, labelSize.width, labelSize.height)];
+            label.font = font;
+            label.text = text;
+            
+            [view addSubview:label];
+            [self.scrollView addSubview:view];
+        }
+        self.scrollView.contentSize = CGSizeMake(self.scrollView.frame.size.width * kNumberOfPages, self.scrollView.frame.size.height);
+    }
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)sender
+{
+    // Update the page when more than 50% of the previous/next page is visible
+    CGFloat pageWidth = self.scrollView.frame.size.width;
+    int page = floor((self.scrollView.contentOffset.x - pageWidth / 2) / pageWidth) + 1;
+    self.pageControl.currentPage = page;
 }
 
 -(void) viewDidAppear:(BOOL)animated
