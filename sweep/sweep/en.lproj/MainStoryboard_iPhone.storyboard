@@ -99,7 +99,7 @@
         <scene sceneID="vgB-72-h2q">
             <objects>
                 <navigationController storyboardIdentifier="sideMenuController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="jil-5m-cmT" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="KVO-qr-4Cy">
+                    <navigationBar key="navigationBar" clipsSubviews="YES" contentMode="scaleToFill" id="KVO-qr-4Cy">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -312,11 +312,11 @@
                                             </button>
                                             <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Last Scan:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7BJ-bd-lvc">
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="97" id="M6W-N2-kwu"/>
-                                                    <constraint firstAttribute="height" constant="21" id="SrC-tm-Ggz"/>
+                                                    <constraint firstAttribute="width" constant="111" id="XZZ-Bi-X3M"/>
+                                                    <constraint firstAttribute="height" constant="21" id="w55-tc-wFE"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                                <color key="textColor" red="0.80784313730000001" green="0.30980392159999998" blue="0.27450980390000002" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b9R-LO-jgy">
@@ -333,9 +333,9 @@
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="b9R-LO-jgy" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="375-Gi-0Ro"/>
                                             <constraint firstAttribute="height" constant="70" type="user" id="Ut7-7l-540"/>
+                                            <constraint firstAttribute="trailing" secondItem="LG5-c6-91V" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="cWG-aj-vYy"/>
                                             <constraint firstItem="7BJ-bd-lvc" firstAttribute="leading" secondItem="4Km-fs-N1c" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="dUi-cu-y0P"/>
                                             <constraint firstItem="b9R-LO-jgy" firstAttribute="leading" secondItem="4Km-fs-N1c" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="i2d-8B-7jC"/>
-                                            <constraint firstItem="LG5-c6-91V" firstAttribute="leading" secondItem="b9R-LO-jgy" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="kV7-Ru-oE9"/>
                                             <constraint firstItem="LG5-c6-91V" firstAttribute="top" secondItem="4Km-fs-N1c" secondAttribute="top" constant="13" id="ki8-2Q-1vg"/>
                                             <constraint firstItem="7BJ-bd-lvc" firstAttribute="top" secondItem="4Km-fs-N1c" secondAttribute="top" constant="6" id="oy5-xB-fV5"/>
                                         </constraints>
@@ -513,6 +513,56 @@
     <resources>
         <image name="gray_gear.png" width="44" height="44"/>
     </resources>
+    <classes>
+        <class className="CameraCaptureViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CameraCaptureViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="bottomGrayBar" candidateClass="UIView"/>
+                <relationship kind="outlet" name="buttonOverlayView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="finishButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="flashButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="lastScannedCode" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="lastScannedTitleLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="multiScanButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="scannerView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="topGrayBar" candidateClass="UIView"/>
+            </relationships>
+        </class>
+        <class className="LogInViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/LogInViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="navBar" candidateClass="UINavigationBar"/>
+            </relationships>
+        </class>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="ScansViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ScansViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="headerView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="scansTable" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="totalScansLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="validKeyNetworkIndicator" candidateClass="UIActivityIndicatorView"/>
+            </relationships>
+        </class>
+        <class className="SideMenuTableViewCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SideMenuTableViewCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="nameLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="nameTextField" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="SideMenuViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SideMenuViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="departmentNameLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="eventsTable" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="footerView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="overlayView" candidateClass="UIView"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

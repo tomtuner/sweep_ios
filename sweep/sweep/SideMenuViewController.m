@@ -40,7 +40,7 @@
     self.firstTimeLoad = YES;
     
     [self customizeView];
-    [ThemeManager customizeNavigationControllerTitleView:self];
+    [ThemeManager customizeNavigationControllerTitleView:self barMetrics:UIBarMetricsDefault];
     self.indexToGoToAfterSync = 0;
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
     {
@@ -317,7 +317,7 @@
     UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, convertedFrame.size.height, 0.0);
     self.eventsTable.contentInset = contentInsets;
     self.eventsTable.scrollIndicatorInsets = contentInsets;
-    CGRect rectOfCellInTableView = [self.eventsTable rectForRowAtIndexPath:[NSIndexPath indexPathForRow:self.events.count inSection:0]];
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                CGRect rectOfCellInTableView = [self.eventsTable rectForRowAtIndexPath:[NSIndexPath indexPathForRow:self.events.count inSection:0]];
     CGRect rectOfCellInSuperview = [self.eventsTable convertRect:rectOfCellInTableView toView:[self.eventsTable superview]];
 
     if (!CGRectContainsPoint(rectOfCellInSuperview, [self.activeField superview].frame.origin) ) {
@@ -401,6 +401,21 @@
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {
     self.activeField = nil;
+}
+
+- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)orientation  duration:(NSTimeInterval)duration {
+    [super willAnimateRotationToInterfaceOrientation:orientation duration:duration];
+    CGRect frame = self.navigationController.navigationBar.frame;
+    if (UIInterfaceOrientationIsPortrait(orientation)) {
+        frame.size.height = 44;
+    } else {
+        if ( UI_USER_INTERFACE_IDIOM() != UIUserInterfaceIdiomPad )
+        {
+            frame.size.height = 32;
+            [ThemeManager customizeNavigationControllerTitleView:self barMetrics:UIBarMetricsLandscapePhone];
+        }
+    }
+    self.navigationController.navigationBar.frame = frame;
 }
 
 @end

@@ -57,6 +57,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self.finishButton.titleLabel setTextAlignment:NSTextAlignmentCenter];
 
 	// Do any additional setup after loading the view.
     self.managedObjectContext = [[SWCoreDataController sharedInstance] newManagedObjectContext];
@@ -315,22 +316,22 @@
 }
 
 -(IBAction)multiScan:(id)sender {
-    NSLog(@"MultiScan");
-    NSLog(@"MultiScan was %i", self.multiScan);
     if (self.multiScan == NO) {
         self.lastScannedTitleLabel.hidden = NO;
         self.lastScannedCode.hidden = NO;
-        self.finishButton.titleLabel.text = @"Done";
+//        self.finishButton.titleLabel.text = @"Done";
+
     }else {
         self.lastScannedTitleLabel.hidden = YES;
         self.lastScannedCode.hidden = YES;
-        self.finishButton.titleLabel.text = @"Cancel";
+//        self.finishButton.titleLabel.text = @"Cancel";
     }
     self.multiScan = !self.multiScan;
-    NSLog(@"MultiScan is %i", self.multiScan);
-    self.finishButton.titleLabel.text = self.multiScan ? @"Done" : @"Cancel";
+     [self.finishButton setTitle:(self.multiScan ? @"Done" : @"Cancel") forState:UIControlStateNormal];
     
-//    [self.finishButton.titleLabel setTextAlignment:NSTextAlignmentCenter];
+//    CGSize stringsize = [self.finishButton.titleLabel.text sizeWithFont:[UIFont systemFontOfSize:15]];
+    //or whatever font you're using
+//    [self.finishButton setFrame:CGRectMake(0, 0, stringsize.width, stringsize.height)];
 }
 
 @end

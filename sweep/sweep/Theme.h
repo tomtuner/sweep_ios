@@ -71,7 +71,7 @@
 - (UIImage *)tabBarBackground;
 - (UIImage *)tabBarSelectionIndicator;
 - (UIFont *)customFontWithSize:(CGFloat)fontSize;
-- (UIImageView *) customNavigationBarTitleView;
+- (UIImageView *) customNavigationBarTitleView:(UIBarMetrics)metrics;
 
 - (UIImage *) customerTopCameraMaskImage;
 - (UIImage *) customerBottomCameraMaskImage;
@@ -95,7 +95,7 @@
 + (void)customizeTableView:(UITableView *)tableView;
 + (void) customizeLabelWithCustomFont:(UILabel *)label;
 + (void) customizeButtonWithCustomFont:(UIButton *)button;
-+ (void) customizeNavigationControllerTitleView:(UINavigationController *) navController;
++ (void) customizeNavigationControllerTitleView:(UINavigationController *) navController barMetrics:(UIBarMetrics) metrics;
 
 //+ (void)customizeTabBarItem:(UITabBarItem *)item forTab:(SSThemeTab)tab;
 

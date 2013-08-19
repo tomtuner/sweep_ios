@@ -343,9 +343,15 @@
     return [UIFont fontWithName:@"Linear" size:fontSize];
 }
 
-- (UIImageView *) customNavigationBarTitleView
+- (UIImageView *) customNavigationBarTitleView:(UIBarMetrics)metrics
 {
-    return [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"nav_bar_logo"]];
+    NSString *name = @"nav_bar_logo";
+    if (metrics == UIBarMetricsLandscapePhone) {
+        name = [name stringByAppendingString:@"_landscape"];
+    }
+    UIImage *image = [UIImage imageNamed:name];
+    //    image = [image resizableImageWithCapInsets:UIEdgeInsetsMake(0.0, 0.0, 0.0, 0.0)];
+    return [[UIImageView alloc] initWithImage:image];
 }
 
 - (UIImage *) customerTopCameraMaskImage

@@ -255,7 +255,7 @@
                     <connections>
                         <outlet property="bottomGrayBar" destination="99A-Yp-rHh" id="R1M-fs-Mxb"/>
                         <outlet property="buttonOverlayView" destination="mll-0Q-kLP" id="SS7-xe-vFM"/>
-                        <outlet property="finishButton" destination="C0l-Ld-lDK" id="Dwe-bQ-Bqg"/>
+                        <outlet property="finishButton" destination="C0l-Ld-lDK" id="kjg-td-asp"/>
                         <outlet property="flashButton" destination="0BC-Np-T5T" id="weI-yA-apX"/>
                         <outlet property="lastScannedCode" destination="Czq-7R-CYv" id="0B7-El-QvG"/>
                         <outlet property="lastScannedTitleLabel" destination="OgM-NX-2DA" id="o87-v6-QhF"/>
@@ -311,11 +311,11 @@
                             <subviews>
                                 <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Last Scan:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OgM-NX-2DA">
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="21" id="Y8j-ds-C9x"/>
-                                        <constraint firstAttribute="width" constant="97" id="cIj-AA-bLi"/>
+                                        <constraint firstAttribute="height" constant="21" id="AIH-tj-4vJ"/>
+                                        <constraint firstAttribute="width" constant="138" id="Owt-4M-s1t"/>
                                     </constraints>
-                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                    <color key="textColor" red="0.80784313730000001" green="0.30980392159999998" blue="0.27450980390000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Czq-7R-CYv">
@@ -508,6 +508,9 @@
         <class className="CameraCaptureViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/CameraCaptureViewController.h"/>
             <relationships>
+                <relationship kind="action" name="done:"/>
+                <relationship kind="action" name="flash:"/>
+                <relationship kind="action" name="multiScan:"/>
                 <relationship kind="outlet" name="bottomGrayBar" candidateClass="UIView"/>
                 <relationship kind="outlet" name="buttonOverlayView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="finishButton" candidateClass="UIButton"/>
@@ -531,7 +534,6 @@
         <class className="ScansViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ScansViewController.h"/>
             <relationships>
-                <relationship kind="action" name="scanPressed:"/>
                 <relationship kind="outlet" name="headerView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="scansTable" candidateClass="UITableView"/>
                 <relationship kind="outlet" name="totalScansLabel" candidateClass="UILabel"/>
@@ -548,7 +550,6 @@
         <class className="SideMenuViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SideMenuViewController.h"/>
             <relationships>
-                <relationship kind="action" name="settingsGearPressed:"/>
                 <relationship kind="outlet" name="departmentNameLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="eventsTable" candidateClass="UITableView"/>
                 <relationship kind="outlet" name="footerView" candidateClass="UIView"/>
