@@ -16,12 +16,21 @@ static NSUInteger kNumberOfPages = 2;
 @property (nonatomic, strong) UIPopoverController *masterPopoverController;
 @property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, strong) IBOutlet UILabel *totalScansLabel;
+@property (nonatomic, strong) IBOutlet UILabel *uniqueScansLabel;
+
 @property (nonatomic, strong) IBOutlet UIView *headerView;
 
 @property (nonatomic, strong) IBOutlet UIScrollView *scrollView;
 @property (nonatomic, strong) IBOutlet UIPageControl *pageControl;
 
 @property (nonatomic, strong) IBOutlet UIActivityIndicatorView *validKeyNetworkIndicator;
+@property (nonatomic, strong) UIActivityIndicatorView *scrollView1ActivityIndicator;
+@property (nonatomic, strong) UIActivityIndicatorView *scrollView2ActivityIndicator;
+
+@property (nonatomic, strong) UIImageView *arrow1;
+@property (nonatomic, strong) UIImageView *arrow2;
+@property (nonatomic, strong) UIImageView *arrow3;
+@property (nonatomic, strong) UIImageView *arrow4;
 
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath;
@@ -55,12 +64,6 @@ static NSUInteger kNumberOfPages = 2;
     
     [self.scansTable addSubview:topview];
     
-   
-
-    
-
-//    [self.scansTable addSubview:grayView];
-    
     self.managedObjectContext = [[SWCoreDataController sharedInstance] newManagedObjectContext];
 
     [self setupMenuBarButtonItems];
@@ -87,22 +90,10 @@ static NSUInteger kNumberOfPages = 2;
 {
     [super viewDidLayoutSubviews];
     [self sizeImagesAndContentSize];
-//        self.scrollView.layer.masksToBounds = YES;
-//        self.scrollView.layer.cornerRadius = 3.0f;
-//        self.scrollView.layer.shadowOpacity = 0.8f;
-//        self.scrollView.layer.shadowColor = [UIColor lightGrayColor].CGColor;
-//        self.scrollView.layer.shadowOffset = CGSizeMake(0.0f, 1.0f);
-//        self.scrollView.layer.shadowRadius = 4.0f;
-//
-//        self.scrollView.layer.shadowPath = [UIBezierPath bezierPathWithRect:self.scrollView.bounds].CGPath;
-
-        
-    
 }
 
-- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)orientation  duration:(NSTimeInterval)duration {
-    [super willAnimateRotationToInterfaceOrientation:orientation duration:duration];
-
+- (void) didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
+{
     if ( UI_USER_INTERFACE_IDIOM() != UIUserInterfaceIdiomPad )
     {
         [self sizeImagesAndContentSize];
@@ -113,6 +104,13 @@ static NSUInteger kNumberOfPages = 2;
 {
     if ( UI_USER_INTERFACE_IDIOM() != UIUserInterfaceIdiomPad )
     {
+//        self.headerView.hidden = YES;
+        [self.scrollView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+        
+        NSString *aggregateText = @"99999";
+        UIFont *font = [UIFont boldSystemFontOfSize:20.0f];
+        CGSize aggregatelabelSize = [aggregateText sizeWithFont:font];
+
         for (int i = 0; i < kNumberOfPages; i++) {
             //We'll create an imageView object in every 'page' of our scrollView.
             CGRect frame;
@@ -121,25 +119,114 @@ static NSUInteger kNumberOfPages = 2;
             frame.size = self.scrollView.frame.size;
             
             UIView *view = [[UIView alloc] initWithFrame:frame];
-            //            CGFloat hue = ( arc4random() % 256 / 256.0 );  //  0.0 to 1.0
-            //            CGFloat saturation = ( arc4random() % 128 / 256.0 ) + 0.5;  //  0.5 to 1.0, away from white
-            //            CGFloat brightness = ( arc4random() % 128 / 256.0 ) + 0.5;  //  0.5 to 1.0, away from black
-            //            UIColor *color = [UIColor colorWithHue:hue saturation:saturation brightness:brightness alpha:1];
-            //            view.backgroundColor = color;
+            
             NSString *text;
-            UIFont *font = [UIFont boldSystemFontOfSize:20.0f];
-            text = [NSString stringWithFormat:@"Total Attendees:"];
+            
+            if (i == 0)
+            {
+                text = [NSString stringWithFormat:@"Total Attendees:"];
+                self.scrollView1ActivityIndicator = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(self.view.frame.size.width / 2 - self.scrollView1ActivityIndicator.frame.size.width + 75, self.scrollView.frame.size.height / 2, self.scrollView1ActivityIndicator.frame.size.width, self.scrollView1ActivityIndicator.frame.size.height)];
+                self.scrollView1ActivityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;
+                [self.scrollView1ActivityIndicator setHidesWhenStopped:YES];
+                [self.scrollView1ActivityIndicator startAnimating];
+                [view addSubview:self.scrollView1ActivityIndicator];
+                _arrow1 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"arrow_right"]];
+                _arrow1.frame = CGRectMake(self.scrollView.frame.size.width - (_arrow1.frame.size.width * 2) - 10, (self.scrollView.frame.size.height / 2) - (_arrow1.frame.size.height / 2), _arrow1.frame.size.width, _arrow1.frame.size.height);
+                _arrow2 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"arrow_right"]];
+                _arrow2.frame = CGRectMake(_arrow1.frame.origin.x + 10, (self.scrollView.frame.size.height / 2) - (_arrow2.frame.size.height / 2), _arrow2.frame.size.width, _arrow2.frame.size.height);
+                
+                _totalScansLabel = [[UILabel alloc] initWithFrame:CGRectMake(_scrollView1ActivityIndicator.frame.origin.x - 10, _scrollView1ActivityIndicator.frame.origin.y - aggregatelabelSize.height / 2, aggregatelabelSize.width, aggregatelabelSize.height)];
+                _totalScansLabel.backgroundColor = [UIColor clearColor];
+
+//                _totalScansLabel.hidden = YES;
+                [view addSubview:_totalScansLabel];
+                [view addSubview:_arrow1];
+                [view addSubview:_arrow2];
+                
+            }else if (i == 1) {
+                text = [NSString stringWithFormat:@"Unique Attendees:"];
+                self.scrollView2ActivityIndicator = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(self.view.frame.size.width / 2 - self.scrollView2ActivityIndicator.frame.size.width + 75, self.scrollView.frame.size.height / 2, self.scrollView2ActivityIndicator.frame.size.width, self.scrollView2ActivityIndicator.frame.size.height)];
+                self.scrollView2ActivityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;
+                [self.scrollView2ActivityIndicator setHidesWhenStopped:YES];
+                [self.scrollView2ActivityIndicator startAnimating];
+                [view addSubview:self.scrollView2ActivityIndicator];
+                _arrow3 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"arrow_left"]];
+                _arrow3.frame = CGRectMake(self.scrollView.frame.origin.x + 10, (self.scrollView.frame.size.height / 2) - (_arrow3.frame.size.height / 2), _arrow1.frame.size.width, _arrow3.frame.size.height);
+                _arrow4 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"arrow_left"]];
+                _arrow4.frame = CGRectMake(_arrow3.frame.origin.x + 10, (self.scrollView.frame.size.height / 2) - (_arrow4.frame.size.height / 2), _arrow4.frame.size.width, _arrow4.frame.size.height);
+                _uniqueScansLabel = [[UILabel alloc] initWithFrame:CGRectMake(_scrollView2ActivityIndicator.frame.origin.x - 10, _scrollView2ActivityIndicator.frame.origin.y - aggregatelabelSize.height / 2, aggregatelabelSize.width, aggregatelabelSize.height)];
+                _uniqueScansLabel.backgroundColor = [UIColor clearColor];
+//                _uniqueScansLabel.hidden = YES;
+                [view addSubview:_uniqueScansLabel];
+                [view addSubview:_arrow3];
+                [view addSubview:_arrow4];
+            }
+            
             CGSize labelSize = [text sizeWithFont:font];
             
-            UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(34, 11, labelSize.width, labelSize.height)];
+
+            
+            
+            UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(self.view.frame.size.width / 2 - labelSize.width + 60, 10, labelSize.width, labelSize.height)];
             label.font = font;
             label.text = text;
             
             [view addSubview:label];
+            
             [self.scrollView addSubview:view];
+           
         }
+        NSTimer *timer1 = [NSTimer timerWithTimeInterval:6.0
+                                                 target:self
+                                               selector:@selector(animateOddArrows)
+                                               userInfo:nil
+                                                repeats:YES];
+        
+        [[NSRunLoop currentRunLoop] addTimer:timer1 forMode:NSDefaultRunLoopMode];
+        [timer1 fire];
+        NSTimer *timer2 = [NSTimer timerWithTimeInterval:6.0
+                                                 target:self
+                                               selector:@selector(animateEvenArrows)
+                                               userInfo:nil
+                                                repeats:YES];
+        
+        [[NSRunLoop currentRunLoop] addTimer:timer2 forMode:NSDefaultRunLoopMode];
+        [timer2 fire];
         self.scrollView.contentSize = CGSizeMake(self.scrollView.frame.size.width * kNumberOfPages, self.scrollView.frame.size.height);
+    }else {
+        self.scrollView.hidden = YES;
     }
+}
+
+-(void) animateOddArrows{
+    [UIView animateWithDuration:2.0 animations:^{
+        _arrow1.alpha = 0.0;
+//        _arrow2.alpha = 0.0;
+        _arrow3.alpha = 0.0;
+//        _arrow4.alpha = 0.0;
+    }];
+    [UIView animateWithDuration:2.0 animations:^{
+        _arrow1.alpha = 1.0;
+//        _arrow2.alpha = 1.0;
+        _arrow3.alpha = 1.0;
+//        _arrow4.alpha = 1.0;
+    }];
+}
+
+- (void) animateEvenArrows
+{
+    [UIView animateWithDuration:3.0 animations:^{
+//        _arrow1.alpha = 0.0;
+        _arrow2.alpha = 0.0;
+//        _arrow3.alpha = 0.0;
+        _arrow4.alpha = 0.0;
+    }];
+    [UIView animateWithDuration:3.0 animations:^{
+//        _arrow1.alpha = 1.0;
+        _arrow2.alpha = 1.0;
+//        _arrow3.alpha = 1.0;
+        _arrow4.alpha = 1.0;
+    }];
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)sender
@@ -180,7 +267,9 @@ static NSUInteger kNumberOfPages = 2;
         self.scans = [self.managedObjectContext executeFetchRequest:request error:&error];
         self.totalScansLabel.text = [NSString stringWithFormat:@"%i", self.scans.count];
         NSSet *uniqueStates = [NSSet setWithArray:[self.scans valueForKey:@"value"]];
-        NSLog(@"Unique Entries: %i", uniqueStates.count);
+//        NSLog(@"Unique Entries: %i", uniqueStates.count);
+        self.uniqueScansLabel.text = [NSString stringWithFormat:@"%i", uniqueStates.count];
+
         [self.scansTable reloadData];
         [self stopActivityIndicatorView];
     }];
@@ -189,6 +278,8 @@ static NSUInteger kNumberOfPages = 2;
 - (void) stopActivityIndicatorView
 {
     [_validKeyNetworkIndicator stopAnimating];
+    [_scrollView1ActivityIndicator stopAnimating];
+    [_scrollView2ActivityIndicator stopAnimating];
 }
 
 - (void) showActivtyIndicatorView

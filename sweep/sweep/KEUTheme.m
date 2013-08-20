@@ -365,6 +365,11 @@
     return [[NSNumber alloc] initWithInt:25];
 }
 
+- (NSNumber *) lengthOfValidID{
+    
+    return [[NSNumber alloc] initWithInt:9];
+}
+
 /*- (UIImage *)imageForTab:(SSThemeTab)tab
 {
     return nil;

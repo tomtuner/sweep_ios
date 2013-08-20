@@ -78,6 +78,9 @@
 
 - (NSNumber *) percentageIDAvailable;
 
+- (NSNumber *) lengthOfValidID;
+
+
 // One of these must return a non-nil image for each tab:
 //- (UIImage *)imageForTab:(SSThemeTab)tab;
 //- (UIImage *)finishedImageForTab:(SSThemeTab)tab selected:(BOOL)selected;

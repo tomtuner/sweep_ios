@@ -200,12 +200,12 @@
         // We got a result. Display information about the result onscreen.
         //        [self.decodedLabel performSelectorOnMainThread:@selector(setText:) withObject:[self displayForResult:result] waitUntilDone:YES];
         //        [self displayForResult:result];
-        
+        NSString *idScanned = [result.text substringToIndex: [[[ThemeManager sharedTheme] lengthOfValidID] integerValue]];
         NSCharacterSet* notDigits = [[NSCharacterSet decimalDigitCharacterSet] invertedSet];
-        if ([result.text rangeOfCharacterFromSet:notDigits].location == NSNotFound)
+        if ([idScanned rangeOfCharacterFromSet:notDigits].location == NSNotFound)
         {
             // newString consists only of the digits 0 through 9
-            NSLog(@"Valid Number: %@", result.text);
+            NSLog(@"Valid Number: %@", idScanned);
             
 #if !(TARGET_IPHONE_SIMULATOR)
             // Vibrate
@@ -213,32 +213,18 @@
             [self playSoundAndVibrate];
 #endif
             
-           /* SBarcodeResult *br = [[SBarcodeResult alloc] init];
-            br.text = result.text;
-            br.timestamp = result.timestamp;
-            //        br.timestamp = [NSDate dateF]
-            br.resultMetadata = result.resultMetadata;
-            //        br.resultPoints = result.resultPoints;
-            //        br.rawBytes = [NSString stringWithFormat:@"%s", result.rawBytes];
-            br.barcodeFormat = result.barcodeFormat;
-            br.length = result.length;
-            
-            //        [self dismissViewControllerAnimated:YES completion:nil];
-            [self.barcodeResultArray addObject:br];
-            */
-            
             Scans *newScan = [NSEntityDescription insertNewObjectForEntityForName:@"Scans" inManagedObjectContext:self.managedObjectContext];
-            newScan.value = result.text;
+            newScan.value = idScanned;
 //            newScan.scanned_at = result.timestamp;
             newScan.event_id = self.event.remote_id;
             newScan.sync_status = [NSNumber numberWithInt:SWObjectCreated];
 
             NSString *valueString;
-            NSInteger num = (result.text.length * [[[ThemeManager sharedTheme] percentageIDAvailable] integerValue]) / 100;
+            NSInteger num = (idScanned.length * [[[ThemeManager sharedTheme] percentageIDAvailable] integerValue]) / 100;
             
-            valueString = [result.text substringFromIndex:(result.text.length - num) ];
+            valueString = [idScanned substringFromIndex:(idScanned.length - num) ];
             NSMutableString *padString = [NSMutableString string];
-            for (int i = 0; i < (result.text.length - num); i++)
+            for (int i = 0; i < (idScanned.length - num); i++)
             {
                 [padString appendString:@"*"];
             }

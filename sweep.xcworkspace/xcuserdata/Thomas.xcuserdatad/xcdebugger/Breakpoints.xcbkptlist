@@ -307,11 +307,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "sweep/sweep/ScansViewController.m"
-         timestampString = "398640619.443742"
+         timestampString = "398726514.872638"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "201"
-         endingLineNumber = "201"
+         startingLineNumber = "292"
+         endingLineNumber = "292"
          landmarkName = "-setupMenuBarButtonItems"
          landmarkType = "5">
       </FileBreakpoint>
@@ -320,11 +320,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "sweep/sweep/ScansViewController.m"
-         timestampString = "398640619.443742"
+         timestampString = "398726514.872638"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "266"
-         endingLineNumber = "266"
+         startingLineNumber = "357"
+         endingLineNumber = "357"
          landmarkName = "-displayLoginControllerIfNeeded"
          landmarkType = "5">
       </FileBreakpoint>
@@ -333,44 +333,44 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "sweep/sweep/ScansViewController.m"
-         timestampString = "398640619.443742"
+         timestampString = "398726514.872638"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "460"
-         endingLineNumber = "460">
+         startingLineNumber = "551"
+         endingLineNumber = "551">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "sweep/sweep/ScansViewController.m"
-         timestampString = "398640619.443742"
+         timestampString = "398726514.872638"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "470"
-         endingLineNumber = "470">
+         startingLineNumber = "561"
+         endingLineNumber = "561">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "sweep/sweep/ScansViewController.m"
-         timestampString = "398640619.443742"
+         timestampString = "398726514.872638"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "462"
-         endingLineNumber = "462">
+         startingLineNumber = "553"
+         endingLineNumber = "553">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "sweep/sweep/ScansViewController.m"
-         timestampString = "398640619.443742"
+         timestampString = "398726514.872638"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "239"
-         endingLineNumber = "239"
+         startingLineNumber = "330"
+         endingLineNumber = "330"
          landmarkName = "-setDetailItem:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -379,11 +379,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "sweep/sweep/ScansViewController.m"
-         timestampString = "398640619.443742"
+         timestampString = "398726514.872638"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "320"
-         endingLineNumber = "320"
+         startingLineNumber = "411"
+         endingLineNumber = "411"
          landmarkName = "-validateDepartmentKey:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -418,11 +418,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "sweep/sweep/ScansViewController.m"
-         timestampString = "398640619.443742"
+         timestampString = "398726514.872638"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "447"
-         endingLineNumber = "447"
+         startingLineNumber = "538"
+         endingLineNumber = "538"
          landmarkName = "-configureCell:atIndexPath:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -561,25 +561,12 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "sweep/sweep/ScansViewController.m"
-         timestampString = "398640619.443742"
+         timestampString = "398726514.872638"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "148"
-         endingLineNumber = "148"
+         startingLineNumber = "235"
+         endingLineNumber = "235"
          landmarkName = "-scrollViewDidScroll:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "sweep/sweep/ScansViewController.m"
-         timestampString = "398640636.168614"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "105"
-         endingLineNumber = "105"
-         landmarkName = "-willAnimateRotationToInterfaceOrientation:duration:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>
