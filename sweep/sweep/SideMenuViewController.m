@@ -380,7 +380,7 @@
 //            [self.events addObject:newEvent];
 //            [self.eventsTable reloadData];
 //             [self loadRecordsFromCoreData];
-            self.indexToGoToAfterSync = self.events.count;
+            self.indexToGoToAfterSync = 0;
 
             [[SWSyncEngine sharedEngine] startSync];
         }];

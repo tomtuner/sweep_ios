@@ -138,6 +138,9 @@
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
                                                 <textField hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Add an event..." clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="krG-ec-Lxh">
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="226" id="H8n-Io-7eO"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
                                                 </textField>
@@ -146,7 +149,6 @@
                                         </view>
                                         <constraints>
                                             <constraint firstItem="Hgj-N8-0Xm" firstAttribute="leading" secondItem="1ob-Di-GAc" secondAttribute="leading" constant="20" type="default" id="1gr-lq-MFR"/>
-                                            <constraint firstAttribute="trailing" secondItem="krG-ec-Lxh" secondAttribute="trailing" constant="20" type="default" id="4Ee-zX-FmX"/>
                                             <constraint firstItem="krG-ec-Lxh" firstAttribute="leading" secondItem="1ob-Di-GAc" secondAttribute="leading" constant="20" type="default" id="Pfb-yY-QX6"/>
                                             <constraint firstAttribute="trailing" secondItem="Hgj-N8-0Xm" secondAttribute="trailing" constant="20" type="default" id="Uqr-RL-kRh"/>
                                             <constraint firstItem="Hgj-N8-0Xm" firstAttribute="top" secondItem="1ob-Di-GAc" secondAttribute="top" constant="11" id="tbl-JN-ZAv"/>
@@ -525,9 +527,10 @@
                 <relationship kind="outlet" name="pageControl" candidateClass="UIPageControl"/>
                 <relationship kind="outlet" name="scansTable" candidateClass="UITableView"/>
                 <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
+                <relationship kind="outlet" name="totalScansIndicator" candidateClass="UIActivityIndicatorView"/>
                 <relationship kind="outlet" name="totalScansLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="uniqueScansIndicator" candidateClass="UIActivityIndicatorView"/>
                 <relationship kind="outlet" name="uniqueScansLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="validKeyNetworkIndicator" candidateClass="UIActivityIndicatorView"/>
             </relationships>
         </class>
         <class className="SideMenuTableViewCell" superclassName="UITableViewCell">

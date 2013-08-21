@@ -381,6 +381,7 @@ static NSUInteger kNumberOfPages = 2;
 
 - (void) showLoginController
 {
+    [self stopActivityIndicatorView];
     UIStoryboard *st = [UIStoryboard storyboardWithName:[[NSBundle mainBundle].infoDictionary objectForKey:@"UIMainStoryboardFile"] bundle:[NSBundle mainBundle]];
     LogInViewController *logInController = [st instantiateViewControllerWithIdentifier:@"logInViewController"];
     logInController.departmentKeyItem = self.departmentKeyItem;
