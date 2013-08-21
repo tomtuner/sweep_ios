@@ -124,7 +124,7 @@
         NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:@"Events"];
 
         [request setSortDescriptors:[NSArray arrayWithObject:
-                                     [NSSortDescriptor sortDescriptorWithKey:@"remote_id" ascending:YES]]];
+                                     [NSSortDescriptor sortDescriptorWithKey:@"created_at" ascending:NO]]];
         self.events = [self.managedObjectContext executeFetchRequest:request error:&error];
 //        NSLog(@"Events Array: %@", self.events);
         [self.eventsTable reloadData];

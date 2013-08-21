@@ -23,7 +23,9 @@ static NSUInteger kNumberOfPages = 2;
 @property (nonatomic, strong) IBOutlet UIScrollView *scrollView;
 @property (nonatomic, strong) IBOutlet UIPageControl *pageControl;
 
-@property (nonatomic, strong) IBOutlet UIActivityIndicatorView *validKeyNetworkIndicator;
+@property (nonatomic, strong) IBOutlet UIActivityIndicatorView *totalScansIndicator;
+@property (nonatomic, strong) IBOutlet UIActivityIndicatorView *uniqueScansIndicator;
+
 @property (nonatomic, strong) UIActivityIndicatorView *scrollView1ActivityIndicator;
 @property (nonatomic, strong) UIActivityIndicatorView *scrollView2ActivityIndicator;
 
@@ -287,16 +289,19 @@ static NSUInteger kNumberOfPages = 2;
 
 - (void) stopActivityIndicatorView
 {
-    [_validKeyNetworkIndicator stopAnimating];
+    [_totalScansIndicator stopAnimating];
+    [_uniqueScansIndicator stopAnimating];
     [_scrollView1ActivityIndicator stopAnimating];
     [_scrollView2ActivityIndicator stopAnimating];
 }
 
 - (void) showActivtyIndicatorView
 {
-    [self.validKeyNetworkIndicator setHidesWhenStopped:YES];
+    [_totalScansIndicator setHidesWhenStopped:YES];
+    [_uniqueScansIndicator setHidesWhenStopped:YES];
     
-    [_validKeyNetworkIndicator startAnimating];
+    [_uniqueScansIndicator startAnimating];
+    [_totalScansIndicator startAnimating];
 }
 
 - (void)setupMenuBarButtonItems {
