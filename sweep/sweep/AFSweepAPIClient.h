@@ -10,7 +10,7 @@
 #import "AFJSONRequestOperation.h"
 
 #ifdef DEBUG
-    #define kAFSweepAPIBaseURLString @"http://developer.sweepevents.com/api/"
+    #define kAFSweepAPIBaseURLString @"https://developer.sweepevents.com/api/"
 #else
     #define kAFSweepAPIBaseURLString @"https://api.sweepevents.com/api/"
 #endif
