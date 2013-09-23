@@ -16,11 +16,17 @@
 
 @implementation LogInViewController
 
+
+- (UIBarPosition)positionForBar:(id<UIBarPositioning>)bar
+{
+    return UIBarPositionTopAttached;
+}
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+       
     }
     return self;
 }
@@ -33,7 +39,28 @@
     UIImageView *titleView = [[UIImageView alloc] initWithImage:navCenter];
     [self.navBar.topItem setTitleView:titleView];
     self.managedObjectContext = [[SWCoreDataController sharedInstance] newManagedObjectContext];
+//    
+//    NSString *verticalConstraint = @"V:|[v]|";
+//    NSMutableDictionary *views = [NSMutableDictionary new];
+//    views[@"v"] = self.navBar;
+//    if ([self respondsToSelector:@selector(topLayoutGuide)]) {
+//        views[@"topLayoutGuide"] = self.topLayoutGuide;
+//        verticalConstraint = @"V:[topLayoutGuide][v]|";
+//    }
+//    [constraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:verticalConstraint options:0 metrics:nil views:views]];
+//    [self.view addConstraints:constraints];
+    
 }
+
+//- (void) viewWillAppear:(BOOL)animated
+//{
+//    [super viewWillAppear:animated];
+//    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7)
+//    {
+//        self.navBar.frame = CGRectMake(0, 22, self.navBar.frame.size.width, self.navBar.frame.size.height);
+//        //        self.edgesForExtendedLayout = UIRectEdgeNone;
+//    }
+//}
 
 -(void) viewDidAppear:(BOOL)animated
 {

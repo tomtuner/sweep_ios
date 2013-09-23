@@ -12,6 +12,9 @@
 #import "Customers.h"
 #import "SWSyncEngine.h"
 
+#define SYSTEM_VERSION_LESS_THAN(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
+
+
 @implementation ThemeManager
 
 + (id <Theme>)sharedTheme
@@ -50,8 +53,8 @@
     id <Theme> theme = [self sharedTheme];
     
     UINavigationBar *navigationBarAppearance = [UINavigationBar appearance];
-    [navigationBarAppearance setBackgroundImage:[theme navigationBackgroundForBarMetrics:UIBarMetricsDefault] forBarMetrics:UIBarMetricsDefault];
-    [navigationBarAppearance setBackgroundImage:[theme navigationBackgroundForBarMetrics:UIBarMetricsLandscapePhone] forBarMetrics:UIBarMetricsLandscapePhone];
+//    [navigationBarAppearance setBackgroundImage:[theme navigationBackgroundForBarMetrics:UIBarMetricsDefault] forBarMetrics:UIBarMetricsDefault];
+//    [navigationBarAppearance setBackgroundImage:[theme navigationBackgroundForBarMetrics:UIBarMetricsLandscapePhone] forBarMetrics:UIBarMetricsLandscapePhone];
     //[navigationBarAppearance setShadowImage:[theme topShadow]];
     
     UIBarButtonItem *barButtonItemAppearance = [UIBarButtonItem appearance];
@@ -163,7 +166,13 @@
     }
     UIColor *baseTintColor = [theme baseTintColor];
     if (baseTintColor) {
-        [navigationBarAppearance setTintColor:baseTintColor];
+        if (SYSTEM_VERSION_LESS_THAN(@"7.0"))
+        {
+            [navigationBarAppearance setTintColor:baseTintColor];
+        }else {
+            [navigationBarAppearance setBarTintColor:baseTintColor];
+            [navigationBarAppearance setTintColor:[UIColor whiteColor]];
+        }
 //        [barButtonItemAppearance setTintColor:baseTintColor];
         [buttonAppearance setTintColor:baseTintColor];
         [segmentedAppearance setTintColor:baseTintColor];

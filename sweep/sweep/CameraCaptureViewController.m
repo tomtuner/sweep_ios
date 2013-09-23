@@ -8,6 +8,8 @@
 
 #import "CameraCaptureViewController.h"
 
+#define SYSTEM_VERSION_LESS_THAN(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
+
 @interface CameraCaptureViewController ()
 
 @property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
@@ -50,9 +52,19 @@
     {
         // Do something
         [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationFade];
-
+        if (SYSTEM_VERSION_LESS_THAN(@"7.0"))
+        {}
+        else
+        {
+            [self setNeedsStatusBarAppearanceUpdate];
+   
+        }
     }
     return self;
+}
+
+- (BOOL) prefersStatusBarHidden{
+    return YES;
 }
 - (void)viewDidLoad
 {
@@ -200,8 +212,14 @@
         // We got a result. Display information about the result onscreen.
         //        [self.decodedLabel performSelectorOnMainThread:@selector(setText:) withObject:[self displayForResult:result] waitUntilDone:YES];
         //        [self displayForResult:result];
-        NSString *idScanned = [result.text substringToIndex: [[[ThemeManager sharedTheme] lengthOfValidID] integerValue]];
+        NSString *idScanned = result.text;
         NSCharacterSet* notDigits = [[NSCharacterSet decimalDigitCharacterSet] invertedSet];
+
+        if (result.text.length >= [[[ThemeManager sharedTheme] lengthOfValidID] integerValue])
+        {
+            idScanned = [result.text substringToIndex: [[[ThemeManager sharedTheme] lengthOfValidID] integerValue]];
+        }
+        
         if ([idScanned rangeOfCharacterFromSet:notDigits].location == NSNotFound)
         {
             // newString consists only of the digits 0 through 9
@@ -298,6 +316,7 @@
 -(IBAction)flash:(id)sender {
     if ([self.capture hasTorch]) {
         self.capture.torch = !self.capture.torch;
+        self.flashButton.selected = !self.flashButton.selected;
     }
 }
 
@@ -305,11 +324,13 @@
     if (self.multiScan == NO) {
         self.lastScannedTitleLabel.hidden = NO;
         self.lastScannedCode.hidden = NO;
+        self.multiScanButton.selected = YES;
 //        self.finishButton.titleLabel.text = @"Done";
 
     }else {
         self.lastScannedTitleLabel.hidden = YES;
         self.lastScannedCode.hidden = YES;
+        self.multiScanButton.selected = NO;
 //        self.finishButton.titleLabel.text = @"Cancel";
     }
     self.multiScan = !self.multiScan;

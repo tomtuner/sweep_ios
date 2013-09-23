@@ -62,10 +62,10 @@ static NSUInteger kNumberOfPages = 2;
     frame.origin.y = -frame.size.height;
     UIView* grayView = [[UIView alloc] initWithFrame:frame];
     grayView.backgroundColor = [UIColor grayColor];
-    UIView *topview = [[UIView alloc] initWithFrame:CGRectMake(0,-480,self.view.frame.size.width,480)];
-    topview.backgroundColor = [UIColor blackColor];
+//    UIView *topview = [[UIView alloc] initWithFrame:CGRectMake(0,-480,self.view.frame.size.width,480)];
+//    topview.backgroundColor = [UIColor blackColor];
     
-    [self.scansTable addSubview:topview];
+//    [self.scansTable addSubview:topview];
     
     self.managedObjectContext = [[SWCoreDataController sharedInstance] newManagedObjectContext];
 
