@@ -9,20 +9,9 @@
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleIcons</key>
-	<dict>
-		<key>CFBundlePrimaryIcon</key>
-		<dict>
-			<key>CFBundleIconFiles</key>
-			<array>
-				<string>app_icon_iPad_beta.png</string>
-				<string>app_icon_iPad_retina_beta.png</string>
-				<string>app_icon_iPhone_beta.png</string>
-				<string>app_icon_iPhone_retina_beta.png</string>
-			</array>
-			<key>UIPrerenderedIcon</key>
-			<true/>
-		</dict>
-	</dict>
+	<dict/>
+	<key>CFBundleIcons~ipad</key>
+	<dict/>
 	<key>CFBundleIdentifier</key>
 	<string>com.kanzu.sweep-${PRODUCT_NAME:rfc1034identifier}</string>
 	<key>CFBundleInfoDictionaryVersion</key>

@@ -16,6 +16,7 @@
 #import "Events.h"
 #import "SettingsManager.h"
 #import "CameraCaptureViewController.h"
+#import "KeypadViewController.h"
 #import "Theme.h"
 
 @interface ScansViewController : UIViewController <NSFetchedResultsControllerDelegate, UISplitViewControllerDelegate, UIScrollViewDelegate>
@@ -27,5 +28,5 @@
 @property (nonatomic, strong) KeychainWrapper *departmentKeyItem;
 
 - (void) resetDepartment;
-
+- (void) loadRecordsFromCoreData;
 @end

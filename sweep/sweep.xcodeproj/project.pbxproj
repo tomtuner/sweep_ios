@@ -277,6 +277,10 @@
 		E9EDC28617C2A943000F82F1 /* sweep_logo_top.png in Resources */ = {isa = PBXBuildFile; fileRef = E9EDC27F17C2A943000F82F1 /* sweep_logo_top.png */; };
 		E9EDC28717C2A943000F82F1 /* sweep_logo_top@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9EDC28017C2A943000F82F1 /* sweep_logo_top@2x.png */; };
 		E9EDC28817C2A943000F82F1 /* sweep_logo_top@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9EDC28017C2A943000F82F1 /* sweep_logo_top@2x.png */; };
+		E9EE712917F336940096A116 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9EE712817F336940096A116 /* Images.xcassets */; };
+		E9EE712A17F33B370096A116 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9EE712817F336940096A116 /* Images.xcassets */; };
+		E9EE712D17F33D3E0096A116 /* KeypadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9EE712C17F33D3E0096A116 /* KeypadViewController.m */; };
+		E9EE712E17F33D3E0096A116 /* KeypadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9EE712C17F33D3E0096A116 /* KeypadViewController.m */; };
 		E9FE4CC1177A8F7E0095487C /* NSManagedObject+JSON.m in Sources */ = {isa = PBXBuildFile; fileRef = E9FE4CC0177A8F7E0095487C /* NSManagedObject+JSON.m */; };
 		E9FE4CC2177A8F7E0095487C /* NSManagedObject+JSON.m in Sources */ = {isa = PBXBuildFile; fileRef = E9FE4CC0177A8F7E0095487C /* NSManagedObject+JSON.m */; };
 /* End PBXBuildFile section */
@@ -413,6 +417,9 @@
 		E9EDC27E17C2A943000F82F1 /* sweep_logo_bottom@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sweep_logo_bottom@2x.png"; sourceTree = "<group>"; };
 		E9EDC27F17C2A943000F82F1 /* sweep_logo_top.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sweep_logo_top.png; sourceTree = "<group>"; };
 		E9EDC28017C2A943000F82F1 /* sweep_logo_top@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sweep_logo_top@2x.png"; sourceTree = "<group>"; };
+		E9EE712817F336940096A116 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = "sweep-dev/Images.xcassets"; sourceTree = "<group>"; };
+		E9EE712B17F33D3E0096A116 /* KeypadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeypadViewController.h; sourceTree = "<group>"; };
+		E9EE712C17F33D3E0096A116 /* KeypadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeypadViewController.m; sourceTree = "<group>"; };
 		E9FE4CBF177A8F7E0095487C /* NSManagedObject+JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSManagedObject+JSON.h"; sourceTree = "<group>"; };
 		E9FE4CC0177A8F7E0095487C /* NSManagedObject+JSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSManagedObject+JSON.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -487,6 +494,7 @@
 		E9518F801768108200EB82C8 = {
 			isa = PBXGroup;
 			children = (
+				E9EE712817F336940096A116 /* Images.xcassets */,
 				E9E8AD4C17681F5D00F837D7 /* sweep_resources */,
 				E9518F941768108200EB82C8 /* sweep_source */,
 				E9518F8B1768108200EB82C8 /* Frameworks */,
@@ -541,6 +549,8 @@
 				E9C4F45B177FE52B00C99B22 /* CameraCaptureViewController.m */,
 				E9E8ADED176AA1C500F837D7 /* LogInViewController.h */,
 				E9E8ADEE176AA1C600F837D7 /* LogInViewController.m */,
+				E9EE712B17F33D3E0096A116 /* KeypadViewController.h */,
+				E9EE712C17F33D3E0096A116 /* KeypadViewController.m */,
 				E9518F951768108200EB82C8 /* Supporting Files */,
 			);
 			name = sweep_source;
@@ -921,6 +931,14 @@
 			attributes = {
 				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = "Kanzu LLC";
+				TargetAttributes = {
+					E9518F881768108200EB82C8 = {
+						DevelopmentTeam = B99478LPEN;
+					};
+					E9828AC917837CF700619FB4 = {
+						DevelopmentTeam = B99478LPEN;
+					};
+				};
 			};
 			buildConfigurationList = E9518F841768108200EB82C8 /* Build configuration list for PBXProject "sweep" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -951,6 +969,7 @@
 				E9518FA81768108200EB82C8 /* MainStoryboard_iPhone.storyboard in Resources */,
 				E9518FAB1768108200EB82C8 /* MainStoryboard_iPad.storyboard in Resources */,
 				E9E8AD621768331C00F837D7 /* menu_icon.png in Resources */,
+				E9EE712A17F33B370096A116 /* Images.xcassets in Resources */,
 				E9E8AD631768331C00F837D7 /* menu_icon@2x.png in Resources */,
 				E9E8ADA11768D14D00F837D7 /* defaults.plist in Resources */,
 				E9E8ADC81768D29100F837D7 /* sweep-Info.plist in Resources */,
@@ -1018,6 +1037,7 @@
 				E9828AEB17837CF700619FB4 /* MainStoryboard_iPhone.storyboard in Resources */,
 				E9828AEC17837CF700619FB4 /* MainStoryboard_iPad.storyboard in Resources */,
 				E9828AED17837CF700619FB4 /* menu_icon.png in Resources */,
+				E9EE712917F336940096A116 /* Images.xcassets in Resources */,
 				E9828AEE17837CF700619FB4 /* menu_icon@2x.png in Resources */,
 				E9828AEF17837CF700619FB4 /* defaults.plist in Resources */,
 				E9828AF017837CF700619FB4 /* sweep-Info.plist in Resources */,
@@ -1278,6 +1298,7 @@
 				E9E8ADEB176A913600F837D7 /* AFSweepAPIClient.m in Sources */,
 				E9E8ADEF176AA1C600F837D7 /* LogInViewController.m in Sources */,
 				E9E8ADF4176AAB7500F837D7 /* KeychainWrapper.m in Sources */,
+				E9EE712D17F33D3E0096A116 /* KeypadViewController.m in Sources */,
 				E93850171770261900DC9D97 /* SWSyncEngine.m in Sources */,
 				E938501B17702A2300DC9D97 /* SWCoreDataController.m in Sources */,
 				E9385043177035C300DC9D97 /* Customers.m in Sources */,
@@ -1311,6 +1332,7 @@
 				E9828AD417837CF700619FB4 /* AFSweepAPIClient.m in Sources */,
 				E9828AD517837CF700619FB4 /* LogInViewController.m in Sources */,
 				E9828AD617837CF700619FB4 /* KeychainWrapper.m in Sources */,
+				E9EE712E17F33D3E0096A116 /* KeypadViewController.m in Sources */,
 				E9828AD717837CF700619FB4 /* SWSyncEngine.m in Sources */,
 				E9828AD817837CF700619FB4 /* SWCoreDataController.m in Sources */,
 				E9828AD917837CF700619FB4 /* Customers.m in Sources */,
@@ -1485,6 +1507,9 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E1F66A6A01AD42F8916FB975 /* Pods.xcconfig */;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEFAULTS_EXT = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "sweep/sweep-Prefix.pch";
@@ -1508,7 +1533,9 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E1F66A6A01AD42F8916FB975 /* Pods.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Thomas Demeo";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEFAULTS_EXT = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "sweep/sweep-Prefix.pch";
@@ -1564,6 +1591,9 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E1F66A6A01AD42F8916FB975 /* Pods.xcconfig */;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEFAULTS_EXT = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "sweep/sweep-Prefix.pch";
@@ -1600,6 +1630,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E1F66A6A01AD42F8916FB975 /* Pods.xcconfig */;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-beta";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "sweep/sweep-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -1614,6 +1648,7 @@
 					"\"$(SRCROOT)/sweep\"",
 				);
 				PRODUCT_NAME = dev;
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1622,6 +1657,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E1F66A6A01AD42F8916FB975 /* Pods.xcconfig */;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-beta";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "sweep/sweep-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -1636,6 +1675,7 @@
 					"\"$(SRCROOT)/sweep\"",
 				);
 				PRODUCT_NAME = dev;
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = AppStore;
@@ -1644,7 +1684,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E1F66A6A01AD42F8916FB975 /* Pods.xcconfig */;
 			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Thomas Demeo";
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-beta";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "sweep/sweep-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -1659,6 +1702,7 @@
 					"\"$(SRCROOT)/sweep\"",
 				);
 				PRODUCT_NAME = dev;
+				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "A62BBE01-ECCC-491C-B26F-38620DBFD2F7";
 				WRAPPER_EXTENSION = app;
 			};

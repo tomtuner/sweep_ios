@@ -309,7 +309,7 @@ static NSUInteger kNumberOfPages = 2;
         self.navigationItem.leftBarButtonItem = [self leftMenuBarButtonItem];
     }
     
-    self.navigationItem.rightBarButtonItem = [self rightMenuBarButtonItem];
+    self.navigationItem.rightBarButtonItems = [NSArray arrayWithObjects: [self rightMenuBarButtonItem],[self keypadBarButtonItem], nil];
 }
 
 - (UIBarButtonItem *)leftMenuBarButtonItem {
@@ -324,6 +324,19 @@ static NSUInteger kNumberOfPages = 2;
             initWithTitle:@"Scan" style:UIBarButtonItemStyleBordered
             target:self
             action:@selector(scanPressed:)];
+}
+                                               
+- (UIBarButtonItem *)keypadBarButtonItem {
+    UIBarButtonItem *keypadButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"keypad_bar_button"] style:UIBarButtonItemStylePlain target:self  action:@selector(keypadButtonPressed)];
+    return keypadButton;
+}
+
+-(void) keypadButtonPressed
+{
+    UIStoryboard *st = [UIStoryboard storyboardWithName:[[NSBundle mainBundle].infoDictionary objectForKey:@"UIMainStoryboardFile"] bundle:[NSBundle mainBundle]];
+    KeypadViewController *kpvc = [st instantiateViewControllerWithIdentifier:@"keypadViewController"];
+    kpvc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+    [self presentViewController:kpvc animated:YES completion:nil];
 }
 
 - (IBAction)scanPressed:(id)sender {

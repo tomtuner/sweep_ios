@@ -133,7 +133,9 @@
 
 -(void)logOutPressed
 {
+    [SettingsManager sharedSettingsManager].indexOfLastViewedEvent = 0;
     [self.scansViewController resetDepartment];
+    [self.scansViewController loadRecordsFromCoreData];
     [self loadRecordsFromCoreData];
     self.departmentNameLabel.text = nil;
 }
