@@ -7,10 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <AudioToolbox/AudioServices.h>
+#import "Theme.h"
+#import "SWCoreDataController.h"
+#import "Scans.h"
+#import "Events.h"
 
 @interface KeypadViewController : UIViewController
 
 @property(nonatomic, strong) IBOutlet UINavigationBar *navBar;
 @property(nonatomic, strong) IBOutlet UILabel *idLabel;
+
+@property(nonatomic,strong) Events *event;
 
 @end

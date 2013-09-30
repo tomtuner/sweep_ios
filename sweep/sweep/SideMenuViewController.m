@@ -114,7 +114,7 @@
         self.scansViewController.detailItem = nil;
     }
     Departments *dept = [[SWSyncEngine sharedEngine] sharedDepartment];
-    self.departmentNameLabel.text = dept.name;
+    self.departmentNameLabel.text = dept.name;    
 }
 
 - (void)loadRecordsFromCoreData {
@@ -194,8 +194,12 @@
     }
     
     if (addCell) {
+        cell.nameLabel.textColor = [UIColor lightGrayColor];
+
         cell.nameLabel.text = @"Add an event...";
+//        cell.nameLabel.alpha = 0.8;
     }else {
+        
         [self configureCell:cell atIndexPath:indexPath];
 //        Events *object = [self.events objectAtIndex:indexPath.row];
 //        cell.nameLabel.text = object.name;
@@ -281,7 +285,7 @@
     [cell.nameLabel setHidden:NO];
     [cell.nameTextField setHidden:YES];
     [cell.nameTextField setSelected:NO];
-    
+    [cell.nameLabel setTextColor:[UIColor blackColor]];
     Events *object = [self.events objectAtIndex:indexPath.row];
     cell.nameLabel.text = object.name;
 }

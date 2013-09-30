@@ -309,7 +309,9 @@ static NSUInteger kNumberOfPages = 2;
         self.navigationItem.leftBarButtonItem = [self leftMenuBarButtonItem];
     }
     
-    self.navigationItem.rightBarButtonItems = [NSArray arrayWithObjects: [self rightMenuBarButtonItem],[self keypadBarButtonItem], nil];
+//    self.navigationItem.rightBarButtonItems = [NSArray arrayWithObjects: [self rightMenuBarButtonItem],[self keypadBarButtonItem], nil];
+    self.navigationItem.rightBarButtonItems = [NSArray arrayWithObjects: [self rightMenuBarButtonItem], nil];
+
 }
 
 - (UIBarButtonItem *)leftMenuBarButtonItem {
@@ -321,21 +323,23 @@ static NSUInteger kNumberOfPages = 2;
 
 - (UIBarButtonItem *)rightMenuBarButtonItem {
     return [[UIBarButtonItem alloc]
-            initWithTitle:@"Scan" style:UIBarButtonItemStyleBordered
+            initWithBarButtonSystemItem:UIBarButtonSystemItemCamera
             target:self
             action:@selector(scanPressed:)];
 }
                                                
 - (UIBarButtonItem *)keypadBarButtonItem {
-    UIBarButtonItem *keypadButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"keypad_bar_button"] style:UIBarButtonItemStylePlain target:self  action:@selector(keypadButtonPressed)];
+    UIBarButtonItem *keypadButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"keypad_bar_button"] style:UIBarButtonItemStylePlain target:self  action:@selector(keypadButtonPressed:)];
     return keypadButton;
 }
 
--(void) keypadButtonPressed
+-(IBAction)keypadButtonPressed:(id)sender
 {
     UIStoryboard *st = [UIStoryboard storyboardWithName:[[NSBundle mainBundle].infoDictionary objectForKey:@"UIMainStoryboardFile"] bundle:[NSBundle mainBundle]];
     KeypadViewController *kpvc = [st instantiateViewControllerWithIdentifier:@"keypadViewController"];
+    kpvc.event = self.detailItem;
     kpvc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+    kpvc.modalPresentationStyle = UIModalPresentationFormSheet;
     [self presentViewController:kpvc animated:YES completion:nil];
 }
 

@@ -298,7 +298,15 @@
 
 -(IBAction)done:(id)sender
 {
-    [self returnBarcodeResults];
+    if ([self.finishButton.titleLabel.text isEqualToString:@"Done"])
+    {
+        [self returnBarcodeResults];
+    }else {
+        [self cleanUpCamera];
+        [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
+
+        [self dismissViewControllerAnimated:NO completion:nil];
+    }
 }
 
 /*
