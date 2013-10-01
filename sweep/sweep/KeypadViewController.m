@@ -95,7 +95,10 @@
 - (IBAction)keySelected:(id)sender
 {
     UIButton *keypadButton = (UIButton *) sender;
-    self.idLabel.text = [NSString stringWithFormat:@"%@%@", self.idLabel.text, keypadButton.titleLabel.text];
+    if (self.idLabel.text.length < 15)
+    {
+        self.idLabel.text = [NSString stringWithFormat:@"%@%@", self.idLabel.text, keypadButton.titleLabel.text];
+    }
     [self setDoneButtonStatus];
 }
 

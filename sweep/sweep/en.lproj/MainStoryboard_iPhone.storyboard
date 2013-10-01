@@ -34,7 +34,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GkP-9O-8UL">
-                                <rect key="frame" x="0.0" y="1" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="1.0000000035333383" width="320" height="44"/>
                                 <items>
                                     <navigationItem id="red-Pb-xTH"/>
                                 </items>
@@ -691,7 +691,6 @@
                                 <rect key="frame" x="0.0" y="460" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
-                                    <barButtonItem title="+1" id="SD8-Ck-L7w"/>
                                     <barButtonItem systemItem="flexibleSpace" id="jJ2-Wa-Sbn">
                                         <inset key="imageInsets" minX="0.0" minY="2" maxX="0.0" maxY="0.0"/>
                                     </barButtonItem>

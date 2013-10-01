@@ -472,7 +472,6 @@
                                     <constraint firstAttribute="height" constant="44" id="j47-ih-HVd"/>
                                 </constraints>
                                 <items>
-                                    <barButtonItem title="+1" id="oiX-me-2eV"/>
                                     <barButtonItem systemItem="flexibleSpace" id="7BW-k2-1JV"/>
                                     <barButtonItem title="Keypad" id="PIf-HF-Jn0">
                                         <connections>
