@@ -414,6 +414,7 @@
     CGRect frame = self.navigationController.navigationBar.frame;
     if (UIInterfaceOrientationIsPortrait(orientation)) {
         frame.size.height = 44;
+        [ThemeManager customizeNavigationControllerTitleView:self barMetrics:UIBarMetricsDefault];
     } else {
         if ( UI_USER_INTERFACE_IDIOM() != UIUserInterfaceIdiomPad )
         {
