@@ -19,6 +19,8 @@
 #import "KeypadViewController.h"
 #import "Theme.h"
 
+#define REFRESH_HEADER_HEIGHT 52.0f
+
 @interface ScansViewController : UIViewController <NSFetchedResultsControllerDelegate, UISplitViewControllerDelegate, UIScrollViewDelegate>
 
 @property (nonatomic, strong) Events *detailItem;

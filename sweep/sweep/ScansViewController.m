@@ -36,6 +36,19 @@ static NSUInteger kNumberOfPages = 2;
 
 @property (nonatomic) BOOL shouldAnimateActivity;
 
+// Table View properties for pull to refresh
+@property (nonatomic, retain) UIView *refreshHeaderView;
+@property (nonatomic, retain) UILabel *refreshLabel;
+@property (nonatomic, retain) UIImageView *refreshArrow;
+@property (nonatomic, retain) UIActivityIndicatorView *refreshSpinner;
+@property (nonatomic, copy) NSString *textPull;
+@property (nonatomic, copy) NSString *textRelease;
+@property (nonatomic, copy) NSString *textLoading;
+
+@property (nonatomic) BOOL isDragging;
+@property (nonatomic) BOOL isLoading;
+
+
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath;
 - (void)configureView;
 
@@ -71,10 +84,13 @@ static NSUInteger kNumberOfPages = 2;
 
     [self setupMenuBarButtonItems];
     [self configureView];
-    
+    [self addPullToRefreshHeader];
+    [self setupStrings];
+
     [self displayLoginControllerIfNeeded];
     [[NSNotificationCenter defaultCenter] addObserverForName:@"SWSyncEngineSyncCompleted" object:nil queue:nil usingBlock:^(NSNotification *note) {
         [self loadRecordsFromCoreData];
+        [self stopLoading];
     }];
     
     [self showActivtyIndicatorView];
@@ -205,6 +221,8 @@ static NSUInteger kNumberOfPages = 2;
             [self.scrollView addSubview:view];
         }
         self.scrollView.contentSize = CGSizeMake(self.scrollView.frame.size.width * kNumberOfPages, self.scrollView.frame.size.height);
+        
+        [self layoutPullToRefreshView];
     }else {
         self.scrollView.hidden = YES;
     }
@@ -239,14 +257,6 @@ static NSUInteger kNumberOfPages = 2;
 //        _arrow3.alpha = 1.0;
         _arrow4.alpha = 1.0;
     }];
-}
-
-- (void)scrollViewDidScroll:(UIScrollView *)sender
-{
-    // Update the page when more than 50% of the previous/next page is visible
-    CGFloat pageWidth = self.scrollView.frame.size.width;
-    int page = floor((self.scrollView.contentOffset.x - pageWidth / 2) / pageWidth) + 1;
-    self.pageControl.currentPage = page;
 }
 
 -(void) viewDidAppear:(BOOL)animated
@@ -377,6 +387,151 @@ static NSUInteger kNumberOfPages = 2;
         self.title = self.detailItem.name;
         [self loadRecordsFromCoreData];
     }
+}
+
+#pragma mark - Pull to Refresh Header
+
+- (void)addPullToRefreshHeader {
+    _refreshHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0 - REFRESH_HEADER_HEIGHT, self.scansTable.frame.size.width, REFRESH_HEADER_HEIGHT)];
+    _refreshHeaderView.backgroundColor = [UIColor clearColor];
+    
+    _refreshLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.scansTable.frame.size.width, REFRESH_HEADER_HEIGHT)];
+    _refreshLabel.backgroundColor = [UIColor clearColor];
+    _refreshLabel.font = [UIFont boldSystemFontOfSize:12.0];
+    _refreshLabel.textAlignment = NSTextAlignmentCenter;
+    
+    //    _refreshArrow = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"header_icon"]];
+    _refreshArrow = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"sweep_broom"]];
+    
+    _refreshArrow.frame = CGRectMake(floorf((REFRESH_HEADER_HEIGHT) / 2),
+                                     (floorf(REFRESH_HEADER_HEIGHT - 35) / 2),
+                                     _refreshArrow.frame.size.width, _refreshArrow.frame.size.height);
+    
+    _refreshSpinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    _refreshSpinner.frame = CGRectMake(floorf(floorf(REFRESH_HEADER_HEIGHT - 20) / 2), floorf((REFRESH_HEADER_HEIGHT - 20) / 2), 20, 20);
+    _refreshSpinner.hidesWhenStopped = YES;
+    
+    [_refreshHeaderView addSubview:_refreshLabel];
+    [_refreshHeaderView addSubview:_refreshArrow];
+    [_refreshHeaderView addSubview:_refreshSpinner];
+    [self.scansTable addSubview:_refreshHeaderView];
+}
+
+- (void) layoutPullToRefreshView
+{
+    _refreshHeaderView.frame = CGRectMake(0, 0 - REFRESH_HEADER_HEIGHT, self.scansTable.frame.size.width, REFRESH_HEADER_HEIGHT);
+    _refreshHeaderView.backgroundColor = [UIColor clearColor];
+    
+    _refreshLabel.frame = CGRectMake(0, 0, self.scansTable.frame.size.width, REFRESH_HEADER_HEIGHT);
+    _refreshLabel.backgroundColor = [UIColor clearColor];
+    _refreshLabel.font = [UIFont boldSystemFontOfSize:12.0];
+    _refreshLabel.textAlignment = NSTextAlignmentCenter;
+    
+    _refreshArrow.frame = CGRectMake(floorf((REFRESH_HEADER_HEIGHT) / 2),
+                                     (floorf(REFRESH_HEADER_HEIGHT - 35) / 2),
+                                     _refreshArrow.frame.size.width, _refreshArrow.frame.size.height);
+    
+//    _refreshSpinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+//    _refreshSpinner.frame = CGRectMake(floorf(floorf(REFRESH_HEADER_HEIGHT - 20) / 2), floorf((REFRESH_HEADER_HEIGHT - 20) / 2), 20, 20);
+//    _refreshSpinner.hidesWhenStopped = YES;
+}
+
+- (void)setupStrings{
+    _textPull = @"Pull down to refresh...";
+    _textRelease = @"Release to refresh...";
+    _textLoading = @"Loading...";
+}
+
+- (void)stopLoading {
+    _isLoading = NO;
+    
+    // Hide the header
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDelegate:self];
+    [UIView setAnimationDuration:0.3];
+    [UIView setAnimationDidStopSelector:@selector(stopLoadingComplete:finished:context:)];
+    self.scansTable.contentInset = UIEdgeInsetsZero;
+    UIEdgeInsets tableContentInset = self.scansTable.contentInset;
+    tableContentInset.top = 0.0;
+    self.scansTable.contentInset = tableContentInset;
+    [_refreshArrow layer].transform = CATransform3DMakeRotation(M_PI * 2, 0, 0, 1);
+    [UIView commitAnimations];
+}
+
+- (void)stopLoadingComplete:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context {
+    // Reset the header
+    _refreshLabel.text = self.textPull;
+    _refreshArrow.hidden = NO;
+    [_refreshSpinner stopAnimating];
+}
+
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+    if (scrollView.tag != 101) {
+        if (_isLoading) return;
+            _isDragging = YES;
+    }
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    if (scrollView.tag != 101) {
+
+        if (_isLoading) {
+            // Update the content inset, good for section headers
+            if (scrollView.contentOffset.y > 0)
+                self.scansTable.contentInset = UIEdgeInsetsZero;
+            else if (scrollView.contentOffset.y >= -REFRESH_HEADER_HEIGHT)
+                self.scansTable.contentInset = UIEdgeInsetsMake(-scrollView.contentOffset.y, 0, 0, 0);
+        } else if (_isDragging && scrollView.contentOffset.y < 0) {
+            // Update the arrow direction and label
+            [UIView beginAnimations:nil context:NULL];
+            if (scrollView.contentOffset.y < -REFRESH_HEADER_HEIGHT) {
+                // User is scrolling above the header
+                _refreshLabel.text = self.textRelease;
+                [_refreshArrow layer].transform = CATransform3DMakeRotation(M_PI, 0, 0, 1);
+            } else { // User is scrolling somewhere within the header
+                _refreshLabel.text = self.textPull;
+                [_refreshArrow layer].transform = CATransform3DMakeRotation(M_PI * 2, 0, 0, 1);
+            }
+            [UIView commitAnimations];
+        }
+    }
+    else
+    {
+        // Update the page when more than 50% of the previous/next page is visible
+        CGFloat pageWidth = self.scrollView.frame.size.width;
+        int page = floor((self.scrollView.contentOffset.x - pageWidth / 2) / pageWidth) + 1;
+        self.pageControl.currentPage = page;
+    }
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+    if (scrollView.tag != 101) {
+
+        if (_isLoading) return;
+        _isDragging = NO;
+        if (scrollView.contentOffset.y <= -REFRESH_HEADER_HEIGHT) {
+            // Released above the header
+            [self startLoading];
+        }
+    }
+}
+
+- (void)startLoading {
+    _isLoading = YES;
+    
+    // Show the header
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:0.3];
+    self.scansTable.contentInset = UIEdgeInsetsMake(REFRESH_HEADER_HEIGHT, 0, 0, 0);
+    _refreshLabel.text = self.textLoading;
+    _refreshArrow.hidden = YES;
+    [_refreshSpinner startAnimating];
+    [UIView commitAnimations];
+    
+    // Refresh View of Parking Lots
+    //    [self refreshLots];
+//    [[LocationManager sharedLocationManager] startUpdates];
+    [[SWSyncEngine sharedEngine] startSync];
 }
 
 #pragma mark - Login Check

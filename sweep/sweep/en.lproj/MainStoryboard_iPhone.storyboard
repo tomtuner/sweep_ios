@@ -34,7 +34,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GkP-9O-8UL">
-                                <rect key="frame" x="0.0" y="1.0000000035333383" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="1.0000000032366458" width="320" height="44"/>
                                 <items>
                                     <navigationItem id="red-Pb-xTH"/>
                                 </items>
@@ -708,7 +708,7 @@
                                     <constraint firstAttribute="height" constant="44" id="r7w-Ti-4aQ"/>
                                 </constraints>
                             </view>
-                            <scrollView multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5x1-BS-Den">
+                            <scrollView multipleTouchEnabled="YES" tag="101" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5x1-BS-Den">
                                 <rect key="frame" x="0.0" y="1" width="320" height="44"/>
                                 <connections>
                                     <outlet property="delegate" destination="1v2-Fl-FUj" id="lTU-iF-T8J"/>
@@ -732,7 +732,7 @@
                             <constraint firstAttribute="bottom" secondItem="JEZ-Dr-hQs" secondAttribute="bottom" constant="44" id="pOL-fK-HIQ"/>
                         </constraints>
                     </view>
-                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
+                    <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" id="2I4-QJ-mmN"/>
                     <connections>
                         <outlet property="headerView" destination="jtB-yt-LKu" id="A2g-UI-5jF"/>
