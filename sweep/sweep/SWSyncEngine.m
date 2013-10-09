@@ -342,7 +342,7 @@ NSString * const kSWSyncEngineSyncCompletedNotificationName = @"SWSyncEngineSync
 }
 
 - (void)setValue:(id)value forKey:(NSString *)key forManagedObject:(NSManagedObject *)managedObject {
-    if ([key isEqualToString:@"created_at"] || [key isEqualToString:@"updated_at"] || [key isEqualToString:@"scanned_at"]) {
+    if ([key isEqualToString:@"created_at"] || [key isEqualToString:@"updated_at"] || [key isEqualToString:@"scanned_at"] || [key isEqualToString:@"starts_at"] || [key isEqualToString:@"ends_at"]) {
         NSDate *date = [self dateUsingStringFromAPI:value];
         [managedObject setValue:date forKey:key];
     } else if ([value isKindOfClass:[NSDictionary class]]) {

@@ -30,7 +30,7 @@
                                                           forKeys:@[@"valid_key"]];
     
     AFSweepAPIClient *networkingClient = [AFSweepAPIClient sharedClient];
-    [networkingClient postPath:[NSString stringWithFormat:@"%@department_validation", networkingClient.baseURL]
+    [networkingClient getPath:[NSString stringWithFormat:@"%@department_validation", networkingClient.baseURL]
                     parameters:paramDict
                        success:^(AFHTTPRequestOperation *operation, id responseObject) {
                            NSLog(@"Success");

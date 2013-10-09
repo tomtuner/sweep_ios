@@ -21,6 +21,8 @@
 @dynamic scans;
 @dynamic sync_status;
 @dynamic created_at;
+@dynamic starts_at;
+@dynamic ends_at;
 
 - (NSMutableDictionary *)JSONToCreateObjectOnServer {
     

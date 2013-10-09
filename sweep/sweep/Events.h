@@ -20,6 +20,8 @@
 @property (nonatomic, retain) NSNumber * remote_id;
 @property (nonatomic, retain) NSNumber * sync_status;
 @property (nonatomic, retain) NSDate * updated_at;
+@property (nonatomic, retain) NSDate * starts_at;
+@property (nonatomic, retain) NSDate * ends_at;
 @property (nonatomic, retain) Departments *department;
 @property (nonatomic, retain) NSSet *scans;
 @property (nonatomic, retain) NSDate * created_at;

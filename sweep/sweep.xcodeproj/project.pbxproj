@@ -354,6 +354,7 @@
 		E9A2DACC179B1F770063F034 /* nav_bar_logo_white@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav_bar_logo_white@2x.png"; sourceTree = "<group>"; };
 		E9A2DAD1179B299F0063F034 /* nav_bg_ithaca_gold.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nav_bg_ithaca_gold.png; sourceTree = "<group>"; };
 		E9A2DAD2179B299F0063F034 /* nav_bg_ithaca_gold@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav_bg_ithaca_gold@2x.png"; sourceTree = "<group>"; };
+		E9B3560418059CEF005A8DFB /* sweep_1.0.0.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = file; path = sweep_1.0.0.xcdatamodel; sourceTree = "<group>"; };
 		E9C4F45A177FE52B00C99B22 /* CameraCaptureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraCaptureViewController.h; sourceTree = "<group>"; };
 		E9C4F45B177FE52B00C99B22 /* CameraCaptureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraCaptureViewController.m; sourceTree = "<group>"; };
 		E9CA01731790B57C00CAFA5C /* app_icon_iPhone_retina.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = app_icon_iPhone_retina.png; path = ../app_icon_iPhone_retina.png; sourceTree = "<group>"; };
@@ -1835,9 +1836,10 @@
 		E9518FAC1768108200EB82C8 /* sweep.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				E9B3560418059CEF005A8DFB /* sweep_1.0.0.xcdatamodel */,
 				E9518FAD1768108200EB82C8 /* sweep.xcdatamodel */,
 			);
-			currentVersion = E9518FAD1768108200EB82C8 /* sweep.xcdatamodel */;
+			currentVersion = E9B3560418059CEF005A8DFB /* sweep_1.0.0.xcdatamodel */;
 			path = sweep.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
