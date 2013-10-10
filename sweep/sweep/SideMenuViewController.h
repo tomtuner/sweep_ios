@@ -13,6 +13,7 @@
 #import "ScansViewController.h"
 #import "IIViewDeckController.h"
 #import "SideMenuTableViewCell.h"
+#import "EventDetailViewController.h"
 
 @interface SideMenuViewController : UIViewController <NSFetchedResultsControllerDelegate, UITextFieldDelegate, UIActionSheetDelegate>
 

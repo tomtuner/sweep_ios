@@ -28,6 +28,8 @@
     
     NSDictionary *jsonDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
                                     self.name, @"name",
+                                    self.starts_at, @"starts_at",
+                                    self.ends_at, @"ends_at",
                                     self.department_id, @"department_id", nil];
     NSMutableDictionary *event = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                            jsonDictionary, @"event", nil];

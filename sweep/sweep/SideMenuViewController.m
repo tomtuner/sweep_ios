@@ -246,13 +246,18 @@
     
     // FIXME: This should only happen in else statement, should stay selected during new event
     if (indexPath.row == self.events.count) {
-        SideMenuTableViewCell *cell = (SideMenuTableViewCell*)[tableView cellForRowAtIndexPath:indexPath];
-        [cell.nameLabel setHidden:YES];
-        [cell.nameTextField setHidden:NO];
-        [cell.nameTextField setSelected:YES];
+//        SideMenuTableViewCell *cell = (SideMenuTableViewCell*)[tableView cellForRowAtIndexPath:indexPath];
+//        [cell.nameLabel setHidden:YES];
+//        [cell.nameTextField setHidden:NO];
+//        [cell.nameTextField setSelected:YES];
         
-        cell.nameTextField.delegate = self;
-        [cell.nameTextField becomeFirstResponder];
+//        cell.nameTextField.delegate = self;
+//        [cell.nameTextField becomeFirstResponder];
+        self.indexToGoToAfterSync = 0;
+
+        UIStoryboard *st = [UIStoryboard storyboardWithName:[[NSBundle mainBundle].infoDictionary objectForKey:@"UIMainStoryboardFile"] bundle:[NSBundle mainBundle]];
+        EventDetailViewController *edvc = [st instantiateViewControllerWithIdentifier:@"eventDetailViewController"];
+        [self presentViewController:edvc animated:YES completion:nil];
  
         [tableView deselectRowAtIndexPath:indexPath animated:NO];
     }else {
@@ -288,6 +293,12 @@
     [cell.nameLabel setTextColor:[UIColor blackColor]];
     Events *object = [self.events objectAtIndex:indexPath.row];
     cell.nameLabel.text = object.name;
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"MM/dd"];
+    [dateFormatter setTimeZone:[NSTimeZone localTimeZone]];
+    NSLog(@"%@", [dateFormatter stringFromDate:object.starts_at]);
+    cell.dateLabel.text = [dateFormatter stringFromDate:object.starts_at];
 }
 
 #pragma mark - UIKeyboardNotifications

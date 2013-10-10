@@ -41,7 +41,6 @@
 		E9518F991768108200EB82C8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E9518F971768108200EB82C8 /* InfoPlist.strings */; };
 		E9518F9B1768108200EB82C8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E9518F9A1768108200EB82C8 /* main.m */; };
 		E9518F9F1768108200EB82C8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E9518F9E1768108200EB82C8 /* AppDelegate.m */; };
-		E9518FA81768108200EB82C8 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9518FA61768108200EB82C8 /* MainStoryboard_iPhone.storyboard */; };
 		E9518FAB1768108200EB82C8 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9518FA91768108200EB82C8 /* MainStoryboard_iPad.storyboard */; };
 		E9518FAE1768108200EB82C8 /* sweep.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E9518FAC1768108200EB82C8 /* sweep.xcdatamodeld */; };
 		E9518FB11768108200EB82C8 /* ScansViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9518FB01768108200EB82C8 /* ScansViewController.m */; };
@@ -71,7 +70,6 @@
 		E9828AE417837CF700619FB4 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9518F921768108200EB82C8 /* CoreData.framework */; };
 		E9828AE517837CF700619FB4 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2611B6CD07C4463E810F985F /* libPods.a */; };
 		E9828AE717837CF700619FB4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E9518F971768108200EB82C8 /* InfoPlist.strings */; };
-		E9828AEB17837CF700619FB4 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9518FA61768108200EB82C8 /* MainStoryboard_iPhone.storyboard */; };
 		E9828AEC17837CF700619FB4 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9518FA91768108200EB82C8 /* MainStoryboard_iPad.storyboard */; };
 		E9828AED17837CF700619FB4 /* menu_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = E9E8AD601768331C00F837D7 /* menu_icon.png */; };
 		E9828AEE17837CF700619FB4 /* menu_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9E8AD611768331C00F837D7 /* menu_icon@2x.png */; };
@@ -104,7 +102,6 @@
 		E9828B1417837D0500619FB4 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9518F921768108200EB82C8 /* CoreData.framework */; };
 		E9828B1517837D0500619FB4 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2611B6CD07C4463E810F985F /* libPods.a */; };
 		E9828B1717837D0500619FB4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E9518F971768108200EB82C8 /* InfoPlist.strings */; };
-		E9828B1B17837D0500619FB4 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9518FA61768108200EB82C8 /* MainStoryboard_iPhone.storyboard */; };
 		E9828B1C17837D0500619FB4 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9518FA91768108200EB82C8 /* MainStoryboard_iPad.storyboard */; };
 		E9828B1D17837D0500619FB4 /* menu_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = E9E8AD601768331C00F837D7 /* menu_icon.png */; };
 		E9828B1E17837D0500619FB4 /* menu_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9E8AD611768331C00F837D7 /* menu_icon@2x.png */; };
@@ -178,6 +175,10 @@
 		E9A2DAD4179B299F0063F034 /* nav_bg_ithaca_gold.png in Resources */ = {isa = PBXBuildFile; fileRef = E9A2DAD1179B299F0063F034 /* nav_bg_ithaca_gold.png */; };
 		E9A2DAD5179B299F0063F034 /* nav_bg_ithaca_gold@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9A2DAD2179B299F0063F034 /* nav_bg_ithaca_gold@2x.png */; };
 		E9A2DAD6179B299F0063F034 /* nav_bg_ithaca_gold@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9A2DAD2179B299F0063F034 /* nav_bg_ithaca_gold@2x.png */; };
+		E9B28D071806FB6B0085090A /* EventDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B28D061806FB6B0085090A /* EventDetailViewController.m */; };
+		E9B28D081806FB6B0085090A /* EventDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B28D061806FB6B0085090A /* EventDetailViewController.m */; };
+		E9B28D09180702780085090A /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9518FA61768108200EB82C8 /* MainStoryboard_iPhone.storyboard */; };
+		E9B28D0A180702790085090A /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9518FA61768108200EB82C8 /* MainStoryboard_iPhone.storyboard */; };
 		E9C4F45C177FE52C00C99B22 /* CameraCaptureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9C4F45B177FE52B00C99B22 /* CameraCaptureViewController.m */; };
 		E9C4F45D177FE52C00C99B22 /* CameraCaptureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9C4F45B177FE52B00C99B22 /* CameraCaptureViewController.m */; };
 		E9CA01861790BE0000CAFA5C /* nav_bg_sweep.png in Resources */ = {isa = PBXBuildFile; fileRef = E9CA01841790BE0000CAFA5C /* nav_bg_sweep.png */; };
@@ -246,7 +247,6 @@
 		E9E8ADB51768D18700F837D7 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9518F921768108200EB82C8 /* CoreData.framework */; };
 		E9E8ADB61768D18700F837D7 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2611B6CD07C4463E810F985F /* libPods.a */; };
 		E9E8ADB81768D18700F837D7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E9518F971768108200EB82C8 /* InfoPlist.strings */; };
-		E9E8ADBC1768D18700F837D7 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9518FA61768108200EB82C8 /* MainStoryboard_iPhone.storyboard */; };
 		E9E8ADBD1768D18700F837D7 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9518FA91768108200EB82C8 /* MainStoryboard_iPad.storyboard */; };
 		E9E8ADBE1768D18700F837D7 /* menu_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = E9E8AD601768331C00F837D7 /* menu_icon.png */; };
 		E9E8ADBF1768D18700F837D7 /* menu_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9E8AD611768331C00F837D7 /* menu_icon@2x.png */; };
@@ -354,7 +354,9 @@
 		E9A2DACC179B1F770063F034 /* nav_bar_logo_white@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav_bar_logo_white@2x.png"; sourceTree = "<group>"; };
 		E9A2DAD1179B299F0063F034 /* nav_bg_ithaca_gold.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nav_bg_ithaca_gold.png; sourceTree = "<group>"; };
 		E9A2DAD2179B299F0063F034 /* nav_bg_ithaca_gold@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav_bg_ithaca_gold@2x.png"; sourceTree = "<group>"; };
-		E9B3560418059CEF005A8DFB /* sweep_1.0.0.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = file; path = sweep_1.0.0.xcdatamodel; sourceTree = "<group>"; };
+		E9B28D051806FB6B0085090A /* EventDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventDetailViewController.h; sourceTree = "<group>"; };
+		E9B28D061806FB6B0085090A /* EventDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventDetailViewController.m; sourceTree = "<group>"; };
+		E9B3560418059CEF005A8DFB /* sweep_1.0.0.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = sweep_1.0.0.xcdatamodel; sourceTree = "<group>"; };
 		E9C4F45A177FE52B00C99B22 /* CameraCaptureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraCaptureViewController.h; sourceTree = "<group>"; };
 		E9C4F45B177FE52B00C99B22 /* CameraCaptureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraCaptureViewController.m; sourceTree = "<group>"; };
 		E9CA01731790B57C00CAFA5C /* app_icon_iPhone_retina.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = app_icon_iPhone_retina.png; path = ../app_icon_iPhone_retina.png; sourceTree = "<group>"; };
@@ -552,6 +554,8 @@
 				E9E8ADEE176AA1C600F837D7 /* LogInViewController.m */,
 				E9EE712B17F33D3E0096A116 /* KeypadViewController.h */,
 				E9EE712C17F33D3E0096A116 /* KeypadViewController.m */,
+				E9B28D051806FB6B0085090A /* EventDetailViewController.h */,
+				E9B28D061806FB6B0085090A /* EventDetailViewController.m */,
 				E9518F951768108200EB82C8 /* Supporting Files */,
 			);
 			name = sweep_source;
@@ -967,10 +971,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				E9518F991768108200EB82C8 /* InfoPlist.strings in Resources */,
-				E9518FA81768108200EB82C8 /* MainStoryboard_iPhone.storyboard in Resources */,
 				E9518FAB1768108200EB82C8 /* MainStoryboard_iPad.storyboard in Resources */,
 				E9E8AD621768331C00F837D7 /* menu_icon.png in Resources */,
 				E9EE712A17F33B370096A116 /* Images.xcassets in Resources */,
+				E9B28D0A180702790085090A /* MainStoryboard_iPhone.storyboard in Resources */,
 				E9E8AD631768331C00F837D7 /* menu_icon@2x.png in Resources */,
 				E9E8ADA11768D14D00F837D7 /* defaults.plist in Resources */,
 				E9E8ADC81768D29100F837D7 /* sweep-Info.plist in Resources */,
@@ -1035,10 +1039,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				E9828AE717837CF700619FB4 /* InfoPlist.strings in Resources */,
-				E9828AEB17837CF700619FB4 /* MainStoryboard_iPhone.storyboard in Resources */,
 				E9828AEC17837CF700619FB4 /* MainStoryboard_iPad.storyboard in Resources */,
 				E9828AED17837CF700619FB4 /* menu_icon.png in Resources */,
 				E9EE712917F336940096A116 /* Images.xcassets in Resources */,
+				E9B28D09180702780085090A /* MainStoryboard_iPhone.storyboard in Resources */,
 				E9828AEE17837CF700619FB4 /* menu_icon@2x.png in Resources */,
 				E9828AEF17837CF700619FB4 /* defaults.plist in Resources */,
 				E9828AF017837CF700619FB4 /* sweep-Info.plist in Resources */,
@@ -1103,7 +1107,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E9828B1717837D0500619FB4 /* InfoPlist.strings in Resources */,
-				E9828B1B17837D0500619FB4 /* MainStoryboard_iPhone.storyboard in Resources */,
 				E9828B1C17837D0500619FB4 /* MainStoryboard_iPad.storyboard in Resources */,
 				E9828B1D17837D0500619FB4 /* menu_icon.png in Resources */,
 				E9828B1E17837D0500619FB4 /* menu_icon@2x.png in Resources */,
@@ -1123,7 +1126,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E9E8ADB81768D18700F837D7 /* InfoPlist.strings in Resources */,
-				E9E8ADBC1768D18700F837D7 /* MainStoryboard_iPhone.storyboard in Resources */,
 				E9E8ADBD1768D18700F837D7 /* MainStoryboard_iPad.storyboard in Resources */,
 				E9E8ADBE1768D18700F837D7 /* menu_icon.png in Resources */,
 				E9E8ADBF1768D18700F837D7 /* menu_icon@2x.png in Resources */,
@@ -1294,6 +1296,7 @@
 				E9518FB11768108200EB82C8 /* ScansViewController.m in Sources */,
 				E9E8AD521768224A00F837D7 /* SideMenuViewController.m in Sources */,
 				E9E8AD5717682BED00F837D7 /* SettingsManager.m in Sources */,
+				E9B28D071806FB6B0085090A /* EventDetailViewController.m in Sources */,
 				E9E8AD5D17682C5700F837D7 /* Theme.m in Sources */,
 				E9E8ADE21769564F00F837D7 /* SideMenuTableViewCell.m in Sources */,
 				E9E8ADEB176A913600F837D7 /* AFSweepAPIClient.m in Sources */,
@@ -1328,6 +1331,7 @@
 				E9828ACF17837CF700619FB4 /* ScansViewController.m in Sources */,
 				E9828AD017837CF700619FB4 /* SideMenuViewController.m in Sources */,
 				E9828AD117837CF700619FB4 /* SettingsManager.m in Sources */,
+				E9B28D081806FB6B0085090A /* EventDetailViewController.m in Sources */,
 				E9828AD217837CF700619FB4 /* Theme.m in Sources */,
 				E9828AD317837CF700619FB4 /* SideMenuTableViewCell.m in Sources */,
 				E9828AD417837CF700619FB4 /* AFSweepAPIClient.m in Sources */,

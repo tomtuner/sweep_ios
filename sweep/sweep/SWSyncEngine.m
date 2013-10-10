@@ -143,6 +143,7 @@ NSString * const kSWSyncEngineSyncCompletedNotificationName = @"SWSyncEngineSync
                 NSLog(@"Success creation: %@", responseObject);
                 NSDictionary *responseDictionary = responseObject;
                 NSDate *createdDate = [self dateUsingStringFromAPI:[responseDictionary valueForKey:@"created_at"]];
+//                NSDate *createdDate = [self dateUsingStringFromAPI:[responseDictionary valueForKey:@"created_at"]];
                 [objectToCreate setValue:createdDate forKey:@"created_at"];
                 [objectToCreate setValue:createdDate forKey:@"updated_at"];
                 [objectToCreate setValue:[responseDictionary valueForKey:@"id"] forKey:@"remote_id"];
@@ -620,8 +621,8 @@ NSString * const kSWSyncEngineSyncCompletedNotificationName = @"SWSyncEngineSync
 - (void)initializeDateFormatter {
     if (!self.dateFormatter) {
         self.dateFormatter = [[NSDateFormatter alloc] init];
-        [self.dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss'Z'"];
-        [self.dateFormatter setTimeZone:[NSTimeZone timeZoneWithName:@"UTC"]];
+        [self.dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssz"];
+        [self.dateFormatter setLocale:[[NSLocale alloc]initWithLocaleIdentifier:@"en_US_POSIX"]];
     }
 }
 
