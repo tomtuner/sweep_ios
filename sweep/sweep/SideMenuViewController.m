@@ -134,6 +134,7 @@
 -(void)logOutPressed
 {
     [SettingsManager sharedSettingsManager].indexOfLastViewedEvent = 0;
+    self.indexToGoToAfterSync = 0;
     [self.scansViewController resetDepartment];
     [self.scansViewController loadRecordsFromCoreData];
     [self loadRecordsFromCoreData];
