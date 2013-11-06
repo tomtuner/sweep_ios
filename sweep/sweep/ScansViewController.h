@@ -17,6 +17,7 @@
 #import "SettingsManager.h"
 #import "CameraCaptureViewController.h"
 #import "KeypadViewController.h"
+#import "uniMag.h"
 #import "Theme.h"
 
 #define REFRESH_HEADER_HEIGHT 52.0f

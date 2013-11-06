@@ -93,6 +93,8 @@
 
 + (id <Theme>)sharedTheme;
 
++ (id <Theme>)updateTheme;
+
 + (void)customizeAppAppearance;
 + (void)customizeView:(UIView *)view;
 + (void)customizeTableView:(UITableView *)tableView;

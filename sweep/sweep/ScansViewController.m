@@ -11,7 +11,10 @@
 static NSUInteger kNumberOfPages = 2;
 
 
-@interface ScansViewController ()
+@interface ScansViewController () {
+    // UniMag Properties
+    uniMag *uniReader;
+}
 
 @property (nonatomic, strong) UIPopoverController *masterPopoverController;
 @property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
@@ -25,6 +28,11 @@ static NSUInteger kNumberOfPages = 2;
 
 @property (nonatomic, strong) IBOutlet UIActivityIndicatorView *totalScansIndicator;
 @property (nonatomic, strong) IBOutlet UIActivityIndicatorView *uniqueScansIndicator;
+
+@property (nonatomic, strong) IBOutlet UIToolbar *bottomToolbar;
+@property (nonatomic, strong) IBOutlet UIBarButtonItem *readerBarButtonItem;
+
+@property (nonatomic, strong) UIButton *readerButton;
 
 @property (nonatomic, strong) UIActivityIndicatorView *scrollView1ActivityIndicator;
 @property (nonatomic, strong) UIActivityIndicatorView *scrollView2ActivityIndicator;
@@ -86,6 +94,9 @@ static NSUInteger kNumberOfPages = 2;
     [self configureView];
     [self addPullToRefreshHeader];
     [self setupStrings];
+    
+    // Activate UniMag SDK
+    [self umsdk_activate];
 
     [self displayLoginControllerIfNeeded];
     [[NSNotificationCenter defaultCenter] addObserverForName:@"SWSyncEngineSyncCompleted" object:nil queue:nil usingBlock:^(NSNotification *note) {
@@ -321,7 +332,6 @@ static NSUInteger kNumberOfPages = 2;
     
 //    self.navigationItem.rightBarButtonItems = [NSArray arrayWithObjects: [self rightMenuBarButtonItem],[self keypadBarButtonItem], nil];
     self.navigationItem.rightBarButtonItems = [NSArray arrayWithObjects: [self rightMenuBarButtonItem], nil];
-
 }
 
 - (UIBarButtonItem *)leftMenuBarButtonItem {
@@ -730,6 +740,271 @@ static NSUInteger kNumberOfPages = 2;
     }
     valueString = [NSString stringWithFormat:@"%@%@", padString, valueString];
     cell.textLabel.text = valueString;
+}
+
+- (void) playSoundAndVibrate
+{
+#if !(TARGET_IPHONE_SIMULATOR)
+    
+//    // Get the main bundle for the app
+//    CFBundleRef mainBundle = CFBundleGetMainBundle ();
+//    
+//    // Get the URL to the sound file to play. The file in this case
+//    // is "tap.aif"
+//    CFURLRef soundFileURLRef  = CFBundleCopyResourceURL (
+//                                                         mainBundle,
+//                                                         CFSTR ("DING"),
+//                                                         CFSTR ("caf"),
+//                                                         NULL
+//                                                         );
+//    
+//    // Create a system sound object representing the sound file
+//    SystemSoundID soundFileObject;
+//    AudioServicesCreateSystemSoundID (
+//                                      soundFileURLRef,
+//                                      &soundFileObject
+//                                      );
+//    // Play the sound
+//    AudioServicesPlaySystemSound (soundFileObject);
+    
+    // And Vibrate if possible
+//    [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(playSoundAndVibrate) userInfo:nil repeats:NO];
+
+    AudioServicesPlayAlertSound(kSystemSoundID_Vibrate);
+#endif
+}
+
+# pragma mark - UniMag SDK
+
+
+- (void)umDevice_attachment:(NSNotification *)notification {
+
+    [self umsdk_unRegisterObservers];
+    [self umsdk_registerObservers];
+    NSLog(@"Notification: %@", notification);
+    
+    UmRet ret = [uniReader startUniMag:TRUE];
+    if (ret == UMRET_SUCCESS)
+    {
+        NSLog(@"Starting to connect to reader");
+//        [uniReader setAutoAdjustVolume:TRUE];
+
+        double delayInSeconds = 4.0;
+        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+            //code to be executed on the main queue after delay
+            NSLog(@"Starting to request swipe");
+            UmRet ret = [uniReader requestSwipe];
+        });
+    }
+}
+
+//called when SDK received a swipe successfully
+- (void)umSwipe_receivedSwipe:(NSNotification *)notification {
+
+	NSData *data = [notification object];
+	NSString *idScanned = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
+    NSLog(@"Mag Read: %@", idScanned);
+    
+    NSCharacterSet* notDigits = [[NSCharacterSet decimalDigitCharacterSet] invertedSet];
+    
+    if (idScanned.length >= [[[ThemeManager sharedTheme] lengthOfValidID] integerValue])
+    {
+//        idScanned = [idScanned substringToIndex: [[[ThemeManager sharedTheme] lengthOfValidID] integerValue]];
+        
+        idScanned = [idScanned substringWithRange:NSMakeRange(1, [[[ThemeManager sharedTheme] lengthOfValidID] integerValue])];
+        NSLog(@"Formatted Read: %@", idScanned);
+    }
+
+    if ([idScanned rangeOfCharacterFromSet:notDigits].location == NSNotFound)
+    {
+#if !(TARGET_IPHONE_SIMULATOR)
+        // Vibrate
+        [self playSoundAndVibrate];
+#endif
+
+        Scans *newScan = [NSEntityDescription insertNewObjectForEntityForName:@"Scans" inManagedObjectContext:self.managedObjectContext];
+        newScan.value = idScanned;
+        //            newScan.scanned_at = result.timestamp;
+        newScan.event_id = self.detailItem.remote_id;
+        newScan.sync_status = [NSNumber numberWithInt:SWObjectCreated];
+        
+        NSError *error = nil;
+        BOOL saved = [self.managedObjectContext save:&error];
+        if (!saved) {
+            // do some real error handling
+            NSLog(@"Could not save Event due to %@", error);
+        }
+        
+        [[SWCoreDataController sharedInstance] saveBackgroundContext];
+        
+        // Add check to see if anything should be entered
+        [[SWSyncEngine sharedEngine] startSync];
+    }
+    
+    UmRet ret = [uniReader requestSwipe];
+
+}
+
+// called when the SDK has read something from the uniMag device
+// (eg a swipe, a response to a command) and is in the process of decoding it
+// Use this to provide an early feedback on the UI
+- (void)umDataProcessing:(NSNotification *)notification {
+	[_readerButton setTintColor:[UIColor redColor]];
+    
+}
+
+//called when the swipe task is successfully starting, meaning the SDK starts to
+// wait for a swipe to be made
+- (void)umSwipe_starting:(NSNotification *)notification {
+    
+    NSMutableArray *toolbarButtons = [NSMutableArray arrayWithArray:[_bottomToolbar items]];
+
+    [_readerButton setTintColor:[UIColor greenColor]];
+
+    if (![toolbarButtons containsObject:_readerBarButtonItem]) {
+        UIImage *buttonImage = [[UIImage imageNamed:@"reader_icon"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    //
+        //create the button and assign the image
+        _readerButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_readerButton setImage:buttonImage forState:UIControlStateNormal];
+        [_readerButton setTintColor:[UIColor greenColor]];
+    //
+    //    //sets]; the frame of the button to the size of the image
+        _readerButton.frame = CGRectMake(0, 0, buttonImage.size.width, buttonImage.size.height);
+    //
+    //    //creates a UIBarButtonItem with the button as a custom view
+        _readerBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:_readerButton];
+//        [_readerBarButtonItem setTintColor:[UIColor redColor]];
+        // Get the reference to the current toolbar buttons
+        
+        // This is how you add the button to the toolbar and animate it
+
+        // The following line adds the object to the end of the array.
+        // If you want to add the button somewhere else, use the `insertObject:atIndex:`
+        // method instead of the `addObject` method.
+        [toolbarButtons insertObject:_readerBarButtonItem atIndex:0];
+        [_bottomToolbar setItems:toolbarButtons animated:YES];
+    }
+}
+
+-(void) umsdk_activate {
+    
+    //register observers for all uniMag notifications
+	[self umsdk_registerObservers];
+    
+    
+	//enable info level NSLogs inside SDK
+    // Here we turn on before initializing SDK object so the act of initializing is logged
+    [uniMag enableLogging:TRUE];
+    
+    //initialize the SDK by creating a uniMag class object
+    uniReader = [[uniMag alloc] init];
+    
+    /*
+     //set SDK to perform the connect task automatically when headset is attached
+     [uniReader setAutoConnect:TRUE];
+     */
+    
+    //set swipe timeout to infinite. By default, swipe task will timeout after 20 seconds
+	[uniReader setSwipeTimeoutDuration:0];
+    
+    //make SDK maximize the volume automatically during connection
+//    [uniReader setAutoAdjustVolume:TRUE];
+    
+    //By default, the diagnostic wave file logged by the SDK is stored under the temp directory
+    // Here it is set to be under the Documents folder in the app sandbox so the log can be accessed
+    // through iTunes file sharing. See UIFileSharingEnabled in iOS doc.
+    [uniReader setWavePath: [NSHomeDirectory() stringByAppendingPathComponent: @"/Documents/audio.caf"]];
+}
+
+//called when uniMag is physically detached
+- (void)umDevice_detachment:(NSNotification *)notification {
+//    uniReader = nil;
+    
+    [self umsdk_unRegisterObservers];
+    
+    // Get the reference to the current toolbar buttons
+    NSMutableArray *toolbarButtons = [NSMutableArray arrayWithArray:[_bottomToolbar items]];
+    
+    // This is how you remove the button from the toolbar and animate it
+    [toolbarButtons removeObject:_readerBarButtonItem];
+    [_bottomToolbar setItems:toolbarButtons animated:YES];
+}
+
+//called when SDK failed to handshake with reader in time. ie, the connection task has timed out
+- (void)umCommand_receivedResponse:(NSNotification *)notification {
+   // Do Nothing
+    
+    NSLog(@"Recieved CMD Resposne: %@", notification);
+}
+
+-(void) umsdk_registerObservers {
+//	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+//
+//    //list of notifications and their corresponding selector
+//    const struct {NSString *n; SEL s;} noteAndSel[] = {
+//        //
+//        {uniMagAttachmentNotification       , @selector(umDevice_attachment:)},
+//        {uniMagDetachmentNotification       , @selector(umDevice_detachment:)},
+//        //
+//        {uniMagInsufficientPowerNotification, @selector(umConnection_lowVolume:)},
+//        {uniMagPoweringNotification         , @selector(umConnection_starting:)},
+//        {uniMagTimeoutNotification          , @selector(umConnection_timeout:)},
+//        {uniMagDidConnectNotification       , @selector(umConnection_connected:)},
+//        {uniMagDidDisconnectNotification    , @selector(umConnection_disconnected:)},
+//        //
+//        {uniMagSwipeNotification            , @selector(umSwipe_starting:)},
+//        {uniMagTimeoutSwipeNotification     , @selector(umSwipe_timeout:)},
+//        {uniMagDataProcessingNotification   , @selector(umDataProcessing:)},
+//        {uniMagInvalidSwipeNotification     , @selector(umSwipe_invalid:)},
+//        {uniMagDidReceiveDataNotification   , @selector(umSwipe_receivedSwipe:)},
+//        //
+//        {uniMagCmdSendingNotification       , @selector(umCommand_starting:)},
+//        {uniMagCommandTimeoutNotification   , @selector(umCommand_timeout:)},
+//        {uniMagDidReceiveCmdNotification    , @selector(umCommand_receivedResponse:)},
+//        //
+//        {uniMagSystemMessageNotification    , @selector(umSystemMessage:)},
+//        
+//        {nil, nil},
+//    };
+//    
+//    //register or unregister
+//    for (int i=0; noteAndSel[i].s != nil ;i++) {
+//        if (reg)
+//            [nc addObserver:self selector:noteAndSel[i].s name:noteAndSel[i].n object:nil];
+//        else
+//            [nc removeObserver:self name:noteAndSel[i].n object:nil];
+//    }
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(umDevice_attachment:) name:uniMagAttachmentNotification object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(umDevice_detachment:) name:uniMagDetachmentNotification object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(umDataProcessing:) name:uniMagDataProcessingNotification object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(umSwipe_receivedSwipe:) name:uniMagDidReceiveDataNotification object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(umSwipe_starting:) name:uniMagSwipeNotification object:nil];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(umCommand_receivedResponse:) name:uniMagDidReceiveCmdNotification object:nil];
+
+}
+
+-(void) umsdk_unRegisterObservers {
+//    [[NSNotificationCenter defaultCenter] removeObserver:self name:uniMagAttachmentNotification object:nil];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:uniMagDetachmentNotification object:nil];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:uniMagDataProcessingNotification object:nil];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:uniMagDidReceiveDataNotification object:nil];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:uniMagSwipeNotification object:nil];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:uniMagTimeoutNotification object:nil];
+
+
 }
 
 @end

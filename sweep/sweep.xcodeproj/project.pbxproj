@@ -34,6 +34,9 @@
 		E938504C177035D600DC9D97 /* Events.m in Sources */ = {isa = PBXBuildFile; fileRef = E938504A177035D600DC9D97 /* Events.m */; };
 		E938504F177035DF00DC9D97 /* Departments.m in Sources */ = {isa = PBXBuildFile; fileRef = E938504E177035DF00DC9D97 /* Departments.m */; };
 		E9385050177035DF00DC9D97 /* Departments.m in Sources */ = {isa = PBXBuildFile; fileRef = E938504E177035DF00DC9D97 /* Departments.m */; };
+		E93C9FBF181FFFA3009EFEAC /* IDTECH_UniMag.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E93C9FBD181FFFA3009EFEAC /* IDTECH_UniMag.a */; };
+		E93C9FC0181FFFA3009EFEAC /* IDTECH_UniMag.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E93C9FBD181FFFA3009EFEAC /* IDTECH_UniMag.a */; };
+		E93C9FC218200CA9009EFEAC /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E93C9FC118200CA9009EFEAC /* MediaPlayer.framework */; };
 		E9518F8D1768108200EB82C8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9518F8C1768108200EB82C8 /* UIKit.framework */; };
 		E9518F8F1768108200EB82C8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9518F8E1768108200EB82C8 /* Foundation.framework */; };
 		E9518F911768108200EB82C8 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9518F901768108200EB82C8 /* CoreGraphics.framework */; };
@@ -308,6 +311,9 @@
 		E938504A177035D600DC9D97 /* Events.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Events.m; sourceTree = "<group>"; };
 		E938504D177035DF00DC9D97 /* Departments.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Departments.h; sourceTree = "<group>"; };
 		E938504E177035DF00DC9D97 /* Departments.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Departments.m; sourceTree = "<group>"; };
+		E93C9FBD181FFFA3009EFEAC /* IDTECH_UniMag.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = IDTECH_UniMag.a; sourceTree = "<group>"; };
+		E93C9FBE181FFFA3009EFEAC /* uniMag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = uniMag.h; sourceTree = "<group>"; };
+		E93C9FC118200CA9009EFEAC /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		E9518F891768108200EB82C8 /* sweep.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sweep.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9518F8C1768108200EB82C8 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		E9518F8E1768108200EB82C8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -439,6 +445,7 @@
 				E9518F931768108200EB82C8 /* CoreData.framework in Frameworks */,
 				B14420FB51394E40A91F5F42 /* libPods.a in Frameworks */,
 				E9D6985A17B1CE920089F5BA /* libFlurry_4.2.2.a in Frameworks */,
+				E93C9FBF181FFFA3009EFEAC /* IDTECH_UniMag.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -446,6 +453,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E93C9FC218200CA9009EFEAC /* MediaPlayer.framework in Frameworks */,
 				E9828AE017837CF700619FB4 /* Security.framework in Frameworks */,
 				E9828AE117837CF700619FB4 /* UIKit.framework in Frameworks */,
 				E9828AE217837CF700619FB4 /* Foundation.framework in Frameworks */,
@@ -453,6 +461,7 @@
 				E9828AE417837CF700619FB4 /* CoreData.framework in Frameworks */,
 				E9828AE517837CF700619FB4 /* libPods.a in Frameworks */,
 				E9D6985B17B1CE930089F5BA /* libFlurry_4.2.2.a in Frameworks */,
+				E93C9FC0181FFFA3009EFEAC /* IDTECH_UniMag.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -494,6 +503,24 @@
 			name = keuka;
 			sourceTree = "<group>";
 		};
+		E93C9FBB181FFF7B009EFEAC /* Flurry */ = {
+			isa = PBXGroup;
+			children = (
+				E9D6985817B1CE920089F5BA /* Flurry.h */,
+				E9D6985917B1CE920089F5BA /* libFlurry_4.2.2.a */,
+			);
+			name = Flurry;
+			sourceTree = "<group>";
+		};
+		E93C9FBC181FFF87009EFEAC /* UniMag */ = {
+			isa = PBXGroup;
+			children = (
+				E93C9FBD181FFFA3009EFEAC /* IDTECH_UniMag.a */,
+				E93C9FBE181FFFA3009EFEAC /* uniMag.h */,
+			);
+			name = UniMag;
+			sourceTree = "<group>";
+		};
 		E9518F801768108200EB82C8 = {
 			isa = PBXGroup;
 			children = (
@@ -522,6 +549,7 @@
 		E9518F8B1768108200EB82C8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E93C9FC118200CA9009EFEAC /* MediaPlayer.framework */,
 				E9828B4F178B01AA00619FB4 /* libcommonCrypto.dylib */,
 				E9E8ADF6176AAB9A00F837D7 /* Security.framework */,
 				E9518F8C1768108200EB82C8 /* UIKit.framework */,
@@ -565,8 +593,8 @@
 		E9518F951768108200EB82C8 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				E9D6985817B1CE920089F5BA /* Flurry.h */,
-				E9D6985917B1CE920089F5BA /* libFlurry_4.2.2.a */,
+				E93C9FBC181FFF87009EFEAC /* UniMag */,
+				E93C9FBB181FFF7B009EFEAC /* Flurry */,
 				E9518F971768108200EB82C8 /* InfoPlist.strings */,
 				E9518F9A1768108200EB82C8 /* main.m */,
 				E9518F9C1768108200EB82C8 /* sweep-Prefix.pch */,
@@ -1526,8 +1554,9 @@
 				INFOPLIST_FILE = "sweep/sweep-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SDKROOT)/usr/lib/system\"",
-					"\"$(SRCROOT)/sweep\"",
+					"\\\"$(SDKROOT)/usr/lib/system\\\"",
+					"\\\"$(SRCROOT)/sweep\\\"",
+					/Users/Thomas/Development/sweep/sweep_ios/sweep/sweep,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
@@ -1553,8 +1582,9 @@
 				INFOPLIST_FILE = "sweep/sweep-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SDKROOT)/usr/lib/system\"",
-					"\"$(SRCROOT)/sweep\"",
+					"\\\"$(SDKROOT)/usr/lib/system\\\"",
+					"\\\"$(SRCROOT)/sweep\\\"",
+					/Users/Thomas/Development/sweep/sweep_ios/sweep/sweep,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "65CB5D27-ACC4-44D1-A516-435DE2F3BDB0";
@@ -1612,8 +1642,9 @@
 				INFOPLIST_FILE = "sweep/sweep-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SDKROOT)/usr/lib/system\"",
-					"\"$(SRCROOT)/sweep\"",
+					"\\\"$(SDKROOT)/usr/lib/system\\\"",
+					"\\\"$(SRCROOT)/sweep\\\"",
+					/Users/Thomas/Development/sweep/sweep_ios/sweep/sweep,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -1652,8 +1683,9 @@
 				INFOPLIST_FILE = "sweep copy-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SDKROOT)/usr/lib/system\"",
-					"\"$(SRCROOT)/sweep\"",
+					"\\\"$(SDKROOT)/usr/lib/system\\\"",
+					"\\\"$(SRCROOT)/sweep\\\"",
+					/Users/Thomas/Development/sweep/sweep_ios/sweep/sweep,
 				);
 				PRODUCT_NAME = dev;
 				PROVISIONING_PROFILE = "374E7420-5F2D-4834-8421-E3A3B79752E4";
@@ -1679,8 +1711,9 @@
 				INFOPLIST_FILE = "sweep copy-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SDKROOT)/usr/lib/system\"",
-					"\"$(SRCROOT)/sweep\"",
+					"\\\"$(SDKROOT)/usr/lib/system\\\"",
+					"\\\"$(SRCROOT)/sweep\\\"",
+					/Users/Thomas/Development/sweep/sweep_ios/sweep/sweep,
 				);
 				PRODUCT_NAME = dev;
 				PROVISIONING_PROFILE = "";
@@ -1706,8 +1739,9 @@
 				INFOPLIST_FILE = "sweep copy-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SDKROOT)/usr/lib/system\"",
-					"\"$(SRCROOT)/sweep\"",
+					"\\\"$(SDKROOT)/usr/lib/system\\\"",
+					"\\\"$(SRCROOT)/sweep\\\"",
+					/Users/Thomas/Development/sweep/sweep_ios/sweep/sweep,
 				);
 				PRODUCT_NAME = dev;
 				PROVISIONING_PROFILE = "";

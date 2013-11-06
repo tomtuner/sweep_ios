@@ -389,7 +389,7 @@
 
 - (NSNumber *) lengthOfValidID{
     
-    return [[NSNumber alloc] initWithInt:9];
+    return [[NSNumber alloc] initWithInt:5];
 }
 
 /*- (UIImage *)imageForTab:(SSThemeTab)tab

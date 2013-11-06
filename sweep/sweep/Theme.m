@@ -23,27 +23,27 @@
     static dispatch_once_t onceToken;
     Customers *customer = [[SWSyncEngine sharedEngine] sharedCustomer];
     NSString *classString = customer.theme;
-//    NSLog(@"Class Theme: %@", customer.theme);
-    
-//    if ([[NSUserDefaults standardUserDefaults] stringForKey:@"theme"]) {
-//        NSLog(@"Theme Defautl: %@", [[NSUserDefaults standardUserDefaults] stringForKey:@"theme"]);
-//    }
-    
-//    NSString *classString = [[NSUserDefaults standardUserDefaults] stringForKey:@"theme"];
+
     Class thisClass;
     if (customer.theme && (customer.theme.length != 0))
     {
         thisClass = NSClassFromString(classString);
-    }else {
+    } else {
         thisClass = NSClassFromString(@"SWTheme");
     }
+    
+    // Check if the current class is the same kind of class we are
+    // getting from the customer
+    if (![sharedTheme isKindOfClass:thisClass])
+    {
+        sharedTheme = [[thisClass alloc] init];
+    }
 //    id themeClass = [[thisClass alloc] init];
-    dispatch_once(&onceToken, ^{
+//    dispatch_once(&onceToken, ^{
         // Create and return the theme:
         //        sharedTheme = [[SSDefaultTheme alloc] init];
         //        sharedTheme = [[SSTintedTheme alloc] init];
-        sharedTheme = [[thisClass alloc] init];
-    });
+//    });
     
     return sharedTheme;
 }
