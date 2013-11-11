@@ -12,6 +12,7 @@
 #import "SWCoreDataController.h"
 #import "Scans.h"
 #import "Events.h"
+#import "Flurry.h"
 
 @interface KeypadViewController : UIViewController
 

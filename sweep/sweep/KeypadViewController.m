@@ -139,6 +139,13 @@
         if (!saved) {
             // do some real error handling
             NSLog(@"Could not save Event due to %@", error);
+        }else {
+#ifndef DEBUG
+            NSDictionary *articleParams = [NSDictionary dictionaryWithObjectsAndKeys:@"Type", @"Keypad",
+                                           @"Theme", NSStringFromClass([ThemeManager sharedTheme]),
+                                           nil];
+            [Flurry logEvent:@"Scan"];
+#endif
         }
         
         [[SWCoreDataController sharedInstance] saveMasterContext];
