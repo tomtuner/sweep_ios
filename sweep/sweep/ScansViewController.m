@@ -774,29 +774,48 @@ static NSUInteger kNumberOfPages = 2;
 #endif
 }
 
+# pragma mark - AlertView
+
+-(void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    NSLog(@"Button Index: %i", buttonIndex);
+    // If user
+    if (buttonIndex == 1)
+    {
+        
+        UmRet ret = [uniReader startUniMag:TRUE];
+        if (ret == UMRET_SUCCESS)
+        {
+            NSLog(@"Starting to connect to reader");
+            //        [uniReader setAutoAdjustVolume:TRUE];
+            
+            double delayInSeconds = 4.0;
+            dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+            dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+                //code to be executed on the main queue after delay
+                NSLog(@"Starting to request swipe");
+                UmRet ret = [uniReader requestSwipe];
+            });
+        }
+    }
+}
+
 # pragma mark - UniMag SDK
 
 
 - (void)umDevice_attachment:(NSNotification *)notification {
 
-    [self umsdk_unRegisterObservers];
-    [self umsdk_registerObservers];
+//    [self umsdk_unRegisterObservers];
+//    [self umsdk_registerObservers];
     NSLog(@"Notification: %@", notification);
     
-    UmRet ret = [uniReader startUniMag:TRUE];
-    if (ret == UMRET_SUCCESS)
-    {
-        NSLog(@"Starting to connect to reader");
-//        [uniReader setAutoAdjustVolume:TRUE];
+    UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Connect?"
+                                                      message:@"YES if the device is a card reader.\nNO if the device is an audio headset.\n WARNING: A loud tone will be generated if an audio headset is connected."
+                                                     delegate:self
+                                            cancelButtonTitle:@"NO"
+                                            otherButtonTitles:@"YES", nil];
+    [message show];
 
-        double delayInSeconds = 4.0;
-        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
-        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-            //code to be executed on the main queue after delay
-            NSLog(@"Starting to request swipe");
-            UmRet ret = [uniReader requestSwipe];
-        });
-    }
 }
 
 //called when SDK received a swipe successfully
@@ -867,7 +886,7 @@ static NSUInteger kNumberOfPages = 2;
     
     NSMutableArray *toolbarButtons = [NSMutableArray arrayWithArray:[_bottomToolbar items]];
 
-    [_readerButton setTintColor:[UIColor greenColor]];
+    [_readerButton setTintColor:[UIColor colorWithRed:0.7411764706 green:0.8509803922 blue:0.2549019608 alpha:1.0]];
 
     if (![toolbarButtons containsObject:_readerBarButtonItem]) {
         UIImage *buttonImage = [[UIImage imageNamed:@"reader_icon"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
@@ -875,7 +894,7 @@ static NSUInteger kNumberOfPages = 2;
         //create the button and assign the image
         _readerButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [_readerButton setImage:buttonImage forState:UIControlStateNormal];
-        [_readerButton setTintColor:[UIColor greenColor]];
+        [_readerButton setTintColor:[UIColor colorWithRed:0.7411764706 green:0.8509803922 blue:0.2549019608 alpha:1.0]];
     //
     //    //sets]; the frame of the button to the size of the image
         _readerButton.frame = CGRectMake(0, 0, buttonImage.size.width, buttonImage.size.height);

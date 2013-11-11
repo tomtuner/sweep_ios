@@ -22,7 +22,7 @@
 
 #define REFRESH_HEADER_HEIGHT 52.0f
 
-@interface ScansViewController : UIViewController <NSFetchedResultsControllerDelegate, UISplitViewControllerDelegate, UIScrollViewDelegate>
+@interface ScansViewController : UIViewController <NSFetchedResultsControllerDelegate, UISplitViewControllerDelegate, UIScrollViewDelegate, UIAlertViewDelegate>
 
 @property (nonatomic, strong) Events *detailItem;
 @property (nonatomic, strong) IBOutlet UITableView *scansTable;
