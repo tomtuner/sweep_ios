@@ -47,6 +47,8 @@
 		E9518FAB1768108200EB82C8 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9518FA91768108200EB82C8 /* MainStoryboard_iPad.storyboard */; };
 		E9518FAE1768108200EB82C8 /* sweep.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E9518FAC1768108200EB82C8 /* sweep.xcdatamodeld */; };
 		E9518FB11768108200EB82C8 /* ScansViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9518FB01768108200EB82C8 /* ScansViewController.m */; };
+		E966092818328CFB00E68539 /* NAZTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = E966092718328CFB00E68539 /* NAZTheme.m */; };
+		E966092918328CFB00E68539 /* NAZTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = E966092718328CFB00E68539 /* NAZTheme.m */; };
 		E9828ACC17837CF700619FB4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E9518F9A1768108200EB82C8 /* main.m */; };
 		E9828ACD17837CF700619FB4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E9518F9E1768108200EB82C8 /* AppDelegate.m */; };
 		E9828ACE17837CF700619FB4 /* sweep.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E9518FAC1768108200EB82C8 /* sweep.xcdatamodeld */; };
@@ -330,6 +332,8 @@
 		E9518FAD1768108200EB82C8 /* sweep.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = sweep.xcdatamodel; sourceTree = "<group>"; };
 		E9518FAF1768108200EB82C8 /* ScansViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScansViewController.h; sourceTree = "<group>"; };
 		E9518FB01768108200EB82C8 /* ScansViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScansViewController.m; sourceTree = "<group>"; };
+		E966092618328CFB00E68539 /* NAZTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAZTheme.h; sourceTree = "<group>"; };
+		E966092718328CFB00E68539 /* NAZTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAZTheme.m; sourceTree = "<group>"; };
 		E9828AF617837CF700619FB4 /* dev.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = dev.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9828AF717837CF700619FB4 /* sweep copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "sweep copy-Info.plist"; path = "/Users/Thomas/Development/sweep/sweep_ios/sweep/sweep copy-Info.plist"; sourceTree = "<absolute>"; };
 		E9828B2C17837D0500619FB4 /* rit-dev.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "rit-dev.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -745,6 +749,8 @@
 				E9E8AD5C17682C5700F837D7 /* RITTheme.m */,
 				E929946B17A831AA00F1EB3B /* KEUTheme.h */,
 				E929946C17A831B700F1EB3B /* KEUTheme.m */,
+				E966092618328CFB00E68539 /* NAZTheme.h */,
+				E966092718328CFB00E68539 /* NAZTheme.m */,
 			);
 			name = theme;
 			sourceTree = "<group>";
@@ -1338,6 +1344,7 @@
 				E938504B177035D600DC9D97 /* Events.m in Sources */,
 				E938504F177035DF00DC9D97 /* Departments.m in Sources */,
 				E9FE4CC1177A8F7E0095487C /* NSManagedObject+JSON.m in Sources */,
+				E966092818328CFB00E68539 /* NAZTheme.m in Sources */,
 				E9C4F45C177FE52C00C99B22 /* CameraCaptureViewController.m in Sources */,
 				E9828B3A17893F7C00619FB4 /* RITTheme.m in Sources */,
 				E9828B3E178943CC00619FB4 /* SWTheme.m in Sources */,
@@ -1373,6 +1380,7 @@
 				E9828ADB17837CF700619FB4 /* Events.m in Sources */,
 				E9828ADC17837CF700619FB4 /* Departments.m in Sources */,
 				E9828ADD17837CF700619FB4 /* NSManagedObject+JSON.m in Sources */,
+				E966092918328CFB00E68539 /* NAZTheme.m in Sources */,
 				E9828ADE17837CF700619FB4 /* CameraCaptureViewController.m in Sources */,
 				E9828B3B17893F7C00619FB4 /* RITTheme.m in Sources */,
 				E9828B3F178943CC00619FB4 /* SWTheme.m in Sources */,
