@@ -889,7 +889,12 @@ static NSUInteger kNumberOfPages = 2;
     [_readerButton setTintColor:[UIColor colorWithRed:0.7411764706 green:0.8509803922 blue:0.2549019608 alpha:1.0]];
 
     if (![toolbarButtons containsObject:_readerBarButtonItem]) {
-        UIImage *buttonImage = [[UIImage imageNamed:@"reader_icon"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+        UIImage *buttonImage = [UIImage imageNamed:@"reader_icon"];
+        if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7)
+        {
+            buttonImage = [buttonImage imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+        }
+        
     //
         //create the button and assign the image
         _readerButton = [UIButton buttonWithType:UIButtonTypeCustom];

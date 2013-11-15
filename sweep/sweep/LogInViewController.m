@@ -12,6 +12,8 @@
 
 @property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 
+- (IBAction)moreInfoSelected:(id)sender;
+
 @end
 
 @implementation LogInViewController
@@ -138,6 +140,11 @@
     
     return NO;
 }
+- (IBAction)moreInfoSelected:(id)sender
+{
+      [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://www.sweepevents.com"]];
+}
+
 
 - (void)didReceiveMemoryWarning
 {

@@ -2,7 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13A603" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="5">
     <dependencies>
         <deployment defaultVersion="1536" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3746"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
@@ -201,6 +201,21 @@
                                     <outlet property="delegate" destination="eF9-Pm-7nJ" id="LA4-du-8Sa"/>
                                 </connections>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KNR-8f-iap">
+                                <rect key="frame" x="228" y="571" width="79" height="27"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="More info">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="moreInfoSelected:" destination="eF9-Pm-7nJ" eventType="touchUpInside" id="XoK-wM-KDc"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="arrow_right" translatesAutoresizingMaskIntoConstraints="NO" id="JCQ-3B-gg5">
+                                <rect key="frame" x="316" y="576" width="11" height="17"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" red="0.80784313730000001" green="0.30980392159999998" blue="0.27450980390000002" alpha="1" colorSpace="calibratedRGB"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.93725490196078431" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -574,6 +589,7 @@
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationItem key="navigationItem" id="4B8-Ng-xHl"/>
                     <connections>
+                        <outlet property="bottomToolbar" destination="tpa-4f-yKl" id="RBY-uK-sDJ"/>
                         <outlet property="headerView" destination="bVl-At-nqg" id="k9m-v2-BlS"/>
                         <outlet property="scansTable" destination="Qad-mj-vYT" id="iho-PU-xI1"/>
                         <outlet property="totalScansIndicator" destination="0kH-Vt-lXS" id="jPA-Jv-BBT"/>
@@ -896,6 +912,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         </scene>
     </scenes>
     <resources>
+        <image name="arrow_right" width="11" height="17"/>
         <image name="gray_gear.png" width="44" height="44"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

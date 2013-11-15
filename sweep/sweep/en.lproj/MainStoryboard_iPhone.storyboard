@@ -3,7 +3,7 @@
     <dependencies>
         <deployment defaultVersion="1536" identifier="iOS"/>
         <development version="5000" identifier="xcode"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3746"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
@@ -59,6 +59,22 @@
                                     <outlet property="delegate" destination="uYb-dW-5aO" id="d40-Nm-lmF"/>
                                 </connections>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X00-z4-LQz">
+                                <rect key="frame" x="125" y="518" width="70" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="More info">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="moreInfoSelected:" destination="uYb-dW-5aO" eventType="touchUpInside" id="GhG-Fu-3vr"/>
+                                    <action selector="tom:" destination="uYb-dW-5aO" eventType="touchUpInside" id="95F-oL-nY7"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="arrow_right" translatesAutoresizingMaskIntoConstraints="NO" id="RiJ-gE-uQh">
+                                <rect key="frame" x="203" y="524" width="11" height="17"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" red="0.80784313730000001" green="0.30980392159999998" blue="0.27450980390000002" alpha="1" colorSpace="calibratedRGB"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.93725490196078431" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -71,9 +87,11 @@
                             <constraint firstItem="GkP-9O-8UL" firstAttribute="trailing" secondItem="Rz3-nB-i2A" secondAttribute="trailing" id="dxm-Kb-b09"/>
                             <constraint firstItem="4Bz-xa-MWa" firstAttribute="centerX" secondItem="ROc-nl-w35" secondAttribute="centerX" id="iZz-3D-Fhs"/>
                             <constraint firstItem="GkP-9O-8UL" firstAttribute="leading" secondItem="Rz3-nB-i2A" secondAttribute="leading" id="n2C-Lc-hRN"/>
+                            <constraint firstItem="iXv-3k-DFn" firstAttribute="top" secondItem="X00-z4-LQz" secondAttribute="bottom" constant="20" id="nbg-Nw-Z25"/>
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="navBar" destination="GkP-9O-8UL" id="O6g-B2-799"/>
                         <outlet property="view" destination="Rz3-nB-i2A" id="64n-Bx-7k8"/>
@@ -861,6 +879,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         </scene>
     </scenes>
     <resources>
+        <image name="arrow_right" width="11" height="17"/>
         <image name="gray_gear.png" width="44" height="44"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
