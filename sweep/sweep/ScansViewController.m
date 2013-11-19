@@ -94,11 +94,12 @@ static NSUInteger kNumberOfPages = 2;
     [self configureView];
     [self addPullToRefreshHeader];
     [self setupStrings];
-    
+
     // Activate UniMag SDK
     [self umsdk_activate];
-
+    
     [self displayLoginControllerIfNeeded];
+
     [[NSNotificationCenter defaultCenter] addObserverForName:@"SWSyncEngineSyncCompleted" object:nil queue:nil usingBlock:^(NSNotification *note) {
         [self loadRecordsFromCoreData];
         [self stopLoading];
@@ -130,6 +131,19 @@ static NSUInteger kNumberOfPages = 2;
     [[NSRunLoop currentRunLoop] addTimer:timer2 forMode:NSDefaultRunLoopMode];
     [timer2 fire];
     _shouldAnimateActivity = YES;
+}
+
+-(void) viewWillAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    // Register attachment observer
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(umDevice_attachment:) name:uniMagAttachmentNotification object:nil];
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"SWSyncEngineSyncCompleted" object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:uniMagAttachmentNotification object:nil];
 }
 
 - (void) viewDidLayoutSubviews
@@ -268,26 +282,6 @@ static NSUInteger kNumberOfPages = 2;
 //        _arrow3.alpha = 1.0;
         _arrow4.alpha = 1.0;
     }];
-}
-
--(void) viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-    // Register attachment observer
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(umDevice_attachment:) name:uniMagAttachmentNotification object:nil];
-//    [self.view setNeedsDisplay];
-}
-
-- (void)viewDidDisappear:(BOOL)animated {
-    [super viewDidDisappear:animated];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"SWSyncEngineSyncCompleted" object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:uniMagAttachmentNotification object:nil];
-}
-
-- (void) dealloc
-{
-    //    [super dealloc];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"SWSyncEngineSyncCompleted" object:nil];
 }
 
 - (void)loadRecordsFromCoreData {
@@ -556,6 +550,7 @@ static NSUInteger kNumberOfPages = 2;
     {
         // Department Key was once valid but validate again on startup
         [self validateDepartmentKey:departmentKey];
+        
     }else {
         // No department key found
         // Perform Selector seems to be more stable when loading the view
@@ -824,53 +819,55 @@ static NSUInteger kNumberOfPages = 2;
 //called when SDK received a swipe successfully
 - (void)umSwipe_receivedSwipe:(NSNotification *)notification {
 
-	NSData *data = [notification object];
-	NSString *idScanned = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
-    NSLog(@"Mag Read: %@", idScanned);
-    
-    NSCharacterSet* notDigits = [[NSCharacterSet decimalDigitCharacterSet] invertedSet];
-    
-    if (idScanned.length >= [[[ThemeManager sharedTheme] lengthOfValidID] integerValue])
+    if ((![self presentedViewController]) || [[self presentedViewController] isKindOfClass:[CameraCaptureViewController class]])
     {
-//        idScanned = [idScanned substringToIndex: [[[ThemeManager sharedTheme] lengthOfValidID] integerValue]];
+        NSData *data = [notification object];
+        NSString *idScanned = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
+        NSLog(@"Mag Read: %@", idScanned);
         
-        idScanned = [idScanned substringWithRange:NSMakeRange(1, [[[ThemeManager sharedTheme] lengthOfValidID] integerValue])];
-        NSLog(@"Formatted Read: %@", idScanned);
-    }
-
-    if ([idScanned rangeOfCharacterFromSet:notDigits].location == NSNotFound)
-    {
-#if !(TARGET_IPHONE_SIMULATOR)
-        // Vibrate
-        [self playSoundAndVibrate];
-#endif
-
-        Scans *newScan = [NSEntityDescription insertNewObjectForEntityForName:@"Scans" inManagedObjectContext:self.managedObjectContext];
-        newScan.value = idScanned;
-        //            newScan.scanned_at = result.timestamp;
-        newScan.event_id = self.detailItem.remote_id;
-        newScan.sync_status = [NSNumber numberWithInt:SWObjectCreated];
+        NSCharacterSet* notDigits = [[NSCharacterSet decimalDigitCharacterSet] invertedSet];
         
-        NSError *error = nil;
-        BOOL saved = [self.managedObjectContext save:&error];
-        if (!saved) {
-            // do some real error handling
-            NSLog(@"Could not save Event due to %@", error);
-        }else {
-#ifndef DEBUG
-            NSDictionary *articleParams = [NSDictionary dictionaryWithObjectsAndKeys:@"Type", @"Swipe",
-                                           @"Theme", NSStringFromClass([ThemeManager sharedTheme]),
-                                           nil];
-            [Flurry logEvent:@"Scan"];
-#endif
+        if (idScanned.length >= [[[ThemeManager sharedTheme] lengthOfValidID] integerValue])
+        {
+    //        idScanned = [idScanned substringToIndex: [[[ThemeManager sharedTheme] lengthOfValidID] integerValue]];
+            
+            idScanned = [idScanned substringWithRange:NSMakeRange(1, [[[ThemeManager sharedTheme] lengthOfValidID] integerValue])];
+            NSLog(@"Formatted Read: %@", idScanned);
         }
-        
-        [[SWCoreDataController sharedInstance] saveBackgroundContext];
-        
-        // Add check to see if anything should be entered
-        [[SWSyncEngine sharedEngine] startSync];
+
+        if ([idScanned rangeOfCharacterFromSet:notDigits].location == NSNotFound)
+        {
+    #if !(TARGET_IPHONE_SIMULATOR)
+            // Vibrate
+            [self playSoundAndVibrate];
+    #endif
+
+            Scans *newScan = [NSEntityDescription insertNewObjectForEntityForName:@"Scans" inManagedObjectContext:self.managedObjectContext];
+            newScan.value = idScanned;
+            //            newScan.scanned_at = result.timestamp;
+            newScan.event_id = self.detailItem.remote_id;
+            newScan.sync_status = [NSNumber numberWithInt:SWObjectCreated];
+            
+            NSError *error = nil;
+            BOOL saved = [self.managedObjectContext save:&error];
+            if (!saved) {
+                // do some real error handling
+                NSLog(@"Could not save Event due to %@", error);
+            }else {
+    #ifndef DEBUG
+                NSDictionary *articleParams = [NSDictionary dictionaryWithObjectsAndKeys:@"Type", @"Swipe",
+                                               @"Theme", NSStringFromClass([ThemeManager sharedTheme]),
+                                               nil];
+                [Flurry logEvent:@"Scan"];
+    #endif
+            }
+            
+            [[SWCoreDataController sharedInstance] saveBackgroundContext];
+            
+            // Add check to see if anything should be entered
+            [[SWSyncEngine sharedEngine] startSync];
+        }
     }
-    
     UmRet ret = [uniReader requestSwipe];
 
 }

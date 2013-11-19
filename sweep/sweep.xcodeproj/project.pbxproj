@@ -49,6 +49,7 @@
 		E9518FB11768108200EB82C8 /* ScansViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9518FB01768108200EB82C8 /* ScansViewController.m */; };
 		E966092818328CFB00E68539 /* NAZTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = E966092718328CFB00E68539 /* NAZTheme.m */; };
 		E966092918328CFB00E68539 /* NAZTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = E966092718328CFB00E68539 /* NAZTheme.m */; };
+		E97F8D58183BEFA200F87978 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E93C9FC118200CA9009EFEAC /* MediaPlayer.framework */; };
 		E9828ACC17837CF700619FB4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E9518F9A1768108200EB82C8 /* main.m */; };
 		E9828ACD17837CF700619FB4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E9518F9E1768108200EB82C8 /* AppDelegate.m */; };
 		E9828ACE17837CF700619FB4 /* sweep.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E9518FAC1768108200EB82C8 /* sweep.xcdatamodeld */; };
@@ -442,6 +443,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E97F8D58183BEFA200F87978 /* MediaPlayer.framework in Frameworks */,
 				E9E8ADF8176AB06C00F837D7 /* Security.framework in Frameworks */,
 				E9518F8D1768108200EB82C8 /* UIKit.framework in Frameworks */,
 				E9518F8F1768108200EB82C8 /* Foundation.framework in Frameworks */,

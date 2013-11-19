@@ -67,7 +67,6 @@
                                 </state>
                                 <connections>
                                     <action selector="moreInfoSelected:" destination="uYb-dW-5aO" eventType="touchUpInside" id="GhG-Fu-3vr"/>
-                                    <action selector="tom:" destination="uYb-dW-5aO" eventType="touchUpInside" id="95F-oL-nY7"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="arrow_right" translatesAutoresizingMaskIntoConstraints="NO" id="RiJ-gE-uQh">

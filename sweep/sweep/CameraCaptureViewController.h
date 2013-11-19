@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <ZXingObjC/ZXingObjC.h>
+#import "Flurry.h"
 #import "Scans.h"
 #import "Events.h"
 #import "SWCoreDataController.h"

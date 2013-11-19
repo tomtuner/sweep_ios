@@ -314,12 +314,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "sweep/sweep/ScansViewController.m"
-            timestampString = "406578154.669942"
+            timestampString = "406583399.11092"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "329"
-            endingLineNumber = "329"
-            landmarkName = "-setupMenuBarButtonItems"
+            startingLineNumber = "1043"
+            endingLineNumber = "1043"
+            landmarkName = "-umSwipe_receivedSwipe:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -330,11 +330,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "sweep/sweep/ScansViewController.m"
-            timestampString = "406578154.669942"
+            timestampString = "406583399.11092"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1047"
-            endingLineNumber = "1047">
+            startingLineNumber = "1053"
+            endingLineNumber = "1053"
+            landmarkName = "-umSwipe_receivedSwipe:"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -344,11 +346,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "sweep/sweep/ScansViewController.m"
-            timestampString = "406578154.669942"
+            timestampString = "406583399.11092"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1057"
-            endingLineNumber = "1057">
+            startingLineNumber = "1045"
+            endingLineNumber = "1045"
+            landmarkName = "-umSwipe_receivedSwipe:"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -358,25 +362,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "sweep/sweep/ScansViewController.m"
-            timestampString = "406578154.669942"
+            timestampString = "406583399.11092"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1049"
-            endingLineNumber = "1049">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "sweep/sweep/ScansViewController.m"
-            timestampString = "406578154.669942"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "383"
-            endingLineNumber = "383"
+            startingLineNumber = "379"
+            endingLineNumber = "379"
             landmarkName = "-setDetailItem:"
             landmarkType = "5">
          </BreakpointContent>
@@ -388,11 +378,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "sweep/sweep/ScansViewController.m"
-            timestampString = "406578154.669942"
+            timestampString = "406583399.11092"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "610"
-            endingLineNumber = "610"
+            startingLineNumber = "607"
+            endingLineNumber = "607"
             landmarkName = "-validateDepartmentKey:"
             landmarkType = "5">
          </BreakpointContent>
@@ -612,12 +602,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "sweep/sweep/ScansViewController.m"
-            timestampString = "406578154.669942"
+            timestampString = "406583399.11092"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "890"
-            endingLineNumber = "890"
-            landmarkName = "-umSwipe_starting:"
+            startingLineNumber = "889"
+            endingLineNumber = "889"
+            landmarkName = "-umSwipe_receivedSwipe:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -628,12 +618,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "sweep/sweep/ScansViewController.m"
-            timestampString = "406578154.669942"
+            timestampString = "406583399.11092"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "880"
-            endingLineNumber = "880"
-            landmarkName = "-umDataProcessing:"
+            startingLineNumber = "879"
+            endingLineNumber = "879"
+            landmarkName = "-umSwipe_receivedSwipe:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "sweep/sweep/ScansViewController.m"
+            timestampString = "406583399.11092"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "822"
+            endingLineNumber = "822"
+            landmarkName = "-umSwipe_receivedSwipe:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
