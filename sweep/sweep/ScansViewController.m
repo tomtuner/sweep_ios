@@ -273,6 +273,8 @@ static NSUInteger kNumberOfPages = 2;
 -(void) viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    // Register attachment observer
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(umDevice_attachment:) name:uniMagAttachmentNotification object:nil];
 //    [self.view setNeedsDisplay];
 }
 
@@ -923,9 +925,6 @@ static NSUInteger kNumberOfPages = 2;
 -(void) umsdk_activate {
     
     //register observers for all uniMag notifications
-
-    // Register attachment observer
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(umDevice_attachment:) name:uniMagAttachmentNotification object:nil];
 
 	//enable info level NSLogs inside SDK
     // Here we turn on before initializing SDK object so the act of initializing is logged
