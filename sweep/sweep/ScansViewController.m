@@ -806,7 +806,7 @@ static NSUInteger kNumberOfPages = 2;
 - (void)umDevice_attachment:(NSNotification *)notification {
 
 //    [self umsdk_unRegisterObservers];
-//    [self umsdk_registerObservers];
+    [self umsdk_registerObserversIncludingAttachment:NO];
     NSLog(@"Notification: %@", notification);
     
     UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Connect?"
@@ -922,7 +922,7 @@ static NSUInteger kNumberOfPages = 2;
 -(void) umsdk_activate {
     
     //register observers for all uniMag notifications
-	[self umsdk_registerObservers];
+	[self umsdk_registerObserversIncludingAttachment:YES];
     
     
 	//enable info level NSLogs inside SDK
@@ -970,7 +970,7 @@ static NSUInteger kNumberOfPages = 2;
     NSLog(@"Recieved CMD Resposne: %@", notification);
 }
 
--(void) umsdk_registerObservers {
+-(void) umsdk_registerObserversIncludingAttachment:(BOOL) attachment {
 //	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
 //
 //    //list of notifications and their corresponding selector
@@ -1008,8 +1008,11 @@ static NSUInteger kNumberOfPages = 2;
 //            [nc removeObserver:self name:noteAndSel[i].n object:nil];
 //    }
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(umDevice_attachment:) name:uniMagAttachmentNotification object:nil];
-    
+
+    if (attachment)
+    {
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(umDevice_attachment:) name:uniMagAttachmentNotification object:nil];
+    }
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(umDevice_detachment:) name:uniMagDetachmentNotification object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(umDataProcessing:) name:uniMagDataProcessingNotification object:nil];
@@ -1033,7 +1036,7 @@ static NSUInteger kNumberOfPages = 2;
     
     [[NSNotificationCenter defaultCenter] removeObserver:self name:uniMagSwipeNotification object:nil];
     
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:uniMagTimeoutNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:uniMagDidReceiveCmdNotification object:nil];
 
 
 }
