@@ -279,6 +279,7 @@ static NSUInteger kNumberOfPages = 2;
 - (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"SWSyncEngineSyncCompleted" object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:uniMagAttachmentNotification object:nil];
 }
 
 - (void) dealloc
@@ -806,7 +807,7 @@ static NSUInteger kNumberOfPages = 2;
 - (void)umDevice_attachment:(NSNotification *)notification {
 
 //    [self umsdk_unRegisterObservers];
-    [self umsdk_registerObserversIncludingAttachment:NO];
+    [self umsdk_registerObservers];
     NSLog(@"Notification: %@", notification);
     
     UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Connect?"
@@ -922,9 +923,10 @@ static NSUInteger kNumberOfPages = 2;
 -(void) umsdk_activate {
     
     //register observers for all uniMag notifications
-	[self umsdk_registerObserversIncludingAttachment:YES];
-    
-    
+
+    // Register attachment observer
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(umDevice_attachment:) name:uniMagAttachmentNotification object:nil];
+
 	//enable info level NSLogs inside SDK
     // Here we turn on before initializing SDK object so the act of initializing is logged
     [uniMag enableLogging:TRUE];
@@ -970,7 +972,7 @@ static NSUInteger kNumberOfPages = 2;
     NSLog(@"Recieved CMD Resposne: %@", notification);
 }
 
--(void) umsdk_registerObserversIncludingAttachment:(BOOL) attachment {
+-(void) umsdk_registerObservers {
 //	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
 //
 //    //list of notifications and their corresponding selector
@@ -1007,12 +1009,9 @@ static NSUInteger kNumberOfPages = 2;
 //        else
 //            [nc removeObserver:self name:noteAndSel[i].n object:nil];
 //    }
-    
 
-    if (attachment)
-    {
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(umDevice_attachment:) name:uniMagAttachmentNotification object:nil];
-    }
+    
+    // Register other observers
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(umDevice_detachment:) name:uniMagDetachmentNotification object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(umDataProcessing:) name:uniMagDataProcessingNotification object:nil];
