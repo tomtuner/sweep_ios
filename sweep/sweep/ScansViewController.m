@@ -856,12 +856,11 @@ static NSUInteger kNumberOfPages = 2;
             }else {
     #ifndef DEBUG
                 NSDictionary *articleParams = [NSDictionary dictionaryWithObjectsAndKeys:@"Type", @"Swipe",
-                                               @"Theme", NSStringFromClass([ThemeManager sharedTheme]),
+                                               @"Theme", [[ThemeManager sharedTheme] themeName],
                                                nil];
-                [Flurry logEvent:@"Scan"];
+                [Flurry logEvent:@"Scan" withParameters:articleParams];
     #endif
             }
-            
             [[SWCoreDataController sharedInstance] saveBackgroundContext];
             
             // Add check to see if anything should be entered

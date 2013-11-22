@@ -79,7 +79,7 @@
 - (NSNumber *) percentageIDAvailable;
 
 - (NSNumber *) lengthOfValidID;
-
+- (NSString *) themeName;
 
 // One of these must return a non-nil image for each tab:
 //- (UIImage *)imageForTab:(SSThemeTab)tab;

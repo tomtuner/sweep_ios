@@ -392,6 +392,11 @@
     return [[NSNumber alloc] initWithInt:5];
 }
 
+- (NSString *) themeName{
+    
+    return NSStringFromClass([self class]);
+}
+
 /*- (UIImage *)imageForTab:(SSThemeTab)tab
  {
  return nil;

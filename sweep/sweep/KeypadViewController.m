@@ -142,9 +142,9 @@
         }else {
 #ifndef DEBUG
             NSDictionary *articleParams = [NSDictionary dictionaryWithObjectsAndKeys:@"Type", @"Keypad",
-                                           @"Theme", NSStringFromClass([ThemeManager sharedTheme]),
+                                           @"Theme", [[ThemeManager sharedTheme] themeName],
                                            nil];
-            [Flurry logEvent:@"Scan"];
+            [Flurry logEvent:@"Scan" withParameters:articleParams];
 #endif
         }
         

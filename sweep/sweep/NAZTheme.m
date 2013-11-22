@@ -370,6 +370,11 @@
     return [[NSNumber alloc] initWithInt:9];
 }
 
+- (NSString *) themeName{
+    
+    return NSStringFromClass([self class]);
+}
+
 /*- (UIImage *)imageForTab:(SSThemeTab)tab
  {
  return nil;
