@@ -41,6 +41,10 @@
     
     [self customizeView];
     [ThemeManager customizeNavigationControllerTitleView:self barMetrics:UIBarMetricsDefault];
+    UITapGestureRecognizer *deptLabelGR = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(swapDepartmentLabel)];
+    deptLabelGR.numberOfTapsRequired = 1;
+    [self.departmentNameLabel addGestureRecognizer:deptLabelGR];
+    
     self.indexToGoToAfterSync = 0;
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
     {
@@ -115,6 +119,17 @@
     }
     Departments *dept = [[SWSyncEngine sharedEngine] sharedDepartment];
     self.departmentNameLabel.text = dept.name;    
+}
+
+- (void) swapDepartmentLabel
+{
+    Departments *dept = [[SWSyncEngine sharedEngine] sharedDepartment];
+    if ([self.departmentNameLabel.text isEqualToString:dept.name])
+    {
+        self.departmentNameLabel.text = dept.valid_key;
+    }else {
+        self.departmentNameLabel.text = dept.name;
+    }
 }
 
 - (void)loadRecordsFromCoreData {

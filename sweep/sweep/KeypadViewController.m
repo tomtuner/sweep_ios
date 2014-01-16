@@ -54,12 +54,22 @@
     [self changeButtonType];
     UIImage *navCenter = [UIImage imageNamed:@"nav_bar_logo"];
     UIImageView *titleView = [[UIImageView alloc] initWithImage:navCenter];
-    [self.navBar.topItem setTitleView:titleView];
+//    [self.navBar.topItem setTitleView:titleView];
     [self setDoneButtonStatus];
     
     self.managedObjectContext = [[SWCoreDataController sharedInstance] newManagedObjectContext];
 
     
+}
+
+- (void) viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+//    [self changeButtonType];
+    UIImage *navCenter = [UIImage imageNamed:@"nav_bar_logo"];
+    UIImageView *titleView = [[UIImageView alloc] initWithImage:navCenter];
+    [self.navBar.topItem setTitleView:titleView];
+//    [self setDoneButtonStatus];
 }
 
 - (void)setupMenuBarButtonItems {

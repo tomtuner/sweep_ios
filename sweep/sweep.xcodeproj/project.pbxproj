@@ -37,6 +37,14 @@
 		E93C9FBF181FFFA3009EFEAC /* IDTECH_UniMag.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E93C9FBD181FFFA3009EFEAC /* IDTECH_UniMag.a */; };
 		E93C9FC0181FFFA3009EFEAC /* IDTECH_UniMag.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E93C9FBD181FFFA3009EFEAC /* IDTECH_UniMag.a */; };
 		E93C9FC218200CA9009EFEAC /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E93C9FC118200CA9009EFEAC /* MediaPlayer.framework */; };
+		E94451A318882E5600522435 /* keuka_logo_bottom.png in Resources */ = {isa = PBXBuildFile; fileRef = E944519F18882E5600522435 /* keuka_logo_bottom.png */; };
+		E94451A418882E5600522435 /* keuka_logo_bottom.png in Resources */ = {isa = PBXBuildFile; fileRef = E944519F18882E5600522435 /* keuka_logo_bottom.png */; };
+		E94451A518882E5600522435 /* keuka_logo_bottom@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E94451A018882E5600522435 /* keuka_logo_bottom@2x.png */; };
+		E94451A618882E5600522435 /* keuka_logo_bottom@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E94451A018882E5600522435 /* keuka_logo_bottom@2x.png */; };
+		E94451A718882E5600522435 /* keuka_logo_top.png in Resources */ = {isa = PBXBuildFile; fileRef = E94451A118882E5600522435 /* keuka_logo_top.png */; };
+		E94451A818882E5600522435 /* keuka_logo_top.png in Resources */ = {isa = PBXBuildFile; fileRef = E94451A118882E5600522435 /* keuka_logo_top.png */; };
+		E94451A918882E5600522435 /* keuka_logo_top@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E94451A218882E5600522435 /* keuka_logo_top@2x.png */; };
+		E94451AA18882E5600522435 /* keuka_logo_top@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E94451A218882E5600522435 /* keuka_logo_top@2x.png */; };
 		E9518F8D1768108200EB82C8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9518F8C1768108200EB82C8 /* UIKit.framework */; };
 		E9518F8F1768108200EB82C8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9518F8E1768108200EB82C8 /* Foundation.framework */; };
 		E9518F911768108200EB82C8 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9518F901768108200EB82C8 /* CoreGraphics.framework */; };
@@ -317,6 +325,10 @@
 		E93C9FBD181FFFA3009EFEAC /* IDTECH_UniMag.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = IDTECH_UniMag.a; sourceTree = "<group>"; };
 		E93C9FBE181FFFA3009EFEAC /* uniMag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = uniMag.h; sourceTree = "<group>"; };
 		E93C9FC118200CA9009EFEAC /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		E944519F18882E5600522435 /* keuka_logo_bottom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = keuka_logo_bottom.png; sourceTree = "<group>"; };
+		E94451A018882E5600522435 /* keuka_logo_bottom@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "keuka_logo_bottom@2x.png"; sourceTree = "<group>"; };
+		E94451A118882E5600522435 /* keuka_logo_top.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = keuka_logo_top.png; sourceTree = "<group>"; };
+		E94451A218882E5600522435 /* keuka_logo_top@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "keuka_logo_top@2x.png"; sourceTree = "<group>"; };
 		E9518F891768108200EB82C8 /* sweep.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sweep.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9518F8C1768108200EB82C8 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		E9518F8E1768108200EB82C8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -503,6 +515,10 @@
 		E929946F17A8375B00F1EB3B /* keuka */ = {
 			isa = PBXGroup;
 			children = (
+				E944519F18882E5600522435 /* keuka_logo_bottom.png */,
+				E94451A018882E5600522435 /* keuka_logo_bottom@2x.png */,
+				E94451A118882E5600522435 /* keuka_logo_top.png */,
+				E94451A218882E5600522435 /* keuka_logo_top@2x.png */,
 				E929947017A8376500F1EB3B /* nav_bg_keuka_yellow.png */,
 				E929947117A8376500F1EB3B /* nav_bg_keuka_yellow@2x.png */,
 			);
@@ -1009,6 +1025,7 @@
 				E9518F991768108200EB82C8 /* InfoPlist.strings in Resources */,
 				E9518FAB1768108200EB82C8 /* MainStoryboard_iPad.storyboard in Resources */,
 				E9E8AD621768331C00F837D7 /* menu_icon.png in Resources */,
+				E94451A918882E5600522435 /* keuka_logo_top@2x.png in Resources */,
 				E9EE712A17F33B370096A116 /* Images.xcassets in Resources */,
 				E9B28D0A180702790085090A /* MainStoryboard_iPhone.storyboard in Resources */,
 				E9E8AD631768331C00F837D7 /* menu_icon@2x.png in Resources */,
@@ -1030,6 +1047,7 @@
 				E9CA01931790D1D100CAFA5C /* app_icon_iPad.png in Resources */,
 				E9CA01BC179451DE00CAFA5C /* DING.caf in Resources */,
 				E9A2DA971799DD310063F034 /* carbon3.jpg in Resources */,
+				E94451A718882E5600522435 /* keuka_logo_top.png in Resources */,
 				E9A2DA9B1799DE8C0063F034 /* texturetastic_gray.png in Resources */,
 				E9A2DA9D1799DE8C0063F034 /* texturetastic_gray@2X.png in Resources */,
 				E9A2DAA11799E6360063F034 /* gray_texture.png in Resources */,
@@ -1041,6 +1059,7 @@
 				E9A2DACD179B1F770063F034 /* nav_bar_logo_white.png in Resources */,
 				E9A2DACF179B1F770063F034 /* nav_bar_logo_white@2x.png in Resources */,
 				E9A2DAD3179B299F0063F034 /* nav_bg_ithaca_gold.png in Resources */,
+				E94451A518882E5600522435 /* keuka_logo_bottom@2x.png in Resources */,
 				E9A2DAD5179B299F0063F034 /* nav_bg_ithaca_gold@2x.png in Resources */,
 				E929947217A8376500F1EB3B /* nav_bg_keuka_yellow.png in Resources */,
 				E929947417A8376500F1EB3B /* nav_bg_keuka_yellow@2x.png in Resources */,
@@ -1063,6 +1082,7 @@
 				E9EDC28317C2A943000F82F1 /* sweep_logo_bottom@2x.png in Resources */,
 				E9EDC28517C2A943000F82F1 /* sweep_logo_top.png in Resources */,
 				E9EDC28717C2A943000F82F1 /* sweep_logo_top@2x.png in Resources */,
+				E94451A318882E5600522435 /* keuka_logo_bottom.png in Resources */,
 				E91140FA17C40F75005C5B1B /* arrow_left.png in Resources */,
 				E91140FC17C40F75005C5B1B /* arrow_left@2x.png in Resources */,
 				E91140FE17C40F75005C5B1B /* arrow_right.png in Resources */,
@@ -1077,6 +1097,7 @@
 				E9828AE717837CF700619FB4 /* InfoPlist.strings in Resources */,
 				E9828AEC17837CF700619FB4 /* MainStoryboard_iPad.storyboard in Resources */,
 				E9828AED17837CF700619FB4 /* menu_icon.png in Resources */,
+				E94451AA18882E5600522435 /* keuka_logo_top@2x.png in Resources */,
 				E9EE712917F336940096A116 /* Images.xcassets in Resources */,
 				E9B28D09180702780085090A /* MainStoryboard_iPhone.storyboard in Resources */,
 				E9828AEE17837CF700619FB4 /* menu_icon@2x.png in Resources */,
@@ -1098,6 +1119,7 @@
 				E9CA01B31790D8BD00CAFA5C /* app_icon_iPad_beta.png in Resources */,
 				E9CA01BD179451DE00CAFA5C /* DING.caf in Resources */,
 				E9A2DA981799DD310063F034 /* carbon3.jpg in Resources */,
+				E94451A818882E5600522435 /* keuka_logo_top.png in Resources */,
 				E9A2DA9C1799DE8C0063F034 /* texturetastic_gray.png in Resources */,
 				E9A2DA9E1799DE8C0063F034 /* texturetastic_gray@2X.png in Resources */,
 				E9A2DAA21799E6360063F034 /* gray_texture.png in Resources */,
@@ -1109,6 +1131,7 @@
 				E9A2DACE179B1F770063F034 /* nav_bar_logo_white.png in Resources */,
 				E9A2DAD0179B1F770063F034 /* nav_bar_logo_white@2x.png in Resources */,
 				E9A2DAD4179B299F0063F034 /* nav_bg_ithaca_gold.png in Resources */,
+				E94451A618882E5600522435 /* keuka_logo_bottom@2x.png in Resources */,
 				E9A2DAD6179B299F0063F034 /* nav_bg_ithaca_gold@2x.png in Resources */,
 				E929947317A8376500F1EB3B /* nav_bg_keuka_yellow.png in Resources */,
 				E929947517A8376500F1EB3B /* nav_bg_keuka_yellow@2x.png in Resources */,
@@ -1131,6 +1154,7 @@
 				E9EDC28417C2A943000F82F1 /* sweep_logo_bottom@2x.png in Resources */,
 				E9EDC28617C2A943000F82F1 /* sweep_logo_top.png in Resources */,
 				E9EDC28817C2A943000F82F1 /* sweep_logo_top@2x.png in Resources */,
+				E94451A418882E5600522435 /* keuka_logo_bottom.png in Resources */,
 				E91140FB17C40F75005C5B1B /* arrow_left.png in Resources */,
 				E91140FD17C40F75005C5B1B /* arrow_left@2x.png in Resources */,
 				E91140FF17C40F75005C5B1B /* arrow_right.png in Resources */,

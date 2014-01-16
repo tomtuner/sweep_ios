@@ -47,7 +47,7 @@
 
 - (UIColor *)cameraOverlayBackgroundColor
 {
-    return [self customerPrimaryColor];
+    return [UIColor blackColor];
 }
 
 - (UIColor *)accentTintColor
@@ -60,7 +60,7 @@
 }
 
 - (UIColor *)keuYellowColor {
-    return [UIColor colorWithRed:0.9764705882 green:0.8392156863 blue:0.0862745098 alpha:1.0];
+    return [UIColor colorWithRed:0.9333333333 green:0.7882352941 blue:0.0 alpha:1.0];
 }
 
 - (UIColor *) navigationTintColor {
@@ -352,12 +352,12 @@
 
 - (UIImage *) customerTopCameraMaskImage
 {
-    return [UIImage imageNamed:@"sweep_logo_top"];
+    return [UIImage imageNamed:@"keuka_logo_top"];
 }
 
 - (UIImage *) customerBottomCameraMaskImage
 {
-    return [UIImage imageNamed:@"sweep_logo_bottom"];
+    return [UIImage imageNamed:@"keuka_logo_bottom"];
 }
 
 - (NSNumber *) percentageIDAvailable{
@@ -367,7 +367,7 @@
 
 - (NSNumber *) lengthOfValidID{
     
-    return [[NSNumber alloc] initWithInt:9];
+    return [[NSNumber alloc] initWithInt:7];
 }
 
 - (NSString *) themeName{

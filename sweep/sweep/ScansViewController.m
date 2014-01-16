@@ -355,7 +355,7 @@ static NSUInteger kNumberOfPages = 2;
     UIStoryboard *st = [UIStoryboard storyboardWithName:[[NSBundle mainBundle].infoDictionary objectForKey:@"UIMainStoryboardFile"] bundle:[NSBundle mainBundle]];
     KeypadViewController *kpvc = [st instantiateViewControllerWithIdentifier:@"keypadViewController"];
     kpvc.event = self.detailItem;
-    kpvc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+//    kpvc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
     kpvc.modalPresentationStyle = UIModalPresentationFormSheet;
     [self presentViewController:kpvc animated:YES completion:nil];
 }
