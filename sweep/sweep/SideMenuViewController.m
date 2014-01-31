@@ -213,6 +213,7 @@
         cell.nameLabel.textColor = [UIColor lightGrayColor];
 
         cell.nameLabel.text = @"Add an event...";
+        cell.dateLabel.text = nil;
 //        cell.nameLabel.alpha = 0.8;
     }else {
         
