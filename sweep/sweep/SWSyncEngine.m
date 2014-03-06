@@ -164,7 +164,7 @@ NSString * const kSWSyncEngineSyncCompletedNotificationName = @"SWSyncEngineSync
             NSLog(@"SBC After call creation");
         }
         
-        [self executeSyncCompletedOperations];
+//        [self executeSyncCompletedOperations];
     }];
 }
 
@@ -475,6 +475,8 @@ NSString * const kSWSyncEngineSyncCompletedNotificationName = @"SWSyncEngineSync
                 // Need to write responmse object to disk
                 [self processIntoCoreDataForClassName: className WithArray:responseObject];
             }
+            [self executeSyncCompletedOperations];
+
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             NSLog(@"Request for class %@ failed with error: %@", className, error);
         }];
