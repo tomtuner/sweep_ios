@@ -1574,6 +1574,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E1F66A6A01AD42F8916FB975 /* Pods.xcconfig */;
 			buildSettings = {
+				ARCHS = (
+					armv7s,
+					armv7,
+				);
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -1601,6 +1605,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E1F66A6A01AD42F8916FB975 /* Pods.xcconfig */;
 			buildSettings = {
+				ARCHS = (
+					armv7s,
+					armv7,
+				);
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -1661,6 +1669,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E1F66A6A01AD42F8916FB975 /* Pods.xcconfig */;
 			buildSettings = {
+				ARCHS = (
+					armv7s,
+					armv7,
+				);
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -1703,6 +1715,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E1F66A6A01AD42F8916FB975 /* Pods.xcconfig */;
 			buildSettings = {
+				ARCHS = (
+					armv7s,
+					armv7,
+				);
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-beta";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -1731,6 +1747,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E1F66A6A01AD42F8916FB975 /* Pods.xcconfig */;
 			buildSettings = {
+				ARCHS = (
+					armv7s,
+					armv7,
+				);
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-beta";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "";
@@ -1759,6 +1779,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E1F66A6A01AD42F8916FB975 /* Pods.xcconfig */;
 			buildSettings = {
+				ARCHS = (
+					armv7s,
+					armv7,
+				);
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-beta";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";

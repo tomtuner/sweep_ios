@@ -378,7 +378,7 @@
 
 - (NSNumber *) lengthOfValidID{
     
-    return [[NSNumber alloc] initWithInt:9];
+    return [[NSNumber alloc] initWithInt:11];
 }
 
 - (NSString *) themeName{
