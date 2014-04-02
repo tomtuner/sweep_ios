@@ -33,7 +33,7 @@
 //	[self setDefaultHeader:@"Accept" value:@"application/json"];
     [self setDefaultHeader:@"Authorization" value:@"Token token=d2f3dc51d72c3b303a9ed640a98550ae"];
     [self setDefaultHeader:@"format" value:@"json"];
-    
+
     return self;
 }
 
