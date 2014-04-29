@@ -19,6 +19,10 @@
 @dynamic updated_at;
 @dynamic value;
 @dynamic event;
+@dynamic user_id;
+@dynamic status;
+@dynamic registered_at;
+
 @dynamic sync_status;
 
 -(void) awakeFromInsert

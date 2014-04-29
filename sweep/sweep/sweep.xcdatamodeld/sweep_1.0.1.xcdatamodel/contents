@@ -35,10 +35,13 @@
     <entity name="Scans" representedClassName="Scans" syncable="YES">
         <attribute name="created_at" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="event_id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="registered_at" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="remote_id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="scanned_at" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="status" optional="YES" attributeType="Integer 16" syncable="YES"/>
         <attribute name="sync_status" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="updated_at" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="user_id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="value" optional="YES" attributeType="Transformable" valueTransformerName="StringEncryptionTransformer" syncable="YES"/>
         <relationship name="event" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Events" syncable="YES"/>
     </entity>
@@ -46,6 +49,6 @@
         <element name="Customers" positionX="0" positionY="0" width="128" height="150"/>
         <element name="Departments" positionX="0" positionY="0" width="128" height="180"/>
         <element name="Events" positionX="0" positionY="0" width="128" height="195"/>
-        <element name="Scans" positionX="0" positionY="0" width="128" height="165"/>
+        <element name="Scans" positionX="0" positionY="0" width="128" height="210"/>
     </elements>
 </model>

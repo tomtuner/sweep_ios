@@ -362,6 +362,8 @@ NSString * const kSWSyncEngineSyncCompletedNotificationName = @"SWSyncEngineSync
         // Don't store these two
     }
     else {
+        if (value == [NSNull null])
+            value = nil;
         [managedObject setValue:value forKey:key];
     }
 }
@@ -632,7 +634,9 @@ NSString * const kSWSyncEngineSyncCompletedNotificationName = @"SWSyncEngineSync
     [self initializeDateFormatter];
     // NSDateFormatter does not like ISO 8601 so strip the milliseconds and timezone
 //    dateString = [dateString substringWithRange:NSMakeRange(0, [dateString length])];
-    
+//    NSLog(@"String: %@", dateString);
+    if (dateString == [NSNull null])
+        return nil;
     return [self.dateFormatter dateFromString:dateString];
 }
 

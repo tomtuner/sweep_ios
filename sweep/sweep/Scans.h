@@ -23,5 +23,8 @@
 @property (nonatomic, retain) NSDate * updated_at;
 @property (nonatomic, retain) NSString *value;
 @property (nonatomic, retain) Events *event;
+@property (nonatomic, retain) NSNumber * user_id;
+@property (nonatomic, retain) NSNumber * status;
+@property (nonatomic, retain) NSDate * registered_at;
 
 @end
