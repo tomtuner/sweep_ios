@@ -160,11 +160,56 @@ NSString * const kSWSyncEngineSyncCompletedNotificationName = @"SWSyncEngineSync
     } completionBlock:^(NSArray *operations) {
         if ([operations count] > 0) {
             NSLog(@"Creation of objects on server compelete, updated objects in context: %@", [[[SWCoreDataController sharedInstance] masterManagedObjectContext] updatedObjects]);
+//            [[SWCoreDataController sharedInstance] saveMasterContext];
+            NSLog(@"SBC After call creation");
+        }
+        [self updateLocalObjectsToServer];
+//        [self executeSyncCompletedOperations];
+    }];
+}
+
+- (void) updateLocalObjectsToServer
+{
+    NSMutableArray *operations = [NSMutableArray array];
+    for (NSString *className in self.registeredClassesToSync) {
+        NSArray *objectsToCreate = [self managedObjectsUsingMasterContextForClass:className withSyncStatus:SWObjectUpdated];
+        for (NSManagedObject *objectToCreate in objectsToCreate) {
+            NSMutableDictionary *jsonString = [objectToCreate JSONToUpdateObjectOnServer];
+            
+            NSString *departmentKey = [KeychainWrapper returnDepartmentKey];
+            //        NSMutableDictionary *tempDict = [NSMutableDictionary dictionaryWithDictionary:<#(NSDictionary *)#>]
+            //            NSDictionary *paramDict = [NSDictionary dictionaryWithObjects:@[departmentKey]
+            //                                                                  forKeys:@[@"valid_key"]];
+            [jsonString setObject:departmentKey forKey:@"valid_key"];
+            
+            NSMutableURLRequest *request = [[AFSweepAPIClient sharedClient] PUTRequestForClass:className parameters:jsonString];
+            
+            AFHTTPRequestOperation *operation = [[AFSweepAPIClient sharedClient] HTTPRequestOperationWithRequest:request success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                NSLog(@"Success update: %@", responseObject);
+//                NSDictionary *responseDictionary = responseObject;
+//                NSDate *createdDate = [self dateUsingStringFromAPI:[responseDictionary valueForKey:@"created_at"]];
+//                //                NSDate *createdDate = [self dateUsingStringFromAPI:[responseDictionary valueForKey:@"created_at"]];
+//                [objectToCreate setValue:createdDate forKey:@"created_at"];
+//                [objectToCreate setValue:createdDate forKey:@"updated_at"];
+//                [objectToCreate setValue:[responseDictionary valueForKey:@"id"] forKey:@"remote_id"];
+//                [objectToCreate setValue:[NSNumber numberWithInt:SWObjectSynced] forKey:@"sync_status"];
+            } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                NSLog(@"Failed update: %@", error);
+            }];
+            [operations addObject:operation];
+        }
+    }
+    
+    [[AFSweepAPIClient sharedClient] enqueueBatchOfHTTPRequestOperations:operations progressBlock:^(NSUInteger numberOfCompletedOperations, NSUInteger totalNumberOfOperations) {
+        NSLog(@"Completed %d of %d create operations", numberOfCompletedOperations, totalNumberOfOperations);
+    } completionBlock:^(NSArray *operations) {
+        if ([operations count] > 0) {
+            NSLog(@"Creation of objects on server compelete, updated objects in context: %@", [[[SWCoreDataController sharedInstance] masterManagedObjectContext] updatedObjects]);
             [[SWCoreDataController sharedInstance] saveMasterContext];
             NSLog(@"SBC After call creation");
         }
-        
-//        [self executeSyncCompletedOperations];
+//        [self updateLocalObjectsToServer];
+        //        [self executeSyncCompletedOperations];
     }];
 }
 
@@ -343,7 +388,7 @@ NSString * const kSWSyncEngineSyncCompletedNotificationName = @"SWSyncEngineSync
 }
 
 - (void)setValue:(id)value forKey:(NSString *)key forManagedObject:(NSManagedObject *)managedObject {
-    if ([key isEqualToString:@"created_at"] || [key isEqualToString:@"updated_at"] || [key isEqualToString:@"scanned_at"] || [key isEqualToString:@"starts_at"] || [key isEqualToString:@"ends_at"]) {
+    if ([key isEqualToString:@"created_at"] || [key isEqualToString:@"updated_at"] || [key isEqualToString:@"scanned_at"] || [key isEqualToString:@"starts_at"] || [key isEqualToString:@"ends_at"] || [key isEqualToString:@"registered_at"]) {
         NSDate *date = [self dateUsingStringFromAPI:value];
         [managedObject setValue:date forKey:key];
     } else if ([value isKindOfClass:[NSDictionary class]]) {

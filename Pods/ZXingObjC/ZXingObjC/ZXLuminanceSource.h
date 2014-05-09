@@ -22,10 +22,7 @@
  * for other Readers in the chain.
  */
 
-@interface ZXLuminanceSource : NSObject {
-  int width;
-  int height;
-}
+@interface ZXLuminanceSource : NSObject
 
 @property (nonatomic, assign, readonly) int width;
 @property (nonatomic, assign, readonly) int height;
@@ -33,9 +30,10 @@
 @property (nonatomic, assign, readonly) BOOL rotateSupported;
 
 - (id)initWithWidth:(int)width height:(int)height;
-- (unsigned char *)row:(int)y row:(unsigned char *)row;
-- (unsigned char *)matrix;
+- (int8_t *)row:(int)y;
+- (int8_t *)matrix;
 - (ZXLuminanceSource *)crop:(int)left top:(int)top width:(int)width height:(int)height;
+- (ZXLuminanceSource *)invert;
 - (ZXLuminanceSource *)rotateCounterClockwise;
 - (ZXLuminanceSource *)rotateCounterClockwise45;
 

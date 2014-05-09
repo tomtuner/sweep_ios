@@ -68,4 +68,10 @@
     return request;
 }
 
+- (NSMutableURLRequest *)PUTRequestForClass:(NSString *)className parameters:(NSDictionary *)parameters {
+    NSMutableURLRequest *request = nil;
+    request = [self requestWithMethod:@"PUT" path:[NSString stringWithFormat:@"%@/update", [className lowercaseString]] parameters:parameters];
+    return request;
+}
+
 @end

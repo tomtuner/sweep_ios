@@ -14,33 +14,19 @@
  * limitations under the License.
  */
 
+#import "ZXInvertedLuminanceSource.h"
 #import "ZXLuminanceSource.h"
-
-@interface ZXLuminanceSource ()
-
-@property (nonatomic, assign) int width;
-@property (nonatomic, assign) int height;
-@property (nonatomic, assign) BOOL cropSupported;
-@property (nonatomic, assign) BOOL rotateSupported;
-
-@end
 
 @implementation ZXLuminanceSource
 
-@synthesize width;
-@synthesize height;
-@synthesize cropSupported;
-@synthesize rotateSupported;
-
-- (id)initWithWidth:(int)aWidth height:(int)aHeight {
+- (id)initWithWidth:(int)width height:(int)height {
   if (self = [super init]) {
-    self.width = aWidth;
-    self.height = aHeight;
+    _width = width;
+    _height = height;
   }
 
   return self;
 }
-
 
 /**
  * Fetches one row of luminance data from the underlying platform's bitmap. Values range from
@@ -49,12 +35,11 @@
  * to only fetch this row rather than the whole image, since no 2D Readers may be installed and
  * getMatrix() may never be called.
  */
-- (unsigned char *)row:(int)y row:(unsigned char *)row {
+- (int8_t *)row:(int)y {
   @throw [NSException exceptionWithName:NSInternalInconsistencyException
                                  reason:[NSString stringWithFormat:@"You must override %@ in a subclass", NSStringFromSelector(_cmd)]
                                userInfo:nil];
 }
-
 
 /**
  * Fetches luminance data for the underlying bitmap. Values should be fetched using:
@@ -64,12 +49,11 @@
  * larger than width * height bytes on some platforms. Do not modify the contents
  * of the result.
  */
-- (unsigned char *)matrix {
+- (int8_t *)matrix {
   @throw [NSException exceptionWithName:NSInternalInconsistencyException
                                  reason:[NSString stringWithFormat:@"You must override %@ in a subclass", NSStringFromSelector(_cmd)]
                                userInfo:nil];
 }
-
 
 /**
  * Returns a new object with cropped image data. Implementations may keep a reference to the
@@ -81,6 +65,13 @@
                                userInfo:nil];
 }
 
+/**
+ * Returns a wrapper of this ZXLuminanceSource which inverts the luminances it returns -- black becomes
+ * white and vice versa, and each value becomes (255-value).
+ */
+- (ZXLuminanceSource *)invert {
+  return [[ZXInvertedLuminanceSource alloc] initWithDelegate:self];
+}
 
 /**
  * Returns a new object with rotated image data by 90 degrees counterclockwise.
@@ -103,11 +94,11 @@
 }
 
 - (NSString *)description {
-  unsigned char *row = NULL;
-  NSMutableString *result = [NSMutableString stringWithCapacity:height * (width + 1)];
-  for (int y = 0; y < height; y++) {
-    row = [self row:y row:row];
-    for (int x = 0; x < width; x++) {
+  int8_t *row = NULL;
+  NSMutableString *result = [NSMutableString stringWithCapacity:self.height * (self.width + 1)];
+  for (int y = 0; y < self.height; y++) {
+    row = [self row:y];
+    for (int x = 0; x < self.width; x++) {
       int luminance = row[x] & 0xFF;
       unichar c;
       if (luminance < 0x40) {

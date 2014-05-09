@@ -16,32 +16,18 @@
 
 #import "ZXISBNParsedResult.h"
 
-@interface ZXISBNParsedResult ()
-
-@property (nonatomic, copy) NSString *isbn;
-
-@end
-
 @implementation ZXISBNParsedResult
 
-@synthesize isbn;
-
-- (id)initWithIsbn:(NSString *)anIsbn {
+- (id)initWithIsbn:(NSString *)isbn {
   if (self = [super initWithType:kParsedResultTypeISBN]) {
-    self.isbn = anIsbn;
+    _isbn = isbn;
   }
 
   return self;
 }
 
 + (id)isbnParsedResultWithIsbn:(NSString *)isbn {
-  return [[[self alloc] initWithIsbn:isbn] autorelease];
-}
-
-- (void)dealloc {
-  [isbn release];
-
-  [super dealloc];
+  return [[self alloc] initWithIsbn:isbn];
 }
 
 - (NSString *)displayResult {

@@ -24,7 +24,7 @@
 
 - (NSArray *)detectMulti:(ZXDecodeHints *)hints error:(NSError **)error {
   id<ZXResultPointCallback> resultPointCallback = hints == nil ? nil : hints.resultPointCallback;
-  ZXMultiFinderPatternFinder *finder = [[[ZXMultiFinderPatternFinder alloc] initWithImage:self.image resultPointCallback:resultPointCallback] autorelease];
+  ZXMultiFinderPatternFinder *finder = [[ZXMultiFinderPatternFinder alloc] initWithImage:self.image resultPointCallback:resultPointCallback];
   NSArray *info = [finder findMulti:hints error:error];
   if ([info count] == 0) {
     if (error) *error = NotFoundErrorInstance();
@@ -33,7 +33,7 @@
 
   NSMutableArray *result = [NSMutableArray array];
   for (int i = 0; i < [info count]; i++) {
-    ZXDetectorResult *patternInfo = [self processFinderPatternInfo:[info objectAtIndex:i] error:nil];
+    ZXDetectorResult *patternInfo = [self processFinderPatternInfo:info[i] error:nil];
     if (patternInfo) {
       [result addObject:patternInfo];
     }

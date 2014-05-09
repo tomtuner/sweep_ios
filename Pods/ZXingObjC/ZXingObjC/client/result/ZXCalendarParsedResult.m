@@ -16,45 +16,30 @@
 
 #import "ZXCalendarParsedResult.h"
 
-@interface ZXCalendarParsedResult ()
-
-@property(nonatomic, retain) NSString *summary;
-@property(nonatomic, retain) NSDate *start;
-@property(nonatomic) BOOL startAllDay;
-@property(nonatomic, retain) NSDate *end;
-@property(nonatomic) BOOL endAllDay;
-@property(nonatomic, retain) NSString *location;
-@property(nonatomic, retain) NSString *organizer;
-@property(nonatomic, retain) NSArray *attendees;
-@property(nonatomic, retain) NSString *description;
-@property(nonatomic) double latitude;
-@property(nonatomic) double longitude;
-
-- (NSDate *)parseDate:(NSString *)when;
-- (NSString *)format:(BOOL)allDay date:(NSDate *)date;
-
-@end
-
 static NSRegularExpression *DATE_TIME = nil;
+static NSRegularExpression *RFC2445_DURATION = nil;
 static NSDateFormatter *DATE_FORMAT = nil;
 static NSDateFormatter *DATE_TIME_FORMAT = nil;
 
-@implementation ZXCalendarParsedResult
+const int RFC2445_DURATION_FIELD_UNITS_LEN = 5;
+const long RFC2445_DURATION_FIELD_UNITS[RFC2445_DURATION_FIELD_UNITS_LEN] = {
+  7 * 24 * 60 * 60 * 1000, // 1 week
+  24 * 60 * 60 * 1000, // 1 day
+  60 * 60 * 1000, // 1 hour
+  60 * 1000, // 1 minute
+  1000, // 1 second
+};
 
-@synthesize summary;
-@synthesize start;
-@synthesize end;
-@synthesize location;
-@synthesize organizer;
-@synthesize attendees;
-@synthesize description;
-@synthesize latitude;
-@synthesize longitude;
+@implementation ZXCalendarParsedResult
 
 + (void)initialize {
   DATE_TIME = [[NSRegularExpression alloc] initWithPattern:@"[0-9]{8}(T[0-9]{6}Z?)?"
                                                    options:0
                                                      error:nil];
+
+  RFC2445_DURATION = [[NSRegularExpression alloc] initWithPattern:@"P(?:(\\d+)W)?(?:(\\d+)D)?(?:T(?:(\\d+)H)?(?:(\\d+)M)?(?:(\\d+)S)?)?"
+                                                          options:NSRegularExpressionCaseInsensitive
+                                                            error:nil];
 
   DATE_FORMAT = [[NSDateFormatter alloc] init];
   DATE_FORMAT.dateFormat = @"yyyyMMdd";
@@ -63,39 +48,42 @@ static NSDateFormatter *DATE_TIME_FORMAT = nil;
   DATE_TIME_FORMAT.dateFormat = @"yyyyMMdd'T'HHmmss";
 }
 
-- (id)initWithSummary:(NSString *)aSummary startString:(NSString *)aStartString endString:(NSString *)anEndString location:(NSString *)aLocation
-            organizer:(NSString *)anOrganizer attendees:(NSArray *)anAttendees description:(NSString *)aDescription latitude:(double)aLatitude longitude:(double)aLongitude {
+- (id)initWithSummary:(NSString *)summary startString:(NSString *)startString endString:(NSString *)endString
+       durationString:(NSString *)durationString location:(NSString *)location organizer:(NSString *)organizer
+            attendees:(NSArray *)attendees description:(NSString *)description latitude:(double)latitude
+            longitude:(double)longitude {
   if (self = [super initWithType:kParsedResultTypeCalendar]) {
-    self.summary = aSummary;
-    self.start = [self parseDate:aStartString];
-    self.end = anEndString == nil ? nil : [self parseDate:anEndString];
-    self.startAllDay = aStartString.length == 8;
-    self.endAllDay = anEndString != nil && anEndString.length == 8;
-    self.location = aLocation;
-    self.organizer = anOrganizer;
-    self.attendees = anAttendees;
-    self.description = aDescription;
-    self.latitude = aLatitude;
-    self.longitude = aLongitude;
+    _summary = summary;
+    _start = [self parseDate:startString];
+
+    if (endString == nil) {
+      long durationMS = [self parseDurationMS:durationString];
+      _end = durationMS < 0 ? nil : [NSDate dateWithTimeIntervalSince1970:[_start timeIntervalSince1970] + durationMS / 1000];
+    } else {
+      _end = [self parseDate:endString];
+    }
+
+    _startAllDay = startString.length == 8;
+    _endAllDay = endString != nil && endString.length == 8;
+
+    _location = location;
+    _organizer = organizer;
+    _attendees = attendees;
+    _description = description;
+    _latitude = latitude;
+    _longitude = longitude;
   }
   return self;
 }
 
-+ (id)calendarParsedResultWithSummary:(NSString *)summary startString:(NSString *)startString endString:(NSString *)endString location:(NSString *)location
-                            organizer:(NSString *)organizer attendees:(NSArray *)attendees description:(NSString *)description latitude:(double)latitude longitude:(double)longitude {
-return [[[self alloc] initWithSummary:summary startString:startString endString:endString location:location organizer:organizer attendees:attendees
-                            description:description latitude:latitude longitude:longitude] autorelease];
-}
-
-- (void)dealloc {
-  [summary release];
-  [start release];
-  [end release];
-  [location release];
-  [organizer release];
-  [attendees release];
-  [description release];
-  [super dealloc];
++ (id)calendarParsedResultWithSummary:(NSString *)summary startString:(NSString *)startString
+                            endString:(NSString *)endString durationString:(NSString *)durationString
+                             location:(NSString *)location organizer:(NSString *)organizer
+                            attendees:(NSArray *)attendees description:(NSString *)description latitude:(double)latitude
+                            longitude:(double)longitude {
+  return [[self alloc] initWithSummary:summary startString:startString endString:endString durationString:durationString
+                              location:location organizer:organizer attendees:attendees description:description
+                              latitude:latitude longitude:longitude];
 }
 
 - (NSString *)displayResult {
@@ -141,6 +129,27 @@ return [[[self alloc] initWithSummary:summary startString:startString endString:
   NSDateFormatter *format = [[NSDateFormatter alloc] init];
   format.dateFormat = allDay ? @"MMM d, yyyy" : @"MMM d, yyyy hh:mm:ss a";
   return [format stringFromDate:date];
+}
+
+- (long)parseDurationMS:(NSString *)durationString {
+  if (durationString == nil) {
+    return -1;
+  }
+  NSArray *m = [RFC2445_DURATION matchesInString:durationString options:0 range:NSMakeRange(0, durationString.length)];
+  if (m.count == 0) {
+    return -1;
+  }
+  long durationMS = 0;
+  NSTextCheckingResult *match = m[0];
+  for (int i = 0; i < RFC2445_DURATION_FIELD_UNITS_LEN; i++) {
+    if ([match rangeAtIndex:i + 1].location != NSNotFound) {
+      NSString *fieldValue = [durationString substringWithRange:[match rangeAtIndex:i + 1]];
+      if (fieldValue != nil) {
+        durationMS += RFC2445_DURATION_FIELD_UNITS[i] * [fieldValue intValue];
+      }
+    }
+  }
+  return durationMS;
 }
 
 @end

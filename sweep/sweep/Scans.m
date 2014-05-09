@@ -19,6 +19,7 @@
 @dynamic updated_at;
 @dynamic value;
 @dynamic event;
+@dynamic user;
 @dynamic user_id;
 @dynamic status;
 @dynamic registered_at;
@@ -38,11 +39,23 @@
                                     self.value, @"value",
                                     self.event_id, @"event_id",
                                     self.scanned_at, @"scanned_at", nil];
-    NSLog(@"Scanned_at: %@", self.scanned_at);
-    NSMutableDictionary *event = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+    NSMutableDictionary *scan = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                                   jsonDictionary, @"scan", nil];
     
     
-    return event;
+    return scan;
+}
+
+- (NSMutableDictionary *)JSONToUpdateObjectOnServer {
+    
+    NSDictionary *jsonDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
+                                    self.scanned_at, @"scanned_at",
+                                    self.status, @"status",
+                                    self.remote_id, @"id", nil];
+    NSMutableDictionary *scan = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                  jsonDictionary, @"scan", nil];
+    
+    
+    return scan;
 }
 @end

@@ -1,5 +1,6 @@
 FRAMEWORK_SEARCH_PATHS = "$(PODS_ROOT)/HockeySDK/Vendor"
-GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1 $(inherited) BITHOCKEY_VERSION="@\"3.0.0\""
+GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1 $(inherited) BITHOCKEY_VERSION="@\"3.5.5\"" BITHOCKEY_C_VERSION="\"3.5.5\"" BITHOCKEY_BUILD="@\"28\"" BITHOCKEY_C_BUILD="\"28\""
 HEADER_SEARCH_PATHS = "${PODS_ROOT}/Headers" "${PODS_ROOT}/Headers/AFNetworking" "${PODS_ROOT}/Headers/HockeySDK" "${PODS_ROOT}/Headers/ViewDeck" "${PODS_ROOT}/Headers/ZXingObjC"
+OTHER_CFLAGS = $(inherited) -isystem "${PODS_ROOT}/Headers" -isystem "${PODS_ROOT}/Headers/AFNetworking" -isystem "${PODS_ROOT}/Headers/HockeySDK" -isystem "${PODS_ROOT}/Headers/ViewDeck" -isystem "${PODS_ROOT}/Headers/ZXingObjC"
 OTHER_LDFLAGS = -ObjC -framework AVFoundation -framework AudioToolbox -framework CoreGraphics -framework CoreMedia -framework CoreText -framework CoreVideo -framework CrashReporter -framework ImageIO -framework MobileCoreServices -framework QuartzCore -framework Security -framework SystemConfiguration -framework UIKit
 PODS_ROOT = ${SRCROOT}/../Pods

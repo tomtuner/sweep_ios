@@ -34,39 +34,20 @@ const int INSIDE_ODD_WIDEST[4] = {2,4,6,8};
 
 @interface ZXRSS14Reader ()
 
-@property (nonatomic, retain) NSMutableArray *possibleLeftPairs;
-@property (nonatomic, retain) NSMutableArray *possibleRightPairs;
-
-- (void)addOrTally:(NSMutableArray *)possiblePairs pair:(ZXPair *)pair;
-- (BOOL)adjustOddEvenCounts:(BOOL)outsideChar numModules:(int)numModules;
-- (BOOL)checkChecksum:(ZXPair *)leftPair rightPair:(ZXPair *)rightPair;
-- (ZXResult *)constructResult:(ZXPair *)leftPair rightPair:(ZXPair *)rightPair;
-- (ZXDataCharacter *)decodeDataCharacter:(ZXBitArray *)row pattern:(ZXRSSFinderPattern *)pattern outsideChar:(BOOL)outsideChar;
-- (ZXPair *)decodePair:(ZXBitArray *)row right:(BOOL)right rowNumber:(int)rowNumber hints:(ZXDecodeHints *)hints;
-- (NSArray *)findFinderPattern:(ZXBitArray *)row rowOffset:(int)rowOffset rightFinderPattern:(BOOL)rightFinderPattern;
-- (ZXRSSFinderPattern *)parseFoundFinderPattern:(ZXBitArray *)row rowNumber:(int)rowNumber right:(BOOL)right startEnd:(NSArray *)startEnd;
+@property (nonatomic, strong) NSMutableArray *possibleLeftPairs;
+@property (nonatomic, strong) NSMutableArray *possibleRightPairs;
 
 @end
 
 @implementation ZXRSS14Reader
 
-@synthesize possibleLeftPairs;
-@synthesize possibleRightPairs;
-
 - (id)init {
   if (self = [super init]) {
-    self.possibleLeftPairs = [NSMutableArray array];
-    self.possibleRightPairs = [NSMutableArray array];
+    _possibleLeftPairs = [NSMutableArray array];
+    _possibleRightPairs = [NSMutableArray array];
   }
 
   return self;
-}
-
-- (void)dealloc {
-  [possibleLeftPairs release];
-  [possibleRightPairs release];
-
-  [super dealloc];
 }
 
 - (ZXResult *)decodeRow:(int)rowNumber row:(ZXBitArray *)row hints:(ZXDecodeHints *)hints error:(NSError **)error {
@@ -118,10 +99,10 @@ const int INSIDE_ODD_WIDEST[4] = {2,4,6,8};
 
 - (ZXResult *)constructResult:(ZXPair *)leftPair rightPair:(ZXPair *)rightPair {
   long long symbolValue = 4537077LL * leftPair.value + rightPair.value;
-  NSString *text = [[NSNumber numberWithLongLong:symbolValue] stringValue];
+  NSString *text = [@(symbolValue) stringValue];
   NSMutableString *buffer = [NSMutableString stringWithCapacity:14];
 
-  for (int i = 13 - [text length]; i > 0; i--) {
+  for (int i = 13 - (int)[text length]; i > 0; i--) {
     [buffer appendString:@"0"];
   }
 
@@ -143,15 +124,15 @@ const int INSIDE_ODD_WIDEST[4] = {2,4,6,8};
   return [ZXResult resultWithText:buffer
                          rawBytes:NULL
                            length:0
-                     resultPoints:[NSArray arrayWithObjects:[leftPoints objectAtIndex:0], [leftPoints objectAtIndex:1], [rightPoints objectAtIndex:0], [rightPoints objectAtIndex:1], nil]
+                     resultPoints:@[leftPoints[0], leftPoints[1], rightPoints[0], rightPoints[1]]
                            format:kBarcodeFormatRSS14];
 }
 
 - (BOOL)checkChecksum:(ZXPair *)leftPair rightPair:(ZXPair *)rightPair {
-  int leftFPValue = leftPair.finderPattern.value;
-  int rightFPValue = rightPair.finderPattern.value;
-  if ((leftFPValue == 0 && rightFPValue == 8) || (leftFPValue == 8 && rightFPValue == 0)) {
-  }
+//  int leftFPValue = leftPair.finderPattern.value;
+//  int rightFPValue = rightPair.finderPattern.value;
+//  if ((leftFPValue == 0 && rightFPValue == 8) || (leftFPValue == 8 && rightFPValue == 0)) {
+//  }
   int checkValue = (leftPair.checksumPortion + 16 * rightPair.checksumPortion) % 79;
   int targetCheckValue = 9 * leftPair.finderPattern.value + rightPair.finderPattern.value;
   if (targetCheckValue > 72) {
@@ -174,20 +155,20 @@ const int INSIDE_ODD_WIDEST[4] = {2,4,6,8};
   }
   id<ZXResultPointCallback> resultPointCallback = hints == nil ? nil : hints.resultPointCallback;
   if (resultPointCallback != nil) {
-    float center = ([[startEnd objectAtIndex:0] intValue] + [[startEnd objectAtIndex:1] intValue]) / 2.0f;
+    float center = ([startEnd[0] intValue] + [startEnd[1] intValue]) / 2.0f;
     if (right) {
       center = [row size] - 1 - center;
     }
-    [resultPointCallback foundPossibleResultPoint:[[[ZXResultPoint alloc] initWithX:center y:rowNumber] autorelease]];
+    [resultPointCallback foundPossibleResultPoint:[[ZXResultPoint alloc] initWithX:center y:rowNumber]];
   }
   ZXDataCharacter *outside = [self decodeDataCharacter:row pattern:pattern outsideChar:YES];
   ZXDataCharacter *inside = [self decodeDataCharacter:row pattern:pattern outsideChar:NO];
   if (!outside || !inside) {
     return nil;
   }
-  return [[[ZXPair alloc] initWithValue:1597 * outside.value + inside.value
+  return [[ZXPair alloc] initWithValue:1597 * outside.value + inside.value
                         checksumPortion:outside.checksumPortion + 4 * inside.checksumPortion
-                          finderPattern:pattern] autorelease];
+                          finderPattern:pattern];
 }
 
 - (ZXDataCharacter *)decodeDataCharacter:(ZXBitArray *)row pattern:(ZXRSSFinderPattern *)pattern outsideChar:(BOOL)outsideChar {
@@ -203,11 +184,11 @@ const int INSIDE_ODD_WIDEST[4] = {2,4,6,8};
   counters[7] = 0;
 
   if (outsideChar) {
-    if (![ZXOneDReader recordPatternInReverse:row start:[[[pattern startEnd] objectAtIndex:0] intValue] counters:counters countersSize:countersLen]) {
+    if (![ZXOneDReader recordPatternInReverse:row start:[[pattern startEnd][0] intValue] counters:counters countersSize:countersLen]) {
       return nil;
     }
   } else {
-    if (![ZXOneDReader recordPattern:row start:[[[pattern startEnd] objectAtIndex:1] intValue] counters:counters countersSize:countersLen]) {
+    if (![ZXOneDReader recordPattern:row start:[[pattern startEnd][1] intValue] counters:counters countersSize:countersLen]) {
       return nil;
     }
 
@@ -270,7 +251,7 @@ const int INSIDE_ODD_WIDEST[4] = {2,4,6,8};
     int vEven = [ZXRSSUtils rssValue:self.evenCounts widthsLen:self.evenCountsLen maxWidth:evenWidest noNarrow:YES];
     int tEven = OUTSIDE_EVEN_TOTAL_SUBSET[group];
     int gSum = OUTSIDE_GSUM[group];
-    return [[[ZXDataCharacter alloc] initWithValue:vOdd * tEven + vEven + gSum checksumPortion:checksumPortion] autorelease];
+    return [[ZXDataCharacter alloc] initWithValue:vOdd * tEven + vEven + gSum checksumPortion:checksumPortion];
   } else {
     if ((evenSum & 0x01) != 0 || evenSum > 10 || evenSum < 4) {
       return nil;
@@ -282,7 +263,7 @@ const int INSIDE_ODD_WIDEST[4] = {2,4,6,8};
     int vEven = [ZXRSSUtils rssValue:self.evenCounts widthsLen:self.evenCountsLen maxWidth:evenWidest noNarrow:NO];
     int tOdd = INSIDE_ODD_TOTAL_SUBSET[group];
     int gSum = INSIDE_GSUM[group];
-    return [[[ZXDataCharacter alloc] initWithValue:vEven * tOdd + vOdd + gSum checksumPortion:checksumPortion] autorelease];
+    return [[ZXDataCharacter alloc] initWithValue:vEven * tOdd + vOdd + gSum checksumPortion:checksumPortion];
   }
 }
 
@@ -312,7 +293,7 @@ const int INSIDE_ODD_WIDEST[4] = {2,4,6,8};
     } else {
       if (counterPosition == 3) {
         if ([ZXAbstractRSSReader isFinderPattern:counters countersLen:countersLen]) {
-          return [NSArray arrayWithObjects:[NSNumber numberWithInt:patternStart], [NSNumber numberWithInt:x], nil];
+          return @[@(patternStart), @(x)];
         }
         patternStart += counters[0] + counters[1];
         counters[0] = counters[2];
@@ -332,15 +313,15 @@ const int INSIDE_ODD_WIDEST[4] = {2,4,6,8};
 }
 
 - (ZXRSSFinderPattern *)parseFoundFinderPattern:(ZXBitArray *)row rowNumber:(int)rowNumber right:(BOOL)right startEnd:(NSArray *)startEnd {
-  BOOL firstIsBlack = [row get:[[startEnd objectAtIndex:0] intValue]];
-  int firstElementStart = [[startEnd objectAtIndex:0] intValue] - 1;
+  BOOL firstIsBlack = [row get:[startEnd[0] intValue]];
+  int firstElementStart = [startEnd[0] intValue] - 1;
 
   while (firstElementStart >= 0 && firstIsBlack ^ [row get:firstElementStart]) {
     firstElementStart--;
   }
 
   firstElementStart++;
-  int firstCounter = [[startEnd objectAtIndex:0] intValue] - firstElementStart;
+  int firstCounter = [startEnd[0] intValue] - firstElementStart;
 
   int countersLen = self.decodeFinderCountersLen;
   int *counters = self.decodeFinderCounters;
@@ -353,16 +334,16 @@ const int INSIDE_ODD_WIDEST[4] = {2,4,6,8};
     return nil;
   }
   int start = firstElementStart;
-  int end = [[startEnd objectAtIndex:1] intValue];
+  int end = [startEnd[1] intValue];
   if (right) {
     start = [row size] - 1 - start;
     end = [row size] - 1 - end;
   }
-  return [[[ZXRSSFinderPattern alloc] initWithValue:value
-                                           startEnd:[NSArray arrayWithObjects:[NSNumber numberWithInt:firstElementStart], [startEnd objectAtIndex:1], nil] 
+  return [[ZXRSSFinderPattern alloc] initWithValue:value
+                                           startEnd:[@[@(firstElementStart), startEnd[1]] mutableCopy]
                                               start:start
                                                 end:end
-                                          rowNumber:rowNumber] autorelease];
+                                          rowNumber:rowNumber];
 }
 
 - (BOOL)adjustOddEvenCounts:(BOOL)outsideChar numModules:(int)numModules {

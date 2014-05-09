@@ -56,25 +56,14 @@ const char STARTEND_ENCODING[STARTEND_ENCODING_LEN]  = {'A', 'B', 'C', 'D'};
 
 @interface ZXCodaBarReader ()
 
-@property (nonatomic, retain) NSMutableString *decodeRowResult;
+@property (nonatomic, strong) NSMutableString *decodeRowResult;
 @property (nonatomic, assign) int *counters;
 @property (nonatomic, assign) int countersLen;
 @property (nonatomic, assign) int counterLength;
 
-- (BOOL)validatePattern:(int)start;
-- (BOOL)setCountersWithRow:(ZXBitArray *)row;
-- (void)counterAppend:(int)e;
-- (int)findStartPattern;
-- (int)toNarrowWidePattern:(int)position;
-
 @end
 
 @implementation ZXCodaBarReader
-
-@synthesize decodeRowResult;
-@synthesize counters;
-@synthesize countersLen;
-@synthesize counterLength;
 
 + (void)initialize {
   MAX_ACCEPTABLE = (int) (PATTERN_MATCH_RESULT_SCALE_FACTOR * 2.0f);
@@ -83,23 +72,21 @@ const char STARTEND_ENCODING[STARTEND_ENCODING_LEN]  = {'A', 'B', 'C', 'D'};
 
 - (id)init {
   if (self = [super init]) {
-    self.decodeRowResult = [NSMutableString stringWithCapacity:20];
-    self.countersLen = 80;
-    self.counters = (int *)malloc(self.countersLen * sizeof(int));
-    memset(self.counters, 0, self.countersLen * sizeof(int));
-    self.counterLength = 0;
+    _decodeRowResult = [NSMutableString stringWithCapacity:20];
+    _countersLen = 80;
+    _counters = (int *)malloc(_countersLen * sizeof(int));
+    memset(_counters, 0, _countersLen * sizeof(int));
+    _counterLength = 0;
   }
 
   return self;
 }
 
 - (void)dealloc {
-  if (self.counters != NULL) {
-    free(self.counters);
-    self.counters = NULL;
+  if (_counters != NULL) {
+    free(_counters);
+    _counters = NULL;
   }
-
-  [super dealloc];
 }
 
 - (ZXResult *)decodeRow:(int)rowNumber row:(ZXBitArray *)row hints:(ZXDecodeHints *)hints error:(NSError **)error {
@@ -129,7 +116,7 @@ const char STARTEND_ENCODING[STARTEND_ENCODING_LEN]  = {'A', 'B', 'C', 'D'};
     [self.decodeRowResult appendFormat:@"%C", (unichar)charOffset];
     nextStart += 8;
     // Stop as soon as we see the end character.
-    if (decodeRowResult.length > 1 &&
+    if (self.decodeRowResult.length > 1 &&
         [ZXCodaBarReader arrayContains:(char *)STARTEND_ENCODING length:STARTEND_ENCODING_LEN key:CODA_ALPHABET[charOffset]]) {
       break;
     }
@@ -157,7 +144,7 @@ const char STARTEND_ENCODING[STARTEND_ENCODING_LEN]  = {'A', 'B', 'C', 'D'};
 
   // Translate character table offsets to actual characters.
   for (int i = 0; i < self.decodeRowResult.length; i++) {
-    [self.decodeRowResult replaceCharactersInRange:NSMakeRange(i, 1) withString:[NSString stringWithFormat:@"%c", CODA_ALPHABET[[decodeRowResult characterAtIndex:i]]]];
+    [self.decodeRowResult replaceCharactersInRange:NSMakeRange(i, 1) withString:[NSString stringWithFormat:@"%c", CODA_ALPHABET[[self.decodeRowResult characterAtIndex:i]]]];
   }
   // Ensure a valid start and end character
   unichar startchar = [self.decodeRowResult characterAtIndex:0];
@@ -172,29 +159,28 @@ const char STARTEND_ENCODING[STARTEND_ENCODING_LEN]  = {'A', 'B', 'C', 'D'};
   }
 
   // remove stop/start characters character and check if a long enough string is contained
-  if (decodeRowResult.length <= MIN_CHARACTER_LENGTH) {
+  if (self.decodeRowResult.length <= MIN_CHARACTER_LENGTH) {
     if (error) *error = NotFoundErrorInstance();
     return nil;
   }
 
-  [self.decodeRowResult deleteCharactersInRange:NSMakeRange(decodeRowResult.length - 1, 1)];
+  [self.decodeRowResult deleteCharactersInRange:NSMakeRange(self.decodeRowResult.length - 1, 1)];
   [self.decodeRowResult deleteCharactersInRange:NSMakeRange(0, 1)];
 
   int runningCount = 0;
   for (int i = 0; i < startOffset; i++) {
-    runningCount += counters[i];
+    runningCount += self.counters[i];
   }
   float left = (float) runningCount;
   for (int i = startOffset; i < nextStart - 1; i++) {
-    runningCount += counters[i];
+    runningCount += self.counters[i];
   }
   float right = (float) runningCount;
   return [ZXResult resultWithText:self.decodeRowResult
                          rawBytes:nil
                            length:0
-                     resultPoints:[NSArray arrayWithObjects:
-                                   [[[ZXResultPoint alloc] initWithX:left y:(float)rowNumber] autorelease],
-                                   [[[ZXResultPoint alloc] initWithX:right y:(float)rowNumber] autorelease], nil]
+                     resultPoints:@[[[ZXResultPoint alloc] initWithX:left y:(float)rowNumber],
+                                    [[ZXResultPoint alloc] initWithX:right y:(float)rowNumber]]
                            format:kBarcodeFormatCodabar];
 }
 
@@ -202,13 +188,13 @@ const char STARTEND_ENCODING[STARTEND_ENCODING_LEN]  = {'A', 'B', 'C', 'D'};
   // First, sum up the total size of our four categories of stripe sizes;
   int sizes[4] = {0, 0, 0, 0};
   int counts[4] = {0, 0, 0, 0};
-  int end = self.decodeRowResult.length - 1;
+  int end = (int)self.decodeRowResult.length - 1;
 
   // We break out of this loop in the middle, in order to handle
   // inter-character spaces properly.
   int pos = start;
   for (int i = 0; true; i++) {
-    int pattern = CODA_CHARACTER_ENCODINGS[[decodeRowResult characterAtIndex:i]];
+    int pattern = CODA_CHARACTER_ENCODINGS[[self.decodeRowResult characterAtIndex:i]];
     for (int j = 6; j >= 0; j--) {
       // Even j = bars, while odd j = spaces. Categories 2 and 3 are for
       // long stripes, while 0 and 1 are for short stripes.
@@ -241,12 +227,12 @@ const char STARTEND_ENCODING[STARTEND_ENCODING_LEN]  = {'A', 'B', 'C', 'D'};
   // Now verify that all of the stripes are within the thresholds.
   pos = start;
   for (int i = 0; true; i++) {
-    int pattern = CODA_CHARACTER_ENCODINGS[[decodeRowResult characterAtIndex:i]];
+    int pattern = CODA_CHARACTER_ENCODINGS[[self.decodeRowResult characterAtIndex:i]];
     for (int j = 6; j >= 0; j--) {
       // Even j = bars, while odd j = spaces. Categories 2 and 3 are for
       // long stripes, while 0 and 1 are for short stripes.
       int category = (j & 1) + (pattern & 1) * 2;
-      int size = counters[pos + j] << INTEGER_MATH_SHIFT;
+      int size = self.counters[pos + j] << INTEGER_MATH_SHIFT;
       if (size < mins[category] || size > maxes[category]) {
         return NO;
       }
@@ -295,6 +281,7 @@ const char STARTEND_ENCODING[STARTEND_ENCODING_LEN]  = {'A', 'B', 'C', 'D'};
   if (self.counterLength >= self.countersLen) {
     int *temp = (int *)malloc(2 * self.counterLength * sizeof(int));
     memcpy(temp, self.counters, self.countersLen * sizeof(int));
+    free(self.counters);
     self.counters = temp;
     memset(self.counters, 0, 2 * self.counterLength * sizeof(int));
     self.countersLen = 2 * self.counterLength;
@@ -337,29 +324,39 @@ const char STARTEND_ENCODING[STARTEND_ENCODING_LEN]  = {'A', 'B', 'C', 'D'};
   if (end >= self.counterLength) {
     return -1;
   }
-  // First element is for bars, second is for spaces.
-  int maxes[2] = {0, 0};
-  int mins[2] = {NSIntegerMax, NSIntegerMax};
-  int thresholds[2] = {0, 0};
 
-  for (int i = 0; i < 2; i++) {
-    for (int j = position + i; j < end; j += 2) {
-      if (self.counters[j] < mins[i]) {
-        mins[i] = self.counters[j];
-      }
-      if (self.counters[j] > maxes[i]) {
-        maxes[i] = self.counters[j];
-      }
+  int maxBar = 0;
+  int minBar = INT_MAX;
+  for (int j = position; j < end; j += 2) {
+    int currentCounter = self.counters[j];
+    if (currentCounter < minBar) {
+      minBar = currentCounter;
     }
-    thresholds[i] = (mins[i] + maxes[i]) / 2;
+    if (currentCounter > maxBar) {
+      maxBar = currentCounter;
+    }
   }
+  int thresholdBar = (minBar + maxBar) / 2;
+
+  int maxSpace = 0;
+  int minSpace = INT_MAX;
+  for (int j = position + 1; j < end; j += 2) {
+    int currentCounter = self.counters[j];
+    if (currentCounter < minSpace) {
+      minSpace = currentCounter;
+    }
+    if (currentCounter > maxSpace) {
+      maxSpace = currentCounter;
+    }
+  }
+  int thresholdSpace = (minSpace + maxSpace) / 2;
 
   int bitmask = 1 << 7;
   int pattern = 0;
   for (int i = 0; i < 7; i++) {
-    int barOrSpace = i & 1;
+    int threshold = (i & 1) == 0 ? thresholdBar : thresholdSpace;
     bitmask >>= 1;
-    if (self.counters[position + i] > thresholds[barOrSpace]) {
+    if (self.counters[position + i] > threshold) {
       pattern |= bitmask;
     }
   }

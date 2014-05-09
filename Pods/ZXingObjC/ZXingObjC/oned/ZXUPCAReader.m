@@ -21,28 +21,18 @@
 
 @interface ZXUPCAReader ()
 
-@property (nonatomic, retain) ZXUPCEANReader *ean13Reader;
-
-- (ZXResult *)maybeReturnResult:(ZXResult *)result;
+@property (nonatomic, strong) ZXUPCEANReader *ean13Reader;
 
 @end
 
 @implementation ZXUPCAReader
 
-@synthesize ean13Reader;
-
 - (id)init {
   if (self = [super init]) {
-    self.ean13Reader = [[[ZXEAN13Reader alloc] init] autorelease];
+    _ean13Reader = [[ZXEAN13Reader alloc] init];
   }
 
   return self;
-}
-
-- (void)dealloc {
-  [ean13Reader release];
-
-  [super dealloc];
 }
 
 - (ZXResult *)decodeRow:(int)rowNumber row:(ZXBitArray *)row startGuardRange:(NSRange)startGuardRange hints:(ZXDecodeHints *)hints error:(NSError **)error {

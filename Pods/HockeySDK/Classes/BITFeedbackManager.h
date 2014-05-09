@@ -1,7 +1,7 @@
 /*
  * Author: Andreas Linde <mail@andreaslinde.de>
  *
- * Copyright (c) 2012-2013 HockeyApp, Bit Stadium GmbH.
+ * Copyright (c) 2012-2014 HockeyApp, Bit Stadium GmbH.
  * All rights reserved.
  *
  * Permission is hereby granted, free of charge, to any person
@@ -41,15 +41,27 @@
 #define BITHockeyFeedbackMessagesLoadingFinished @"BITHockeyFeedbackMessagesLoadingFinished"
 
 
-typedef enum {
-  BITFeedbackUserDataElementDontShow = 0, // don't ask for this user data element at all
-  BITFeedbackUserDataElementOptional = 1, // the user may provide it, but does not have to
-  BITFeedbackUserDataElementRequired = 2 // the user has to provide this to continue
-} BITFeedbackUserDataElement;
+/**
+ *  Defines if behavior of the user data field
+ */
+typedef NS_ENUM(NSInteger, BITFeedbackUserDataElement) {
+  /**
+   *  don't ask for this user data element at all
+   */
+  BITFeedbackUserDataElementDontShow = 0,
+  /**
+   *  the user may provide it, but does not have to
+   */
+  BITFeedbackUserDataElementOptional = 1,
+  /**
+   *  the user has to provide this to continue
+   */
+  BITFeedbackUserDataElementRequired = 2
+};
 
 
 @class BITFeedbackMessage;
-
+@protocol BITFeedbackManagerDelegate;
 
 /**
  The feedback module.
@@ -75,9 +87,9 @@ typedef enum {
  reload the list content from the server and changing the users name or email if these
  are allowed to be set.
  
- It is also possible to invoke the user interface to compose a new message anywhere in your
+ It is also possible to invoke the user interface to compose a new message in your
  own code, by calling `[BITFeedbackManager showFeedbackComposeView]` modally or adding
- `[BITFeedackManager feedbackComposeViewController]` to push onto a navigation stack.
+ `[BITFeedbackManager feedbackComposeViewController]` to push onto a navigation stack.
  
  If new messages are written while the device is offline, the SDK automatically retries to
  send them once the app starts again or gets active again, or if the notification
@@ -92,9 +104,26 @@ typedef enum {
  or when the notification `BITHockeyNetworkDidBecomeReachableNotification` is fired. This
  only happens if the user ever did initiate a conversation by writing the first
  feedback message.
+ 
+ Implementing the `BITFeedbackManagerDelegate` protocol will notify your app when a new
+ message was received from the server. The `BITFeedbackComposeViewControllerDelegate`
+ protocol informs your app about events related to sending feedback messages.
+ 
  */
 
-@interface BITFeedbackManager : BITHockeyBaseManager <UIAlertViewDelegate>
+@interface BITFeedbackManager : BITHockeyBaseManager
+
+///-----------------------------------------------------------------------------
+/// @name Delegate
+///-----------------------------------------------------------------------------
+
+/**
+ Sets the `BITFeedbackManagerDelegate` delegate.
+
+ Can be set to be notified when new feedback is received from the server.
+ */
+@property (nonatomic, weak) id<BITFeedbackManagerDelegate> delegate;
+
 
 ///-----------------------------------------------------------------------------
 /// @name General settings
@@ -114,6 +143,7 @@ typedef enum {
  `[BITHockeyManagerDelegate userNameForHockeyManager:componentManager:]` then this
  property will automatically be set to `BITFeedbackUserDataElementDontShow`
 
+ @see BITFeedbackUserDataElement
  @see requireUserEmail
  @see `[BITHockeyManagerDelegate userNameForHockeyManager:componentManager:]`
  */
@@ -136,6 +166,7 @@ typedef enum {
  `[BITHockeyManagerDelegate userEmailForHockeyManager:componentManager:]` then this
  property will automatically be set to `BITFeedbackUserDataElementDontShow`
  
+ @see BITFeedbackUserDataElement
  @see requireUserName
  @see `[BITHockeyManagerDelegate userEmailForHockeyManager:componentManager:]`
  */
@@ -165,6 +196,29 @@ typedef enum {
 /// @name User Interface
 ///-----------------------------------------------------------------------------
 
+
+/**
+ Indicates if an forced user data UI presentation is shown modal
+ 
+ If `requireUserName` and/or `requireUserEmail` are enabled, the first presentation
+ of `feedbackListViewController:` and subsequent `feedbackComposeViewController:`
+ will automatically present a UI that lets the user provide this data and compose
+ a message. By default this is shown (since SDK 3.1) as a modal sheet.
+ 
+ If you want the SDK to push this UI onto the navigation stack in this specific scenario,
+ then change the property to `NO`.
+ 
+ @warning If you presenting the `BITFeedbackListViewController` in a popover, this property should not be changed!
+ 
+ Default is `YES`
+ @see requireUserName
+ @see requireUserEmail
+ @see showFeedbackComposeView
+ @see feedbackComposeViewController
+ @see showFeedbackListView
+ @see feedbackListViewController:
+ */
+@property (nonatomic, readwrite) BOOL showFirstRequiredPresentationModal;
 
 /**
  Present the modal feedback list user interface.

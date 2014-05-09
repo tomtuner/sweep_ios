@@ -17,36 +17,19 @@
 #import "ZXParsedResultType.h"
 #import "ZXTextParsedResult.h"
 
-@interface ZXTextParsedResult ()
-
-@property (nonatomic, copy) NSString *text;
-@property (nonatomic, copy) NSString *language;
-
-@end
-
 @implementation ZXTextParsedResult
 
-@synthesize text;
-@synthesize language;
-
-- (id)initWithText:(NSString *)aText language:(NSString *)aLanguage {
+- (id)initWithText:(NSString *)text language:(NSString *)language {
   if (self = [super initWithType:kParsedResultTypeText]) {
-    self.text = aText;
-    self.language = aLanguage;
+    _text = text;
+    _language = language;
   }
 
   return self;
 }
 
 + (id)textParsedResultWithText:(NSString *)text language:(NSString *)language {
-  return [[[self alloc] initWithText:text language:language] autorelease];
-}
-
-- (void)dealloc {
-  [text release];
-  [language release];
-
-  [super dealloc];
+  return [[self alloc] initWithText:text language:language];
 }
 
 - (NSString *)displayResult {

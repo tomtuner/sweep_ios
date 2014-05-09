@@ -33,25 +33,58 @@ NSString * const kBITBackgroundStrokeColorAttributeName = @"BITBackgroundStrokeC
 NSString * const kBITBackgroundLineWidthAttributeName = @"BITBackgroundLineWidth";
 NSString * const kBITBackgroundCornerRadiusAttributeName = @"BITBackgroundCornerRadius";
 
-static inline CTTextAlignment CTTextAlignmentFromUITextAlignment(UITextAlignment alignment) {
-	switch (alignment) {
-		case UITextAlignmentLeft: return kCTLeftTextAlignment;
-		case UITextAlignmentCenter: return kCTCenterTextAlignment;
-		case UITextAlignmentRight: return kCTRightTextAlignment;
-		default: return kCTNaturalTextAlignment;
-	}
+static inline __attribute__((unused)) CTTextAlignment CTTextAlignmentFromUITextAlignment(UITextAlignment alignment) {
+    switch (alignment) {
+        case UITextAlignmentLeft: return kCTLeftTextAlignment;
+        case UITextAlignmentCenter: return kCTCenterTextAlignment;
+        case UITextAlignmentRight: return kCTRightTextAlignment;
+        default: return kCTNaturalTextAlignment;
+    }
+}
+
+static __attribute__((unused)) inline CTTextAlignment CTTextAlignmentFromNSTextAlignment(NSTextAlignment alignment) {
+    switch (alignment) {
+        case NSTextAlignmentLeft: return kCTLeftTextAlignment;
+        case NSTextAlignmentCenter: return kCTCenterTextAlignment;
+        case NSTextAlignmentRight: return kCTRightTextAlignment;
+        default: return kCTNaturalTextAlignment;
+    }
 }
 
 static inline CTLineBreakMode CTLineBreakModeFromUILineBreakMode(UILineBreakMode lineBreakMode) {
-	switch (lineBreakMode) {
-		case UILineBreakModeWordWrap: return kCTLineBreakByWordWrapping;
-		case UILineBreakModeCharacterWrap: return kCTLineBreakByCharWrapping;
-		case UILineBreakModeClip: return kCTLineBreakByClipping;
-		case UILineBreakModeHeadTruncation: return kCTLineBreakByTruncatingHead;
-		case UILineBreakModeTailTruncation: return kCTLineBreakByTruncatingTail;
-		case UILineBreakModeMiddleTruncation: return kCTLineBreakByTruncatingMiddle;
-		default: return 0;
-	}
+    switch (lineBreakMode) {
+        case UILineBreakModeWordWrap: return kCTLineBreakByWordWrapping;
+        case UILineBreakModeCharacterWrap: return kCTLineBreakByCharWrapping;
+        case UILineBreakModeClip: return kCTLineBreakByClipping;
+        case UILineBreakModeHeadTruncation: return kCTLineBreakByTruncatingHead;
+        case UILineBreakModeTailTruncation: return kCTLineBreakByTruncatingTail;
+        case UILineBreakModeMiddleTruncation: return kCTLineBreakByTruncatingMiddle;
+        default: return 0;
+    }
+}
+
+static inline __attribute__((unused)) CTLineBreakMode CTLineBreakModeFromNSLineBreakMode(NSLineBreakMode lineBreakMode) {
+    switch (lineBreakMode) {
+        case NSLineBreakByWordWrapping: return kCTLineBreakByWordWrapping;
+        case NSLineBreakByCharWrapping: return kCTLineBreakByCharWrapping;
+        case NSLineBreakByClipping: return kCTLineBreakByClipping;
+        case NSLineBreakByTruncatingHead: return kCTLineBreakByTruncatingHead;
+        case NSLineBreakByTruncatingTail: return kCTLineBreakByTruncatingTail;
+        case NSLineBreakByTruncatingMiddle: return kCTLineBreakByTruncatingMiddle;
+        default: return 0;
+    }
+}
+
+static inline __attribute__((unused)) UILineBreakMode UILineBreakModeFromNSLineBreakMode(NSLineBreakMode lineBreakMode) {
+    switch (lineBreakMode) {
+        case NSLineBreakByWordWrapping: return UILineBreakModeWordWrap;
+        case NSLineBreakByCharWrapping: return UILineBreakModeCharacterWrap;
+        case NSLineBreakByClipping: return UILineBreakModeClip;
+        case NSLineBreakByTruncatingHead: return UILineBreakModeHeadTruncation;
+        case NSLineBreakByTruncatingTail: return UILineBreakModeTailTruncation;
+        case NSLineBreakByTruncatingMiddle: return UILineBreakModeMiddleTruncation;
+        default: return 0;
+    }
 }
 
 static inline NSTextCheckingType NSTextCheckingTypeFromUIDataDetectorType(UIDataDetectorTypes dataDetectorType) {
@@ -84,7 +117,11 @@ static inline NSDictionary * NSAttributedStringAttributesFromLabel(BITAttributed
     
     [mutableAttributes setObject:(id)[label.textColor CGColor] forKey:(NSString *)kCTForegroundColorAttributeName];
     
+#ifdef __IPHONE_6_0
+    CTTextAlignment alignment = CTTextAlignmentFromNSTextAlignment(label.textAlignment);
+#else
     CTTextAlignment alignment = CTTextAlignmentFromUITextAlignment(label.textAlignment);
+#endif
     CGFloat lineSpacing = label.leading;
     CGFloat lineSpacingAdjustment = label.font.lineHeight - label.font.ascender + label.font.descender;
     CGFloat lineHeightMultiple = label.lineHeightMultiple;
@@ -98,7 +135,11 @@ static inline NSDictionary * NSAttributedStringAttributesFromLabel(BITAttributed
     if (label.numberOfLines != 1) {
         lineBreakMode = CTLineBreakModeFromUILineBreakMode(UILineBreakModeWordWrap);
     } else {
+#ifdef __IPHONE_6_0
+        lineBreakMode = CTLineBreakModeFromNSLineBreakMode(label.lineBreakMode);
+#else
         lineBreakMode = CTLineBreakModeFromUILineBreakMode(label.lineBreakMode);
+#endif
     }
 	
     CTParagraphStyleSetting paragraphStyles[10] = {
@@ -271,11 +312,16 @@ static inline NSAttributedString * NSAttributedStringBySettingColorFromContext(N
 - (CTFramesetterRef)framesetter {
     if (_needsFramesetter) {
         @synchronized(self) {
-            if (_framesetter) CFRelease(_framesetter);
-            if (_highlightFramesetter) CFRelease(_highlightFramesetter);
+            if (_framesetter) {
+              CFRelease(_framesetter);
+              _framesetter = nil;
+            }
+            if (_highlightFramesetter) {
+              CFRelease(_highlightFramesetter);
+              _highlightFramesetter = nil;
+            }
             
-            self.framesetter = CTFramesetterCreateWithAttributedString((__bridge CFAttributedStringRef)self.renderedAttributedText);
-            self.highlightFramesetter = nil;
+            _framesetter = CTFramesetterCreateWithAttributedString((__bridge CFAttributedStringRef)self.renderedAttributedText);
             _needsFramesetter = NO;
         }
     }
@@ -483,7 +529,11 @@ static inline NSAttributedString * NSAttributedStringBySettingColorFromContext(N
                 // Get correct truncationType and attribute position
                 CTLineTruncationType truncationType;
                 NSUInteger truncationAttributePosition = lastLineRange.location;
+#ifdef __IPHONE_6_0
+                UILineBreakMode lineBreakMode = UILineBreakModeFromNSLineBreakMode(self.lineBreakMode);
+#else
                 UILineBreakMode lineBreakMode = self.lineBreakMode;
+#endif
                 
                 // Multiple lines, only use UILineBreakModeTailTruncation
                 if (numberOfLines != 1) {
@@ -666,6 +716,7 @@ static inline NSAttributedString * NSAttributedStringBySettingColorFromContext(N
                 
                 CTFontRef font = CTFontCreateWithName((__bridge CFStringRef)self.font.fontName, self.font.pointSize, NULL);
                 CGContextSetLineWidth(c, CTFontGetUnderlineThickness(font));
+                CFRelease(font);
                 CGFloat y = roundf(runBounds.origin.y + runBounds.size.height / 2.0f);
                 CGContextMoveToPoint(c, runBounds.origin.x, y);
                 CGContextAddLineToPoint(c, runBounds.origin.x + runBounds.size.width, y);
@@ -685,12 +736,15 @@ static inline NSAttributedString * NSAttributedStringBySettingColorFromContext(N
         [self setText:text afterInheritingLabelAttributesAndConfiguringWithBlock:nil];
         return;
     }
-    
-    self.attributedText = text;
+    NSAssert([text isKindOfClass:[NSAttributedString class]], @"TTTAttributedLabel accepts either NSStrings or NSAttributedStrings");
+    NSAttributedString *attributedString = text;
+    self.attributedText = attributedString;
 
     self.links = [NSArray array];
     if (self.dataDetectorTypes != UIDataDetectorTypeNone) {
-        for (NSTextCheckingResult *result in [self detectedLinksInString:[self.attributedText string] range:NSMakeRange(0, [text length]) error:nil]) {
+        for (NSTextCheckingResult *result in [self detectedLinksInString:[self.attributedText string]
+                                                                   range:NSMakeRange(0, [attributedString length])
+                                                                   error:nil]) {
             [self addLinkWithTextCheckingResult:result];
         }
     }
@@ -822,8 +876,8 @@ static inline NSAttributedString * NSAttributedStringBySettingColorFromContext(N
         NSMutableAttributedString *highlightAttributedString = [self.renderedAttributedText mutableCopy];
         [highlightAttributedString addAttribute:(NSString *)kCTForegroundColorAttributeName value:(id)[self.highlightedTextColor CGColor] range:NSMakeRange(0, highlightAttributedString.length)];
         
-        if (!self.highlightFramesetter) {
-            self.highlightFramesetter = CTFramesetterCreateWithAttributedString((__bridge CFAttributedStringRef)highlightAttributedString);
+        if (!_highlightFramesetter) {
+            _highlightFramesetter = CTFramesetterCreateWithAttributedString((__bridge CFAttributedStringRef)highlightAttributedString);
         }
         
         [self drawFramesetter:self.highlightFramesetter attributedString:highlightAttributedString textRange:textRange inRect:textRect context:c];

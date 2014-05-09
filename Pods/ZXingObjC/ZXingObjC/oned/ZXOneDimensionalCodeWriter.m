@@ -18,12 +18,6 @@
 #import "ZXEncodeHints.h"
 #import "ZXOneDimensionalCodeWriter.h"
 
-@interface ZXOneDimensionalCodeWriter ()
-
-- (ZXBitMatrix *)renderResult:(BOOL *)code length:(int)length width:(int)width height:(int)height sidesMargin:(int)sidesMargin;
-
-@end
-
 @implementation ZXOneDimensionalCodeWriter
 
 - (ZXBitMatrix *)encode:(NSString *)contents format:(ZXBarcodeFormat)format width:(int)width height:(int)height error:(NSError **)error {
@@ -96,7 +90,7 @@
 }
 
 /**
- * Encode the contents to byte array expression of one-dimensional barcode.
+ * Encode the contents to boolean array expression of one-dimensional barcode.
  * Start code and end code should be included in result, and side margins should not be included.
  */
 - (BOOL *)encode:(NSString *)contents length:(int *)pLength {

@@ -1,1 +1,1 @@
-../../ZXingObjC/ZXingObjC/pdf417/encoder/ZXPDF417Writer.h
+../../ZXingObjC/ZXingObjC/pdf417/ZXPDF417Writer.h

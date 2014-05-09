@@ -17,10 +17,13 @@
 #import "ZXCompaction.h"
 #import "ZXDimensions.h"
 #import "ZXErrorCorrectionLevel.h"
+#import "ZXSymbolShapeHint.h"
 
 /**
  * These are a set of hints that you may pass to Writers to specify their behavior.
  */
+
+@class ZXDimension, ZXSymbolShapeHint;
 
 @interface ZXEncodeHints : NSObject
 
@@ -32,16 +35,40 @@
 @property (nonatomic, assign) NSStringEncoding encoding;
 
 /**
- * Specifies what degree of error correction to use, for example in QR Codes.
+ * Specifies the matrix shape for Data Matrix .
  */
-@property (nonatomic, retain) ZXErrorCorrectionLevel *errorCorrectionLevel;
+@property (nonatomic, strong) ZXSymbolShapeHint *dataMatrixShape;
+
+/**
+ * Specifies a minimum barcode size. Only applicable to Data Matrix now.
+ */
+@property (nonatomic, strong) ZXDimension *minSize;
+
+/**
+ * Specifies a maximum barcode size. Only applicable to Data Matrix now.
+ */
+@property (nonatomic, strong) ZXDimension *maxSize;
+
+/**
+ * Specifies what degree of error correction to use, for example in QR Codes.
+ * For Aztec it represents the minimal percentage of error correction words.
+ * Note: an Aztec symbol should have a minimum of 25% EC words.
+ */
+@property (nonatomic, strong) ZXErrorCorrectionLevel *errorCorrectionLevel;
+
+/**
+ * Specifies what percent of error correction to use.
+ * For Aztec it represents the minimal percentage of error correction words.
+ * Note: an Aztec symbol should have a minimum of 25% EC words.
+ */
+@property (nonatomic, strong) NSNumber *errorCorrectionPercent;
 
 /**
  * Specifies margin, in pixels, to use when generating the barcode. The meaning can vary
  * by format; for example it controls margin before and after the barcode horizontally for
  * most 1D formats.
  */
-@property (nonatomic, retain) NSNumber *margin;
+@property (nonatomic, strong) NSNumber *margin;
 
 /**
  * Specifies whether to use compact mode for PDF417.
@@ -56,6 +83,6 @@
 /**
  * Specifies the minimum and maximum number of rows and columns for PDF417.
  */
-@property (nonatomic, retain) ZXDimensions *pdf417Dimensions;
+@property (nonatomic, strong) ZXDimensions *pdf417Dimensions;
 
 @end

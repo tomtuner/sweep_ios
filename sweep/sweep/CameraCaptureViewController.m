@@ -75,39 +75,38 @@
     self.managedObjectContext = [[SWCoreDataController sharedInstance] newManagedObjectContext];
 
     [self createSeperateCameraMaskViews];
-    dispatch_async(dispatch_get_main_queue(), ^{
-        
+//    dispatch_async(dispatch_get_main_queue(), ^{
+    
         self.capture = [[ZXCapture alloc] init];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            
+//        dispatch_async(dispatch_get_main_queue(), ^{
+        
             //    });
-            self.capture.delegate = self;
+    
             self.capture.camera = self.capture.back;
+            self.capture.focusMode = AVCaptureFocusModeContinuousAutoFocus;
             self.capture.rotation = 90.0f;
             
             self.capture.layer.frame = self.scannerView.bounds;
             [self.scannerView.layer addSublayer:self.capture.layer];
-            [self.capture start];
-            
-            [UIView animateWithDuration:0.5
-                             animations:^{
-                                 [self animateCameraMaskViews];
-//                                 [self.scannerView addSubview:self.buttonOverlayView];
-                             }
-                             completion:^(BOOL finished){
-                                 [self.view addSubview:self.buttonOverlayView];
+//            [self.capture start];
+    
+//    });
+    
+        // Tells view to start capturing now
+    
+    
+//       dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+//               dispatch_async(dispatch_get_main_queue(), ^{
 
-                                 [_topMaskView removeFromSuperview];
-                                 [_bottomMaskView removeFromSuperview];
-                                 
-                                 //                                [self.scannerView.layer addSublayer:self.buttonOverlayView.layer];
-                             }];
-            if (![self.capture hasTorch]) {
-                self.flashButton.hidden = YES;
-            }
+           self.capture.delegate = self;
+           self.capture.layer.frame = self.scannerView.bounds;
+    
 
-        });
-    });
+    
+    
+
+//        });
+//    });
     self.multiScan = NO;
     
     self.topGrayBar.layer.masksToBounds = NO;
@@ -129,6 +128,31 @@
 //        self.flashButton.hidden = YES;
 //    }
     
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [UIView animateWithDuration:0.5
+                     animations:^{
+                         [self animateCameraMaskViews];
+                         //                                 [self.scannerView addSubview:self.buttonOverlayView];
+                     }
+                     completion:^(BOOL finished){
+                         [self.view addSubview:self.buttonOverlayView];
+                         
+                         [_topMaskView removeFromSuperview];
+                         [_bottomMaskView removeFromSuperview];
+                         
+                         //                                [self.scannerView.layer addSublayer:self.buttonOverlayView.layer];
+                     }];
+    if (![self.capture hasTorch]) {
+        self.flashButton.hidden = YES;
+    }
+    
+    //     });
+
 }
 
 
@@ -230,13 +254,35 @@
 //            AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
             [self playSoundAndVibrate];
 #endif
-            
-            Scans *newScan = [NSEntityDescription insertNewObjectForEntityForName:@"Scans" inManagedObjectContext:self.managedObjectContext];
-            newScan.value = idScanned;
-//            newScan.scanned_at = result.timestamp;
-            newScan.event_id = self.event.remote_id;
-            newScan.sync_status = [NSNumber numberWithInt:SWObjectCreated];
+            NSLog(@"%@", self.users);
+            NSArray *usersID = [self.users valueForKey:@"u_id"];
+            NSLog(@"%@", usersID);
+            NSUInteger userIndex = [usersID indexOfObject: idScanned];
+            Users *user = [usersID objectAtIndex:userIndex];
+            if (user)
+            {
+                Scans *preScan = [self.scans objectAtIndex:userIndex];
 
+                NSError *error = nil;
+                NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:@"Scans"];
+                NSPredicate *predicate = [NSPredicate predicateWithFormat:@"remote_id = %@", preScan.remote_id];
+//                NSLog(@"Event_ID: %@", self.detailItem.remote_id);
+                [request setPredicate:predicate];
+                Scans *postScan = [[self.managedObjectContext executeFetchRequest:request error:&error] lastObject];
+                postScan.status = [NSNumber numberWithInt:1];
+                postScan.scanned_at = [NSDate date];
+                postScan.sync_status = [NSNumber numberWithInt:SWObjectUpdated];
+            }
+            else
+            {
+                Scans *newScan = [NSEntityDescription insertNewObjectForEntityForName:@"Scans" inManagedObjectContext:self.managedObjectContext];
+                newScan.value = idScanned;
+    //            newScan.scanned_at = result.timestamp;
+                newScan.event_id = self.event.remote_id;
+                newScan.sync_status = [NSNumber numberWithInt:SWObjectCreated];
+                newScan.status = [NSNumber numberWithInt:0];
+            }
+            
             NSString *valueString;
             NSInteger num = (idScanned.length * [[[ThemeManager sharedTheme] percentageIDAvailable] integerValue]) / 100;
             

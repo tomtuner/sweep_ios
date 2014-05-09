@@ -16,25 +16,32 @@
 
 #import "ZXDataCharacter.h"
 
-@interface ZXDataCharacter ()
-
-@property (nonatomic, assign) int value;
-@property (nonatomic, assign) int checksumPortion;
-
-@end
-
 @implementation ZXDataCharacter
 
-@synthesize value;
-@synthesize checksumPortion;
-
-- (id)initWithValue:(int)aValue checksumPortion:(int)aChecksumPortion {
+- (id)initWithValue:(int)value checksumPortion:(int)checksumPortion {
   if (self = [super init]) {
-    self.value = aValue;
-    self.checksumPortion = aChecksumPortion;
+    _value = value;
+    _checksumPortion = checksumPortion;
   }
 
   return self;
+}
+
+- (NSString *)description {
+  return [NSString stringWithFormat:@"%d(%d)", self.value, self.checksumPortion];
+}
+
+- (BOOL)isEqual:(id)object {
+  if (![object isKindOfClass:[ZXDataCharacter class]]) {
+    return NO;
+  }
+
+  ZXDataCharacter *that = (ZXDataCharacter *)object;
+  return (self.value == that.value) && (self.checksumPortion == that.checksumPortion);
+}
+
+- (NSUInteger)hash {
+  return self.value ^ self.checksumPortion;
 }
 
 @end

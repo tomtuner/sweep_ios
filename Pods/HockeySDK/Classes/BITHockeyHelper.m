@@ -1,7 +1,7 @@
 /*
  * Author: Andreas Linde <mail@andreaslinde.de>
  *
- * Copyright (c) 2012-2013 HockeyApp, Bit Stadium GmbH.
+ * Copyright (c) 2012-2014 HockeyApp, Bit Stadium GmbH.
  * All rights reserved.
  *
  * Permission is hereby granted, free of charge, to any person
@@ -28,9 +28,17 @@
 
 
 #import "BITHockeyHelper.h"
+#import "BITKeychainUtils.h"
 #import "HockeySDK.h"
 #import "HockeySDKPrivate.h"
 #import <QuartzCore/QuartzCore.h>
+
+
+#if __IPHONE_OS_VERSION_MAX_ALLOWED < 70000
+@interface NSData (BITHockeySDKiOS7)
+- (NSString *)base64Encoding;
+@end
+#endif
 
 
 #pragma mark NSString helpers
@@ -50,6 +58,69 @@ NSString *bit_URLDecodedString(NSString *inputString) {
                                                                                    CFSTR(""),
                                                                                    kCFStringEncodingUTF8)
                            );
+}
+
+NSString *bit_base64String(NSData * data, unsigned long length) {
+#if __IPHONE_OS_VERSION_MAX_ALLOWED > __IPHONE_6_1
+  SEL base64EncodingSelector = NSSelectorFromString(@"base64EncodedStringWithOptions:");
+  if ([data respondsToSelector:base64EncodingSelector]) {
+    return [data base64EncodedStringWithOptions:0];
+  } else {
+#endif
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+    return [data base64Encoding];
+#pragma clang diagnostic pop
+#if __IPHONE_OS_VERSION_MAX_ALLOWED > __IPHONE_6_1
+  }
+#endif
+}
+
+NSString *bit_settingsDir(void) {
+  static NSString *settingsDir = nil;
+  static dispatch_once_t predSettingsDir;
+  
+  dispatch_once(&predSettingsDir, ^{
+    NSFileManager *fileManager = [[NSFileManager alloc] init];
+    
+    // temporary directory for crashes grabbed from PLCrashReporter
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
+    settingsDir = [[paths objectAtIndex:0] stringByAppendingPathComponent:BITHOCKEY_IDENTIFIER];
+    
+    if (![fileManager fileExistsAtPath:settingsDir]) {
+      NSDictionary *attributes = [NSDictionary dictionaryWithObject: [NSNumber numberWithUnsignedLong: 0755] forKey: NSFilePosixPermissions];
+      NSError *theError = NULL;
+      
+      [fileManager createDirectoryAtPath:settingsDir withIntermediateDirectories: YES attributes: attributes error: &theError];
+    }
+  });
+  
+  return settingsDir;
+}
+
+BOOL bit_validateEmail(NSString *email) {
+  NSString *emailRegex =
+  @"(?:[a-z0-9!#$%\\&'*+/=?\\^_`{|}~-]+(?:\\.[a-z0-9!#$%\\&'*+/=?\\^_`{|}"
+  @"~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\"
+  @"x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-"
+  @"z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:25[0-5"
+  @"]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-"
+  @"9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21"
+  @"-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])";
+  NSPredicate *emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES[c] %@", emailRegex];
+  
+  return [emailTest evaluateWithObject:email];
+}
+
+NSString *bit_keychainHockeySDKServiceName(void) {
+  static NSString *serviceName = nil;
+  static dispatch_once_t predServiceName;
+  
+  dispatch_once(&predServiceName, ^{
+    serviceName = [NSString stringWithFormat:@"%@.HockeySDK", bit_mainBundleIdentifier()];
+  });
+  
+  return serviceName;
 }
 
 NSComparisonResult bit_versionCompare(NSString *stringA, NSString *stringB) {
@@ -76,8 +147,12 @@ NSComparisonResult bit_versionCompare(NSString *stringA, NSString *stringB) {
   return result;
 }
 
+NSString *bit_mainBundleIdentifier(void) {
+  return [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleIdentifier"];
+}
+
 NSString *bit_encodeAppIdentifier(NSString *inputString) {
-  return (inputString ? bit_URLEncodedString(inputString) : bit_URLEncodedString([[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleIdentifier"]));
+  return (inputString ? bit_URLEncodedString(inputString) : bit_URLEncodedString(bit_mainBundleIdentifier()));
 }
 
 NSString *bit_appName(NSString *placeHolderString) {
@@ -88,39 +163,57 @@ NSString *bit_appName(NSString *placeHolderString) {
   return appName;
 }
 
+NSString *bit_UUIDPreiOS6(void) {
+  // Create a new UUID
+  CFUUIDRef uuidObj = CFUUIDCreate(nil);
+  
+  // Get the string representation of the UUID
+  NSString *resultUUID = (NSString*)CFBridgingRelease(CFUUIDCreateString(nil, uuidObj));
+  CFRelease(uuidObj);
+  
+  return resultUUID;
+}
+
+NSString *bit_UUID(void) {
+  NSString *resultUUID = nil;
+  
+  id uuidClass = NSClassFromString(@"NSUUID");
+  if (uuidClass) {
+    resultUUID = [[NSUUID UUID] UUIDString];
+  } else {
+    resultUUID = bit_UUIDPreiOS6();
+  }
+  
+  return resultUUID;
+}
+
 NSString *bit_appAnonID(void) {
-  // try to new iOS6 identifierForAdvertising
-  Class advertisingClass = NSClassFromString(@"ASIdentifierManager");
-	if (advertisingClass) {
-# pragma clang diagnostic push
-# pragma clang diagnostic ignored "-Warc-performSelector-leaks"
-    id adInstance = [advertisingClass performSelector:NSSelectorFromString(@"sharedManager")];
-# pragma clang diagnostic pop
+  static NSString *appAnonID = nil;
+  static dispatch_once_t predAppAnonID;
+  
+  dispatch_once(&predAppAnonID, ^{
+    // first check if we already have an install string in the keychain
+    NSString *appAnonIDKey = @"appAnonID";
     
-    SEL adidSelector = NSSelectorFromString(@"advertisingIdentifier");
-# pragma clang diagnostic push
-# pragma clang diagnostic ignored "-Warc-performSelector-leaks"
-    return [[adInstance performSelector:adidSelector] performSelector:NSSelectorFromString(@"UUIDString")];
-# pragma clang diagnostic pop
-  }
+    NSError *error = nil;
+    appAnonID = [BITKeychainUtils getPasswordForUsername:appAnonIDKey andServiceName:bit_keychainHockeySDKServiceName() error:&error];
+    
+    if (!appAnonID) {
+      appAnonID = bit_UUID();
+      
+      // store this UUID in the keychain (on this device only) so we can be sure to always have the same ID upon app startups
+      if (appAnonID) {
+        [BITKeychainUtils storeUsername:appAnonIDKey
+                            andPassword:appAnonID
+                         forServiceName:bit_keychainHockeySDKServiceName()
+                         updateExisting:YES
+                          accessibility:kSecAttrAccessibleWhenUnlockedThisDeviceOnly
+                                  error:&error];
+      }
+    }
+  });
   
-  // try to new iOS6 identifierForVendor, in case ASIdentifierManager is not linked
-  SEL vendoridSelector = NSSelectorFromString(@"identifierForVendor");
-  if ([[UIDevice currentDevice] respondsToSelector:vendoridSelector]) {
-# pragma clang diagnostic push
-# pragma clang diagnostic ignored "-Warc-performSelector-leaks"
-    return [[[UIDevice currentDevice] performSelector:vendoridSelector] performSelector:NSSelectorFromString(@"UUIDString")];
-# pragma clang diagnostic pop
-  }
-  
-  // use app bundle path
-  NSArray *pathComponents = [[[NSBundle mainBundle] bundlePath] pathComponents];
-  
-  if ([pathComponents count] > 1) {
-    return [pathComponents objectAtIndex:(pathComponents.count - 2)];
-  }
-  
-  return nil;
+  return appAnonID;
 }
 
 
@@ -162,7 +255,7 @@ CGImageRef bit_CreateGradientImage(int pixelsWide, int pixelsHigh, float fromAlp
   
   // create the bitmap context
   CGContextRef gradientBitmapContext = CGBitmapContextCreate(NULL, pixelsWide, pixelsHigh,
-                                                             8, 0, colorSpace, kCGImageAlphaNone);
+                                                             8, 0, colorSpace, (CGBitmapInfo)kCGImageAlphaNone);
   
   // define the start and end grayscale values (with the alpha, even though
   // our bitmap context doesn't support alpha the gradient requires it)
@@ -305,8 +398,8 @@ UIImage *bit_imageToFitSize(UIImage *inputImage, CGSize fitSize, BOOL honorScale
     // Try older method.
     CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
     CGContextRef context = CGBitmapContextCreate(NULL,  scaledWidth, scaledHeight, 8, (fitSize.width * 4),
-                                                 colorSpace, kCGImageAlphaPremultipliedLast);
-    CGImageRef sourceImg = CGImageCreateWithImageInRect([inputImage CGImage], sourceRect);
+                                                 colorSpace, (CGBitmapInfo)kCGImageAlphaPremultipliedLast);
+    sourceImg = CGImageCreateWithImageInRect([inputImage CGImage], sourceRect);
     CGContextDrawImage(context, destRect, sourceImg);
     CGImageRelease(sourceImg);
     CGImageRef finalImage = CGBitmapContextCreateImage(context);
@@ -325,12 +418,12 @@ UIImage *bit_reflectedImageWithHeight(UIImage *inputImage, NSUInteger height, fl
     return nil;
   
   // create a bitmap graphics context the size of the image
-  CGContextRef mainViewContentContext = bit_MyOpenBitmapContext(inputImage.size.width, height);
+  CGContextRef mainViewContentContext = bit_MyOpenBitmapContext(inputImage.size.width, (int)height);
   
   // create a 2 bit CGImage containing a gradient that will be used for masking the
   // main view content to create the 'fade' of the reflection.  The CGImageCreateWithMask
   // function will stretch the bitmap image as required, so we can create a 1 pixel wide gradient
-  CGImageRef gradientMaskImage = bit_CreateGradientImage(1, height, fromAlpha, toAlpha);
+  CGImageRef gradientMaskImage = bit_CreateGradientImage(1, (int)height, fromAlpha, toAlpha);
   
   // create an image by masking the bitmap of the mainView content with the gradient view
   // then release the  pre-masked content bitmap and the gradient bitmap
@@ -365,10 +458,7 @@ UIImage *bit_newWithContentsOfResolutionIndependentFile(NSString * path) {
 
 
 UIImage *bit_imageWithContentsOfResolutionIndependentFile(NSString *path) {
-#ifndef __clang_analyzer__
-  // clang alayzer in 4.2b3 thinks here's a leak, which is not the case.
   return bit_newWithContentsOfResolutionIndependentFile(path);
-#endif
 }
 
 
@@ -409,13 +499,13 @@ UIImage *bit_roundedCornerImage(UIImage *inputImage, NSInteger cornerSize, NSInt
     UIImage *image = bit_imageWithAlpha(inputImage);
     
     // Build a context that's the same dimensions as the new size
-    CGContextRef context = CGBitmapContextCreate(NULL,
-                                                 image.size.width,
-                                                 image.size.height,
-                                                 CGImageGetBitsPerComponent(image.CGImage),
-                                                 0,
-                                                 CGImageGetColorSpace(image.CGImage),
-                                                 CGImageGetBitmapInfo(image.CGImage));
+    context = CGBitmapContextCreate(NULL,
+                                    image.size.width,
+                                    image.size.height,
+                                    CGImageGetBitsPerComponent(image.CGImage),
+                                    0,
+                                    CGImageGetColorSpace(image.CGImage),
+                                    CGImageGetBitmapInfo(image.CGImage));
     
     // Create a clipping path with rounded corners
     CGContextBeginPath(context);

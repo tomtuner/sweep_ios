@@ -19,6 +19,7 @@
 #import "KeypadViewController.h"
 #import "uniMag.h"
 #import "Theme.h"
+#import "Users.h"
 
 #define REFRESH_HEADER_HEIGHT 52.0f
 
@@ -27,6 +28,7 @@
 @property (nonatomic, strong) Events *detailItem;
 @property (nonatomic, strong) IBOutlet UITableView *scansTable;
 @property (nonatomic, strong) NSArray *scans;
+@property (nonatomic, strong) NSArray *users;
 
 @property (nonatomic, strong) KeychainWrapper *departmentKeyItem;
 

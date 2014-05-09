@@ -18,6 +18,7 @@
 #import "Departments.h"
 #import "Events.h"
 #import "Scans.h"
+#import "Users.h"
 
 //@class EventValuesViewController;
 @interface AppDelegate : UIResponder <UIApplicationDelegate, BITHockeyManagerDelegate, BITUpdateManagerDelegate, BITCrashManagerDelegate>

@@ -16,44 +16,27 @@
 
 #import "ZXProductParsedResult.h"
 
-@interface ZXProductParsedResult ()
-
-@property (nonatomic, copy) NSString *normalizedProductID;
-@property (nonatomic, copy) NSString *productID;
-
-@end
-
 @implementation ZXProductParsedResult
 
-@synthesize normalizedProductID;
-@synthesize productID;
-
-- (id)initWithProductID:(NSString *)aProductID {
-  return [self initWithProductID:aProductID normalizedProductID:aProductID];
+- (id)initWithProductID:(NSString *)productID {
+  return [self initWithProductID:productID normalizedProductID:productID];
 }
 
-- (id)initWithProductID:(NSString *)aProductID normalizedProductID:(NSString *)aNormalizedProductID {
+- (id)initWithProductID:(NSString *)productID normalizedProductID:(NSString *)normalizedProductID {
   if (self = [super initWithType:kParsedResultTypeProduct]) {
-    self.normalizedProductID = aNormalizedProductID;
-    self.productID = aProductID;
+    _normalizedProductID = normalizedProductID;
+    _productID = productID;
   }
 
   return self;
 }
 
 + (id)productParsedResultWithProductID:(NSString *)productID {
-  return [[[self alloc] initWithProductID:productID] autorelease];
+  return [[self alloc] initWithProductID:productID];
 }
 
 + (id)productParsedResultWithProductID:(NSString *)productID normalizedProductID:(NSString *)normalizedProductID {
-  return [[[self alloc] initWithProductID:productID normalizedProductID:normalizedProductID] autorelease];
-}
-
-- (void)dealloc {
-  [productID release];
-  [normalizedProductID release];
-
-  [super dealloc];
+  return [[self alloc] initWithProductID:productID normalizedProductID:normalizedProductID];
 }
 
 - (NSString *)displayResult {

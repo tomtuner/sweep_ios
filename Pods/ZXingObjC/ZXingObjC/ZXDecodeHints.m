@@ -19,38 +19,29 @@
 
 @interface ZXDecodeHints ()
 
-@property (nonatomic, retain) NSMutableArray *barcodeFormats;
+@property (nonatomic, strong) NSMutableArray *barcodeFormats;
 
 @end
 
 @implementation ZXDecodeHints
 
-@synthesize assumeCode39CheckDigit;
-@synthesize allowedLengths;
-@synthesize barcodeFormats;
-@synthesize encoding;
-@synthesize other;
-@synthesize pureBarcode;
-@synthesize resultPointCallback;
-@synthesize tryHarder;
-
 - (id)init {
   if (self = [super init]) {
-    self.barcodeFormats = [NSMutableArray array];
+    _barcodeFormats = [NSMutableArray array];
   }
 
   return self;
 }
 
 + (id)hints {
-  return [[[self alloc] init] autorelease];
+  return [[self alloc] init];
 }
 
 - (id)copyWithZone:(NSZone *)zone {
   ZXDecodeHints *result = [[[self class] allocWithZone:zone] init];
   if (result) {
     result.assumeCode39CheckDigit = self.assumeCode39CheckDigit;
-    result.allowedLengths = [[self.allowedLengths copy] autorelease];
+    result.allowedLengths = [self.allowedLengths copy];
 
     for (NSNumber *formatNumber in self.barcodeFormats) {
       [result addPossibleFormat:[formatNumber intValue]];
@@ -66,15 +57,6 @@
   return result;
 }
 
-- (void)dealloc {
-  [allowedLengths release];
-  [barcodeFormats release];
-  [other release];
-  [resultPointCallback release];
-
-  [super dealloc];
-}
-
 - (void)addPossibleFormat:(ZXBarcodeFormat)format {
   [self.barcodeFormats addObject:[NSNumber numberWithInt:format]];
 }
@@ -84,7 +66,7 @@
 }
 
 - (int)numberOfPossibleFormats {
-  return self.barcodeFormats.count;
+  return (int)self.barcodeFormats.count;
 }
 
 - (void)removePossibleFormat:(ZXBarcodeFormat)format {

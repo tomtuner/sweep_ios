@@ -18,12 +18,6 @@
 #import "ZXAddressBookParsedResult.h"
 #import "ZXResult.h"
 
-@interface ZXAddressBookAUResultParser ()
-
-- (NSArray *)matchMultipleValuePrefix:(NSString *)prefix max:(int)max rawText:(NSString *)rawText trim:(BOOL)trim;
-
-@end
-
 @implementation ZXAddressBookAUResultParser
 
 - (ZXParsedResult *)parse:(ZXResult *)result {
@@ -40,9 +34,10 @@
   NSArray *emails = [self matchMultipleValuePrefix:@"MAIL" max:3 rawText:rawText trim:YES];
   NSString *note = [[self class] matchSinglePrefixedField:@"MEMORY:" rawText:rawText endChar:'\r' trim:NO];
   NSString *address = [[self class] matchSinglePrefixedField:@"ADD:" rawText:rawText endChar:'\r' trim:YES];
-  NSArray *addresses = address == nil ? nil : [NSArray arrayWithObjects:address, nil];
+  NSArray *addresses = address == nil ? nil : @[address];
 
   return [ZXAddressBookParsedResult addressBookParsedResultWithNames:[self maybeWrap:name]
+                                                           nicknames:nil
                                                        pronunciation:pronunciation
                                                         phoneNumbers:phoneNumbers
                                                           phoneTypes:nil
@@ -55,7 +50,8 @@
                                                                  org:nil
                                                             birthday:nil
                                                                title:nil
-                                                                 url:nil];
+                                                                urls:nil
+                                                                 geo:nil];
 }
 
 - (NSArray *)matchMultipleValuePrefix:(NSString *)prefix max:(int)max rawText:(NSString *)rawText trim:(BOOL)trim {
@@ -70,7 +66,7 @@
       break;
     }
     if (values == nil) {
-      values = [[[NSMutableArray alloc] initWithCapacity:max] autorelease];
+      values = [[NSMutableArray alloc] initWithCapacity:max];
     }
     [values addObject:value];
   }

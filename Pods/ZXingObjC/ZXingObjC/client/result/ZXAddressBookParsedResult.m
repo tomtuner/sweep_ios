@@ -17,100 +17,66 @@
 #import "ZXAddressBookParsedResult.h"
 #import "ZXParsedResultType.h"
 
-@interface ZXAddressBookParsedResult ()
-
-@property (nonatomic, retain) NSArray *names;
-@property (nonatomic, copy) NSString *pronunciation;
-@property (nonatomic, retain) NSArray *phoneNumbers;
-@property (nonatomic, retain) NSArray *phoneTypes;
-@property (nonatomic, retain) NSArray *emails;
-@property (nonatomic, retain) NSArray *emailTypes;
-@property (nonatomic, copy) NSString *instantMessenger;
-@property (nonatomic, copy) NSString *note;
-@property (nonatomic, retain) NSArray *addresses;
-@property (nonatomic, retain) NSArray *addressTypes;
-@property (nonatomic, copy) NSString *title;
-@property (nonatomic, copy) NSString *org;
-@property (nonatomic, copy) NSString *url;
-@property (nonatomic, copy) NSString *birthday;
-
-@end
-
 @implementation ZXAddressBookParsedResult
 
-@synthesize names;
-@synthesize pronunciation;
-@synthesize phoneNumbers;
-@synthesize phoneTypes;
-@synthesize emails;
-@synthesize emailTypes;
-@synthesize instantMessenger;
-@synthesize note;
-@synthesize addresses;
-@synthesize addressTypes;
-@synthesize title;
-@synthesize org;
-@synthesize url;
-@synthesize birthday;
+- (id)initWithNames:(NSArray *)names phoneNumbers:(NSArray *)phoneNumbers
+         phoneTypes:(NSArray *)phoneTypes emails:(NSArray *)emails emailTypes:(NSArray *)emailTypes
+          addresses:(NSArray *)addresses addressTypes:(NSArray *)addressTypes {
+  return [self initWithNames:names nicknames:nil pronunciation:nil phoneNumbers:phoneNumbers phoneTypes:phoneNumbers
+                      emails:emails emailTypes:_emailTypes instantMessenger:nil note:nil addresses:addresses
+                addressTypes:addressTypes org:nil birthday:nil title:nil urls:nil geo:nil];
+}
 
-- (id)initWithNames:(NSArray *)aNames pronunciation:(NSString *)aPronunciation phoneNumbers:(NSArray *)aPhoneNumbers
-         phoneTypes:(NSArray *)aPhoneTypes emails:(NSArray *)anEmails emailTypes:(NSArray *)anEmailTypes
-   instantMessenger:(NSString *)anInstantMessenger note:(NSString *)aNote addresses:(NSArray *)anAddresses
-       addressTypes:(NSArray *)anAddressTypes org:(NSString *)anOrg birthday:(NSString *)aBirthday
-              title:(NSString *)aTitle url:(NSString *)aUrl {
+- (id)initWithNames:(NSArray *)names nicknames:(NSArray *)nicknames pronunciation:(NSString *)pronunciation
+       phoneNumbers:(NSArray *)phoneNumbers phoneTypes:(NSArray *)phoneTypes emails:(NSArray *)emails
+         emailTypes:(NSArray *)emailTypes instantMessenger:(NSString *)instantMessenger note:(NSString *)note
+          addresses:(NSArray *)addresses addressTypes:(NSArray *)addressTypes org:(NSString *)org
+           birthday:(NSString *)birthday title:(NSString *)title urls:(NSArray *)urls geo:(NSArray *)geo {
   if (self = [super initWithType:kParsedResultTypeAddressBook]) {
-    self.names = aNames;
-    self.pronunciation = aPronunciation;
-    self.phoneNumbers = aPhoneNumbers;
-    self.phoneTypes = aPhoneTypes;
-    self.emails = anEmails;
-    self.emailTypes = anEmailTypes;
-    self.instantMessenger = anInstantMessenger;
-    self.note = aNote;
-    self.addresses = anAddresses;
-    self.addressTypes = anAddressTypes;
-    self.org = anOrg;
-    self.birthday = aBirthday;
-    self.title = aTitle;
-    self.url = aUrl;
+    _names = names;
+    _nicknames = nicknames;
+    _pronunciation = pronunciation;
+    _phoneNumbers = phoneNumbers;
+    _phoneTypes = phoneTypes;
+    _emails = emails;
+    _emailTypes = emailTypes;
+    _instantMessenger = instantMessenger;
+    _note = note;
+    _addresses = addresses;
+    _addressTypes = addressTypes;
+    _org = org;
+    _birthday = birthday;
+    _title = title;
+    _urls = urls;
+    _geo = geo;
   }
 
   return self;
 }
 
-+ (id)addressBookParsedResultWithNames:(NSArray *)names pronunciation:(NSString *)pronunciation phoneNumbers:(NSArray *)phoneNumbers
++ (id)addressBookParsedResultWithNames:(NSArray *)names phoneNumbers:(NSArray *)phoneNumbers
+                            phoneTypes:(NSArray *)phoneTypes emails:(NSArray *)emails emailTypes:(NSArray *)emailTypes
+                             addresses:(NSArray *)addresses addressTypes:(NSArray *)addressTypes {
+  return [[self alloc] initWithNames:names phoneNumbers:phoneNumbers phoneTypes:phoneTypes emails:emails
+                          emailTypes:emailTypes addresses:addresses addressTypes:addressTypes];
+}
+
++ (id)addressBookParsedResultWithNames:(NSArray *)names nicknames:(NSArray *)nicknames
+                         pronunciation:(NSString *)pronunciation phoneNumbers:(NSArray *)phoneNumbers
                             phoneTypes:(NSArray *)phoneTypes emails:(NSArray *)emails emailTypes:(NSArray *)emailTypes
                       instantMessenger:(NSString *)instantMessenger note:(NSString *)note addresses:(NSArray *)addresses
                           addressTypes:(NSArray *)addressTypes org:(NSString *)org birthday:(NSString *)birthday
-                                 title:(NSString *)title url:(NSString *)url {
-  return [[[self alloc] initWithNames:names pronunciation:pronunciation phoneNumbers:phoneNumbers
-                           phoneTypes:phoneTypes emails:emails emailTypes:emailTypes
-                     instantMessenger:instantMessenger note:note addresses:addresses
-                         addressTypes:addressTypes org:org birthday:birthday title:title url:url] autorelease];
-}
-
-- (void)dealloc {
-  [names release];
-  [pronunciation release];
-  [phoneNumbers release];
-  [phoneTypes release];
-  [emails release];
-  [emailTypes release];
-  [instantMessenger release];
-  [note release];
-  [addresses release];
-  [addressTypes release];
-  [org release];
-  [birthday release];
-  [title release];
-  [url release];
-
-  [super dealloc];
+                                 title:(NSString *)title urls:(NSArray *)urls geo:(NSArray *)geo {
+  return [[self alloc] initWithNames:names nicknames:nicknames pronunciation:pronunciation phoneNumbers:phoneNumbers
+                           phoneTypes:phoneTypes emails:emails emailTypes:emailTypes instantMessenger:instantMessenger
+                                note:note addresses:addresses addressTypes:addressTypes org:org birthday:birthday
+                               title:title urls:urls geo:geo];
 }
 
 - (NSString *)displayResult {
   NSMutableString *result = [NSMutableString string];
   [ZXParsedResult maybeAppendArray:self.names result:result];
+  [ZXParsedResult maybeAppendArray:self.nicknames result:result];
   [ZXParsedResult maybeAppend:self.pronunciation result:result];
   [ZXParsedResult maybeAppend:self.title result:result];
   [ZXParsedResult maybeAppend:self.org result:result];
@@ -118,8 +84,9 @@
   [ZXParsedResult maybeAppendArray:self.phoneNumbers result:result];
   [ZXParsedResult maybeAppendArray:self.emails result:result];
   [ZXParsedResult maybeAppend:self.instantMessenger result:result];
-  [ZXParsedResult maybeAppend:self.url result:result];
+  [ZXParsedResult maybeAppendArray:self.urls result:result];
   [ZXParsedResult maybeAppend:self.birthday result:result];
+  [ZXParsedResult maybeAppendArray:self.geo result:result];
   [ZXParsedResult maybeAppend:self.note result:result];
   return result;
 }

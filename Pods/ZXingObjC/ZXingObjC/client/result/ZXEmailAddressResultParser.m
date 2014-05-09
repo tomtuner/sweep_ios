@@ -26,19 +26,20 @@
   NSString *emailAddress;
   if ([rawText hasPrefix:@"mailto:"] || [rawText hasPrefix:@"MAILTO:"]) {
     emailAddress = [rawText substringFromIndex:7];
-    int queryStart = [emailAddress rangeOfString:@"?"].location;
+    NSUInteger queryStart = [emailAddress rangeOfString:@"?"].location;
     if (queryStart != NSNotFound) {
       emailAddress = [emailAddress substringToIndex:queryStart];
     }
+    emailAddress = [[self class] urlDecode:emailAddress];
     NSMutableDictionary *nameValues = [self parseNameValuePairs:rawText];
     NSString *subject = nil;
     NSString *body = nil;
     if (nameValues != nil) {
       if ([emailAddress length] == 0) {
-        emailAddress = [nameValues objectForKey:@"to"];
+        emailAddress = nameValues[@"to"];
       }
-      subject = [nameValues objectForKey:@"subject"];
-      body = [nameValues objectForKey:@"body"];
+      subject = nameValues[@"subject"];
+      body = nameValues[@"body"];
     }
     return [ZXEmailAddressParsedResult emailAddressParsedResultWithEmailAddress:emailAddress
                                                                         subject:subject

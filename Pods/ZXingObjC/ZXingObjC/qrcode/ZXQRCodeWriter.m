@@ -24,12 +24,6 @@
 
 int const QUIET_ZONE_SIZE = 4;
 
-@interface ZXQRCodeWriter ()
-
-- (ZXBitMatrix *)renderResult:(ZXQRCode *)code width:(int)width height:(int)height quietZone:(int)quietZone;
-
-@end
-
 @implementation ZXQRCodeWriter
 
 - (ZXBitMatrix *)encode:(NSString *)contents format:(ZXBarcodeFormat)format width:(int)width height:(int)height error:(NSError **)error {
@@ -56,7 +50,7 @@ int const QUIET_ZONE_SIZE = 4;
       errorCorrectionLevel = hints.errorCorrectionLevel;
     }
     if (hints.margin) {
-      quietZone = hints.margin;
+      quietZone = [hints.margin intValue];
     }
   }
 
@@ -84,7 +78,7 @@ int const QUIET_ZONE_SIZE = 4;
   int leftPadding = (outputWidth - (inputWidth * multiple)) / 2;
   int topPadding = (outputHeight - (inputHeight * multiple)) / 2;
 
-  ZXBitMatrix *output = [[[ZXBitMatrix alloc] initWithWidth:outputWidth height:outputHeight] autorelease];
+  ZXBitMatrix *output = [[ZXBitMatrix alloc] initWithWidth:outputWidth height:outputHeight];
 
   for (int inputY = 0, outputY = topPadding; inputY < inputHeight; inputY++, outputY += multiple) {
     for (int inputX = 0, outputX = leftPadding; inputX < inputWidth; inputX++, outputX += multiple) {

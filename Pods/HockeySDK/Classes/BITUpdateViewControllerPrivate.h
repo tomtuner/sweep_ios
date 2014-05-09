@@ -2,7 +2,7 @@
  * Author: Andreas Linde <mail@andreaslinde.de>
  *         Peter Steinberger
  *
- * Copyright (c) 2012-2013 HockeyApp, Bit Stadium GmbH.
+ * Copyright (c) 2012-2014 HockeyApp, Bit Stadium GmbH.
  * Copyright (c) 2011 Andreas Linde, Peter Steinberger.
  * All rights reserved.
  *
@@ -28,16 +28,37 @@
  * OTHER DEALINGS IN THE SOFTWARE.
  */
 
-#import <UIKit/UIKit.h>
+#import "HockeySDK.h"
+
+#if HOCKEYSDK_FEATURE_UPDATES
+
 #import "BITStoreButton.h"
 
-typedef enum {
+/**
+ *  Button states
+ */
+typedef NS_ENUM(NSUInteger, AppStoreButtonState) {
+	/**
+	 *  Offline
+	 */
 	AppStoreButtonStateOffline,
+	/**
+	 *  Check
+	 */
 	AppStoreButtonStateCheck,
+	/**
+	 *  Searching
+	 */
 	AppStoreButtonStateSearching,
+	/**
+	 *  Update
+	 */
 	AppStoreButtonStateUpdate,
+	/**
+	 *  Installing
+	 */
 	AppStoreButtonStateInstalling
-} AppStoreButtonState;
+};
 
 
 @class BITUpdateManager;
@@ -48,8 +69,11 @@ typedef enum {
 }
 
 @property (nonatomic, weak) BITUpdateManager *updateManager;
-@property (nonatomic, readwrite) BOOL modal;
+
+@property (nonatomic, readwrite) BOOL mandatoryUpdate;
 
 @property (nonatomic, assign) AppStoreButtonState appStoreButtonState;
 
 @end
+
+#endif /* HOCKEYSDK_FEATURE_UPDATES */

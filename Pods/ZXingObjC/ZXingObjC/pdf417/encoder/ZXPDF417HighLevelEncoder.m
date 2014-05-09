@@ -81,7 +81,7 @@ const int LATCH_TO_BYTE = 924;
  * Raw code table for text compaction Mixed sub-mode
  */
 const int TEXT_MIXED_RAW_LEN = 30;
-const unsigned char TEXT_MIXED_RAW[TEXT_MIXED_RAW_LEN] = {
+const int8_t TEXT_MIXED_RAW[TEXT_MIXED_RAW_LEN] = {
   48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 38, 13, 9, 44, 58,
   35, 45, 46, 36, 47, 43, 37, 42, 61, 94, 0, 32, 0, 0, 0};
 
@@ -89,7 +89,7 @@ const unsigned char TEXT_MIXED_RAW[TEXT_MIXED_RAW_LEN] = {
  * Raw code table for text compaction: Punctuation sub-mode
  */
 const int TEXT_PUNCTUATION_RAW_LEN = 30;
-const unsigned char TEXT_PUNCTUATION_RAW[TEXT_PUNCTUATION_RAW_LEN] = {
+const int8_t TEXT_PUNCTUATION_RAW[TEXT_PUNCTUATION_RAW_LEN] = {
   59, 60, 62, 64, 91, 92, 93, 95, 96, 126, 33, 13, 9, 44, 58,
   10, 45, 46, 36, 47, 34, 124, 42, 40, 41, 63, 123, 125, 39, 0};
 
@@ -99,42 +99,24 @@ unichar MIXED_TABLE[MIXED_TABLE_LEN];
 const int PUNCTUATION_LEN = 128;
 unichar PUNCTUATION[PUNCTUATION_LEN];
 
-@interface ZXPDF417HighLevelEncoder ()
-
-+ (unsigned char *)bytesForMessage:(NSString *)msg;
-+ (int)encodeText:(NSString *)msg startpos:(int)startpos count:(int)count buffer:(NSMutableString *)sb initialSubmode:(int)initialSubmode;
-+ (void)encodeBinary:(unsigned char *)bytes startpos:(int)startpos count:(int)count startmode:(int)startmode buffer:(NSMutableString *)sb;
-+ (void)encodeNumeric:(NSString *)msg startpos:(int)startpos count:(int)count buffer:(NSMutableString *)sb;
-+ (BOOL)isDigit:(char)ch;
-+ (BOOL)isAlphaUpper:(char)ch;
-+ (BOOL)isAlphaLower:(char)ch;
-+ (BOOL)isMixed:(char)ch;
-+ (BOOL)isPunctuation:(char)ch;
-+ (BOOL)isText:(char)ch;
-+ (int)determineConsecutiveDigitCount:(NSString *)msg startpos:(int)startpos;
-+ (int)determineConsecutiveTextCount:(NSString *)msg startpos:(int)startpos;
-+ (int)determineConsecutiveBinaryCount:(NSString *)msg bytes:(unsigned char *)bytes startpos:(int)startpos error:(NSError **)error;
-
-@end
-
 @implementation ZXPDF417HighLevelEncoder
 
 + (void)initialize {
   //Construct inverse lookups
   for (int i = 0; i < MIXED_TABLE_LEN; i++) {
-    MIXED_TABLE[i] = -1;
+    MIXED_TABLE[i] = 0xFF;
   }
-  for (unsigned char i = 0; i < TEXT_MIXED_RAW_LEN; i++) {
-    unsigned char b = TEXT_MIXED_RAW[i];
+  for (int8_t i = 0; i < TEXT_MIXED_RAW_LEN; i++) {
+    int8_t b = TEXT_MIXED_RAW[i];
     if (b > 0) {
       MIXED_TABLE[b] = i;
     }
   }
   for (int i = 0; i < PUNCTUATION_LEN; i++) {
-    PUNCTUATION[i] = -1;
+    PUNCTUATION[i] = 0xFF;
   }
-  for (unsigned char i = 0; i < TEXT_PUNCTUATION_RAW_LEN; i++) {
-    unsigned char b = TEXT_PUNCTUATION_RAW[i];
+  for (int8_t i = 0; i < TEXT_PUNCTUATION_RAW_LEN; i++) {
+    int8_t b = TEXT_PUNCTUATION_RAW[i];
     if (b > 0) {
       PUNCTUATION[b] = i;
     }
@@ -145,8 +127,8 @@ unichar PUNCTUATION[PUNCTUATION_LEN];
  * Converts the message to a byte array using the default encoding (cp437) as defined by the
  * specification
  */
-+ (unsigned char *)bytesForMessage:(NSString *)msg {
-  return (unsigned char *)[[msg dataUsingEncoding:(NSStringEncoding) 0x80000400] bytes];
++ (int8_t *)bytesForMessage:(NSString *)msg {
+  return (int8_t *)[[msg dataUsingEncoding:(NSStringEncoding) 0x80000400] bytes];
 }
 
 /**
@@ -155,30 +137,30 @@ unichar PUNCTUATION[PUNCTUATION_LEN];
  * is used.
  */
 + (NSString *)encodeHighLevel:(NSString *)msg compaction:(ZXCompaction)compaction error:(NSError **)error {
-  unsigned char *bytes = NULL; //Fill later and only if needed
+  int8_t *bytes = NULL; //Fill later and only if needed
 
   //the codewords 0..928 are encoded as Unicode characters
   NSMutableString *sb = [NSMutableString stringWithCapacity:msg.length];
 
-  int len = msg.length;
+  NSUInteger len = msg.length;
   int p = 0;
   int textSubMode = SUBMODE_ALPHA;
 
   // User selected encoding mode
   if (compaction == ZX_COMPACTION_TEXT) {
-    [self encodeText:msg startpos:p count:len buffer:sb initialSubmode:textSubMode];
+    [self encodeText:msg startpos:p count:(int)len buffer:sb initialSubmode:textSubMode];
   } else if (compaction == ZX_COMPACTION_BYTE) {
     bytes = [self bytesForMessage:msg];
-    [self encodeBinary:bytes startpos:p count:msg.length startmode:BYTE_COMPACTION buffer:sb];
+    [self encodeBinary:bytes startpos:p count:(int)msg.length startmode:BYTE_COMPACTION buffer:sb];
   } else if (compaction == ZX_COMPACTION_NUMERIC) {
-    [sb appendFormat:@"%c", (char) LATCH_TO_NUMERIC];
-    [self encodeNumeric:msg startpos:p count:len buffer:sb];
+    [sb appendFormat:@"%C", (unichar) LATCH_TO_NUMERIC];
+    [self encodeNumeric:msg startpos:p count:(int)len buffer:sb];
   } else {
     int encodingMode = TEXT_COMPACTION; //Default mode, see 4.4.2.1
     while (p < len) {
       int n = [self determineConsecutiveDigitCount:msg startpos:p];
       if (n >= 13) {
-        [sb appendFormat:@"%c", (char) LATCH_TO_NUMERIC];
+        [sb appendFormat:@"%C", (unichar) LATCH_TO_NUMERIC];
         encodingMode = NUMERIC_COMPACTION;
         textSubMode = SUBMODE_ALPHA; //Reset after latch
         [self encodeNumeric:msg startpos:p count:n buffer:sb];
@@ -187,7 +169,7 @@ unichar PUNCTUATION[PUNCTUATION_LEN];
         int t = [self determineConsecutiveTextCount:msg startpos:p];
         if (t >= 5 || n == len) {
           if (encodingMode != TEXT_COMPACTION) {
-            [sb appendFormat:@"%c", (char) LATCH_TO_TEXT];
+            [sb appendFormat:@"%C", (unichar) LATCH_TO_TEXT];
             encodingMode = TEXT_COMPACTION;
             textSubMode = SUBMODE_ALPHA; //start with submode alpha after latch
           }
@@ -230,27 +212,27 @@ unichar PUNCTUATION[PUNCTUATION_LEN];
   int submode = initialSubmode;
   int idx = 0;
   while (true) {
-    char ch = [msg characterAtIndex:startpos + idx];
+    unichar ch = [msg characterAtIndex:startpos + idx];
     switch (submode) {
       case SUBMODE_ALPHA:
         if ([self isAlphaUpper:ch]) {
           if (ch == ' ') {
-            [tmp appendFormat:@"%c", (char) 26]; //space
+            [tmp appendFormat:@"%C", (unichar) 26]; //space
           } else {
-            [tmp appendFormat:@"%c", (char) (ch - 65)];
+            [tmp appendFormat:@"%C", (unichar) (ch - 65)];
           }
         } else {
           if ([self isAlphaLower:ch]) {
             submode = SUBMODE_LOWER;
-            [tmp appendFormat:@"%c", (char) 27]; //ll
+            [tmp appendFormat:@"%C", (unichar) 27]; //ll
             continue;
           } else if ([self isMixed:ch]) {
             submode = SUBMODE_MIXED;
-            [tmp appendFormat:@"%c", (char) 28]; //ml
+            [tmp appendFormat:@"%C", (unichar) 28]; //ml
             continue;
           } else {
-            [tmp appendFormat:@"%c", (char) 29]; //ps
-            [tmp appendFormat:@"%c", (char) PUNCTUATION[ch]];
+            [tmp appendFormat:@"%C", (unichar) 29]; //ps
+            [tmp appendFormat:@"%C", PUNCTUATION[ch]];
             break;
           }
         }
@@ -258,23 +240,23 @@ unichar PUNCTUATION[PUNCTUATION_LEN];
       case SUBMODE_LOWER:
         if ([self isAlphaLower:ch]) {
           if (ch == ' ') {
-            [tmp appendFormat:@"%c", (char) 26]; //space
+            [tmp appendFormat:@"%C", (unichar) 26]; //space
           } else {
-            [tmp appendFormat:@"%c", (char) (ch - 97)];
+            [tmp appendFormat:@"%C", (unichar) (ch - 97)];
           }
         } else {
           if ([self isAlphaUpper:ch]) {
-            [tmp appendFormat:@"%c", (char) 27]; //as
-            [tmp appendFormat:@"%c", (char) (ch - 65)];
+            [tmp appendFormat:@"%C", (unichar) 27]; //as
+            [tmp appendFormat:@"%C", (unichar) (ch - 65)];
             //space cannot happen here, it is also in "Lower"
             break;
           } else if ([self isMixed:ch]) {
             submode = SUBMODE_MIXED;
-            [tmp appendFormat:@"%c", (char) 28]; //ml
+            [tmp appendFormat:@"%C", (unichar) 28]; //ml
             continue;
           } else {
-            [tmp appendFormat:@"%c", (char) 29]; //ps
-            [tmp appendFormat:@"%c", (char) PUNCTUATION[ch]];
+            [tmp appendFormat:@"%C", (unichar) 29]; //ps
+            [tmp appendFormat:@"%C", PUNCTUATION[ch]];
             break;
           }
         }
@@ -285,32 +267,32 @@ unichar PUNCTUATION[PUNCTUATION_LEN];
         } else {
           if ([self isAlphaUpper:ch]) {
             submode = SUBMODE_ALPHA;
-            [tmp appendFormat:@"%c", (char) 28]; //al
+            [tmp appendFormat:@"%C", (unichar) 28]; //al
             continue;
           } else if ([self isAlphaLower:ch]) {
             submode = SUBMODE_LOWER;
-            [tmp appendFormat:@"%c", (char) 27]; //ll
+            [tmp appendFormat:@"%C", (unichar) 27]; //ll
             continue;
           } else {
             if (startpos + idx + 1 < count) {
               char next = [msg characterAtIndex:startpos + idx + 1];
               if ([self isPunctuation:next]) {
                 submode = SUBMODE_PUNCTUATION;
-                [tmp appendFormat:@"%c", (char) 25]; //pl
+                [tmp appendFormat:@"%C", (unichar) 25]; //pl
                 continue;
               }
             }
-            [tmp appendFormat:@"%c", (char) 29]; //ps
-            [tmp appendFormat:@"%c", (char) PUNCTUATION[ch]];
+            [tmp appendFormat:@"%C", (unichar) 29]; //ps
+            [tmp appendFormat:@"%C", PUNCTUATION[ch]];
           }
         }
         break;
       default: //SUBMODE_PUNCTUATION
         if ([self isPunctuation:ch]) {
-          [tmp appendFormat:@"%c", (char) PUNCTUATION[ch]];
+          [tmp appendFormat:@"%C", PUNCTUATION[ch]];
         } else {
           submode = SUBMODE_ALPHA;
-          [tmp appendFormat:@"%c", (char) 29]; //al
+          [tmp appendFormat:@"%C", (unichar) 29]; //al
           continue;
         }
     }
@@ -320,7 +302,7 @@ unichar PUNCTUATION[PUNCTUATION_LEN];
     }
   }
   unichar h = 0;
-  int len = tmp.length;
+  NSUInteger len = tmp.length;
   for (int i = 0; i < len; i++) {
     BOOL odd = (i % 2) != 0;
     if (odd) {
@@ -341,18 +323,18 @@ unichar PUNCTUATION[PUNCTUATION_LEN];
  * chapter 4.4.3. The Unicode characters will be converted to binary using the cp437
  * codepage.
  */
-+ (void)encodeBinary:(unsigned char *)bytes startpos:(int)startpos count:(int)count startmode:(int)startmode buffer:(NSMutableString *)sb {
++ (void)encodeBinary:(int8_t *)bytes startpos:(int)startpos count:(int)count startmode:(int)startmode buffer:(NSMutableString *)sb {
   if (count == 1 && startmode == TEXT_COMPACTION) {
-    [sb appendFormat:@"%c", (char) SHIFT_TO_BYTE];
+    [sb appendFormat:@"%C", (unichar) SHIFT_TO_BYTE];
   }
 
   int idx = startpos;
   // Encode sixpacks
   if (count >= 6) {
-    [sb appendFormat:@"%c", (char) LATCH_TO_BYTE];
+    [sb appendFormat:@"%C", (unichar) LATCH_TO_BYTE];
     const int charsLen = 5;
-    char chars[charsLen];
-    memset(chars, 0, charsLen * sizeof(char));
+    unichar chars[charsLen];
+    memset(chars, 0, charsLen * sizeof(unichar));
     while ((startpos + count - idx) >= 6) {
       long t = 0;
       for (int i = 0; i < 6; i++) {
@@ -360,22 +342,22 @@ unichar PUNCTUATION[PUNCTUATION_LEN];
         t += bytes[idx + i] & 0xff;
       }
       for (int i = 0; i < 5; i++) {
-        chars[i] = (char) (t % 900);
+        chars[i] = (unichar) (t % 900);
         t /= 900;
       }
       for (int i = charsLen - 1; i >= 0; i--) {
-        [sb appendFormat:@"%c", chars[i]];
+        [sb appendFormat:@"%C", chars[i]];
       }
       idx += 6;
     }
   }
   //Encode rest (remaining n<5 bytes if any)
   if (idx < startpos + count) {
-    [sb appendFormat:@"%c", (char) LATCH_TO_BYTE_PADDED];
+    [sb appendFormat:@"%C", (unichar) LATCH_TO_BYTE_PADDED];
   }
   for (int i = idx; i < startpos + count; i++) {
     int ch = bytes[i] & 0xff;
-    [sb appendFormat:@"%c", ch];
+    [sb appendFormat:@"%C", (unichar)ch];
   }
 }
 
@@ -389,13 +371,13 @@ unichar PUNCTUATION[PUNCTUATION_LEN];
     long long bigint = [part longLongValue];
     do {
       long c = bigint % 900;
-      [tmp appendFormat:@"%c", (char) c];
+      [tmp appendFormat:@"%C", (unichar) c];
       bigint /= 900;
     } while (bigint != 0);
 
     //Reverse temporary string
-    for (int i = tmp.length - 1; i >= 0; i--) {
-      [tmp appendFormat:@"%c", [tmp characterAtIndex:i]];
+    for (int i = (int)tmp.length - 1; i >= 0; i--) {
+      [sb appendFormat:@"%C", [tmp characterAtIndex:i]];
     }
     idx += len;
   }
@@ -414,11 +396,11 @@ unichar PUNCTUATION[PUNCTUATION_LEN];
 }
 
 + (BOOL)isMixed:(char)ch {
-  return MIXED_TABLE[ch] != -1;
+  return MIXED_TABLE[ch] != 0xFF;
 }
 
 + (BOOL)isPunctuation:(char)ch {
-  return PUNCTUATION[ch] != -1;
+  return PUNCTUATION[ch] != 0xFF;
 }
 
 + (BOOL)isText:(char)ch {
@@ -430,7 +412,7 @@ unichar PUNCTUATION[PUNCTUATION_LEN];
  */
 + (int)determineConsecutiveDigitCount:(NSString *)msg startpos:(int)startpos {
   int count = 0;
-  int len = msg.length;
+  NSUInteger len = msg.length;
   int idx = startpos;
   if (idx < len) {
     char ch = [msg characterAtIndex:idx];
@@ -453,7 +435,7 @@ unichar PUNCTUATION[PUNCTUATION_LEN];
  * @return the requested character count
  */
 + (int)determineConsecutiveTextCount:(NSString *)msg startpos:(int)startpos {
-  int len = msg.length;
+  NSUInteger len = msg.length;
   int idx = startpos;
   while (idx < len) {
     char ch = [msg characterAtIndex:idx];
@@ -486,8 +468,8 @@ unichar PUNCTUATION[PUNCTUATION_LEN];
 /**
  * Determines the number of consecutive characters that are encodable using binary compaction.
  */
-+ (int)determineConsecutiveBinaryCount:(NSString *)msg bytes:(unsigned char *)bytes startpos:(int)startpos error:(NSError **)error {
-  int len = msg.length;
++ (int)determineConsecutiveBinaryCount:(NSString *)msg bytes:(int8_t *)bytes startpos:(int)startpos error:(NSError **)error {
+  NSUInteger len = msg.length;
   int idx = startpos;
   while (idx < len) {
     char ch = [msg characterAtIndex:idx];
@@ -523,10 +505,9 @@ unichar PUNCTUATION[PUNCTUATION_LEN];
     //Sun returns a ASCII 63 (?) for a character that cannot be mapped. Let's hope all
     //other VMs do the same
     if (bytes[idx] == 63 && ch != '?') {
-      NSDictionary *userInfo = [NSDictionary dictionaryWithObject:[NSString stringWithFormat:@"Non-encodable character detected: %c (Unicode: %C)", ch, (unichar)ch]
-                                                           forKey:NSLocalizedDescriptionKey];
+      NSDictionary *userInfo = @{NSLocalizedDescriptionKey: [NSString stringWithFormat:@"Non-encodable character detected: %c (Unicode: %C)", ch, (unichar)ch]};
 
-      if (error) *error = [[[NSError alloc] initWithDomain:ZXErrorDomain code:ZXWriterError userInfo:userInfo] autorelease];
+      if (error) *error = [[NSError alloc] initWithDomain:ZXErrorDomain code:ZXWriterError userInfo:userInfo];
       return -1;
     }
     idx++;

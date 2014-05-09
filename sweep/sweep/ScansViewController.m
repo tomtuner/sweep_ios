@@ -1,4 +1,4 @@
-//
+	//
 //  MasterViewController.m
 //  sweep
 //
@@ -293,13 +293,27 @@ static NSUInteger kNumberOfPages = 2;
         NSLog(@"Event_ID: %@", self.detailItem.remote_id);
         [request setPredicate:predicate];
         [request setSortDescriptors:[NSArray arrayWithObject:
-                                     [NSSortDescriptor sortDescriptorWithKey:@"created_at" ascending:YES]]];
+                                     [NSSortDescriptor sortDescriptorWithKey:@"created_at" ascending:NO]]];
         self.scans = [self.managedObjectContext executeFetchRequest:request error:&error];
         self.totalScansLabel.text = [NSString stringWithFormat:@"%i", self.scans.count];
         NSSet *uniqueStates = [NSSet setWithArray:[self.scans valueForKey:@"value"]];
 //        NSLog(@"Unique Entries: %i", uniqueStates.count);
         self.uniqueScansLabel.text = [NSString stringWithFormat:@"%i", uniqueStates.count];
-
+        
+        NSFetchRequest *uRequest = [[NSFetchRequest alloc] initWithEntityName:@"Users"];
+        NSMutableArray *scansUArray = [NSMutableArray arrayWithArray:[[self.scans valueForKey:@"user_id"] mutableCopy]];
+        [scansUArray removeObjectIdenticalTo:[NSNull null]];
+        NSLog(@"SCANS HERE %@", scansUArray);
+        if (scansUArray.count != 0)
+        {
+            NSPredicate *uPredicate = [NSPredicate predicateWithFormat:@"(remote_id CONTAINS %@)" argumentArray:scansUArray];
+            [uRequest setPredicate:uPredicate];
+            self.users = [self.managedObjectContext executeFetchRequest:uRequest error:&error];
+            NSLog(@"%@", self.users);
+        }else
+        {
+            self.users = nil;
+        }
         [self.scansTable reloadData];
         [self stopActivityIndicatorView];
     }];
@@ -365,6 +379,8 @@ static NSUInteger kNumberOfPages = 2;
     CameraCaptureViewController *cameraCapture = [st instantiateViewControllerWithIdentifier:@"cameraCaptureViewController"];
     cameraCapture.delegate = self;
     cameraCapture.event = self.detailItem;
+    cameraCapture.users = self.users;
+    cameraCapture.scans = self.scans;
 //    cameraCapture.modalPresentationStyle = UIModalPresentationFullScreen;
     [self presentViewController:cameraCapture animated:NO completion:nil];
     /*BarcodeCaptureViewController *vc = [[BarcodeCaptureViewController alloc] initWithNibName:@"BarcodeCaptureViewController" bundle:nil];
@@ -727,17 +743,40 @@ static NSUInteger kNumberOfPages = 2;
 {
     // FIXME: Do this whole block more efficiently
     Scans *scan = [self.scans objectAtIndex:indexPath.row];
-    NSString *valueString;
-    NSInteger num = (scan.value.length * [[[ThemeManager sharedTheme] percentageIDAvailable] integerValue]) / 100;
-    
-    valueString = [scan.value substringFromIndex:(scan.value.length - num) ];
-    NSMutableString *padString = [NSMutableString string];
-    for (int i = 0; i < (scan.value.length - num); i++)
+    Users *user = nil;
+    NSLog(@"User Count: %i", self.users.count);
+    if (indexPath.row < self.users.count)
     {
-        [padString appendString:@"*"];
+        user = [self.users objectAtIndex:indexPath.row];
     }
-    valueString = [NSString stringWithFormat:@"%@%@", padString, valueString];
-    cell.textLabel.text = valueString;
+
+    if (user)
+    {
+        cell.textLabel.text = [NSString stringWithFormat:@"%@ %@", user.first_name, user.last_name];
+        NSLog(@"Scan Status %@", scan.status);
+        if ([scan.status isEqualToNumber:[NSNumber numberWithInt:0]])
+        {
+            cell.textLabel.textColor = [UIColor grayColor];
+            cell.textLabel.alpha = 0.7;
+        }else
+        {
+            cell.textLabel.textColor = [UIColor blackColor];
+            cell.textLabel.alpha = 1.0;
+        }
+    }else {
+        NSString *valueString;
+        NSInteger num = (scan.value.length * [[[ThemeManager sharedTheme] percentageIDAvailable] integerValue]) / 100;
+        
+        valueString = [scan.value substringFromIndex:(scan.value.length - num) ];
+        NSMutableString *padString = [NSMutableString string];
+        for (int i = 0; i < (scan.value.length - num); i++)
+        {
+            [padString appendString:@"*"];
+        }
+        valueString = [NSString stringWithFormat:@"%@%@", padString, valueString];
+        cell.textLabel.text = valueString;
+    }
+//    cell.textLabel.text = valueString;
 }
 
 - (void) playSoundAndVibrate

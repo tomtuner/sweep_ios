@@ -2,7 +2,7 @@
  * Author: Andreas Linde <mail@andreaslinde.de>
  *         Kent Sutherland
  *
- * Copyright (c) 2012-2013 HockeyApp, Bit Stadium GmbH.
+ * Copyright (c) 2012-2014 HockeyApp, Bit Stadium GmbH.
  * Copyright (c) 2011 Andreas Linde & Kent Sutherland.
  * All rights reserved.
  *
@@ -28,11 +28,11 @@
  * OTHER DEALINGS IN THE SOFTWARE.
  */
 
-#import <Foundation/Foundation.h>
+#if HOCKEYSDK_FEATURE_FEEDBACK
+
 #import "BITFeedbackMessage.h"
 
-
-@interface BITFeedbackManager () {
+@interface BITFeedbackManager () <UIAlertViewDelegate> {
 }
 
 
@@ -55,6 +55,11 @@
 @property (nonatomic, copy) NSString *userName;
 @property (nonatomic, copy) NSString *userEmail;
 
+
+// Fetch user meta data
+- (BOOL)updateUserIDUsingKeychainAndDelegate;
+- (BOOL)updateUserNameUsingKeychainAndDelegate;
+- (BOOL)updateUserEmailUsingKeychainAndDelegate;
 
 // load new messages from the server
 - (void)updateMessagesList;
@@ -94,3 +99,5 @@
 - (void)deleteAllMessages;
 
 @end
+
+#endif /* HOCKEYSDK_FEATURE_FEEDBACK */

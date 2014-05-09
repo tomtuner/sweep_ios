@@ -32,6 +32,7 @@
     [Flurry startSession:@"7YP39Z3HVGP3V4Z5M9MX"];
 #endif
     
+    [[SWSyncEngine sharedEngine] registerNSManagedObjectClassToSync:[Users class]];
     [[SWSyncEngine sharedEngine] registerNSManagedObjectClassToSync:[Events class]];
     [[SWSyncEngine sharedEngine] registerNSManagedObjectClassToSync:[Scans class]];
     

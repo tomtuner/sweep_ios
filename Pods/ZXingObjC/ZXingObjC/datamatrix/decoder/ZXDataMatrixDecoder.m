@@ -27,30 +27,19 @@
 
 @interface ZXDataMatrixDecoder ()
 
-@property (nonatomic, retain) ZXReedSolomonDecoder *rsDecoder;
-
-- (BOOL)correctErrors:(NSMutableArray *)codewordBytes numDataCodewords:(int)numDataCodewords error:(NSError **)error;
+@property (nonatomic, strong) ZXReedSolomonDecoder *rsDecoder;
 
 @end
 
 @implementation ZXDataMatrixDecoder
 
-@synthesize rsDecoder;
-
-- (id) init {
+- (id)init {
   if (self = [super init]) {
-    self.rsDecoder = [[[ZXReedSolomonDecoder alloc] initWithField:[ZXGenericGF DataMatrixField256]] autorelease];
+    _rsDecoder = [[ZXReedSolomonDecoder alloc] initWithField:[ZXGenericGF DataMatrixField256]];
   }
 
   return self;
 }
-
-- (void) dealloc {
-  [rsDecoder release];
-
-  [super dealloc];
-}
-
 
 /**
  * Convenience method that can decode a Data Matrix Code represented as a 2D array of booleans.
@@ -58,7 +47,7 @@
  */
 - (ZXDecoderResult *)decode:(BOOL **)image length:(unsigned int)length error:(NSError **)error {
   int dimension = length;
-  ZXBitMatrix *bits = [[[ZXBitMatrix alloc] initWithDimension:dimension] autorelease];
+  ZXBitMatrix *bits = [[ZXBitMatrix alloc] initWithDimension:dimension];
   for (int i = 0; i < dimension; i++) {
     for (int j = 0; j < dimension; j++) {
       if (image[i][j]) {
@@ -76,7 +65,7 @@
  * to mean a black module.
  */
 - (ZXDecoderResult *)decodeMatrix:(ZXBitMatrix *)bits error:(NSError **)error {
-  ZXDataMatrixBitMatrixParser *parser = [[[ZXDataMatrixBitMatrixParser alloc] initWithBitMatrix:bits error:error] autorelease];
+  ZXDataMatrixBitMatrixParser *parser = [[ZXDataMatrixBitMatrixParser alloc] initWithBitMatrix:bits error:error];
   if (!parser) {
     return nil;
   }
@@ -85,28 +74,28 @@
   NSArray *codewords = [parser readCodewords];
   NSArray *dataBlocks = [ZXDataMatrixDataBlock dataBlocks:codewords version:version];
 
-  int dataBlocksCount = [dataBlocks count];
+  NSUInteger dataBlocksCount = [dataBlocks count];
 
   int totalBytes = 0;
   for (int i = 0; i < dataBlocksCount; i++) {
-    totalBytes += [[dataBlocks objectAtIndex:i] numDataCodewords];
+    totalBytes += [dataBlocks[i] numDataCodewords];
   }
 
   if (totalBytes == 0) {
     return nil;
   }
 
-  unsigned char resultBytes[totalBytes];
+  int8_t resultBytes[totalBytes];
 
   for (int j = 0; j < dataBlocksCount; j++) {
-    ZXDataMatrixDataBlock *dataBlock = [dataBlocks objectAtIndex:j];
+    ZXDataMatrixDataBlock *dataBlock = dataBlocks[j];
     NSMutableArray *codewordBytes = dataBlock.codewords;
     int numDataCodewords = [dataBlock numDataCodewords];
     if (![self correctErrors:codewordBytes numDataCodewords:numDataCodewords error:error]) {
       return nil;
     }
     for (int i = 0; i < numDataCodewords; i++) {
-      resultBytes[i * dataBlocksCount + j] = [[codewordBytes objectAtIndex:i] charValue];
+      resultBytes[i * dataBlocksCount + j] = [codewordBytes[i] charValue];
     }
   }
 
@@ -119,15 +108,15 @@
  * correct the errors in-place using Reed-Solomon error correction.
  */
 - (BOOL)correctErrors:(NSMutableArray *)codewordBytes numDataCodewords:(int)numDataCodewords error:(NSError **)error {
-  int numCodewords = [codewordBytes count];
+  int numCodewords = (int)[codewordBytes count];
   int codewordsInts[numCodewords];
   for (int i = 0; i < numCodewords; i++) {
-    codewordsInts[i] = [[codewordBytes objectAtIndex:i] charValue] & 0xFF;
+    codewordsInts[i] = [codewordBytes[i] charValue] & 0xFF;
   }
-  int numECCodewords = [codewordBytes count] - numDataCodewords;
+  int numECCodewords = (int)[codewordBytes count] - numDataCodewords;
 
   NSError *decodeError = nil;
-  if (![rsDecoder decode:codewordsInts receivedLen:numCodewords twoS:numECCodewords error:&decodeError]) {
+  if (![self.rsDecoder decode:codewordsInts receivedLen:numCodewords twoS:numECCodewords error:&decodeError]) {
     if (decodeError.code == ZXReedSolomonError) {
       if (error) *error = ChecksumErrorInstance();
       return NO;
@@ -138,7 +127,7 @@
   }
 
   for (int i = 0; i < numDataCodewords; i++) {
-    [codewordBytes replaceObjectAtIndex:i withObject:[NSNumber numberWithChar:codewordsInts[i]]];
+    codewordBytes[i] = [NSNumber numberWithChar:codewordsInts[i]];
   }
   return YES;
 }

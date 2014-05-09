@@ -2,7 +2,7 @@
  * Author: Andreas Linde <mail@andreaslinde.de>
  *         Peter Steinberger
  *
- * Copyright (c) 2012-2013 HockeyApp, Bit Stadium GmbH.
+ * Copyright (c) 2012-2014 HockeyApp, Bit Stadium GmbH.
  * Copyright (c) 2011 Andreas Linde.
  * All rights reserved.
  *
@@ -29,9 +29,13 @@
  */
 
 
-#import <UIKit/UIKit.h>
+#import "HockeySDK.h"
 
+#if HOCKEYSDK_FEATURE_UPDATES
 
+/** TODO:
+  * if during startup the auth-state is pending, we get never rid of the nag-alertview
+ */
 @interface BITUpdateManager () {
 }
 
@@ -48,6 +52,8 @@
 // get array of all available versions
 @property (nonatomic, copy) NSArray *appVersions;
 
+@property (nonatomic, strong) NSNumber *currentAppVersionUsageTime;
+
 @property (nonatomic, strong) NSURLConnection *urlConnection;
 
 @property (nonatomic, copy) NSDate *usageStartTimestamp;
@@ -55,6 +61,12 @@
 @property (nonatomic, strong) UIView *blockingView;
 
 @property (nonatomic, strong) NSString *companyName;
+
+@property (nonatomic, strong) NSString *installationIdentification;
+
+@property (nonatomic, strong) NSString *installationIdentificationType;
+
+@property (nonatomic) BOOL installationIdentified;
 
 // if YES, the API will return an existing JMC config
 // if NO, the API will return only version information
@@ -72,12 +84,6 @@
 // initiates app-download call. displays an system UIAlertView
 - (BOOL)initiateAppDownload;
 
-// checks whether this app version is authorized
-- (BOOL)appVersionIsAuthorized;
-
-// start checking for an authorization key
-- (void)checkForAuthorization;
-
 // get/set current active hockey view controller
 @property (nonatomic, strong) BITUpdateViewController *currentHockeyViewController;
 
@@ -91,3 +97,5 @@
 - (BOOL)hasNewerMandatoryVersion;
 
 @end
+
+#endif /* HOCKEYSDK_FEATURE_UPDATES */

@@ -1,19 +1,19 @@
 PODS:
   - AFNetworking (1.2.1)
-  - HockeySDK (3.0.0)
+  - HockeySDK (3.5.5)
   - ViewDeck (2.2.9)
-  - ZXingObjC (2.1.0)
+  - ZXingObjC (2.2.8)
 
 DEPENDENCIES:
   - AFNetworking (= 1.2.1)
-  - HockeySDK (= 3.0.0)
+  - HockeySDK (= 3.5.5)
   - ViewDeck (= 2.2.9)
-  - ZXingObjC (= 2.1.0)
+  - ZXingObjC (= 2.2.8)
 
 SPEC CHECKSUMS:
   AFNetworking: a44069e3c9c89867544f6639482f155c7e5f9b41
-  HockeySDK: 286d86c6e89a35de7f3e4f3c2879a07185ee0918
+  HockeySDK: 350ef1cf18d2fc9a13801ad077c307cece8c6c64
   ViewDeck: ac3ff2388bcb13e832d7878ccb6e0e320d10a779
-  ZXingObjC: 71a249c43b0d8bd11fea6a7393a057e7e869b834
+  ZXingObjC: 40419925a94b120a17c76ae91e31cf21673d52c6
 
-COCOAPODS: 0.25.0
+COCOAPODS: 0.32.1

@@ -14,12 +14,15 @@
  * limitations under the License.
  */
 
+#import "ZXAztecWriter.h"
 #import "ZXBitMatrix.h"
 #import "ZXCodaBarWriter.h"
 #import "ZXCode39Writer.h"
 #import "ZXCode128Writer.h"
+#import "ZXDataMatrixWriter.h"
 #import "ZXEAN8Writer.h"
 #import "ZXEAN13Writer.h"
+#import "ZXErrors.h"
 #import "ZXITFWriter.h"
 #import "ZXMultiFormatWriter.h"
 #import "ZXPDF417Writer.h"
@@ -29,7 +32,7 @@
 @implementation ZXMultiFormatWriter
 
 + (id)writer {
-  return [[[ZXMultiFormatWriter alloc] init] autorelease];
+  return [[ZXMultiFormatWriter alloc] init];
 }
 
 - (ZXBitMatrix *)encode:(NSString *)contents format:(ZXBarcodeFormat)format width:(int)width height:(int)height error:(NSError **)error {
@@ -40,44 +43,52 @@
   id<ZXWriter> writer;
   switch (format) {
     case kBarcodeFormatEan8:
-      writer = [[[ZXEAN8Writer alloc] init] autorelease];
+      writer = [[ZXEAN8Writer alloc] init];
       break;
 
     case kBarcodeFormatEan13:
-      writer = [[[ZXEAN13Writer alloc] init] autorelease];
+      writer = [[ZXEAN13Writer alloc] init];
       break;
 
     case kBarcodeFormatUPCA:
-      writer = [[[ZXUPCAWriter alloc] init] autorelease];
+      writer = [[ZXUPCAWriter alloc] init];
       break;
 
     case kBarcodeFormatQRCode:
-      writer = [[[ZXQRCodeWriter alloc] init] autorelease];
+      writer = [[ZXQRCodeWriter alloc] init];
       break;
 
     case kBarcodeFormatCode39:
-      writer = [[[ZXCode39Writer alloc] init] autorelease];
+      writer = [[ZXCode39Writer alloc] init];
       break;
 
     case kBarcodeFormatCode128:
-      writer = [[[ZXCode128Writer alloc] init] autorelease];
+      writer = [[ZXCode128Writer alloc] init];
       break;
 
     case kBarcodeFormatITF:
-      writer = [[[ZXITFWriter alloc] init] autorelease];
+      writer = [[ZXITFWriter alloc] init];
       break;
 
     case kBarcodeFormatPDF417:
-      writer = [[[ZXPDF417Writer alloc] init] autorelease];
+      writer = [[ZXPDF417Writer alloc] init];
       break;
 
     case kBarcodeFormatCodabar:
-      writer = [[[ZXCodaBarWriter alloc] init] autorelease];
+      writer = [[ZXCodaBarWriter alloc] init];
+      break;
+
+    case kBarcodeFormatDataMatrix:
+      writer = [[ZXDataMatrixWriter alloc] init];
+      break;
+
+    case kBarcodeFormatAztec:
+      writer = [[ZXAztecWriter alloc] init];
       break;
 
     default:
-      [NSException raise:NSInvalidArgumentException 
-                  format:@"No encoder available for format"];
+      if (error) *error = [NSError errorWithDomain:ZXErrorDomain code:ZXWriterError userInfo:@{NSLocalizedDescriptionKey: @"No encoder available for format"}];
+      return nil;
   }
   return [writer encode:contents format:format width:width height:height hints:hints error:error];
 }

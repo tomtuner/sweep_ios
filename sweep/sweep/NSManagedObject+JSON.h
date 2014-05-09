@@ -11,6 +11,7 @@
 @interface NSManagedObject (JSON)
 
 - (NSMutableDictionary *)JSONToCreateObjectOnServer;
+- (NSMutableDictionary *)JSONToUpdateObjectOnServer;
 - (NSString *)dateStringForAPIUsingDate:(NSDate *)date;
 
 @end

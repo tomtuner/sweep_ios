@@ -15,4 +15,9 @@
     return nil;
 }
 
+- (NSMutableDictionary *)JSONToUpdateObjectOnServer {
+    @throw [NSException exceptionWithName:@"JSONStringToUpdateObjectOnServer Not Overridden" reason:@"Must override JSONStringToUpdateObjectOnServer on NSManagedObject class" userInfo:nil];
+    return nil;
+}
+
 @end

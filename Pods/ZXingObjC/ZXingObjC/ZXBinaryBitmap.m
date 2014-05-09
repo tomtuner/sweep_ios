@@ -21,38 +21,27 @@
 
 @interface ZXBinaryBitmap ()
 
-@property (nonatomic, retain) ZXBinarizer *binarizer;
-@property (nonatomic, retain) ZXBitMatrix *matrix;
+@property (nonatomic, strong) ZXBinarizer *binarizer;
+@property (nonatomic, strong) ZXBitMatrix *matrix;
 
 @end
 
 @implementation ZXBinaryBitmap
 
-@synthesize binarizer;
-@synthesize matrix;
-
-- (id)initWithBinarizer:(ZXBinarizer *)aBinarizer {
+- (id)initWithBinarizer:(ZXBinarizer *)binarizer {
   if (self = [super init]) {
-    if (aBinarizer == nil) {
-      [NSException raise:NSInvalidArgumentException 
-                  format:@"Binarizer must be non-null."];
+    if (binarizer == nil) {
+      [NSException raise:NSInvalidArgumentException format:@"Binarizer must be non-null."];
     }
 
-    self.binarizer = aBinarizer;
+    self.binarizer = binarizer;
   }
 
   return self;
 }
 
 + (id)binaryBitmapWithBinarizer:(ZXBinarizer *)binarizer {
-  return [[[self alloc] initWithBinarizer:binarizer] autorelease];
-}
-
-- (void)dealloc {
-  [binarizer release];
-  [matrix release];
-
-  [super dealloc];
+  return [[self alloc] initWithBinarizer:binarizer];
 }
 
 - (int)width {
@@ -63,7 +52,6 @@
   return self.binarizer.height;
 }
 
-
 /**
  * Converts one row of luminance data to 1 bit data. May actually do the conversion, or return
  * cached data. Callers should assume this method is expensive and call it as seldom as possible.
@@ -72,7 +60,6 @@
 - (ZXBitArray *)blackRow:(int)y row:(ZXBitArray *)row error:(NSError **)error {
   return [self.binarizer blackRow:y row:row error:error];
 }
-
 
 /**
  * Converts a 2D array of luminance data to 1 bit. As above, assume this method is expensive
@@ -87,11 +74,9 @@
   return self.matrix;
 }
 
-
 - (BOOL)cropSupported {
-  return [[binarizer luminanceSource] cropSupported];
+  return [[self.binarizer luminanceSource] cropSupported];
 }
-
 
 /**
  * Returns a new object with cropped image data. Implementations may keep a reference to the
@@ -99,13 +84,12 @@
  */
 - (ZXBinaryBitmap *)crop:(int)left top:(int)top width:(int)aWidth height:(int)aHeight {
   ZXLuminanceSource *newSource = [[self.binarizer luminanceSource] crop:left top:top width:aWidth height:aHeight];
-  return [[[ZXBinaryBitmap alloc] initWithBinarizer:[self.binarizer createBinarizer:newSource]] autorelease];
+  return [[ZXBinaryBitmap alloc] initWithBinarizer:[self.binarizer createBinarizer:newSource]];
 }
 
 - (BOOL)rotateSupported {
-  return [[binarizer luminanceSource] rotateSupported];
+  return [[self.binarizer luminanceSource] rotateSupported];
 }
-
 
 /**
  * Returns a new object with rotated image data by 90 degrees counterclockwise.
@@ -113,12 +97,12 @@
  */
 - (ZXBinaryBitmap *)rotateCounterClockwise {
   ZXLuminanceSource *newSource = [[self.binarizer luminanceSource] rotateCounterClockwise];
-  return [[[ZXBinaryBitmap alloc] initWithBinarizer:[self.binarizer createBinarizer:newSource]] autorelease];
+  return [[ZXBinaryBitmap alloc] initWithBinarizer:[self.binarizer createBinarizer:newSource]];
 }
 
 - (ZXBinaryBitmap *)rotateCounterClockwise45 {
   ZXLuminanceSource *newSource = [[self.binarizer luminanceSource] rotateCounterClockwise45];
-  return [[[ZXBinaryBitmap alloc] initWithBinarizer:[self.binarizer createBinarizer:newSource]] autorelease];
+  return [[ZXBinaryBitmap alloc] initWithBinarizer:[self.binarizer createBinarizer:newSource]];
 }
 
 @end

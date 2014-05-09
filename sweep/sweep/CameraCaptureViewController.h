@@ -25,6 +25,8 @@
 
 @property(nonatomic,assign)id delegate;
 @property(nonatomic,strong) Events *event;
+@property(nonatomic,strong) NSArray *users;
+@property(nonatomic,strong) NSArray *scans;
 @property (nonatomic, strong) IBOutlet UIView *scannerView;
 
 

@@ -27,31 +27,19 @@
 
 @interface ZXDataMatrixReader ()
 
-@property (nonatomic, retain) ZXDataMatrixDecoder *decoder;
-
-- (ZXBitMatrix *)extractPureBits:(ZXBitMatrix *)image;
-- (int)moduleSize:(NSArray *)leftTopBlack image:(ZXBitMatrix *)image;
+@property (nonatomic, strong) ZXDataMatrixDecoder *decoder;
 
 @end
 
 @implementation ZXDataMatrixReader
 
-@synthesize decoder;
-
 - (id)init {
   if (self = [super init]) {
-    self.decoder = [[[ZXDataMatrixDecoder alloc] init] autorelease];
+    _decoder = [[ZXDataMatrixDecoder alloc] init];
   }
 
   return self;
 }
-
-- (void) dealloc {
-  [decoder release];
-
-  [super dealloc];
-}
-
 
 /**
  * Locates and decodes a Data Matrix code in an image.
@@ -73,17 +61,17 @@
       if (error) *error = NotFoundErrorInstance();
       return nil;
     }
-    decoderResult = [decoder decodeMatrix:bits error:error];
+    decoderResult = [self.decoder decodeMatrix:bits error:error];
     if (!decoderResult) {
       return nil;
     }
-    points = [NSArray array];
+    points = @[];
   } else {
     ZXBitMatrix *matrix = [image blackMatrixWithError:error];
     if (!matrix) {
       return nil;
     }
-    ZXDataMatrixDetector *detector = [[[ZXDataMatrixDetector alloc] initWithImage:matrix error:error] autorelease];
+    ZXDataMatrixDetector *detector = [[ZXDataMatrixDetector alloc] initWithImage:matrix error:error];
     if (!detector) {
       return nil;
     }
@@ -91,7 +79,7 @@
     if (!detectorResult) {
       return nil;
     }
-    decoderResult = [decoder decodeMatrix:detectorResult.bits error:error];
+    decoderResult = [self.decoder decodeMatrix:detectorResult.bits error:error];
     if (!decoderResult) {
       return nil;
     }
@@ -134,10 +122,10 @@
     return nil;
   }
 
-  int top = [[leftTopBlack objectAtIndex:1] intValue];
-  int bottom = [[rightBottomBlack objectAtIndex:1] intValue];
-  int left = [[leftTopBlack objectAtIndex:0] intValue];
-  int right = [[rightBottomBlack objectAtIndex:0] intValue];
+  int top = [leftTopBlack[1] intValue];
+  int bottom = [rightBottomBlack[1] intValue];
+  int left = [leftTopBlack[0] intValue];
+  int right = [rightBottomBlack[0] intValue];
 
   int matrixWidth = (right - left + 1) / moduleSize;
   int matrixHeight = (bottom - top + 1) / moduleSize;
@@ -149,7 +137,7 @@
   top += nudge;
   left += nudge;
 
-  ZXBitMatrix *bits = [[[ZXBitMatrix alloc] initWithWidth:matrixWidth height:matrixHeight] autorelease];
+  ZXBitMatrix *bits = [[ZXBitMatrix alloc] initWithWidth:matrixWidth height:matrixHeight];
   for (int y = 0; y < matrixHeight; y++) {
     int iOffset = top + y * moduleSize;
     for (int x = 0; x < matrixWidth; x++) {
@@ -164,8 +152,8 @@
 
 - (int)moduleSize:(NSArray *)leftTopBlack image:(ZXBitMatrix *)image {
   int width = image.width;
-  int x = [[leftTopBlack objectAtIndex:0] intValue];
-  int y = [[leftTopBlack objectAtIndex:1] intValue];
+  int x = [leftTopBlack[0] intValue];
+  int y = [leftTopBlack[1] intValue];
   while (x < width && [image getX:x y:y]) {
     x++;
   }
@@ -173,7 +161,7 @@
     return -1;
   }
 
-  int moduleSize = x - [[leftTopBlack objectAtIndex:0] intValue];
+  int moduleSize = x - [leftTopBlack[0] intValue];
   if (moduleSize == 0) {
     return -1;
   }

@@ -17,6 +17,7 @@
 typedef enum {
     SWObjectSynced = 0,
     SWObjectCreated,
+    SWObjectUpdated,
 } SWObjectSyncStatus;
 
 @interface SWSyncEngine : NSObject

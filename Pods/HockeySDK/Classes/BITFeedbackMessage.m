@@ -1,7 +1,7 @@
 /*
  * Author: Andreas Linde <mail@andreaslinde.de>
  *
- * Copyright (c) 2012-2013 HockeyApp, Bit Stadium GmbH.
+ * Copyright (c) 2012-2014 HockeyApp, Bit Stadium GmbH.
  * All rights reserved.
  *
  * Permission is hereby granted, free of charge, to any person
@@ -72,7 +72,7 @@
     self.email = [decoder decodeObjectForKey:@"email"];
     self.date = [decoder decodeObjectForKey:@"date"];
     self.id = [decoder decodeObjectForKey:@"id"];
-    self.status = [decoder decodeIntegerForKey:@"status"];
+    self.status = (BITFeedbackMessageStatus)[decoder decodeIntegerForKey:@"status"];
     self.userMessage = [decoder decodeBoolForKey:@"userMessage"];
     self.token = [decoder decodeObjectForKey:@"token"];
   }

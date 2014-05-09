@@ -33,14 +33,14 @@
     return nil;
   }
   NSMutableArray *results = [NSMutableArray array];
-  NSArray *detectorResult = [[[[ZXMultiDetector alloc] initWithImage:matrix] autorelease] detectMulti:hints error:error];
+  NSArray *detectorResult = [[[ZXMultiDetector alloc] initWithImage:matrix] detectMulti:hints error:error];
   if (!detectorResult) {
     return nil;
   }
   for (int i = 0; i < [detectorResult count]; i++) {
-    ZXDecoderResult *decoderResult = [[self decoder] decodeMatrix:[[detectorResult objectAtIndex:i] bits] hints:hints error:nil];
+    ZXDecoderResult *decoderResult = [[self decoder] decodeMatrix:[(ZXDetectorResult *)detectorResult[i] bits] hints:hints error:nil];
     if (decoderResult) {
-      NSArray *points = [(ZXDetectorResult *)[detectorResult objectAtIndex:i] points];
+      NSArray *points = [(ZXDetectorResult *)detectorResult[i] points];
       ZXResult *result = [ZXResult resultWithText:decoderResult.text
                                           rawBytes:decoderResult.rawBytes
                                             length:decoderResult.length
