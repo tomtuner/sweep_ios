@@ -282,11 +282,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "sweep/sweep/ScansViewController.m"
-            timestampString = "421273649.000846"
+            timestampString = "424197051.431247"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1082"
-            endingLineNumber = "1082">
+            startingLineNumber = "1094"
+            endingLineNumber = "1094">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -296,11 +296,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "sweep/sweep/ScansViewController.m"
-            timestampString = "421273649.000846"
+            timestampString = "424197051.431247"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1092"
-            endingLineNumber = "1092">
+            startingLineNumber = "1104"
+            endingLineNumber = "1104">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -310,11 +310,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "sweep/sweep/ScansViewController.m"
-            timestampString = "421273649.000846"
+            timestampString = "424197051.431247"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1084"
-            endingLineNumber = "1084">
+            startingLineNumber = "1096"
+            endingLineNumber = "1096">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -564,11 +564,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "sweep/sweep/ScansViewController.m"
-            timestampString = "421273649.000846"
+            timestampString = "424197051.431247"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "928"
-            endingLineNumber = "928"
+            startingLineNumber = "940"
+            endingLineNumber = "940"
             landmarkName = "-umSwipe_starting:"
             landmarkType = "5">
          </BreakpointContent>
@@ -580,11 +580,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "sweep/sweep/ScansViewController.m"
-            timestampString = "421273649.000846"
+            timestampString = "424197051.431247"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "918"
-            endingLineNumber = "918"
+            startingLineNumber = "930"
+            endingLineNumber = "930"
             landmarkName = "-umDataProcessing:"
             landmarkType = "5">
          </BreakpointContent>
@@ -596,11 +596,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "sweep/sweep/ScansViewController.m"
-            timestampString = "421273649.000846"
+            timestampString = "424197051.431247"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "898"
-            endingLineNumber = "898"
+            startingLineNumber = "910"
+            endingLineNumber = "910"
             landmarkName = "-umSwipe_receivedSwipe:"
             landmarkType = "5">
          </BreakpointContent>
@@ -644,11 +644,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "sweep/sweep/ScansViewController.m"
-            timestampString = "421271927.118641"
+            timestampString = "424196776.266543"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "745"
-            endingLineNumber = "745"
+            startingLineNumber = "750"
+            endingLineNumber = "750"
             landmarkName = "-configureCell:atIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -660,28 +660,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "sweep/sweep/ScansViewController.m"
-            timestampString = "421271927.118641"
+            timestampString = "424197051.431247"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "757"
-            endingLineNumber = "757"
+            startingLineNumber = "768"
+            endingLineNumber = "768"
             landmarkName = "-configureCell:atIndexPath:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "sweep/sweep/CameraCaptureViewController.m"
-            timestampString = "421272328.830595"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "260"
-            endingLineNumber = "260"
-            landmarkName = "-captureResult:result:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

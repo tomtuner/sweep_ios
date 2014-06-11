@@ -369,6 +369,8 @@ static NSUInteger kNumberOfPages = 2;
     UIStoryboard *st = [UIStoryboard storyboardWithName:[[NSBundle mainBundle].infoDictionary objectForKey:@"UIMainStoryboardFile"] bundle:[NSBundle mainBundle]];
     KeypadViewController *kpvc = [st instantiateViewControllerWithIdentifier:@"keypadViewController"];
     kpvc.event = self.detailItem;
+    kpvc.users = self.users;
+    kpvc.scans = self.scans;
 //    kpvc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
     kpvc.modalPresentationStyle = UIModalPresentationFormSheet;
     [self presentViewController:kpvc animated:YES completion:nil];
@@ -710,7 +712,12 @@ static NSUInteger kNumberOfPages = 2;
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ScanValuesTableViewCell" forIndexPath:indexPath];
+    ScansTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ScansTableViewCell" forIndexPath:indexPath];
+    if (cell == nil)
+	{
+        cell = [[ScansTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
+                                            reuseIdentifier:@"ScansTableViewCell"];
+    }
     [self configureCell:cell atIndexPath:indexPath];
     return cell;
 }
@@ -739,7 +746,7 @@ static NSUInteger kNumberOfPages = 2;
     [self.scansTable endUpdates];
 }
 
-- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
+- (void)configureCell:(ScansTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
     // FIXME: Do this whole block more efficiently
     Scans *scan = [self.scans objectAtIndex:indexPath.row];
@@ -752,18 +759,25 @@ static NSUInteger kNumberOfPages = 2;
 
     if (user)
     {
-        cell.textLabel.text = [NSString stringWithFormat:@"%@ %@", user.first_name, user.last_name];
+        cell.checkmark.hidden = NO;
+        if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7)
+        {
+            cell.checkmark.image = [cell.checkmark.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+        }
+
+        cell.scanValue.text = [NSString stringWithFormat:@"%@ %@", user.first_name, user.last_name];
         NSLog(@"Scan Status %@", scan.status);
         if ([scan.status isEqualToNumber:[NSNumber numberWithInt:0]])
         {
-            cell.textLabel.textColor = [UIColor grayColor];
-            cell.textLabel.alpha = 0.7;
+            cell.checkmark.tintColor = [UIColor lightGrayColor];
+            cell.scanValue.alpha = 0.7;
         }else
         {
-            cell.textLabel.textColor = [UIColor blackColor];
-            cell.textLabel.alpha = 1.0;
+            cell.checkmark.tintColor = [UIColor colorWithRed:0.2 green:0.8 blue:0.2 alpha:1.0];
+            cell.scanValue.alpha = 1.0;
         }
     }else {
+        cell.checkmark.hidden = YES;
         NSString *valueString;
         NSInteger num = (scan.value.length * [[[ThemeManager sharedTheme] percentageIDAvailable] integerValue]) / 100;
         
@@ -774,7 +788,7 @@ static NSUInteger kNumberOfPages = 2;
             [padString appendString:@"*"];
         }
         valueString = [NSString stringWithFormat:@"%@%@", padString, valueString];
-        cell.textLabel.text = valueString;
+        cell.scanValue.text = valueString;
     }
 //    cell.textLabel.text = valueString;
 }

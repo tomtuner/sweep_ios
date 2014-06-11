@@ -20,5 +20,7 @@
 @property(nonatomic, strong) IBOutlet UILabel *idLabel;
 
 @property(nonatomic,strong) Events *event;
+@property(nonatomic,strong) NSArray *users;
+@property(nonatomic,strong) NSArray *scans;
 
 @end

@@ -133,16 +133,43 @@
     
     if ([idScanned rangeOfCharacterFromSet:notDigits].location == NSNotFound)
     {
+        // newString consists only of the digits 0 through 9
+        NSLog(@"Valid Number: %@", idScanned);
+        
 #if !(TARGET_IPHONE_SIMULATOR)
         // Vibrate
+        //            AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
         [self playSoundAndVibrate];
 #endif
-        
-        Scans *newScan = [NSEntityDescription insertNewObjectForEntityForName:@"Scans" inManagedObjectContext:self.managedObjectContext];
-        newScan.value = idScanned;
-        //            newScan.scanned_at = result.timestamp;
-        newScan.event_id = self.event.remote_id;
-        newScan.sync_status = [NSNumber numberWithInt:SWObjectCreated];
+        NSLog(@"%@", self.users);
+        NSArray *usersID = [self.users valueForKey:@"u_id"];
+        NSLog(@"%@", usersID);
+        NSUInteger userIndex = [usersID indexOfObject: idScanned];
+        Users *user = [usersID objectAtIndex:userIndex];
+        if (user)
+        {
+            Scans *preScan = [self.scans objectAtIndex:userIndex];
+            
+            NSError *error = nil;
+            NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:@"Scans"];
+            NSPredicate *predicate = [NSPredicate predicateWithFormat:@"remote_id = %@", preScan.remote_id];
+            //                NSLog(@"Event_ID: %@", self.detailItem.remote_id);
+            [request setPredicate:predicate];
+            Scans *postScan = [[self.managedObjectContext executeFetchRequest:request error:&error] lastObject];
+            postScan.status = [NSNumber numberWithInt:1];
+            postScan.scanned_at = [NSDate date];
+            postScan.sync_status = [NSNumber numberWithInt:SWObjectUpdated];
+        }
+        else
+        {
+            Scans *newScan = [NSEntityDescription insertNewObjectForEntityForName:@"Scans" inManagedObjectContext:self.managedObjectContext];
+            newScan.value = idScanned;
+            //            newScan.scanned_at = result.timestamp;
+            newScan.event_id = self.event.remote_id;
+            newScan.sync_status = [NSNumber numberWithInt:SWObjectCreated];
+            newScan.status = [NSNumber numberWithInt:0];
+        }
+
 
         NSError *error = nil;
         BOOL saved = [self.managedObjectContext save:&error];

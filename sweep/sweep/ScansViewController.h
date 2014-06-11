@@ -20,6 +20,7 @@
 #import "uniMag.h"
 #import "Theme.h"
 #import "Users.h"
+#import "ScansTableViewCell.h"
 
 #define REFRESH_HEADER_HEIGHT 52.0f
 

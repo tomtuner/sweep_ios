@@ -45,6 +45,12 @@
 		E94451A818882E5600522435 /* keuka_logo_top.png in Resources */ = {isa = PBXBuildFile; fileRef = E94451A118882E5600522435 /* keuka_logo_top.png */; };
 		E94451A918882E5600522435 /* keuka_logo_top@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E94451A218882E5600522435 /* keuka_logo_top@2x.png */; };
 		E94451AA18882E5600522435 /* keuka_logo_top@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E94451A218882E5600522435 /* keuka_logo_top@2x.png */; };
+		E946306F1948B2BB00B17C86 /* ScansTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E946306E1948B2BB00B17C86 /* ScansTableViewCell.m */; };
+		E94630701948B2BB00B17C86 /* ScansTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E946306E1948B2BB00B17C86 /* ScansTableViewCell.m */; };
+		E94630731948BAE900B17C86 /* tableview_check.png in Resources */ = {isa = PBXBuildFile; fileRef = E94630711948BAE900B17C86 /* tableview_check.png */; };
+		E94630741948BAE900B17C86 /* tableview_check.png in Resources */ = {isa = PBXBuildFile; fileRef = E94630711948BAE900B17C86 /* tableview_check.png */; };
+		E94630751948BAE900B17C86 /* tableview_check@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E94630721948BAE900B17C86 /* tableview_check@2x.png */; };
+		E94630761948BAE900B17C86 /* tableview_check@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E94630721948BAE900B17C86 /* tableview_check@2x.png */; };
 		E9518F8D1768108200EB82C8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9518F8C1768108200EB82C8 /* UIKit.framework */; };
 		E9518F8F1768108200EB82C8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9518F8E1768108200EB82C8 /* Foundation.framework */; };
 		E9518F911768108200EB82C8 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9518F901768108200EB82C8 /* CoreGraphics.framework */; };
@@ -328,6 +334,10 @@
 		E94451A018882E5600522435 /* keuka_logo_bottom@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "keuka_logo_bottom@2x.png"; sourceTree = "<group>"; };
 		E94451A118882E5600522435 /* keuka_logo_top.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = keuka_logo_top.png; sourceTree = "<group>"; };
 		E94451A218882E5600522435 /* keuka_logo_top@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "keuka_logo_top@2x.png"; sourceTree = "<group>"; };
+		E946306D1948B2BB00B17C86 /* ScansTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScansTableViewCell.h; sourceTree = "<group>"; };
+		E946306E1948B2BB00B17C86 /* ScansTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScansTableViewCell.m; sourceTree = "<group>"; };
+		E94630711948BAE900B17C86 /* tableview_check.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tableview_check.png; sourceTree = "<group>"; };
+		E94630721948BAE900B17C86 /* tableview_check@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tableview_check@2x.png"; sourceTree = "<group>"; };
 		E9518F891768108200EB82C8 /* sweep.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sweep.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9518F8C1768108200EB82C8 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		E9518F8E1768108200EB82C8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -833,6 +843,8 @@
 		E9E8ADCB1768D2B800F837D7 /* common */ = {
 			isa = PBXGroup;
 			children = (
+				E94630711948BAE900B17C86 /* tableview_check.png */,
+				E94630721948BAE900B17C86 /* tableview_check@2x.png */,
 				E91140F617C40F75005C5B1B /* arrow_left.png */,
 				E91140F717C40F75005C5B1B /* arrow_left@2x.png */,
 				E91140F817C40F75005C5B1B /* arrow_right.png */,
@@ -867,6 +879,8 @@
 			children = (
 				E9E8ADE01769564F00F837D7 /* SideMenuTableViewCell.h */,
 				E9E8ADE11769564F00F837D7 /* SideMenuTableViewCell.m */,
+				E946306D1948B2BB00B17C86 /* ScansTableViewCell.h */,
+				E946306E1948B2BB00B17C86 /* ScansTableViewCell.m */,
 			);
 			name = tableview;
 			sourceTree = "<group>";
@@ -1029,6 +1043,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E94630751948BAE900B17C86 /* tableview_check@2x.png in Resources */,
 				E9518F991768108200EB82C8 /* InfoPlist.strings in Resources */,
 				E9518FAB1768108200EB82C8 /* MainStoryboard_iPad.storyboard in Resources */,
 				E9E8AD621768331C00F837D7 /* menu_icon.png in Resources */,
@@ -1061,6 +1076,7 @@
 				E9A2DAA31799E6360063F034 /* gray_texture@2x.png in Resources */,
 				E9A2DAA71799F0BB0063F034 /* gray_gear.png in Resources */,
 				E9A2DAA91799F0BB0063F034 /* gray_gear@2x.png in Resources */,
+				E94630731948BAE900B17C86 /* tableview_check.png in Resources */,
 				E9A2DAC7179B1EC70063F034 /* nav_bg_ithaca.png in Resources */,
 				E9A2DAC9179B1EC70063F034 /* nav_bg_ithaca@2x.png in Resources */,
 				E9A2DACD179B1F770063F034 /* nav_bar_logo_white.png in Resources */,
@@ -1101,6 +1117,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E94630761948BAE900B17C86 /* tableview_check@2x.png in Resources */,
 				E9828AE717837CF700619FB4 /* InfoPlist.strings in Resources */,
 				E9828AEC17837CF700619FB4 /* MainStoryboard_iPad.storyboard in Resources */,
 				E9828AED17837CF700619FB4 /* menu_icon.png in Resources */,
@@ -1133,6 +1150,7 @@
 				E9A2DAA41799E6360063F034 /* gray_texture@2x.png in Resources */,
 				E9A2DAA81799F0BB0063F034 /* gray_gear.png in Resources */,
 				E9A2DAAA1799F0BB0063F034 /* gray_gear@2x.png in Resources */,
+				E94630741948BAE900B17C86 /* tableview_check.png in Resources */,
 				E9A2DAC8179B1EC70063F034 /* nav_bg_ithaca.png in Resources */,
 				E9A2DACA179B1EC70063F034 /* nav_bg_ithaca@2x.png in Resources */,
 				E9A2DACE179B1F770063F034 /* nav_bar_logo_white.png in Resources */,
@@ -1384,6 +1402,7 @@
 				E9828B3A17893F7C00619FB4 /* RITTheme.m in Sources */,
 				E9828B3E178943CC00619FB4 /* SWTheme.m in Sources */,
 				E9828B45178AFDF400619FB4 /* EncryptionTransformer.m in Sources */,
+				E946306F1948B2BB00B17C86 /* ScansTableViewCell.m in Sources */,
 				E9828B4B178AFF0A00619FB4 /* NSData+Encryption.m in Sources */,
 				E9828B54178B042000619FB4 /* StringEncryptionTransformer.m in Sources */,
 				E9A2DAB6179B056D0063F034 /* ITHTheme.m in Sources */,
@@ -1421,6 +1440,7 @@
 				E9828B3B17893F7C00619FB4 /* RITTheme.m in Sources */,
 				E9828B3F178943CC00619FB4 /* SWTheme.m in Sources */,
 				E9828B46178AFDF400619FB4 /* EncryptionTransformer.m in Sources */,
+				E94630701948B2BB00B17C86 /* ScansTableViewCell.m in Sources */,
 				E9828B4C178AFF0A00619FB4 /* NSData+Encryption.m in Sources */,
 				E9828B55178B042000619FB4 /* StringEncryptionTransformer.m in Sources */,
 				E9A2DAB7179B056D0063F034 /* ITHTheme.m in Sources */,
