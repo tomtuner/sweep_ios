@@ -306,7 +306,7 @@ static NSUInteger kNumberOfPages = 2;
         NSLog(@"SCANS HERE %@", scansUArray);
         if (scansUArray.count != 0)
         {
-            NSPredicate *uPredicate = [NSPredicate predicateWithFormat:@"(remote_id CONTAINS %@)" argumentArray:scansUArray];
+            NSPredicate *uPredicate = [NSPredicate predicateWithFormat:@"(remote_id IN %@)", scansUArray];
             [uRequest setPredicate:uPredicate];
             self.users = [self.managedObjectContext executeFetchRequest:uRequest error:&error];
             NSLog(@"%@", self.users);
@@ -752,10 +752,17 @@ static NSUInteger kNumberOfPages = 2;
     Scans *scan = [self.scans objectAtIndex:indexPath.row];
     Users *user = nil;
     NSLog(@"User Count: %i", self.users.count);
-    if (indexPath.row < self.users.count)
+    
+    for (Users *use in self.users)
     {
-        user = [self.users objectAtIndex:indexPath.row];
+        if ([use.u_id isEqualToString:scan.value])
+            user = use;
     }
+    
+//    if (indexPath.row < self.users.count)
+//    {
+//        user = [self.users objectAtIndex:indexPath.row];
+//    }
 
     if (user)
     {

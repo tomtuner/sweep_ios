@@ -20,7 +20,7 @@
 @property (nonatomic, retain) NSString * first_name;
 @property (nonatomic, retain) NSString * last_name;
 @property (nonatomic, retain) NSString * barcode_url;
-@property (nonatomic, retain) NSNumber * u_id;
+@property (nonatomic, retain) NSString * u_id;
 @property (nonatomic, retain) NSNumber * sex;
 @property (nonatomic, retain) NSString * city;
 @property (nonatomic, retain) NSString * state;
