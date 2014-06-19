@@ -272,12 +272,9 @@
                 }
                 count++;
             }
-            NSUInteger userIndex = [usersID indexOfObject: idScanned];
             
             if (user)
             {
-//                Scans *preScan = [self.scans objectAtIndex:userIndex];
-
                 NSError *error = nil;
                 NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:@"Scans"];
                 NSPredicate *predicate = [NSPredicate predicateWithFormat:@"remote_id = %@", preScan.remote_id];

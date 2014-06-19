@@ -144,12 +144,24 @@
         NSLog(@"%@", self.users);
         NSArray *usersID = [self.users valueForKey:@"u_id"];
         NSLog(@"%@", usersID);
-        NSUInteger userIndex = [usersID indexOfObject: idScanned];
-        Users *user = [usersID objectAtIndex:userIndex];
+        Users *user;
+        Scans *preScan;
+        NSUInteger count = 0;
+        for (NSString *num in usersID) {
+            if ([idScanned isEqualToString:num]) {
+                user = [self.users objectAtIndex:count];
+                for (Scans *scan in self.scans) {
+                    if ([idScanned isEqualToString:scan.value]) {
+                        preScan = scan;
+                        break;
+                    }
+                }
+            }
+            count++;
+        }
+        
         if (user)
-        {
-            Scans *preScan = [self.scans objectAtIndex:userIndex];
-            
+        {   
             NSError *error = nil;
             NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:@"Scans"];
             NSPredicate *predicate = [NSPredicate predicateWithFormat:@"remote_id = %@", preScan.remote_id];

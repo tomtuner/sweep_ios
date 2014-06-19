@@ -767,21 +767,26 @@ static NSUInteger kNumberOfPages = 2;
     if (user)
     {
         cell.checkmark.hidden = NO;
-        if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7)
-        {
-            cell.checkmark.image = [cell.checkmark.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-        }
 
         cell.scanValue.text = [NSString stringWithFormat:@"%@ %@", user.first_name, user.last_name];
         NSLog(@"Scan Status %@", scan.status);
         if ([scan.status isEqualToNumber:[NSNumber numberWithInt:0]])
         {
-            cell.checkmark.tintColor = [UIColor lightGrayColor];
-            cell.scanValue.alpha = 0.7;
+            if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7)
+            {
+                cell.checkmark.image = [cell.checkmark.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+                cell.checkmark.tintColor = [UIColor lightGrayColor];
+            }
+            
+            cell.checkmark.alpha = 0.7;
         }else
         {
-            cell.checkmark.tintColor = [UIColor colorWithRed:0.2 green:0.8 blue:0.2 alpha:1.0];
-            cell.scanValue.alpha = 1.0;
+            if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7)
+            {
+                cell.checkmark.image = [cell.checkmark.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+                cell.checkmark.tintColor = [UIColor colorWithRed:0.2 green:0.8 blue:0.2 alpha:1.0];
+            }
+            cell.checkmark.alpha = 1.0;
         }
     }else {
         cell.checkmark.hidden = YES;
